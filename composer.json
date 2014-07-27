@@ -1,0 +1,33 @@
+{
+    "name": "pwnraid/bnet",
+    "description": "",
+    "keywords": [],
+    "homepage": "https://github.com/pwnraid/bnet",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonas Stendahl",
+            "email": "jyggen@pwnraid.org"
+        },
+        {
+            "name": "pwnRaid Community",
+            "homepage": "https://github.com/pwnraid/bnet/graphs/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "guzzlehttp/guzzle": "~4.0",
+        "tedivm/stash": "0.12.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pwnraid\\Bnet\\": "src",
+            "Pwnraid\\Bnet\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
