@@ -2,6 +2,7 @@
 namespace Pwnraid\Bnet\Warcraft;
 
 use Pwnraid\Bnet\BaseClient;
+use Pwnraid\Bnet\Warcraft\Request\Character;
 use Pwnraid\Bnet\Warcraft\Request\Quest;
 
 class Client extends BaseClient
@@ -21,6 +22,11 @@ class Client extends BaseClient
         'TW' => 'https://tw.battle.net/api/wow/',
         'CH' => 'https://www.battlenet.com.cn/api/wow/',
     ];
+
+    public function characters()
+    {
+        return new Character($this);
+    }
 
     public function quests()
     {
