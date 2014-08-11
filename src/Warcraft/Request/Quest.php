@@ -6,9 +6,9 @@ use Pwnraid\Bnet\Warcraft\Entity\Quest as QuestEntity;
 
 class Quest extends BaseRequest
 {
-    public function find($id)
+    public function find($questId)
     {
-        $data = $this->client->get('quest/'.$id);
+        $data = $this->client->get('quest/'.$questId);
 
         if ($data === null) {
             return null;
