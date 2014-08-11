@@ -54,7 +54,7 @@ abstract class BaseClient
         $data = $item->get();
 
         if ($item->isMiss() === false) {
-            $this->client->set('If-Modified-Since', $data['modified']);
+            $this->client->setDefaultOption('headers/If-Modified-Since', $data['modified']);
         }
 
         try {
@@ -62,23 +62,25 @@ abstract class BaseClient
         } catch (ClientException $exception) {
             if ($exception->getCode() === 404) {
                 return null;
-            } else {
-                var_Dump($exception->getMessage());
-                die;
             }
+            throw new \RuntimeException($exception->getMessage());
         }
 
-        if ((int) $response->getStatusCode() === 200) {
-            if (empty($response->getHeader('Last-Modified')) === false) {
-                $item->set([
-                    'modified' => $response->getHeader('Last-Modified'),
-                    'json'     => $response->json(),
-                ]);
-            }
-            return $response->json();
+        switch ((int) $response->getStatusCode()) {
+            case 200:
+                if (empty($response->getHeader('Last-Modified')) === false) {
+                    $item->set([
+                        'modified' => $response->getHeader('Last-Modified'),
+                        'json'     => $response->json(),
+                    ]);
+                }
+                return $response->json();
+            case 304:
+                return $data['json'];
+            default:
+                throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode().'.');
+                break;
         }
-
-        var_dump($response->getStatusCode()); die;
     }
 
     public function setLocale($locale)
