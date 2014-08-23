@@ -9,7 +9,7 @@
 
 This package is compliant with [PSR-1], [PSR-2] and [PSR-4].
 
-[Find Curl on Packagist/Composer](https://packagist.org/packages/pwnraid/bnet)
+[Find Battle.net API Client on Packagist/Composer](https://packagist.org/packages/pwnraid/bnet)
 
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
 [PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
