@@ -17,7 +17,7 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 
 ### Implementation Status
 
-This library is still under development. You can track which endpoints that's implemented below.
+This library is still under development. You can track implementation status of each endpoint below.
 
 #### Account API
 
