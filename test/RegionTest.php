@@ -5,9 +5,10 @@ use Pwnraid\Bnet\Region;
 
 class RegionTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSomething()
+    public function testRegion()
     {
-        var_dump(Region::$hosts);
-        var_dump(Region::$locales);
+        $region = new Region(Region::EUROPE);
+        $this->assertSame('en_GB', $region->getLocale());
+        $this->assertSame('https://eu.api.battle.net/wow/', $region->getHost('wow'));
     }
 }
