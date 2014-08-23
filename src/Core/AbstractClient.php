@@ -62,7 +62,7 @@ abstract class AbstractClient
 
         switch ((int) $response->getStatusCode()) {
             case 200:
-                if (empty($response->getHeader('Last-Modified')) === false) {
+                if ($response->hasHeader('Last-Modified')) {
                     $item->set([
                         'modified' => $response->getHeader('Last-Modified'),
                         'json'     => $response->json(),
