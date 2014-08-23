@@ -1,11 +1,12 @@
 <?php
-namespace Pwnraid\Bnet\Warcraft\Request;
+namespace Pwnraid\Bnet\Warcraft\Characters;
 
-use Pwnraid\Bnet\BaseRequest;
-use Pwnraid\Bnet\Warcraft\Entity\Character as CharacterEntity;
+use Pwnraid\Bnet\Core\AbstractRequest;
 
-class Character extends BaseRequest
+class CharacterRequest extends AbstractRequest
 {
+    use AchievementTrait;
+
     protected $realm;
 
     public function find($name, array $fields = [])

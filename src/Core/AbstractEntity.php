@@ -1,10 +1,10 @@
 <?php
-namespace Pwnraid\Bnet;
+namespace Pwnraid\Bnet\Core;
 
 use ArrayAccess;
 use JsonSerializable;
 
-abstract class BaseEntity implements ArrayAccess, JsonSerializable
+abstract class AbstractEntity implements ArrayAccess, JsonSerializable
 {
     protected $attributes;
 

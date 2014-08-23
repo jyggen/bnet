@@ -1,47 +1,40 @@
 <?php
-namespace Pwnraid\Bnet;
+namespace Pwnraid\Bnet\Core;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
-use Pwnraid\Bnet\Warcraft\Client as WarcraftClient;
+use Pwnraid\Bnet\Exceptions\BattleNetException;
+use Pwnraid\Bnet\Region;
 use RuntimeException;
 use Stash\Interfaces\PoolInterface;
 
-abstract class BaseClient
+abstract class AbstractClient
 {
-    const VERSION = '0.1-dev';
+    const VERSION = '1.0.0-dev';
 
-    public static $locales = [];
-    public static $regions = [];
-
+    protected $apiKey;
     protected $cache;
     protected $client;
-    protected $locale;
     protected $region;
 
-    public function __construct($region, PoolInterface $cache)
+    public function __construct($apiKey, Region $region, PoolInterface $cache)
     {
-        $region = mb_strtoupper($region, 'UTF-8');
-
-        if (array_key_exists($region, static::$regions) === false) {
-            throw new RuntimeException('Region "'.$region.'" is not available');
-        }
-
-        $this->region = $region;
-        $this->locale = static::$locales[$this->region][0];
-
-        $cache->setNamespace(str_replace('\\', '', get_class($this)));
-
+        $this->apiKey = $apiKey;
         $this->cache  = $cache;
+        $this->region = $region;
+
+        $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
+
         $this->client = new GuzzleClient([
-            'base_url' => static::$regions[$this->region],
+            'base_url' => $this->region->getHost(static::API),
             'defaults' => [
                 'headers' => [
                     'Accept'     => 'application/json',
-                    'User-Agent' => 'pwnRaid/'.static::VERSION.' '.GuzzleClient::getDefaultUserAgent(),
+                    'User-Agent' => 'pwnRaid/'.static::VERSION.' '.(new GuzzleClient)->getDefaultUserAgent(),
                 ],
                 'query' => [
-                    'locale'  => $this->locale,
+                    'apikey'  => $this->apiKey,
+                    'locale'  => $this->region->getLocale(),
                 ],
             ],
         ]);
@@ -63,7 +56,8 @@ abstract class BaseClient
             if ($exception->getCode() === 404) {
                 return null;
             }
-            throw new \RuntimeException($exception->getMessage());
+
+            throw new BattleNetException($exception->getResponse()->json()['detail'], $exception->getCode());
         }
 
         switch ((int) $response->getStatusCode()) {
@@ -83,25 +77,11 @@ abstract class BaseClient
         }
     }
 
-    public function setLocale($locale)
+    protected function getRequestKey($url, $query)
     {
+        $options           = $this->client->getDefaultOption();
+        $options['query'] = array_replace_recursive($options['query'], $query);
 
-        if ($locale !== null) {
-
-            if (in_array($locale, static::$locales[$this->region]) === false) {
-                throw new RuntimeException('Locale "'.$locale.'" is not available');
-            }
-
-            $this->locale = $locale;
-        } else {
-            $this->locale = static::$locales[$this->region][0];
-        }
-
-        $this->client->setDefaultOption('query', ['locale' => $this->locale]);
-    }
-
-    protected function getRequestKey($url, $options)
-    {
-        return $this->region.'/'.$url.'/'.md5(serialize($options));
+        return hash_hmac('md5', $this->client->getBaseUrl().'/'.$url, serialize($options));
     }
 }
