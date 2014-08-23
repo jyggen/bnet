@@ -5,7 +5,7 @@ use Pwnraid\Bnet\Region;
 use Pwnraid\Bnet\Warcraft\Client as WarcraftClient;
 use Stash\Interfaces\PoolInterface;
 
-class Client
+class ClientFactory
 {
     protected $apiKey;
     protected $cache;
