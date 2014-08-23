@@ -44,7 +44,7 @@ class Region
 
         $this->region = static::$regions[$region];
 
-        if ($locale !== null and in_array($locale, $this->region['locales']) === false) {
+        if ($locale !== null && in_array($locale, $this->region['locales']) === false) {
             throw new \OutOfBoundsException($locale.' is not a valid locale.');
         }
 
