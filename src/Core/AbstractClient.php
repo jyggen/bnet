@@ -73,7 +73,6 @@ abstract class AbstractClient
                 return $data['json'];
             default:
                 throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode().'.');
-                break;
         }
     }
 
