@@ -5,9 +5,18 @@ use Pwnraid\Bnet\Core\AbstractRequest;
 
 class CharacterRequest extends AbstractRequest
 {
-    use AchievementTrait;
-
     protected $realm;
+
+    public function achievement($achievementId)
+    {
+        $data = $this->client->get('achievement/'.$achievementId);
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new AchievementEntity($data);
+    }
 
     public function find($name, array $fields = [])
     {

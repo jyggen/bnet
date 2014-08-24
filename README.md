@@ -53,11 +53,11 @@ This library is still under development. You can track implementation status of 
 - [x] /wow/battlepet/ability/:abilityid
 - [x] /wow/battlepet/species/:speciesid
 - [x] /wow/battlepet/stats/:speciesid
-- [ ] /wow/challenge/:realm
-- [ ] /wow/challenge/region
+- [x] /wow/challenge/:realm
+- [x] /wow/challenge/region
 - [x] /wow/character/:realm/:charactername
-- [ ] /wow/item/:itemid
-- [ ] /wow/item/set/:setid
+- [x] /wow/item/:itemid
+- [x] /wow/item/set/:setid
 - [ ] /wow/guild/:realm/:guildname
 - [ ] /wow/leaderboard/:bracket
 - [ ] /wow/quest/:questid

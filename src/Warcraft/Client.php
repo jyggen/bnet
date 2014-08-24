@@ -4,7 +4,8 @@ namespace Pwnraid\Bnet\Warcraft;
 use Pwnraid\Bnet\Core\AbstractClient;
 use Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest;
 use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
-use Pwnraid\Bnet\Warcraft\Request\Quest;
+use Pwnraid\Bnet\Warcraft\Items\ItemRequest;
+use Pwnraid\Bnet\Warcraft\Leaderboards\LeaderboardRequest;
 
 class Client extends AbstractClient
 {
@@ -20,8 +21,13 @@ class Client extends AbstractClient
         return new CharacterRequest($this);
     }
 
-    public function quests()
+    public function items()
     {
-        return new Quest($this);
+        return new ItemRequest($this);
+    }
+
+    public function leaderboards()
+    {
+        return new LeaderboardRequest($this);
     }
 }
