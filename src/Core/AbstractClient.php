@@ -76,11 +76,9 @@ abstract class AbstractClient
         }
     }
 
-    protected function getRequestKey($url, $query)
+    protected function getRequestKey($url, $options)
     {
-        $options           = $this->client->getDefaultOption();
-        $options['query'] = array_replace_recursive($options['query'], $query);
-
+        $options = array_replace_recursive($this->client->getDefaultOption(), $options);
         return hash_hmac('md5', $this->client->getBaseUrl().'/'.$url, serialize($options));
     }
 }

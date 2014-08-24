@@ -26,4 +26,21 @@ class BattlePetRequest extends AbstractRequest
 
         return new SpeciesEntity($data);
     }
+
+    public function stats($speciesId, $level = 1, $breedId = 3, $qualityId = 1)
+    {
+        $data = $this->client->get('battlePet/stats/'.$speciesId, [
+            'query' => [
+                'level'     => $level,
+                'breedId'   => $breedId,
+                'qualityId' => $qualityId,
+            ],
+        ]);
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new StatsEntity($data);
+    }
 }

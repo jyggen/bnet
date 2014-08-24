@@ -52,7 +52,7 @@ This library is still under development. You can track implementation status of 
 - [ ] /wow/auction/data/:realm
 - [x] /wow/battlepet/ability/:abilityid
 - [x] /wow/battlepet/species/:speciesid
-- [ ] /wow/battlepet/stats/:speciesid
+- [x] /wow/battlepet/stats/:speciesid
 - [ ] /wow/challenge/:realm
 - [ ] /wow/challenge/region
 - [x] /wow/character/:realm/:charactername
