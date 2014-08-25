@@ -25,4 +25,15 @@ class LeaderboardRequest extends AbstractRequest
 
         return new ChallengeModeEntity($data);
     }
+
+    public function pvp($bracket)
+    {
+        $data = $this->client->get('challenge/region/'.$bracket); // @todo: validate 2v2, 3v3, 5v5 and rbg.
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new BracketEntity($data);
+    }
 }
