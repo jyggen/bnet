@@ -18,6 +18,28 @@ class CharacterRequest extends AbstractRequest
         return new AchievementEntity($data);
     }
 
+    public function achievements()
+    {
+        $data = $this->client->get('data/character/achievements');
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new AchievementEntity($data);
+    }
+
+    public function classes()
+    {
+        $data = $this->client->get('data/character/classes');
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new ClassEntity($data);
+    }
+
     public function find($name, array $fields = [])
     {
         if ($this->realm === null) {
@@ -37,5 +59,16 @@ class CharacterRequest extends AbstractRequest
     {
         $this->realm = $realm;
         return $this;
+    }
+
+    public function races()
+    {
+         $data = $this->client->get('data/characters/races');
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new RaceEntity($data);
     }
 }

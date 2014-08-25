@@ -5,6 +5,17 @@ use Pwnraid\Bnet\Core\AbstractRequest;
 
 class ItemRequest extends AbstractRequest
 {
+    public function classes()
+    {
+        $data = $this->client->get('data/item/classes');
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new ClassEntity($data);
+    }
+
     public function find($itemId)
     {
         $data = $this->client->get('item/'.$itemId);

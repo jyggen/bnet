@@ -7,6 +7,17 @@ class GuildRequest extends AbstractRequest
 {
     protected $realm;
 
+    public function achievements()
+    {
+        $data = $this->client->get('data/guild/achievements');
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new AchievementEntity($data);
+    }
+
     public function find($name, array $fields = [])
     {
         if ($this->realm === null) {
@@ -26,5 +37,27 @@ class GuildRequest extends AbstractRequest
     {
         $this->realm = $realm;
         return $this;
+    }
+
+    public function perks()
+    {
+        $data = $this->client->get('data/guild/perks');
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new PerkEntity($data);
+    }
+
+    public function rewards()
+    {
+        $data = $this->client->get('data/guild/rewards');
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new RewardEntity($data);
     }
 }

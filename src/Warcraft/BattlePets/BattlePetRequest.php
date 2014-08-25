@@ -43,4 +43,15 @@ class BattlePetRequest extends AbstractRequest
 
         return new StatsEntity($data);
     }
+
+    public function types()
+    {
+        $data = $this->client->get('data/pet/types');
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new TypeEntity($data);
+    }
 }
