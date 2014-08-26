@@ -28,9 +28,9 @@ This library is still under development. You can track implementation status of 
 
 - [ ] /d3/profile/:battletag/
 - [ ] /d3/profile/:battletag/hero/:id
-- [ ] /d3/data/item/:data
-- [ ] /d3/data/follower/:follower
-- [ ] /d3/data/artisan/:artisan
+- [x] /d3/data/item/:data
+- [x] /d3/data/follower/:follower
+- [x] /d3/data/artisan/:artisan
 
 #### Community OAuth Profile APIs
 
