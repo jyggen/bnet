@@ -26,7 +26,7 @@ abstract class AbstractClient
         $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
 
         $this->client = new GuzzleClient([
-            'base_url' => $this->region->getHost(static::API),
+            'base_url' => $this->region->getApiHost(static::API),
             'defaults' => [
                 'headers' => [
                     'Accept'     => 'application/json',

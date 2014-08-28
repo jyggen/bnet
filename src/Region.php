@@ -11,24 +11,39 @@ class Region
 
     protected static $regions = [
         Region::CHINA => [
-            'host'    => 'https://www.battlenet.com.cn/%s/',
             'locales' => ['zh_CN'],
+            'hosts'   => [
+                'api'   => 'https://www.battlenet.com.cn/%s/',
+                'oauth' => 'https://cn.battle.net/',
+            ],
         ],
         Region::EUROPE => [
-            'host'    => 'https://eu.api.battle.net/%s/',
             'locales' => ['en_GB', 'es_ES', 'fr_FR', 'ru_RU', 'de_DE', 'pt_PT', 'it_IT'],
+            'hosts'   => [
+                'api'   => 'https://eu.api.battle.net/%s/',
+                'oauth' => 'https://eu.battle.net/',
+            ],
         ],
         Region::KOREA => [
-            'host'    => 'https://kr.api.battle.net/%s/',
             'locales' => ['ko_KR'],
+            'hosts'   => [
+                'api'   => 'https://kr.api.battle.net/%s/',
+                'oauth' => 'https://kr.battle.net/',
+            ],
         ],
         Region::TAIWAN => [
-            'host'    => 'https://tw.api.battle.net/%s/',
             'locales' => ['zh_TW'],
+            'hosts'   => [
+                'api'   => 'https://tw.api.battle.net/%s/',
+                'oauth' => 'https://tw.battle.net/',
+            ],
         ],
         Region::US => [
-            'host'    => 'https://us.api.battle.net/%s/',
             'locales' => ['en_US', 'es_MX', 'pt_BR'],
+            'hosts'   => [
+                'api'   => 'https://us.api.battle.net/%s/',
+                'oauth' => 'https://us.battle.net/',
+            ],
         ],
     ];
 
@@ -39,21 +54,26 @@ class Region
     public function __construct($region, $locale = null)
     {
         if (isset(static::$regions[$region]) === false) {
-            throw new \OutOfBoundsException($region.' is not a valid region.');
+            throw new \InvalidArgumentException($region.' is not a valid region.');
         }
 
         $this->region = static::$regions[$region];
 
         if ($locale !== null && in_array($locale, $this->region['locales']) === false) {
-            throw new \OutOfBoundsException($locale.' is not a valid locale.');
+            throw new \InvalidArgumentException($locale.' is not a valid locale.');
         }
 
         $this->locale = ($locale === null) ? $this->region['locales'][0] : $locale;
     }
 
-    public function getHost($api)
+    public function getApiHost($api)
     {
-        return sprintf($this->region['host'], $api);
+        return sprintf($this->region['hosts']['api'], $api);
+    }
+
+    public function getOAuthHost()
+    {
+        return $this->region['hosts']['oauth'];
     }
 
     public function getLocale()
