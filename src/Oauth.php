@@ -2,28 +2,34 @@
 namespace Pwnraid\Bnet;
 
 use League\OAuth2\Client\Provider\IdentityProvider;
-use League\OAuth2\Client\Provider\User;
 use League\OAuth2\Client\Token\AccessToken;
 
-class Oauth extends IdentityProvider
+class OAuth extends IdentityProvider
 {
-    public $region         = '';
     public $scopeSeparator = ' ';
-
     public $scopes = ['wow.profile', 'sc2.profile'];
+
+    protected $region;
+
+    public function __construct(Region $region, $options = array())
+    {
+        $this->region = $region;
+        parent::__contruct($options);
+    }
 
     public function urlAuthorize()
     {
-        return 'https://'.$this->region.'.battle.net/oauth/authorize';
+        return $this->region->getOAuthHost().'oauth/authorize';
     }
 
     public function urlAccessToken()
     {
-        return 'https://'.$this->region.'.battle.net/oauth/token';
+        return $this->region->getOAuthHost().'oauth/token';
     }
 
     public function urlUserDetails(AccessToken $token)
     {
+        return $this->region->getApiHost().'account/user/id?access_token='.$token;
     }
 
     public function userDetails($response, AccessToken $token)
