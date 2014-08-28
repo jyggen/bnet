@@ -14,7 +14,7 @@ class OAuth extends IdentityProvider
     public function __construct(Region $region, $options = array())
     {
         $this->region = $region;
-        parent::__contruct($options);
+        parent::__construct($options);
     }
 
     public function urlAuthorize()
@@ -29,7 +29,7 @@ class OAuth extends IdentityProvider
 
     public function urlUserDetails(AccessToken $token)
     {
-        return $this->region->getApiHost().'account/user/id?access_token='.$token;
+        return $this->region->getApiHost('account').'user/id?access_token='.$token;
     }
 
     public function userDetails($response, AccessToken $token)
