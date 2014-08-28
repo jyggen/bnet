@@ -1,7 +1,6 @@
 <?php
 namespace Pwnraid\Bnet;
 
-use Pwnraid\Bnet\Region;
 use Pwnraid\Bnet\Diablo\Client as DiabloClient;
 use Pwnraid\Bnet\Starcraft\Client as StarcraftClient;
 use Pwnraid\Bnet\Warcraft\Client as WarcraftClient;
@@ -18,18 +17,18 @@ class ClientFactory
         $this->cache  = $cache;
     }
 
-    public function diablo($region, $locale = null)
+    public function diablo(Region $region)
     {
-        return new DiabloClient($this->apiKey, new Region($region, $locale), $this->cache);
+        return new DiabloClient($this->apiKey, $region, $this->cache);
     }
 
-    public function starcraft($region, $locale = null)
+    public function starcraft(Region $region)
     {
-        return new StarcraftClient($this->apiKey, new Region($region, $locale), $this->cache);
+        return new StarcraftClient($this->apiKey, $region, $this->cache);
     }
 
-    public function warcraft($region, $locale = null)
+    public function warcraft(Region $region)
     {
-        return new WarcraftClient($this->apiKey, new Region($region, $locale), $this->cache);
+        return new WarcraftClient($this->apiKey, $region, $this->cache);
     }
 }
