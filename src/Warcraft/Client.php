@@ -8,6 +8,7 @@ use Pwnraid\Bnet\Warcraft\Guilds\GuildRequest;
 use Pwnraid\Bnet\Warcraft\Items\ItemRequest;
 use Pwnraid\Bnet\Warcraft\Leaderboards\LeaderboardRequest;
 use Pwnraid\Bnet\Warcraft\Quests\QuestRequest;
+use Pwnraid\Bnet\Warcraft\Realms\RealmRequest;
 use Pwnraid\Bnet\Warcraft\Recipes\RecipeRequest;
 use Pwnraid\Bnet\Warcraft\Spells\SpellRequest;
 
@@ -43,6 +44,11 @@ class Client extends AbstractClient
     public function quests()
     {
         return new QuestRequest($this);
+    }
+
+    public function realms()
+    {
+        return new RealmRequest($this);
     }
 
     public function recipes()

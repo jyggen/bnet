@@ -61,10 +61,10 @@ This library is still under development. You can track implementation status of 
 - [x] /wow/guild/:realm/:guildname
 - [x] /wow/leaderboard/:bracket
 - [x] /wow/quest/:questid
-- [ ] /wow/realm/status
+- [x] /wow/realm/status
 - [x] /wow/recipe/:recipeid
 - [x] /wow/spell/:spellid
-- [ ] /wow/data/battlegroups/
+- [x] /wow/data/battlegroups/
 - [x] /wow/data/character/races
 - [x] /wow/data/character/classes
 - [x] /wow/data/character/achievements
@@ -72,5 +72,5 @@ This library is still under development. You can track implementation status of 
 - [x] /wow/data/guild/perks
 - [x] /wow/data/guild/achievements
 - [x] /wow/data/item/classes
-- [ ] /wow/data/talents
+- [x] /wow/data/talents
 - [x] /wow/data/pet/types

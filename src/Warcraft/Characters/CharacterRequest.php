@@ -71,4 +71,15 @@ class CharacterRequest extends AbstractRequest
 
         return new RaceEntity($data);
     }
+
+    public function talents()
+    {
+        $data = $this->client->get('data/talents');
+
+        if ($data === null) {
+            return null;
+        }
+
+        return new TalentEntity($data);
+    }
 }

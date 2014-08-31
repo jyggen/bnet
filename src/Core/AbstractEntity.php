@@ -6,7 +6,7 @@ use JsonSerializable;
 
 abstract class AbstractEntity implements ArrayAccess, JsonSerializable
 {
-    protected $attributes;
+    protected $attributes = [];
 
     public function __construct(array $body)
     {
@@ -115,6 +115,5 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
     public function __unset($key)
     {
         unset($this->attributes[$key]);
-        unset($this->relations[$key]);
     }
 }
