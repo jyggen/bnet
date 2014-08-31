@@ -3,8 +3,17 @@ namespace Pwnraid\Bnet\Test;
 
 use Pwnraid\Bnet\Region;
 
+/**
+ * @coversDefaultClass \Pwnraid\Bnet\Region
+ */
 class RegionTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @covers ::__construct
+     * @covers ::getApiHost
+     * @covers ::getLocale
+     * @covers ::getOAuthHost
+     */
     public function testRegion()
     {
         $region = new Region(Region::EUROPE, 'fr_FR');
@@ -13,6 +22,12 @@ class RegionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('https://eu.battle.net/', $region->getOAuthHost('wow'));
     }
 
+    /**
+     * @covers ::__construct
+     * @covers ::getApiHost
+     * @covers ::getLocale
+     * @covers ::getOAuthHost
+     */
     public function testDefaultLocale()
     {
         $region = new Region(Region::EUROPE);
@@ -22,6 +37,7 @@ class RegionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers                   ::__construct
      * @expectedException        InvalidArgumentException
      * @expectedExceptionMessage invalid is not a valid region.
      */
@@ -31,6 +47,7 @@ class RegionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers                   ::__construct
      * @expectedException        InvalidArgumentException
      * @expectedExceptionMessage invalid is not a valid locale.
      */
