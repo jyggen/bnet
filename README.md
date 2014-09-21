@@ -1,4 +1,4 @@
-## Battle.net API Client
+# Battle.net API Client
 
 [![Latest Version](https://img.shields.io/github/release/pwnraid/bnet.svg?style=flat-square)](https://github.com/pwnraid/bnet/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
@@ -15,9 +15,14 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 [PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
-### Implementation Status
+## Road to 1.0
 
-This library is still under development. You can track implementation status of each endpoint below.
+- [ ] Implement all available API endpoints (see below).
+- [ ] 100% test coverage.
+- [ ] Switch cache from [tedivm/stash](https://github.com/tedious/Stash) to [PSR-6](https://github.com/php-fig/fig-standards/blob/master/proposed/cache.md).
+- [ ] Stable release (>=1.0) of [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client).
+
+### Implementation Status
 
 #### Account API
 
