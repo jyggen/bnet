@@ -48,10 +48,6 @@ class BattlePetRequest extends AbstractRequest
     {
         $data = $this->client->get('data/pet/types');
 
-        if ($data === null) {
-            return null;
-        }
-
         return new TypeEntity($data);
     }
 }
