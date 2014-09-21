@@ -9,10 +9,6 @@ class RealmRequest extends AbstractRequest
     {
         $data = $this->client->get('data/battlegroups/');
 
-        if ($data === null) {
-            return null;
-        }
-
         return new BattlegroupEntity($data);
     }
 
@@ -24,20 +20,12 @@ class RealmRequest extends AbstractRequest
 
         $data = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realm)]]);
 
-        if ($data === null) {
-            return null;
-        }
-
         return new RealmEntity($data);
     }
 
     public function all()
     {
         $data = $this->client->get('realm/status');
-
-        if ($data === null) {
-            return null;
-        }
 
         return new RealmEntity($data);
     }

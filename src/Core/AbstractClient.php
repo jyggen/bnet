@@ -17,13 +17,15 @@ abstract class AbstractClient
     protected $client;
     protected $region;
 
-    public function __construct($apiKey, Region $region, PoolInterface $cache)
+    public function __construct($apiKey, Region $region, PoolInterface $cache = null)
     {
         $this->apiKey = $apiKey;
         $this->cache  = $cache;
         $this->region = $region;
 
-        $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
+        if ($this->cache !== null) {
+            $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
+        }
 
         $this->client = new GuzzleClient([
             'base_url' => $this->region->getApiHost(static::API),
@@ -43,11 +45,14 @@ abstract class AbstractClient
     public function get($url, $options = [])
     {
         $key  = $this->getRequestKey($url, $options);
-        $item = $this->cache->getItem($key);
-        $data = $item->get();
 
-        if ($item->isMiss() === false) {
-            $this->client->setDefaultOption('headers/If-Modified-Since', $data['modified']);
+        if ($this->cache !== null) {
+            $item = $this->cache->getItem($key);
+            $data = $item->get();
+
+            if ($item->isMiss() === false) {
+                $this->client->setDefaultOption('headers/If-Modified-Since', $data['modified']);
+            }
         }
 
         try {
@@ -62,7 +67,7 @@ abstract class AbstractClient
 
         switch ((int) $response->getStatusCode()) {
             case 200:
-                if ($response->hasHeader('Last-Modified')) {
+                if ($response->hasHeader('Last-Modified') and $this->cache !== null) {
                     $item->set([
                         'modified' => $response->getHeader('Last-Modified'),
                         'json'     => $response->json(),

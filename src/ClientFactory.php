@@ -11,7 +11,7 @@ class ClientFactory
     protected $apiKey;
     protected $cache;
 
-    public function __construct($apiKey, PoolInterface $cache)
+    public function __construct($apiKey, PoolInterface $cache = null)
     {
         $this->apiKey = $apiKey;
         $this->cache  = $cache;
