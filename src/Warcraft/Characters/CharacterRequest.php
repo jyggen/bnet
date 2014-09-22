@@ -22,10 +22,6 @@ class CharacterRequest extends AbstractRequest
     {
         $data = $this->client->get('data/character/achievements');
 
-        if ($data === null) {
-            return null;
-        }
-
         return new AchievementEntity($data);
     }
 
@@ -33,17 +29,13 @@ class CharacterRequest extends AbstractRequest
     {
         $data = $this->client->get('data/character/classes');
 
-        if ($data === null) {
-            return null;
-        }
-
         return new ClassEntity($data);
     }
 
     public function find($name, array $fields = [])
     {
         if ($this->realm === null) {
-            throw new \RuntimeException('You must set a realm name with on() before calling find().');
+            throw new \RuntimeException('You must set a realm name with on() before calling find()');
         }
 
         $data = $this->client->get('character/'.$this->realm.'/'.$name, ['query' => ['fields' => implode(',', $fields)]]);
@@ -63,11 +55,7 @@ class CharacterRequest extends AbstractRequest
 
     public function races()
     {
-         $data = $this->client->get('data/characters/races');
-
-        if ($data === null) {
-            return null;
-        }
+        $data = $this->client->get('data/character/races');
 
         return new RaceEntity($data);
     }
@@ -75,10 +63,6 @@ class CharacterRequest extends AbstractRequest
     public function talents()
     {
         $data = $this->client->get('data/talents');
-
-        if ($data === null) {
-            return null;
-        }
 
         return new TalentEntity($data);
     }

@@ -19,7 +19,7 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 
 - [ ] Implement all available API endpoints (see below).
 - [ ] 100% test coverage.
-- [ ] Switch cache from [tedivm/stash](https://github.com/tedious/Stash) to [PSR-6](https://github.com/php-fig/fig-standards/blob/master/proposed/cache.md).
+- [ ] Switch cache from [tedivm/stash](https://github.com/tedious/Stash) to [PSR-6](https://github.com/php-fig/fig-standards/blob/master/proposed/cache.md) interfaces.
 - [ ] Stable release (>=1.0) of [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client).
 
 ### Implementation Status

@@ -9,10 +9,6 @@ class ItemRequest extends AbstractRequest
     {
         $data = $this->client->get('data/item/classes');
 
-        if ($data === null) {
-            return null;
-        }
-
         return new ClassEntity($data);
     }
 

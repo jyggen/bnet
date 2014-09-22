@@ -18,7 +18,7 @@ class RealmRequest extends AbstractRequest
             $realm = [$realm];
         }
 
-        $data = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realm)]]);
+        $data = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realm)]]); // @todo: Verify that we get the realm we wanted.
 
         return new RealmEntity($data);
     }
