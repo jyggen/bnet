@@ -39,7 +39,7 @@ class RegionTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers                   ::__construct
      * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage invalid is not a valid region.
+     * @expectedExceptionMessage invalid is not a valid region
      */
     public function testInvalidRegion()
     {
@@ -49,7 +49,7 @@ class RegionTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers                   ::__construct
      * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage invalid is not a valid locale.
+     * @expectedExceptionMessage invalid is not a valid locale
      */
     public function testInvalidLocale()
     {

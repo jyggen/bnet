@@ -5,7 +5,6 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use Pwnraid\Bnet\Exceptions\BattleNetException;
 use Pwnraid\Bnet\Region;
-use RuntimeException;
 use Stash\Interfaces\PoolInterface;
 
 abstract class AbstractClient
@@ -51,7 +50,11 @@ abstract class AbstractClient
             $data = $item->get();
 
             if ($item->isMiss() === false) {
-                $this->client->setDefaultOption('headers/If-Modified-Since', $data['modified']);
+                $options = array_replace_recursive($options, [
+                    'headers' => [
+                        'If-Modified-Since' => $data['modified'],
+                    ],
+                ]);
             }
         }
 
@@ -77,7 +80,7 @@ abstract class AbstractClient
             case 304:
                 return $data['json'];
             default:
-                throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode().'.');
+                throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode());
         }
     }
 

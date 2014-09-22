@@ -2,6 +2,7 @@
 namespace Pwnraid\Bnet\Warcraft\Characters;
 
 use Pwnraid\Bnet\Core\AbstractRequest;
+use Pwnraid\Bnet\Utility;
 
 class CharacterRequest extends AbstractRequest
 {
@@ -49,7 +50,7 @@ class CharacterRequest extends AbstractRequest
 
     public function on($realm)
     {
-        $this->realm = $realm;
+        $this->realm = Utility::realmNameToSlug($realm);
         return $this;
     }
 

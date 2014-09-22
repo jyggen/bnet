@@ -10,6 +10,29 @@ use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
 class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @covers ::achievement
+     */
+    public function testAchievement()
+    {
+        $request  = new CharacterRequest(new TestClient('wow'));
+        $response = $request->achievement(2144);
+
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\AchievementEntity', $response);
+        $this->assertSame(2144, $response->id);
+    }
+
+    /**
+     * @covers ::achievement
+     */
+    public function testAchievementInvalid()
+    {
+        $request  = new CharacterRequest(new TestClient('wow'));
+        $response = $request->achievement('invalid');
+
+        $this->assertNull($response);
+    }
+
+    /**
      * @covers ::achievements
      */
     public function testAchievements()

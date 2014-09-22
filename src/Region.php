@@ -54,13 +54,13 @@ class Region
     public function __construct($region, $locale = null)
     {
         if (isset(static::$regions[$region]) === false) {
-            throw new \InvalidArgumentException($region.' is not a valid region.');
+            throw new \InvalidArgumentException($region.' is not a valid region');
         }
 
         $this->region = static::$regions[$region];
 
         if ($locale !== null && in_array($locale, $this->region['locales']) === false) {
-            throw new \InvalidArgumentException($locale.' is not a valid locale.');
+            throw new \InvalidArgumentException($locale.' is not a valid locale');
         }
 
         $this->locale = ($locale === null) ? $this->region['locales'][0] : $locale;
