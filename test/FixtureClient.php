@@ -37,7 +37,6 @@ class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
         $fixture  = $this->getFixture($filename);
         $success  = false;
 
-        print "\033[0m".$filename.' ...';
         if (strtotime($fixture['modified']) < strtotime('-1 day')) {
             do {
                 try {
@@ -50,11 +49,11 @@ class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
                     $this->saveFixture($filename, $response);
                     $success = true;
                 } catch (BadResponseException $exception) {
-                    print "\033[31m ".$exception->getCode()."\033[0m ...";
+                    print "\033[0m[\033[31m".$exception->getCode()."\033[0m][".md5($filename).'] '.$filename.PHP_EOL;
                 }
             } while ($success === false);
         } else {
-            print "\033[33m Skip!".PHP_EOL;
+            print "\033[0m[\033[33m304\033[0m][".md5($filename).'] '.$filename.PHP_EOL;
         }
 
         return json_decode($this->getFixture($filename)['content'], true);
@@ -88,12 +87,13 @@ class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
                 } else {
                     static::$meta[md5($filename)] = date(DATE_RFC1123, time());
                 }
+                ksort(static::$meta);
                 file_put_contents(FIXTURES_DIR.'/meta.json', json_encode(static::$meta));
                 file_put_contents('compress.zlib://'.FIXTURES_DIR.'/'.$filename, (string) $response->getBody());
-                print "\033[32m 200!".PHP_EOL;
+                print "\033[0m[\033[32m200\033[0m][".md5($filename).'] '.$filename.PHP_EOL;
                 break;
             case 304:
-                print "\033[33m 304!".PHP_EOL;
+                print "\033[0m[\033[33m304\033[0m][".md5($filename).'] '.$filename.PHP_EOL;
                 break;
             default:
                 throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode());

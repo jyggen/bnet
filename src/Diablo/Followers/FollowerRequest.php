@@ -5,7 +5,7 @@ use Pwnraid\Bnet\Core\AbstractRequest;
 
 class FollowerRequest extends AbstractRequest
 {
-    public function get($follower)
+    public function find($follower)
     {
         $data = $this->client->get('data/follower/'.$follower);
 
@@ -13,6 +13,6 @@ class FollowerRequest extends AbstractRequest
             return null;
         }
 
-        return new ItemEntity($data);
+        return new FollowerEntity($data);
     }
 }

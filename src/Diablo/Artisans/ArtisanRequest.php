@@ -5,7 +5,7 @@ use Pwnraid\Bnet\Core\AbstractRequest;
 
 class ArtisanRequest extends AbstractRequest
 {
-    public function get($artisan)
+    public function find($artisan)
     {
         $data = $this->client->get('data/artisan/'.$artisan);
 

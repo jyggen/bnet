@@ -1,5 +1,5 @@
 <?php
-namespace Pwnraid\Bnet\Diablo\Items;
+namespace Pwnraid\Bnet\Diablo\Followers;
 
 use Pwnraid\Bnet\Core\AbstractEntity;
 

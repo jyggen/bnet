@@ -22,6 +22,56 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::find
+     * @covers ::on
+     */
+    public function testFind()
+    {
+        $request  = new GuildRequest(new TestClient('wow'));
+        $response = $request->on('Argent Dawn')->find('Blinkspeed Couriers');
+
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\GuildEntity', $response);
+        $this->assertSame('Blinkspeed Couriers', $response->name);
+    }
+
+    /**
+     * @covers ::find
+     * @covers ::on
+     */
+    public function testFindWithFields()
+    {
+        $request  = new GuildRequest(new TestClient('wow'));
+        $response = $request->on('Auchindoun')->find('Dyslectic Defnenders', ['news']);
+
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\GuildEntity', $response);
+        $this->assertSame('Dyslectic Defnenders', $response->name);
+        $this->assertInternalType('array', $response->news);
+    }
+
+    /**
+     * @covers ::find
+     * @covers ::on
+     */
+    public function testFindInvalid()
+    {
+        $request  = new GuildRequest(new TestClient('wow'));
+        $response = $request->on('Argent Dawn')->find('Invalid');
+
+        $this->assertNull($response);
+    }
+
+    /**
+     * @covers                   ::find
+     * @expectedException        RuntimeException
+     * @expectedExceptionMessage You must set a realm name with on() before calling find()
+     */
+    public function testFindWithoutRealm()
+    {
+        $request  = new GuildRequest(new TestClient('wow'));
+        $request->find('Blinkspeed Couriers');
+    }
+
+    /**
      * @covers ::perks
      */
     public function testPerks()

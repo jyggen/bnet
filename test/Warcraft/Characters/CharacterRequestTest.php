@@ -57,6 +57,57 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::find
+     * @covers ::on
+     */
+    public function testFind()
+    {
+        $request  = new CharacterRequest(new TestClient('wow'));
+        $response = $request->on('Argent Dawn')->find('Picaboo');
+
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response);
+        $this->assertSame('Picaboo', $response->name);
+    }
+
+    /**
+     * @covers ::find
+     * @covers ::on
+     */
+    public function testFindWithFields()
+    {
+        $request  = new CharacterRequest(new TestClient('wow'));
+        $response = $request->on('Auchindoun')->find('Jyggen', ['mounts', 'titles']);
+
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response);
+        $this->assertSame('Jyggen', $response->name);
+        $this->assertInternalType('array', $response->mounts);
+        $this->assertInternalType('array', $response->titles);
+    }
+
+    /**
+     * @covers ::find
+     * @covers ::on
+     */
+    public function testFindInvalid()
+    {
+        $request  = new CharacterRequest(new TestClient('wow'));
+        $response = $request->on('Argent Dawn')->find('Invalid');
+
+        $this->assertNull($response);
+    }
+
+    /**
+     * @covers                   ::find
+     * @expectedException        RuntimeException
+     * @expectedExceptionMessage You must set a realm name with on() before calling find()
+     */
+    public function testFindWithoutRealm()
+    {
+        $request  = new CharacterRequest(new TestClient('wow'));
+        $request->find('Jyggen');
+    }
+
+    /**
      * @covers ::races
      */
     public function testRaces()
