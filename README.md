@@ -26,8 +26,8 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 
 #### Account API
 
-- [ ] /account/user/id
-- [ ] /account/user/battletag
+- [x] /account/user/id
+- [x] /account/user/battletag
 
 #### D3 Community API
 
@@ -40,7 +40,7 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 #### Community OAuth Profile APIs
 
 - [ ] /sc2/profile/user
-- [ ] /wow/user/characters
+- [x] /wow/user/characters
 
 #### SC2 Community APIs
 

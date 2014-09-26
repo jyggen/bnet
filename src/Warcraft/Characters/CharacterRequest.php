@@ -1,6 +1,7 @@
 <?php
 namespace Pwnraid\Bnet\Warcraft\Characters;
 
+use League\OAuth2\Client\Token\AccessToken;
 use Pwnraid\Bnet\Core\AbstractRequest;
 use Pwnraid\Bnet\Utility;
 
@@ -66,5 +67,17 @@ class CharacterRequest extends AbstractRequest
         $data = $this->client->get('data/talents');
 
         return new TalentEntity($data);
+    }
+
+    public function user(AccessToken $token)
+    {
+        $data       = $this->client->get('user/characters', ['query' => ['access_token' =>$token]]);
+        $characters = [];
+
+        foreach ($data['characters'] as $character) {
+            $characters[] = new CharacterEntity($character);
+        }
+
+        return $characters;
     }
 }
