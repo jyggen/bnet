@@ -2,6 +2,7 @@
 namespace Pwnraid\Bnet;
 
 use League\OAuth2\Client\Provider\IdentityProvider;
+use League\OAuth2\Client\Provider\User;
 use League\OAuth2\Client\Token\AccessToken;
 
 class OAuth extends IdentityProvider
@@ -34,10 +35,21 @@ class OAuth extends IdentityProvider
 
     public function userDetails($response, AccessToken $token)
     {
+        $user      = new User;
+        $user->uid = $response->id;
+        $client    = $this->getHttpClient();
+
+        $client->setBaseUrl($this->region->getApiHost('account').'user/battletag?access_token='.$token);
+
+        $response        = $client->get()->send()->json();
+        $user->battleTag = $response->battletag;
+
+        return $user;
     }
 
     public function userUid($response, AccessToken $token)
     {
+        return $response->id;
     }
 
     public function userEmail($response, AccessToken $token)
