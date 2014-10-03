@@ -70,7 +70,7 @@ abstract class AbstractClient
 
         switch ((int) $response->getStatusCode()) {
             case 200:
-                if ($response->hasHeader('Last-Modified') and $this->cache !== null) {
+                if ($response->hasHeader('Last-Modified') && $this->cache !== null) {
                     $item->set([
                         'modified' => $response->getHeader('Last-Modified'),
                         'json'     => $response->json(),
