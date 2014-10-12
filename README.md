@@ -83,6 +83,6 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/pwnraid/bnet/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/pwnraid/bnet/blob/master/LICENSE) for more information. Battle.net, Warcraft, World of Warcraft, StarCraft and Diablo are copyrighted by Blizzard Entertainment, Inc.
 
 This library is neither endorsed by nor associated with Blizzard Entertainment, Inc.
