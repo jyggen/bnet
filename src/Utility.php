@@ -18,10 +18,15 @@ class Utility
         $slug = preg_replace('!['.preg_quote('-').'\s]+!u', '-', $slug);
         $slug = trim($slug, '-');
 
-        if ($slug === '') {
-            return str_replace([' '], ['-'], $realmName);
+        return $slug;
+    }
+
+    public static function thumbnailToId($thumbnailUrl)
+    {
+        if (preg_match('/\/([0-9]+)\/([0-9]+)(\-avatar\.jpg)$/', $thumbnailUrl, $match) === 0) {
+            throw new \RuntimeException('Invalid thumbnail URL "'.$thumbnailUrl.'"');
         }
 
-        return $slug;
+        return $match[1].$match[2];
     }
 }

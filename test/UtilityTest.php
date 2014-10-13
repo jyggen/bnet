@@ -413,4 +413,22 @@ class UtilityTest extends \PHPUnit_Framework_TestCase
         $this->assertsame('雲蛟衛', Utility::realmNameToSlug('雲蛟衛'));
         $this->assertsame('雷鱗', Utility::realmNameToSlug('雷鱗'));
     }
+
+    /**
+     * @covers ::thumbnailToId
+     */
+    public function testThumbnailToId()
+    {
+        $this->assertSame('207104578511', Utility::thumbnailToId('internal-record-3702/207/104578511-avatar.jpg'));
+    }
+
+    /**
+     * @covers                   ::thumbnailToId
+     * @expectedException        RuntimeException
+     * @expectedExceptionMessage Invalid thumbnail URL "invalid.jpg"
+     */
+    public function testThumbnailToIdWithInvalidUrl()
+    {
+        Utility::thumbnailToId('invalid.jpg');
+    }
 }
