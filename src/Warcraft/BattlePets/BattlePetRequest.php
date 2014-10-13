@@ -46,8 +46,13 @@ class BattlePetRequest extends AbstractRequest
 
     public function types()
     {
-        $data = $this->client->get('data/pet/types');
+        $data  = $this->client->get('data/pet/types');
+        $types = [];
 
-        return new TypeEntity($data);
+        foreach ($data['petTypes'] as $type) {
+            $types[] = new TypeEntity($type);
+        }
+
+        return $types;
     }
 }

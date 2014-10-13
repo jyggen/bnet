@@ -1,6 +1,7 @@
 <?php
 namespace Pwnraid\Bnet\Test\Warcraft;
 
+use League\OAuth2\Client\Token\AccessToken;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
 
@@ -40,8 +41,7 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
         $request  = new CharacterRequest(new TestClient('wow'));
         $response = $request->achievements();
 
-        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\AchievementEntity', $response);
-        $this->assertInternalType('array', $response->achievements);
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\AchievementCategoryEntity', $response[0]);
     }
 
     /**
@@ -52,8 +52,7 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
         $request  = new CharacterRequest(new TestClient('wow'));
         $response = $request->classes();
 
-        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\ClassEntity', $response);
-        $this->assertInternalType('array', $response->classes);
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\ClassEntity', $response[0]);
     }
 
     /**
@@ -115,8 +114,7 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
         $request  = new CharacterRequest(new TestClient('wow'));
         $response = $request->races();
 
-        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\RaceEntity', $response);
-        $this->assertInternalType('array', $response->races);
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\RaceEntity', $response[0]);
     }
 
     /**
@@ -127,7 +125,18 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
         $request  = new CharacterRequest(new TestClient('wow'));
         $response = $request->talents();
 
-        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\TalentEntity', $response);
-        $this->assertInternalType('array', $response->{1}['glyphs']);
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\TalentEntity', $response[1]['talents'][0]);
+    }
+
+    /**
+     * @covers ::user
+     */
+    public function testUser()
+    {
+        $request  = new CharacterRequest(new TestClient('wow'));
+        $response = $request->user(new AccessToken(['access_token' => 'accesstoken']));
+
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response[0]);
+        $this->assertSame('Zealotry', $response[0]->name);
     }
 }

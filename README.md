@@ -55,7 +55,7 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 #### WoW Community APIs
 
 - [x] /wow/achievement/:id
-- [ ] /wow/auction/data/:realm
+- [x] /wow/auction/data/:realm
 - [x] /wow/battlepet/ability/:abilityid
 - [x] /wow/battlepet/species/:speciesid
 - [x] /wow/battlepet/stats/:speciesid

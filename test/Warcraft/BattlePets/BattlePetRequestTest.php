@@ -104,7 +104,6 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $request  = new BattlePetRequest(new TestClient('wow'));
         $response = $request->types();
 
-        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\TypeEntity', $response);
-        $this->assertInternalType('array', $response->petTypes);
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\TypeEntity', $response[0]);
     }
 }

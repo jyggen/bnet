@@ -22,16 +22,26 @@ class CharacterRequest extends AbstractRequest
 
     public function achievements()
     {
-        $data = $this->client->get('data/character/achievements');
+        $data         = $this->client->get('data/character/achievements');
+        $achievements = [];
 
-        return new AchievementEntity($data);
+        foreach ($data['achievements'] as $category) {
+            $achievements[] = new AchievementCategoryEntity($category);
+        }
+
+        return $achievements;
     }
 
     public function classes()
     {
-        $data = $this->client->get('data/character/classes');
+        $data    = $this->client->get('data/character/classes');
+        $classes = [];
 
-        return new ClassEntity($data);
+        foreach ($data['classes'] as $class) {
+            $classes[] = new ClassEntity($class);
+        }
+
+        return $classes;
     }
 
     public function find($name, array $fields = [])
@@ -57,16 +67,37 @@ class CharacterRequest extends AbstractRequest
 
     public function races()
     {
-        $data = $this->client->get('data/character/races');
+        $data  = $this->client->get('data/character/races');
+        $races = [];
 
-        return new RaceEntity($data);
+        foreach ($data['races'] as $race) {
+            $races[] = new RaceEntity($race);
+        }
+
+        return $races;
     }
 
     public function talents()
     {
-        $data = $this->client->get('data/talents');
+        $data    = $this->client->get('data/talents');
+        $classes = [];
 
-        return new TalentEntity($data);
+        foreach ($data as $classId => $class) {
+            $classes[$classId] = [
+                'glyphs'  => [],
+                'talents' => [],
+            ];
+
+            foreach ($class['glyphs'] as $glyph) {
+                $classes[$classId]['glyphs'][] = new GlyphEntity($glyph);
+            }
+
+            foreach ($class['talents'] as $talent) {
+                $classes[$classId]['talents'][] = new TalentEntity($talent);
+            }
+        }
+
+        return $classes;
     }
 
     public function user(AccessToken $token)
