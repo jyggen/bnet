@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=5.4",
-        "guzzlehttp/guzzle": "~4.0",
+        "guzzlehttp/guzzle": "~5.0",
         "league/oauth2-client": "0.3.*",
         "tedivm/stash": "0.12.*"
     },
