@@ -1,10 +1,10 @@
 <?php
 namespace Pwnraid\Bnet;
 
-use League\OAuth2\Client\Provider\IdentityProvider;
+use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 
-class OAuth extends IdentityProvider
+class OAuth extends AbstractProvider
 {
     public $scopeSeparator = ' ';
     public $scopes = ['wow.profile', 'sc2.profile'];
