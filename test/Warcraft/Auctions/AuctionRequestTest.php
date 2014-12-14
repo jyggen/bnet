@@ -19,12 +19,7 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
         $response = $request->download(new IndexEntity(['url' => 'foobar']));
 
         $this->assertInternalType('array', $response);
-        $this->assertTrue(array_key_exists('alliance', $response));
-        $this->assertTrue(array_key_exists('horde', $response));
-        $this->assertTrue(array_key_exists('neutral', $response));
-        $this->assertSame(955294802, $response['alliance'][0]->auc);
-        $this->assertSame(956415210, $response['horde'][0]->auc);
-        $this->assertSame(956037492, $response['neutral'][0]->auc);
+        $this->assertSame(955294802, $response[0]->auc);
     }
 
     /**
