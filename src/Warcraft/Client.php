@@ -2,6 +2,7 @@
 namespace Pwnraid\Bnet\Warcraft;
 
 use Pwnraid\Bnet\Core\AbstractClient;
+use Pwnraid\Bnet\Warcraft\Auctions\AuctionRequest;
 use Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest;
 use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
 use Pwnraid\Bnet\Warcraft\Guilds\GuildRequest;
@@ -15,6 +16,11 @@ use Pwnraid\Bnet\Warcraft\Spells\SpellRequest;
 class Client extends AbstractClient
 {
     const API = 'wow';
+
+    public function auctions()
+    {
+        return new AuctionRequest($this);
+    }
 
     public function battlePets()
     {
