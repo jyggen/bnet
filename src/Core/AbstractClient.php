@@ -7,23 +7,26 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Message\ResponseInterface;
 use Pwnraid\Bnet\Exceptions\BattleNetException;
 use Pwnraid\Bnet\Region;
+use SebastianBergmann\Version;
 use Stash\Interfaces\ItemInterface;
 use Stash\Interfaces\PoolInterface;
 
 abstract class AbstractClient
 {
-    const VERSION = '1.0.0-dev';
+    const VERSION = '1.0';
 
     protected $apiKey;
     protected $cache;
     protected $client;
     protected $region;
+    protected $version;
 
     public function __construct($apiKey, Region $region, PoolInterface $cache)
     {
-        $this->apiKey = $apiKey;
-        $this->cache  = $cache;
-        $this->region = $region;
+        $this->apiKey  = $apiKey;
+        $this->cache   = $cache;
+        $this->region  = $region;
+        $this->version = new Version(static::VERSION, dirname(dirname(__DIR__)));
 
         $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
 
@@ -46,7 +49,7 @@ abstract class AbstractClient
         $options = array_replace_recursive($options, [
             'headers' => [
                 'Accept'     => 'application/json',
-                'User-Agent' => 'pwnRaid/'.static::VERSION.' '.GuzzleClient::getDefaultUserAgent(),
+                'User-Agent' => $this->getUserAgent(),
             ],
             'query' => [
                 'apikey' => $this->apiKey,
@@ -81,6 +84,17 @@ abstract class AbstractClient
     {
         $options = array_replace_recursive($this->client->getDefaultOption(), $options);
         return hash_hmac('md5', $this->client->getBaseUrl().'/'.$url, serialize($options));
+    }
+
+    protected function getUserAgent()
+    {
+        static $defaultAgent = '';
+
+        if ($defaultAgent === '') {
+            $defaultAgent = 'pwnRaid/'.$this->version->getVersion().' '.GuzzleClient::getDefaultUserAgent();
+        }
+
+        return $defaultAgent;
     }
 
     protected function handleSuccessfulResponse(ResponseInterface $response, ItemInterface $item, $data)
