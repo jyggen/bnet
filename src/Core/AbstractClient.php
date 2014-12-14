@@ -2,6 +2,7 @@
 namespace Pwnraid\Bnet\Core;
 
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use Pwnraid\Bnet\Exceptions\BattleNetException;
 use Pwnraid\Bnet\Region;
@@ -26,40 +27,35 @@ abstract class AbstractClient
             $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
         }
 
-        $this->client = new GuzzleClient([
-            'base_url' => $this->region->getApiHost(static::API),
-            'defaults' => [
-                'headers' => [
-                    'Accept'     => 'application/json',
-                    'User-Agent' => 'pwnRaid/'.static::VERSION.' '.(new GuzzleClient)->getDefaultUserAgent(),
-                ],
-                'query' => [
-                    'apikey'  => $this->apiKey,
-                    'locale'  => $this->region->getLocale(),
-                ],
-            ],
-        ]);
+        $this->setClient(new GuzzleClient);
     }
 
     public function get($url, $options = [])
     {
-        $key  = $this->getRequestKey($url, $options);
+        $item = ($this->cache !== null) ? $this->cache->getItem($this->getRequestKey($url, $options)) : null;
+        $data = ($item !== null) ? $item->get() : null;
 
-        if ($this->cache !== null) {
-            $item = $this->cache->getItem($key);
-            $data = $item->get();
-
-            if ($item->isMiss() === false) {
-                $options = array_replace_recursive($options, [
-                    'headers' => [
-                        'If-Modified-Since' => $data['modified'],
-                    ],
-                ]);
-            }
+        if ($item !== null and $item->isMiss() === false) {
+            $options = array_replace_recursive($options, [
+                'headers' => [
+                    'If-Modified-Since' => $data['modified'],
+                ],
+            ]);
         }
 
+        $options = array_replace_recursive($options, [
+            'headers' => [
+                'Accept'     => 'application/json',
+                'User-Agent' => 'pwnRaid/'.static::VERSION.' '.GuzzleClient::getDefaultUserAgent(),
+            ],
+            'query' => [
+                'apikey' => $this->apiKey,
+                'locale' => $this->region->getLocale(),
+            ],
+        ]);
+
         try {
-            $response = $this->client->get($url, $options);
+            $response = $this->client->get($this->region->getApiHost(static::API).$url, $options);
         } catch (ClientException $exception) {
             if ($exception->getCode() === 404) {
                 return null;
@@ -82,6 +78,16 @@ abstract class AbstractClient
             default:
                 throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode());
         }
+    }
+
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    public function setClient(ClientInterface $client)
+    {
+        $this->client = $client;
     }
 
     protected function getRequestKey($url, $options)
