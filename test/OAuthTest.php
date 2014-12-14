@@ -40,4 +40,48 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
         $oauth = new OAuth(new Region(Region::EUROPE));
         $this->assertSame('https://eu.api.battle.net/account/user/id?access_token=foobar', $oauth->urlUserDetails($token));
     }
+
+    /**
+     * @covers ::__construct
+     * @covers ::userDetails
+     */
+    public function testUserDetails()
+    {
+        $token = new AccessToken(['access_token' => 'foobar']);
+        $oauth = new OAuth(new Region(Region::EUROPE));
+        $this->assertSame(['uid' => 'foobar'], $oauth->userDetails((object) ['id' => 'foobar'], $token));
+    }
+
+    /**
+     * @covers ::__construct
+     * @covers ::userUid
+     */
+    public function testUserUid()
+    {
+        $token = new AccessToken(['access_token' => 'foobar']);
+        $oauth = new OAuth(new Region(Region::EUROPE));
+        $this->assertSame('foobar', $oauth->userUid((object) ['id' => 'foobar'], $token));
+    }
+
+    /**
+     * @covers ::__construct
+     * @covers ::userEmail
+     */
+    public function testUserEmail()
+    {
+        $token = new AccessToken(['access_token' => 'foobar']);
+        $oauth = new OAuth(new Region(Region::EUROPE));
+        $this->assertNull($oauth->userEmail((object) [], $token));
+    }
+
+    /**
+     * @covers ::__construct
+     * @covers ::userScreenName
+     */
+    public function testUserScreenName()
+    {
+        $token = new AccessToken(['access_token' => 'foobar']);
+        $oauth = new OAuth(new Region(Region::EUROPE));
+        $this->assertNull($oauth->userScreenName((object) [], $token));
+    }
 }

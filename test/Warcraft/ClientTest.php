@@ -10,6 +10,16 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::__construct
+     * @covers ::auctions
+     */
+    public function testAuctions()
+    {
+        $client = (new Mockery)->mock('Pwnraid\Bnet\Warcraft\Client')->shouldDeferMissing();
+        $this->assertInstanceOf('Pwnraid\Bnet\Warcraft\Auctions\AuctionRequest', $client->auctions());
+    }
+
+    /**
+     * @covers ::__construct
      * @covers ::battlePets
      */
     public function testBattlePets()
