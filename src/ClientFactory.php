@@ -4,7 +4,9 @@ namespace Pwnraid\Bnet;
 use Pwnraid\Bnet\Diablo\Client as DiabloClient;
 use Pwnraid\Bnet\Starcraft\Client as StarcraftClient;
 use Pwnraid\Bnet\Warcraft\Client as WarcraftClient;
+use Stash\Driver\Ephemeral;
 use Stash\Interfaces\PoolInterface;
+use Stash\Pool;
 
 class ClientFactory
 {
@@ -14,6 +16,11 @@ class ClientFactory
     public function __construct($apiKey, PoolInterface $cache = null)
     {
         $this->apiKey = $apiKey;
+
+        if ($cache === null) {
+            $cache = new Pool(new Ephemeral);
+        }
+
         $this->cache  = $cache;
     }
 

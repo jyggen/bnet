@@ -4,8 +4,10 @@ namespace Pwnraid\Bnet\Core;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Message\ResponseInterface;
 use Pwnraid\Bnet\Exceptions\BattleNetException;
 use Pwnraid\Bnet\Region;
+use Stash\Interfaces\ItemInterface;
 use Stash\Interfaces\PoolInterface;
 
 abstract class AbstractClient
@@ -17,25 +19,23 @@ abstract class AbstractClient
     protected $client;
     protected $region;
 
-    public function __construct($apiKey, Region $region, PoolInterface $cache = null)
+    public function __construct($apiKey, Region $region, PoolInterface $cache)
     {
         $this->apiKey = $apiKey;
         $this->cache  = $cache;
         $this->region = $region;
 
-        if ($this->cache !== null) {
-            $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
-        }
+        $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
 
         $this->setClient(new GuzzleClient);
     }
 
     public function get($url, $options = [])
     {
-        $item = ($this->cache !== null) ? $this->cache->getItem($this->getRequestKey($url, $options)) : null;
-        $data = ($item !== null) ? $item->get() : null;
+        $item = $this->cache->getItem($this->getRequestKey($url, $options));
+        $data = $item->get();
 
-        if ($item !== null and $item->isMiss() === false) {
+        if ($item->isMiss() === false) {
             $options = array_replace_recursive($options, [
                 'headers' => [
                     'If-Modified-Since' => $data['modified'],
@@ -64,20 +64,7 @@ abstract class AbstractClient
             throw new BattleNetException($exception->getResponse()->json()['detail'], $exception->getCode());
         }
 
-        switch ((int) $response->getStatusCode()) {
-            case 200:
-                if ($response->hasHeader('Last-Modified') && $this->cache !== null) {
-                    $item->set([
-                        'modified' => $response->getHeader('Last-Modified'),
-                        'json'     => $response->json(),
-                    ]);
-                }
-                return $response->json();
-            case 304:
-                return $data['json'];
-            default:
-                throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode());
-        }
+        return $this->handleSuccessfulResponse($response, $item, $data);
     }
 
     public function getClient()
@@ -94,5 +81,23 @@ abstract class AbstractClient
     {
         $options = array_replace_recursive($this->client->getDefaultOption(), $options);
         return hash_hmac('md5', $this->client->getBaseUrl().'/'.$url, serialize($options));
+    }
+
+    protected function handleSuccessfulResponse(ResponseInterface $response, ItemInterface $item, $data)
+    {
+        switch ((int) $response->getStatusCode()) {
+            case 200:
+                if ($response->hasHeader('Last-Modified') === true) {
+                    $item->set([
+                        'modified' => $response->getHeader('Last-Modified'),
+                        'json'     => $response->json(),
+                    ]);
+                }
+                return $response->json();
+            case 304:
+                return $data['json'];
+            default:
+                throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode());
+        }
     }
 }
