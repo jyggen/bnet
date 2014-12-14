@@ -11,16 +11,8 @@ class AuctionRequest extends AbstractRequest
         $data     = json_decode(file_get_contents($index->url), true);
         $auctions = [];
 
-        foreach ($data['alliance']['auctions'] as $auction) {
-            $auctions['alliance'][] = new AuctionEntity($auction);
-        }
-
-        foreach ($data['horde']['auctions'] as $auction) {
-            $auctions['horde'][] = new AuctionEntity($auction);
-        }
-
-        foreach ($data['neutral']['auctions'] as $auction) {
-            $auctions['neutral'][] = new AuctionEntity($auction);
+        foreach ($data['auctions']['auctions'] as $auction) {
+            $auctions[] = new AuctionEntity($auction);
         }
 
         return $auctions;
