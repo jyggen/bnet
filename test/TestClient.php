@@ -10,7 +10,7 @@ class TestClient extends \Pwnraid\Bnet\Core\AbstractClient
         $this->game = $game;
     }
 
-    public function get($url, $options = null)
+    public function get($url, array $options = null)
     {
         $query = ($options === null) ? '' : implode('&', $options['query']);
         return getFixture($this->game, $url.'?'.$query);

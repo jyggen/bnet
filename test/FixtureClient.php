@@ -29,7 +29,7 @@ class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
         ]);
     }
 
-    public function get($url, $options = [])
+    public function get($url, array $options = [])
     {
         $query    = (array_key_exists('query', $options) === false) ? '' : implode('&', $options['query']);
         $url      = $url.'?'.$query;
