@@ -33,7 +33,11 @@ abstract class AbstractClient
         $this->setClient(new GuzzleClient);
     }
 
-    public function get($url, $options = [])
+    /**
+     * @param string $url
+     * @param array  $options
+     */
+    public function get($url, array $options = [])
     {
         $item = $this->cache->getItem($this->getRequestKey($url, $options));
         $data = $item->get();

@@ -1,8 +1,6 @@
 <?php
 namespace Pwnraid\Bnet;
 
-use Patchwork\Utf8;
-
 class Utility
 {
     protected static $replaceTable = [
