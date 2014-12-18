@@ -21,7 +21,7 @@ class ClientFactory
             $cache = new Pool(new Ephemeral);
         }
 
-        $this->cache  = $cache;
+        $this->cache = $cache;
     }
 
     public function diablo(Region $region)

@@ -29,7 +29,7 @@ class RealmRequest extends AbstractRequest
         $data       = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realms)]]);
         $realmCount = count($data['realms']);
 
-        if ($returnSingle && $realmCount !== 1) {
+        if ($returnSingle === true && $realmCount !== 1) {
             return null;
         }
 
@@ -39,7 +39,7 @@ class RealmRequest extends AbstractRequest
 
         $realms = $this->createRealmEntities($data['realms']);
 
-        return ($returnSingle) ? $realms[0] : $realms;
+        return ($returnSingle === true) ? $realms[0] : $realms;
     }
 
     public function all()

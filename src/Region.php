@@ -10,14 +10,14 @@ class Region
     const US     = 'us';
 
     protected static $regions = [
-        Region::CHINA => [
+        self::CHINA => [
             'locales' => ['zh_CN'],
             'hosts'   => [
                 'api'   => 'https://www.battlenet.com.cn/%s/',
                 'oauth' => 'https://cn.battle.net/',
             ],
         ],
-        Region::EUROPE => [
+        self::EUROPE => [
             'locales' => ['en_GB', 'es_ES', 'fr_FR', 'ru_RU', 'de_DE', 'pt_PT', 'it_IT'],
             'hosts'   => [
                 'api'   => 'https://eu.api.battle.net/%s/',
@@ -31,14 +31,14 @@ class Region
                 'oauth' => 'https://kr.battle.net/',
             ],
         ],
-        Region::TAIWAN => [
+        self::TAIWAN => [
             'locales' => ['zh_TW'],
             'hosts'   => [
                 'api'   => 'https://tw.api.battle.net/%s/',
                 'oauth' => 'https://tw.battle.net/',
             ],
         ],
-        Region::US => [
+        self::US => [
             'locales' => ['en_US', 'es_MX', 'pt_BR'],
             'hosts'   => [
                 'api'   => 'https://us.api.battle.net/%s/',
@@ -71,11 +71,17 @@ class Region
         return sprintf($this->region['hosts']['api'], $api);
     }
 
+    /**
+     * @return string
+     */
     public function getOAuthHost()
     {
         return $this->region['hosts']['oauth'];
     }
 
+    /**
+     * @return string
+     */
     public function getLocale()
     {
         return $this->locale;

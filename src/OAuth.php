@@ -7,7 +7,7 @@ use League\OAuth2\Client\Token\AccessToken;
 class OAuth extends AbstractProvider
 {
     public $scopeSeparator = ' ';
-    public $scopes = ['wow.profile', 'sc2.profile'];
+    public $scopes         = ['wow.profile', 'sc2.profile'];
 
     protected $region;
 
