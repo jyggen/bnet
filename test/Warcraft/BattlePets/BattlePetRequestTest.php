@@ -11,6 +11,8 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::ability
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testAbility()
     {
@@ -23,6 +25,7 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::ability
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testAbilityInvalidId()
     {
@@ -34,6 +37,9 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::species
+     * @uses   \Pwnraid\Bnet\Warcraft\BattlePets\SpeciesEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testSpecies()
     {
@@ -46,6 +52,7 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::species
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testSpeciesInvalidId()
     {
@@ -57,6 +64,8 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::stats
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testStats()
     {
@@ -72,6 +81,7 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::stats
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testStatsInvalidId()
     {
@@ -83,6 +93,8 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::stats
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testStatsNotDefault()
     {
@@ -98,6 +110,8 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::types
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testType()
     {

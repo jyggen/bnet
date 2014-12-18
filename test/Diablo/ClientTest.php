@@ -11,8 +11,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::artisans
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
-    public function testBattlePets()
+    public function testArtisans()
     {
         $client = (new Mockery)->mock('Pwnraid\Bnet\Diablo\Client')->shouldDeferMissing();
         $this->assertInstanceOf('Pwnraid\Bnet\Diablo\Artisans\ArtisanRequest', $client->artisans());
@@ -21,8 +22,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::followers
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
-    public function testCharacters()
+    public function testFollowers()
     {
         $client = (new Mockery)->mock('Pwnraid\Bnet\Diablo\Client')->shouldDeferMissing();
         $this->assertInstanceOf('Pwnraid\Bnet\Diablo\Followers\FollowerRequest', $client->followers());
@@ -31,8 +33,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::items
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
-    public function testGuilds()
+    public function testItems()
     {
         $client = (new Mockery)->mock('Pwnraid\Bnet\Diablo\Client')->shouldDeferMissing();
         $this->assertInstanceOf('Pwnraid\Bnet\Diablo\Items\ItemRequest', $client->items());

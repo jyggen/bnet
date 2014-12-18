@@ -12,6 +12,8 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::download
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testDownload()
     {
@@ -24,6 +26,9 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::index
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testIndex()
     {
@@ -36,6 +41,8 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::index
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testIndexInvalidRealm()
     {

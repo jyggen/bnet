@@ -11,6 +11,8 @@ class ArtisanRequestTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::find
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testFind()
     {
@@ -23,6 +25,7 @@ class ArtisanRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::find
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testFindInvalidId()
     {

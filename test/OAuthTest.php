@@ -13,6 +13,7 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::urlAuthorize
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testUrlAuthorize()
     {
@@ -23,6 +24,7 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::urlAccessToken
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testUrlAccessToken()
     {
@@ -33,6 +35,7 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::urlUserDetails
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testUrlUserDetails()
     {
@@ -44,6 +47,7 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::userDetails
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testUserDetails()
     {
@@ -55,6 +59,7 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::userUid
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testUserUid()
     {
@@ -66,6 +71,7 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::userEmail
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testUserEmail()
     {
@@ -77,6 +83,7 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::userScreenName
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testUserScreenName()
     {

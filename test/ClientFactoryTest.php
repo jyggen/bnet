@@ -14,6 +14,8 @@ class ClientFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::diablo
+     * @uses   \Pwnraid\Bnet\Core\AbstractClient
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testDiablo()
     {
@@ -25,6 +27,8 @@ class ClientFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::starcraft
+     * @uses   \Pwnraid\Bnet\Core\AbstractClient
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testStarcraft()
     {
@@ -36,6 +40,8 @@ class ClientFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::warcraft
+     * @uses   \Pwnraid\Bnet\Core\AbstractClient
+     * @uses   \Pwnraid\Bnet\Region
      */
     public function testWarcraft()
     {
