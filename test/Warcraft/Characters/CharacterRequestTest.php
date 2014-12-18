@@ -12,6 +12,8 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::achievement
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testAchievement()
     {
@@ -24,6 +26,7 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::achievement
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testAchievementInvalid()
     {
@@ -35,6 +38,9 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::achievements
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Warcraft\Characters\AchievementCategoryEntity
      */
     public function testAchievements()
     {
@@ -46,6 +52,8 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::classes
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testClasses()
     {
@@ -58,6 +66,10 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @covers ::on
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Warcraft\Characters\CharacterEntity
      */
     public function testFind()
     {
@@ -71,6 +83,10 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @covers ::on
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Warcraft\Characters\CharacterEntity
      */
     public function testFindWithFields()
     {
@@ -86,6 +102,8 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @covers ::on
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testFindInvalid()
     {
@@ -99,6 +117,7 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
      * @covers                   ::find
      * @expectedException        RuntimeException
      * @expectedExceptionMessage You must set a realm name with on() before calling find()
+     * @uses                     \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testFindWithoutRealm()
     {
@@ -108,6 +127,8 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::races
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testRaces()
     {
@@ -119,6 +140,8 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::talents
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testTalents()
     {
@@ -130,6 +153,10 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::user
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Warcraft\Characters\CharacterEntity
      */
     public function testUser()
     {

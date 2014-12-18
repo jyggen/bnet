@@ -11,6 +11,8 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::classes
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testClasses()
     {
@@ -23,6 +25,8 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::find
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testFind()
     {
@@ -35,6 +39,7 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::find
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testFindInvalidId()
     {
@@ -46,6 +51,8 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::findSet
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testFindSet()
     {
@@ -58,6 +65,7 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::findSet
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testFindInvalidIdSet()
     {

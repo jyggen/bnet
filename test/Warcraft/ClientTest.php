@@ -11,6 +11,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::auctions
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testAuctions()
     {
@@ -21,6 +22,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::battlePets
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testBattlePets()
     {
@@ -31,6 +33,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::characters
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testCharacters()
     {
@@ -41,6 +44,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::guilds
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testGuilds()
     {
@@ -51,6 +55,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::items
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testItems()
     {
@@ -61,6 +66,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::leaderboards
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testLeaderboards()
     {
@@ -71,6 +77,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::quests
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testQuests()
     {
@@ -81,6 +88,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::realms
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testRealms()
     {
@@ -91,6 +99,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::recipes
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testRecipes()
     {
@@ -101,6 +110,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @covers ::spells
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testSpells()
     {

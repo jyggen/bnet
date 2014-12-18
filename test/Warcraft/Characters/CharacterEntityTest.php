@@ -26,6 +26,8 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::__construct
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testIdAttribute()
     {
@@ -38,6 +40,7 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::__construct
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
      */
     public function testLastModifiedAttribute()
     {

@@ -12,6 +12,8 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::all
      * @covers ::createRealmEntities
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testAll()
     {
@@ -25,6 +27,9 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @covers ::createRealmEntities
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testFindSingle()
     {
@@ -37,6 +42,8 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::find
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testFindSingleInvalid()
     {
@@ -49,6 +56,9 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @covers ::createRealmEntities
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testFindNotSingle()
     {
@@ -64,6 +74,9 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @covers ::createRealmEntities
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testFindMultiple()
     {
@@ -80,6 +93,9 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
      * @covers                   ::createRealmEntities
      * @expectedException        RuntimeException
      * @expectedExceptionMessage Unable to fetch all requested realms
+     * @uses                     \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses                     \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses                     \Pwnraid\Bnet\Utility
      */
     public function testFindMultipleInvalid()
     {
@@ -89,6 +105,8 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::battlegroups
+     * @uses    Pwnraid\Bnet\Core\AbstractEntity
+     * @uses    \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testBattlegroups()
     {

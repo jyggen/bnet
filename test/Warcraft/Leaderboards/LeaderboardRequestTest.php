@@ -11,6 +11,9 @@ class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::challengeMode
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testChallengeMode()
     {
@@ -22,6 +25,8 @@ class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::challengeMode
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testChallengeModeInvalid()
     {
@@ -33,6 +38,8 @@ class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::challengeMode
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testChallengeModeRegion()
     {
@@ -44,6 +51,8 @@ class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::pvp
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testPvp()
     {
@@ -57,6 +66,7 @@ class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
      * @covers                   ::pvp
      * @expectedException        RuntimeException
      * @expectedExceptionMessage Invalid bracket type
+     * @uses                     \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testPvpInvalidBracket()
     {

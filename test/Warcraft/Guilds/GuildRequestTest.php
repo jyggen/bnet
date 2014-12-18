@@ -11,6 +11,8 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::achievements
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testAchievements()
     {
@@ -24,6 +26,9 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @covers ::on
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testFind()
     {
@@ -37,6 +42,9 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @covers ::on
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testFindWithFields()
     {
@@ -51,6 +59,8 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @covers ::on
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
      */
     public function testFindInvalid()
     {
@@ -64,6 +74,7 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
      * @covers                   ::find
      * @expectedException        RuntimeException
      * @expectedExceptionMessage You must set a realm name with on() before calling find()
+     * @uses                     \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testFindWithoutRealm()
     {
@@ -73,6 +84,8 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::perks
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testPerks()
     {
@@ -85,6 +98,8 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::rewards
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testRewards()
     {
