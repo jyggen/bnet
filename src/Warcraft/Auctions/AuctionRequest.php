@@ -8,10 +8,20 @@ class AuctionRequest extends AbstractRequest
 {
     public function download(IndexEntity $index)
     {
-        $data     = json_decode(file_get_contents($index->url), true);
+        $data = file_get_contents($index->url);
+
+        if ($data === false) {
+            throw new BattleNetException('Unable to download auction dump from "'.$index->url.'"');
+        }
+
+        $json     = json_decode($data, true);
         $auctions = [];
 
-        foreach ($data['auctions']['auctions'] as $auction) {
+        if (is_array($json) === false) {
+            throw new BattleNetException('Invalid json returned in auction dump from "'.$index->url.'"');
+        }
+
+        foreach ($json['auctions']['auctions'] as $auction) {
             $auctions[] = new AuctionEntity($auction);
         }
 
