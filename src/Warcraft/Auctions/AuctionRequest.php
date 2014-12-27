@@ -2,6 +2,7 @@
 namespace Pwnraid\Bnet\Warcraft\Auctions;
 
 use Pwnraid\Bnet\Core\AbstractRequest;
+use Pwnraid\Bnet\Exceptions\BattleNetException;
 use Pwnraid\Bnet\Utility;
 
 class AuctionRequest extends AbstractRequest
