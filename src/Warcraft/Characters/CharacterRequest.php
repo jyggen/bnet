@@ -52,7 +52,7 @@ class CharacterRequest extends AbstractRequest
 
         $data = $this->client->get('character/'.$this->realm.'/'.$name, ['query' => ['fields' => implode(',', $fields)]]);
 
-        if ($data === null or count($data) === 0) {
+        if ($data === null || count($data) === 0) {
             return null;
         }
 

@@ -39,16 +39,16 @@ class OAuth extends AbstractProvider
         ];
     }
 
-    public function userUid($response, AccessToken $token)
-    {
-        return $response->id;
-    }
-
     public function userEmail($response, AccessToken $token)
     {
     }
 
     public function userScreenName($response, AccessToken $token)
     {
+    }
+
+    public function userUid($response, AccessToken $token)
+    {
+        return $response->id;
     }
 }

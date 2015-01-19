@@ -24,7 +24,7 @@ class Region
                 'oauth' => 'https://eu.battle.net/',
             ],
         ],
-        Region::KOREA => [
+        self::KOREA => [
             'locales' => ['ko_KR'],
             'hosts'   => [
                 'api'   => 'https://kr.api.battle.net/%s/',
