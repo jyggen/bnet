@@ -64,6 +64,30 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers                   ::find
+     * @expectedException        RuntimeException
+     * @expectedExceptionMessage You must set a realm name with on() before calling find()
+     * @uses                     \Pwnraid\Bnet\Core\AbstractRequest
+     */
+    public function testFindWithoutOn()
+    {
+        $request  = new CharacterRequest(new TestClient('wow'));
+        $request->find('Jyggen');
+    }
+
+    /**
+     * @covers ::on
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     * @uses   \Pwnraid\Bnet\Utility
+     */
+    public function testOn()
+    {
+        $request = new CharacterRequest(new TestClient('wow'));
+
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterRequest', $request->on('Auchindoun'));
+    }
+
+    /**
      * @covers ::find
      * @covers ::on
      * @uses   \Pwnraid\Bnet\Core\AbstractEntity
@@ -73,8 +97,11 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testFind()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->on('Argent Dawn')->find('Picaboo');
+        $request = new CharacterRequest(new TestClient('wow'));
+
+        $request->on('Argent Dawn');
+
+        $response = $request->find('Picaboo');
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response);
         $this->assertSame('Picaboo', $response->name);
@@ -91,7 +118,10 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
     public function testFindWithFields()
     {
         $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->on('Auchindoun')->find('Jyggen', ['mounts', 'titles']);
+
+        $request->on('Auchindoun');
+
+        $response = $request->find('Jyggen', ['mounts', 'titles']);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response);
         $this->assertSame('Jyggen', $response->name);
@@ -108,21 +138,12 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
     public function testFindInvalid()
     {
         $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->on('Argent Dawn')->find('Invalid');
+
+        $request->on('Argent Dawn');
+
+        $response = $request->find('Invalid');
 
         $this->assertNull($response);
-    }
-
-    /**
-     * @covers                   ::find
-     * @expectedException        RuntimeException
-     * @expectedExceptionMessage You must set a realm name with on() before calling find()
-     * @uses                     \Pwnraid\Bnet\Core\AbstractRequest
-     */
-    public function testFindWithoutRealm()
-    {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $request->find('Jyggen');
     }
 
     /**
