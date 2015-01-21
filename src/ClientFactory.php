@@ -24,6 +24,16 @@ class ClientFactory
         $this->cache = $cache;
     }
 
+    public function getCache()
+    {
+        return $this->cache;
+    }
+
+    public function setCache(PoolInterface $cache)
+    {
+        $this->cache = $cache;
+    }
+
     public function diablo(Region $region)
     {
         return new DiabloClient($this->apiKey, $region, $this->cache);
