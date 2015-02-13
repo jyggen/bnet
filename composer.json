@@ -17,14 +17,14 @@
     "require": {
         "php": ">=5.4",
         "guzzlehttp/guzzle": "~5.0",
-        "league/oauth2-client": "0.6.*",
+        "league/oauth2-client": "0.7.*",
         "tedivm/stash": "0.12.*",
         "sebastian/version": "~1.0"
     },
     "require-dev": {
         "humbug/humbug": "dev-master",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "~4.5"
     },
     "autoload": {
         "psr-4": {
@@ -40,5 +40,7 @@
         "branch-alias": {
             "dev-master": "1.0-dev"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

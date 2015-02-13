@@ -10,7 +10,11 @@
          stopOnError="false"
          stopOnFailure="false"
          syntaxCheck="true"
-         strict="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTestSize="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         checkForUnintentionallyCoveredCode="true"
          verbose="true"
 >
     <testsuites>

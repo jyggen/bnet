@@ -13,7 +13,42 @@ class ClientFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::__construct
+     * @covers ::getCache
+     */
+    public function testGetCache()
+    {
+        $pool    = new Pool(new Ephemeral);
+        $factory = new ClientFactory('apikey', $pool);
+        $this->assertSame($pool, $factory->getCache());
+    }
+
+    /**
+     * @covers ::__construct
+     * @covers ::getCache
+     */
+    public function testDefaultCache()
+    {
+        $factory = new ClientFactory('apikey');
+        $this->assertInstanceOf('Stash\Pool', $factory->getCache());
+    }
+
+    /**
+     * @covers ::__construct
+     * @covers ::getCache
+     * @covers ::setCache
+     */
+    public function testSetCache()
+    {
+        $pool    = new Pool(new Ephemeral);
+        $factory = new ClientFactory('apikey');
+        $factory->setCache($pool);
+        $this->assertSame($pool, $factory->getCache());
+    }
+
+    /**
+     * @covers ::__construct
      * @covers ::diablo
+     * @covers ::setCache
      * @uses   \Pwnraid\Bnet\Core\AbstractClient
      * @uses   \Pwnraid\Bnet\Region
      */
