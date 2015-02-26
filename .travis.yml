@@ -8,13 +8,8 @@ php:
   - hhvm
   - hhvm-nightly
 
-cache:
-  directories:
-    - $HOME/.composer/cache
-
 install:
-  - travis_retry composer self-update
-  - travis_retry composer update --no-interaction --prefer-source --prefer-lowest
+  - travis_retry composer install --no-interaction --prefer-source --prefer-lowest
 
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
@@ -22,6 +17,7 @@ script:
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-  
-allow_failures:
-    - php: 7
+
+matrix:
+  allow_failures:
+    - php: 7.0
