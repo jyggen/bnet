@@ -24,4 +24,4 @@ after_script:
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
   
 allow_failures:
-    - php: 7.0
+    - php: 7
