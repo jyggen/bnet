@@ -50,7 +50,11 @@ class CharacterRequest extends AbstractRequest
             throw new \RuntimeException('You must set a realm name with on() before calling find()');
         }
 
-        $data = $this->client->get('character/'.$this->realm.'/'.$name, ['query' => ['fields' => implode(',', $fields)]]);
+        $data = $this->client->get('character/'.$this->realm.'/'.$name, [
+            'query' => [
+                'fields' => implode(',', $fields),
+            ],
+        ]);
 
         if ($data === null || count($data) === 0) {
             return null;
