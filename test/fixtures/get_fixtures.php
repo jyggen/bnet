@@ -60,3 +60,7 @@ try { // Workaround for error handler.
 (new WowItemRequest($wowClient))->classes();
 (new WowItemRequest($wowClient))->find(18803);
 (new WowItemRequest($wowClient))->findSet(1060);
+(new WowItemRequest($wowClient))->find(110050);
+(new WowItemRequest($wowClient))->withContext('dungeon-level-up-1')->find(110050);
+(new WowItemRequest($wowClient))->withContext('dungeon-level-up-1')->find(110050, [40, 41]);
+
