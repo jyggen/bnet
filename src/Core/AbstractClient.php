@@ -39,39 +39,12 @@ abstract class AbstractClient
      */
     public function get($url, array $options = [])
     {
-        $item = $this->cache->getItem($this->getRequestKey($url, $options));
-        $data = $item->get();
+        return $this->makeRequest($this->region->getApiHost(static::API).$url, $options);
+    }
 
-        if ($item->isMiss() === false) {
-            $options = array_replace_recursive($options, [
-                'headers' => [
-                    'If-Modified-Since' => $data['modified'],
-                ],
-            ]);
-        }
-
-        $options = array_replace_recursive($options, [
-            'headers' => [
-                'Accept'     => 'application/json',
-                'User-Agent' => $this->getUserAgent(),
-            ],
-            'query' => [
-                'apikey' => $this->apiKey,
-                'locale' => $this->region->getLocale(),
-            ],
-        ]);
-
-        try {
-            $response = $this->client->get($this->region->getApiHost(static::API).$url, $options);
-        } catch (ClientException $exception) {
-            if ($exception->getCode() === 404) {
-                return null;
-            }
-
-            throw new BattleNetException($exception->getResponse()->json()['detail'], $exception->getCode());
-        }
-
-        return $this->handleSuccessfulResponse($response, $item, $data);
+    public function getRawUrl($url, array $options = [])
+    {
+        return $this->makeRequest($url, $options);
     }
 
     public function getClient()
@@ -87,7 +60,7 @@ abstract class AbstractClient
     protected function getRequestKey($url, $options)
     {
         $options = array_replace_recursive($this->client->getDefaultOption(), $options);
-        return hash_hmac('md5', $this->client->getBaseUrl().'/'.$url, serialize($options));
+        return hash_hmac('md5', $url, serialize($options));
     }
 
     protected function getUserAgent()
@@ -117,5 +90,42 @@ abstract class AbstractClient
             default:
                 throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode());
         }
+    }
+
+    protected function makeRequest($url, $options = [])
+    {
+        $item = $this->cache->getItem($this->getRequestKey($url, $options));
+        $data = $item->get();
+
+        if ($item->isMiss() === false) {
+            $options = array_replace_recursive($options, [
+                'headers' => [
+                    'If-Modified-Since' => $data['modified'],
+                ],
+            ]);
+        }
+
+        $options = array_replace_recursive($options, [
+            'headers' => [
+                'Accept'     => 'application/json',
+                'User-Agent' => $this->getUserAgent(),
+            ],
+            'query' => [
+                'apikey' => $this->apiKey,
+                'locale' => $this->region->getLocale(),
+            ],
+        ]);
+
+        try {
+            $response = $this->client->get($url, $options);
+        } catch (ClientException $exception) {
+            if ($exception->getCode() === 404) {
+                return null;
+            }
+
+            throw new BattleNetException($exception->getResponse()->json()['detail'], $exception->getCode());
+        }
+
+        return $this->handleSuccessfulResponse($response, $item, $data);
     }
 }

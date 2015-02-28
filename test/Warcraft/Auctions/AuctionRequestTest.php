@@ -18,7 +18,7 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
     public function testDownload()
     {
         $request  = new AuctionRequest(new TestClient('wow'));
-        $response = $request->download(new IndexEntity(['url' => 'foobar']));
+        $response = $request->download(new IndexEntity(['url' => 'auctions']));
 
         $this->assertInternalType('array', $response);
         $this->assertSame(955294802, $response[0]->auc);
