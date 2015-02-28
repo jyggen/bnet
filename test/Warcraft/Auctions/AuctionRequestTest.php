@@ -25,6 +25,19 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::download
+     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     */
+    public function testDownloadInvalidUrl()
+    {
+        $request  = new AuctionRequest(new TestClient('wow'));
+        $response = $request->download(new IndexEntity(['url' => 'invalid']));
+
+        $this->assertNull($response);
+    }
+
+    /**
      * @covers ::index
      * @uses   \Pwnraid\Bnet\Core\AbstractEntity
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
