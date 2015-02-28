@@ -2,14 +2,14 @@
 namespace Pwnraid\Bnet\Warcraft\Leaderboards;
 
 use Pwnraid\Bnet\Core\AbstractRequest;
-use Pwnraid\Bnet\Utility;
+use Pwnraid\Bnet\Utils;
 
 class LeaderboardRequest extends AbstractRequest
 {
     public function challengeMode($realm = null)
     {
         if ($realm !== null) {
-            $data = $this->client->get('challenge/'.Utility::realmNameToSlug($realm));
+            $data = $this->client->get('challenge/'.Utils::realmNameToSlug($realm));
 
             if ($data === null) {
                 return null;

@@ -2,7 +2,7 @@
 namespace Pwnraid\Bnet\Warcraft\Guilds;
 
 use Pwnraid\Bnet\Core\AbstractRequest;
-use Pwnraid\Bnet\Utility;
+use Pwnraid\Bnet\Utils;
 
 class GuildRequest extends AbstractRequest
 {
@@ -32,7 +32,7 @@ class GuildRequest extends AbstractRequest
 
     public function on($realm)
     {
-        $this->realm = Utility::realmNameToSlug($realm);
+        $this->realm = Utils::realmNameToSlug($realm);
         return $this;
     }
 

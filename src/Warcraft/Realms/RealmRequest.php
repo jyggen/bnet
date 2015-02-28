@@ -2,7 +2,7 @@
 namespace Pwnraid\Bnet\Warcraft\Realms;
 
 use Pwnraid\Bnet\Core\AbstractRequest;
-use Pwnraid\Bnet\Utility;
+use Pwnraid\Bnet\Utils;
 
 class RealmRequest extends AbstractRequest
 {
@@ -13,6 +13,9 @@ class RealmRequest extends AbstractRequest
         return new BattlegroupEntity($data); // @todo: Return array of objects.
     }
 
+    /**
+     * @return RealmEntity|array
+     */
     public function find($realms)
     {
         $returnSingle = false;
@@ -23,7 +26,7 @@ class RealmRequest extends AbstractRequest
         }
 
         foreach ($realms as &$realm) {
-            $realm = Utility::realmNameToSlug($realm);
+            $realm = Utils::realmNameToSlug($realm);
         }
 
         $data       = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realms)]]);

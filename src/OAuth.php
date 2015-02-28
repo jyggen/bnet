@@ -35,7 +35,7 @@ class OAuth extends AbstractProvider
     public function userDetails($response, AccessToken $token)
     {
         return [
-            'uid' => $response->id,
+            'uid' => (int) $response->id,
         ];
     }
 
@@ -47,8 +47,11 @@ class OAuth extends AbstractProvider
     {
     }
 
+    /**
+     * @return int
+     */
     public function userUid($response, AccessToken $token)
     {
-        return $response->id;
+        return (int) $response->id;
     }
 }
