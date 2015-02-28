@@ -29,7 +29,7 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
      * @covers ::createRealmEntities
      * @uses   \Pwnraid\Bnet\Core\AbstractEntity
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testFindSingle()
     {
@@ -43,7 +43,7 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::find
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testFindSingleInvalid()
     {
@@ -58,7 +58,7 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
      * @covers ::createRealmEntities
      * @uses   \Pwnraid\Bnet\Core\AbstractEntity
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testFindNotSingle()
     {
@@ -76,7 +76,7 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
      * @covers ::createRealmEntities
      * @uses   \Pwnraid\Bnet\Core\AbstractEntity
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testFindMultiple()
     {
@@ -95,7 +95,7 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
      * @expectedExceptionMessage Unable to fetch all requested realms
      * @uses                     \Pwnraid\Bnet\Core\AbstractEntity
      * @uses                     \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses                     \Pwnraid\Bnet\Utility
+     * @uses                     \Pwnraid\Bnet\Utils
      */
     public function testFindMultipleInvalid()
     {

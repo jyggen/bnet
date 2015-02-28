@@ -13,7 +13,7 @@ class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
      * @covers ::challengeMode
      * @uses   \Pwnraid\Bnet\Core\AbstractEntity
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testChallengeMode()
     {
@@ -26,7 +26,7 @@ class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::challengeMode
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testChallengeModeInvalid()
     {

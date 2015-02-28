@@ -38,7 +38,7 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::on
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testOn()
     {
@@ -52,7 +52,7 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
      * @covers ::on
      * @uses   \Pwnraid\Bnet\Core\AbstractEntity
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testFind()
     {
@@ -71,7 +71,7 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
      * @covers ::on
      * @uses   \Pwnraid\Bnet\Core\AbstractEntity
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testFindWithFields()
     {
@@ -90,7 +90,7 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
      * @covers ::find
      * @covers ::on
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testFindInvalid()
     {

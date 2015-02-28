@@ -53,7 +53,7 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
     {
         $token = new AccessToken(['access_token' => 'foobar']);
         $oauth = new OAuth(new Region(Region::EUROPE));
-        $this->assertSame(['uid' => 'foobar'], $oauth->userDetails((object) ['id' => 'foobar'], $token));
+        $this->assertSame(['uid' => 17], $oauth->userDetails((object) ['id' => 17], $token));
     }
 
     /**
@@ -65,7 +65,7 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
     {
         $token = new AccessToken(['access_token' => 'foobar']);
         $oauth = new OAuth(new Region(Region::EUROPE));
-        $this->assertSame('foobar', $oauth->userUid((object) ['id' => 'foobar'], $token));
+        $this->assertSame(17, $oauth->userUid((object) ['id' => 17], $token));
     }
 
     /**

@@ -27,7 +27,7 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Utility
+     * @uses   \Pwnraid\Bnet\Utils
      */
     public function testIdAttribute()
     {

@@ -1,7 +1,7 @@
 <?php
 namespace Pwnraid\Bnet;
 
-class Utility
+class Utils
 {
     protected static $replaceTable = [
         ['à', 'ê', 'é', 'ü'],
