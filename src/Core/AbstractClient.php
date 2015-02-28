@@ -29,8 +29,6 @@ abstract class AbstractClient
         $this->version = new Version(static::VERSION, dirname(dirname(__DIR__)));
 
         $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
-
-        $this->setClient(new GuzzleClient);
     }
 
     /**
@@ -94,6 +92,10 @@ abstract class AbstractClient
 
     protected function makeRequest($url, $options = [])
     {
+        if ($this->client === null) {
+            $this->client = new GuzzleClient;
+        }
+
         $item = $this->cache->getItem($this->getRequestKey($url, $options));
         $data = $item->get();
 
