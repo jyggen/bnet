@@ -6,6 +6,9 @@ use Pwnraid\Bnet\Utils;
 
 class RealmRequest extends AbstractRequest
 {
+    /**
+     * @return BattlegroupEntity
+     */
     public function battlegroups()
     {
         $data = $this->client->get('data/battlegroups/');
@@ -14,7 +17,9 @@ class RealmRequest extends AbstractRequest
     }
 
     /**
-     * @return RealmEntity|array
+     * @param array|string $realms
+     *
+     * @return RealmEntity|array|null
      */
     public function find($realms)
     {
@@ -45,6 +50,9 @@ class RealmRequest extends AbstractRequest
         return ($returnSingle === true) ? $realms[0] : $realms;
     }
 
+    /**
+     * @return array
+     */
     public function all()
     {
         $data = $this->client->get('realm/status');
@@ -52,6 +60,11 @@ class RealmRequest extends AbstractRequest
         return $this->createRealmEntities($data['realms']);
     }
 
+    /**
+     * @param array $realmsList
+     *
+     * @return array
+     */
     protected function createRealmEntities(array $realmsList)
     {
         $realms = [];

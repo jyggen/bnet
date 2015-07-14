@@ -6,8 +6,14 @@ use JsonSerializable;
 
 abstract class AbstractEntity implements ArrayAccess, JsonSerializable
 {
+    /**
+     * @var array
+     */
     protected $attributes = [];
 
+    /**
+     * @param array $body
+     */
     public function __construct(array $body)
     {
         $this->attributes = $body;
@@ -27,6 +33,7 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      * Retrieve attributes on the entity.
      *
      * @param string $key
+     *
      * @return mixed
      */
     public function __get($key)
@@ -42,7 +49,8 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      * Set attributes on the entity.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return void
      */
     public function __set($key, $value)
@@ -54,6 +62,7 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      * Determine if the given attribute exists.
      *
      * @param mixed $offset
+     *
      * @return bool
      */
     public function offsetExists($offset)
@@ -65,6 +74,7 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      * Get the value for a given offset.
      *
      * @param mixed $offset
+     *
      * @return mixed
      */
     public function offsetGet($offset)
@@ -77,6 +87,7 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      *
      * @param mixed $offset
      * @param mixed $value
+     *
      * @return void
      */
     public function offsetSet($offset, $value)
@@ -88,6 +99,7 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      * Unset the value for a given offset.
      *
      * @param mixed $offset
+     *
      * @return void
      */
     public function offsetUnset($offset)
@@ -99,6 +111,7 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      * Determine if an attribute exists on the entity.
      *
      * @param string $key
+     *
      * @return bool
      */
     public function __isset($key)
@@ -110,6 +123,7 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      * Unset an attribute on the entity.
      *
      * @param string $key
+     *
      * @return void
      */
     public function __unset($key)

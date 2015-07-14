@@ -13,14 +13,41 @@ use Stash\Interfaces\PoolInterface;
 
 abstract class AbstractClient
 {
+    /**
+     * @var string
+     */
     const VERSION = '1.0';
 
+    /**
+     * @var string
+     */
     protected $apiKey;
+
+    /**
+     * @var PoolInterface
+     */
     protected $cache;
+
+    /**
+     * @var ClientInterface
+     */
     protected $client;
+
+    /**
+     * @var Region
+     */
     protected $region;
+
+    /**
+     * @var Version
+     */
     protected $version;
 
+    /**
+     * @param string        $apiKey
+     * @param Region        $region
+     * @param PoolInterface $cache
+     */
     public function __construct($apiKey, Region $region, PoolInterface $cache)
     {
         $this->apiKey  = $apiKey;
@@ -34,33 +61,58 @@ abstract class AbstractClient
     /**
      * @param string $url
      * @param array  $options
+     *
+     * @return array
      */
     public function get($url, array $options = [])
     {
         return $this->makeRequest($this->region->getApiHost(static::API).$url, $options);
     }
 
+    /**
+     * @param string $url
+     * @param array  $options
+     *
+     * @return array
+     */
     public function getRawUrl($url, array $options = [])
     {
         return $this->makeRequest($url, $options);
     }
 
+    /**
+     * @return ClientInterface
+     */
     public function getClient()
     {
         return $this->client;
     }
 
+    /**
+     * @param ClientInterface $client
+     *
+     * @return void
+     */
     public function setClient(ClientInterface $client)
     {
         $this->client = $client;
     }
 
-    protected function getRequestKey($url, $options)
+    /**
+     * @param string $url
+     * @param array $options
+     *
+     * @return string
+     */
+    protected function getRequestKey($url, array $options)
     {
         $options = array_replace_recursive($this->client->getDefaultOption(), $options);
         return hash_hmac('md5', $url, serialize($options));
     }
 
+    /**
+     * @return string
+     */
     protected function getUserAgent()
     {
         static $defaultAgent = '';
@@ -72,6 +124,15 @@ abstract class AbstractClient
         return $defaultAgent;
     }
 
+    /**
+     * @param ResponseInterface $response
+     * @param ItemInterface     $item
+     * @param array|null        $data
+     *
+     * @throws \RuntimeException
+     *
+     * @return array
+     */
     protected function handleSuccessfulResponse(ResponseInterface $response, ItemInterface $item, $data)
     {
         switch ((int) $response->getStatusCode()) {
@@ -90,7 +151,13 @@ abstract class AbstractClient
         }
     }
 
-    protected function makeRequest($url, $options = [])
+    /**
+     * @param string $url
+     * @param array  $options
+     *
+     * @return array
+     */
+    protected function makeRequest($url, array $options = [])
     {
         if ($this->client === null) {
             $this->client = new GuzzleClient;

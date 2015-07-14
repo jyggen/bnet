@@ -5,6 +5,9 @@ use Pwnraid\Bnet\Core\AbstractEntity;
 
 class AchievementCategoryEntity extends AbstractEntity
 {
+    /**
+     * @param  array  $body
+     */
     public function __construct(array $body)
     {
         parent::__construct($body);

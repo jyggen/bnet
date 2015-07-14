@@ -20,6 +20,9 @@ class CharacterRequest extends AbstractRequest
         return new AchievementEntity($data);
     }
 
+    /**
+     * @return array
+     */
     public function achievements()
     {
         $data         = $this->client->get('data/character/achievements');

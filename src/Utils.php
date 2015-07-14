@@ -3,11 +3,19 @@ namespace Pwnraid\Bnet;
 
 class Utils
 {
+    /**
+     * @var array
+     */
     protected static $replaceTable = [
         ['à', 'ê', 'é', 'ü'],
         ['a', 'e', 'e', 'u'],
     ];
 
+    /**
+     * @param string $realmName
+     *
+     * @return string
+     */
     public static function realmNameToSlug($realmName)
     {
         $slug = str_replace(static::$replaceTable[0], static::$replaceTable[1], $realmName);
@@ -19,9 +27,14 @@ class Utils
         return $slug;
     }
 
+    /**
+     * @param string $thumbnailUrl
+     *
+     * @return string
+     */
     public static function thumbnailToId($thumbnailUrl)
     {
-        if (preg_match('/\/([0-9]+)\/([0-9]+)(\-avatar\.jpg)$/', $thumbnailUrl, $match) === 0) {
+        if (preg_match('/\/([0-9]+)\/([0-9]+)(\-avatar\.jpg)$/', $thumbnailUrl, $match = []) === 0) {
             throw new \RuntimeException('Invalid thumbnail URL "'.$thumbnailUrl.'"');
         }
 

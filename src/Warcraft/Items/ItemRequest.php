@@ -5,8 +5,14 @@ use Pwnraid\Bnet\Core\AbstractRequest;
 
 class ItemRequest extends AbstractRequest
 {
+    /**
+     * @var string|null
+     */
     protected $context = null;
 
+    /**
+     * @return ClassEntity
+     */
     public function classes()
     {
         $data = $this->client->get('data/item/classes');
@@ -14,7 +20,13 @@ class ItemRequest extends AbstractRequest
         return new ClassEntity($data);
     }
 
-    public function find($itemId, $bonusList = [])
+    /**
+     * @param int   $itemId
+     * @param array $bonusList
+     *
+     * @return ItemEntity|null
+     */
+    public function find($itemId, array $bonusList = [])
     {
         $data = $this->client->get(rtrim('item/'.$itemId.'/'.$this->context, '/'), [
             'query' => [
@@ -31,6 +43,11 @@ class ItemRequest extends AbstractRequest
         return new ItemEntity($data);
     }
 
+    /**
+     * @param int $setId
+     *
+     * return ItemSetEntity|null
+     */
     public function findSet($setId)
     {
         $data = $this->client->get('item/set/'.$setId);
@@ -42,6 +59,11 @@ class ItemRequest extends AbstractRequest
         return new ItemSetEntity($data);
     }
 
+    /**
+     * @param string $context
+     *
+     * @return ItemRequest
+     */
     public function withContext($context)
     {
         $this->context = $context;

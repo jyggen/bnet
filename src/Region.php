@@ -3,12 +3,34 @@ namespace Pwnraid\Bnet;
 
 class Region
 {
-    const CHINA  = 'cn';
-    const EUROPE = 'eu';
-    const KOREA  = 'kr';
-    const TAIWAN = 'tw';
-    const US     = 'us';
+    /**
+     * @var string
+     */
+    const CHINA = 'cn';
 
+    /**
+     * @var string
+     */
+    const EUROPE = 'eu';
+
+    /**
+     * @var string
+     */
+    const KOREA = 'kr';
+
+    /**
+     * @var string
+     */
+    const TAIWAN = 'tw';
+
+    /**
+     * @var string
+     */
+    const US = 'us';
+
+    /**
+     * @var array
+     */
     protected static $regions = [
         self::CHINA => [
             'locales' => ['zh_CN'],
@@ -47,10 +69,25 @@ class Region
         ],
     ];
 
+    /**
+     * @var string
+     */
     protected $host;
+
+    /**
+     * @var string
+     */
     protected $locale;
+
+    /**
+     * @var array
+     */
     protected $region;
 
+    /**
+     * @param string $region
+     * @param string $locale
+     */
     public function __construct($region, $locale = null)
     {
         if (isset(static::$regions[$region]) === false) {
@@ -66,6 +103,11 @@ class Region
         $this->locale = ($locale === null) ? $this->region['locales'][0] : $locale;
     }
 
+    /**
+     * @param string $api
+     *
+     * @return string
+     */
     public function getApiHost($api)
     {
         return sprintf($this->region['hosts']['api'], $api);
