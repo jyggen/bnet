@@ -34,7 +34,7 @@ class Utils
      */
     public static function thumbnailToId($thumbnailUrl)
     {
-        if (preg_match('/\/([0-9]+)\/([0-9]+)(\-avatar\.jpg)$/', $thumbnailUrl, $match = []) === 0) {
+        if (preg_match('/\/([0-9]+)\/([0-9]+)(\-avatar\.jpg)$/', $thumbnailUrl, $match) === 0) {
             throw new \RuntimeException('Invalid thumbnail URL "'.$thumbnailUrl.'"');
         }
 
