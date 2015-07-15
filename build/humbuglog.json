@@ -1,0 +1,1536 @@
+{
+    "summary": {
+        "total": 120,
+        "kills": 103,
+        "escapes": 2,
+        "errors": 1,
+        "timeouts": 1,
+        "notests": 13,
+        "covered_score": 98,
+        "combined_score": 88,
+        "mutation_coverage": 89
+    },
+    "escaped": [
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\LogicalOr",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest",
+            "method": "find",
+            "line": 59,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null || count($data) === 0) {\n+        if ($data === null && count($data) === 0) {\n             return null;\n         }\n \n         return new CharacterEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithFields",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievementInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievements\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testClasses\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithoutOn\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testOn\nok 7 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind\nok 8 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithFields\nok 9 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindInvalid\nok 10 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testRaces\nok 11 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testTalents\nok 12 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testUser\n1..12\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest",
+            "method": "find",
+            "line": 59,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null || count($data) === 0) {\n+        if ($data === null || count($data) === 1) {\n             return null;\n         }\n \n         return new CharacterEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithFields",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievementInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievements\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testClasses\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithoutOn\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testOn\nok 7 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind\nok 8 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithFields\nok 9 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindInvalid\nok 10 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testRaces\nok 11 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testTalents\nok 12 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testUser\n1..12\n"
+        }
+    ],
+    "errored": [
+        {
+            "file": "src\\Warcraft\\Items\\ItemRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\This",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemRequest",
+            "method": "withContext",
+            "line": 49,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return $this;\n+        return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithContext",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithBonusListWithContext"
+            ],
+            "stderr": "PHP Fatal error:  Call to a member function find() on null in C:\\Users\\jyggen\\devbox\\www2\\bnet\\test\\Warcraft\\Items\\ItemRequestTest.php on line 76\nPHP Stack trace:\nPHP   1. {main}() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\phpunit:0\nPHP   2. PHPUnit_TextUI_Command::main() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\phpunit:36\nPHP   3. PHPUnit_TextUI_Command->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php:99\nPHP   4. PHPUnit_TextUI_TestRunner->doRun() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php:147\nPHP   5. PHPUnit_Framework_TestSuite->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\TextUI\\TestRunner.php:428\nPHP   6. PHPUnit_Framework_TestSuite->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php:738\nPHP   7. PHPUnit_Framework_TestCase->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php:738\nPHP   8. PHPUnit_Framework_TestResult->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php:702\nPHP   9. PHPUnit_Framework_TestCase->runBare() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestResult.php:601\nPHP  10. PHPUnit_Framework_TestCase->runTest() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php:746\nPHP  11. ReflectionMethod->invokeArgs() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php:881\nPHP  12. Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest->testFindOnContextItemWithContext() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php:881\n",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testClasses\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFind\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindInvalidId\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItem\n\nFatal error: Call to a member function find() on null in C:\\Users\\jyggen\\devbox\\www2\\bnet\\test\\Warcraft\\Items\\ItemRequestTest.php on line 76\n\nCall Stack:\n    0.0001     233968   1. {main}() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\phpunit:0\n    0.0056     916776   2. PHPUnit_TextUI_Command::main() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\phpunit:36\n    0.0056     917400   3. PHPUnit_TextUI_Command->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php:99\n    0.4680    7410576   4. PHPUnit_TextUI_TestRunner->doRun() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php:147\n    0.4751    7640416   5. PHPUnit_Framework_TestSuite->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\TextUI\\TestRunner.php:428\n    0.4793    7655368   6. PHPUnit_Framework_TestSuite->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php:738\n    0.5015    7909392   7. PHPUnit_Framework_TestCase->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php:738\n    0.5015    7909392   8. PHPUnit_Framework_TestResult->run() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php:702\n    0.5016    7910368   9. PHPUnit_Framework_TestCase->runBare() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestResult.php:601\n    0.5017    7927240  10. PHPUnit_Framework_TestCase->runTest() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php:746\n    0.5017    7928080  11. ReflectionMethod->invokeArgs() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php:881\n    0.5017    7928288  12. Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest->testFindOnContextItemWithContext() C:\\Users\\jyggen\\devbox\\www2\\bnet\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php:881\n\n"
+        }
+    ],
+    "timeouts": [
+        {
+            "file": "src\\Warcraft\\Leaderboards\\LeaderboardRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\NotIdentical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\LeaderboardRequest",
+            "method": "challengeMode",
+            "line": 11,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if ($realm !== null) {\n+        if ($realm === null) {\n             $data = $this->client->get('challenge\/'.Utils::realmNameToSlug($realm));\n \n             if ($data === null) {\n                 return null;\n             }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeInvalid",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeRegion"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode\n"
+        }
+    ],
+    "killed": [
+        {
+            "file": "src\\ClientFactory.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\ClientFactory",
+            "method": "__construct",
+            "line": 20,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($cache === null) {\n+        if ($cache !== null) {\n             $cache = new Pool(new Ephemeral);\n         }\n \n         $this->cache = $cache;\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\ClientFactoryTest::testGetCache",
+                "Pwnraid\\Bnet\\Test\\ClientFactoryTest::testDefaultCache",
+                "Pwnraid\\Bnet\\Test\\ClientFactoryTest::testSetCache",
+                "Pwnraid\\Bnet\\Test\\ClientFactoryTest::testDiablo",
+                "Pwnraid\\Bnet\\Test\\ClientFactoryTest::testStarcraft",
+                "Pwnraid\\Bnet\\Test\\ClientFactoryTest::testWarcraft"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\ClientFactoryTest::testGetCache\n  ---\n  message: 'Failed asserting that two variables reference the same object.'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\ClientFactory.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\ClientFactory",
+            "method": "diablo",
+            "line": 39,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new DiabloClient($this->apiKey, $region, $this->cache);\n+        new DiabloClient($this->apiKey, $region, $this->cache); return null;\n     }\n \n     public function starcraft(Region $region)\n     {\n         return new StarcraftClient($this->apiKey, $region, $this->cache);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\ClientFactoryTest::testDiablo"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testGetCache\nok 2 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testDefaultCache\nok 3 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testSetCache\nnot ok 4 - Failure: Pwnraid\\Bnet\\Test\\ClientFactoryTest::testDiablo\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Diablo\\Client\".'\n  severity: fail\n  ...\n1..4\n"
+        },
+        {
+            "file": "src\\ClientFactory.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\ClientFactory",
+            "method": "starcraft",
+            "line": 44,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new StarcraftClient($this->apiKey, $region, $this->cache);\n+        new StarcraftClient($this->apiKey, $region, $this->cache); return null;\n     }\n \n     public function warcraft(Region $region)\n     {\n         return new WarcraftClient($this->apiKey, $region, $this->cache);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\ClientFactoryTest::testStarcraft"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testGetCache\nok 2 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testDefaultCache\nok 3 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testSetCache\nok 4 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testDiablo\nnot ok 5 - Failure: Pwnraid\\Bnet\\Test\\ClientFactoryTest::testStarcraft\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Starcraft\\Client\".'\n  severity: fail\n  ...\n1..5\n"
+        },
+        {
+            "file": "src\\ClientFactory.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\ClientFactory",
+            "method": "warcraft",
+            "line": 49,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new WarcraftClient($this->apiKey, $region, $this->cache);\n+        new WarcraftClient($this->apiKey, $region, $this->cache); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\ClientFactoryTest::testWarcraft"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testGetCache\nok 2 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testDefaultCache\nok 3 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testSetCache\nok 4 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testDiablo\nok 5 - Pwnraid\\Bnet\\Test\\ClientFactoryTest::testStarcraft\nnot ok 6 - Failure: Pwnraid\\Bnet\\Test\\ClientFactoryTest::testWarcraft\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Client\".'\n  severity: fail\n  ...\n1..6\n"
+        },
+        {
+            "file": "src\\Core\\AbstractEntity.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Core\\AbstractEntity",
+            "method": "__get",
+            "line": 34,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (array_key_exists($key, $this->attributes) === true)\n+        if (array_key_exists($key, $this->attributes) !== true)\n         {\n             return $this->attributes[$key];\n         }\n         return null;\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Core\\AbstractEntityTest::testAbstractEntity"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Core\\AbstractEntityTest::testAbstractEntity\n  ---\n  message: 'Failed asserting that null is identical to ''bar''.'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Core\\AbstractEntity.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
+            "class": "\\Pwnraid\\Bnet\\Core\\AbstractEntity",
+            "method": "__get",
+            "line": 34,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (array_key_exists($key, $this->attributes) === true)\n+        if (array_key_exists($key, $this->attributes) === false)\n         {\n             return $this->attributes[$key];\n         }\n         return null;\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Core\\AbstractEntityTest::testAbstractEntity"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Core\\AbstractEntityTest::testAbstractEntity\n  ---\n  message: 'Failed asserting that null is identical to ''bar''.'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Core\\AbstractEntity.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\BracketedStatement",
+            "class": "\\Pwnraid\\Bnet\\Core\\AbstractEntity",
+            "method": "__isset",
+            "line": 106,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return (isset($this->attributes[$key]));\n+        (isset($this->attributes[$key])); return null;\n     }\n \n     \/**\n      * Unset an attribute on the entity.\n      *\n      * @param string $key",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Core\\AbstractEntityTest::testAbstractEntity"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Core\\AbstractEntityTest::testAbstractEntity\n  ---\n  message: 'Failed asserting that false is true.'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Diablo\\Artisans\\ArtisanRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Diablo\\Artisans\\ArtisanRequest",
+            "method": "find",
+            "line": 12,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new ArtisanEntity($data);\n     }\n }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Diablo\\Artisans\\ArtisanRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Diablo\\Artisans\\ArtisanRequestTest::testFindInvalidId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Diablo\\Artisans\\ArtisanRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Diablo\\Artisans\\ArtisanEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Diablo\\Artisans\\ArtisanRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Diablo\\Artisans\\ArtisanRequest",
+            "method": "find",
+            "line": 16,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new ArtisanEntity($data);\n+        new ArtisanEntity($data); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Diablo\\Artisans\\ArtisanRequestTest::testFind"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Diablo\\Artisans\\ArtisanRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Diablo\\Artisans\\ArtisanEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Diablo\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Diablo\\Client",
+            "method": "artisans",
+            "line": 15,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new ArtisanRequest($this);\n+        new ArtisanRequest($this); return null;\n     }\n \n     public function followers()\n     {\n         return new FollowerRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Diablo\\ClientTest::testArtisans"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Diablo\\ClientTest::testArtisans\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Diablo\\Artisans\\ArtisanRequest\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Diablo\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Diablo\\Client",
+            "method": "followers",
+            "line": 20,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new FollowerRequest($this);\n+        new FollowerRequest($this); return null;\n     }\n \n     public function items()\n     {\n         return new ItemRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Diablo\\ClientTest::testFollowers"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Diablo\\ClientTest::testArtisans\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Diablo\\ClientTest::testFollowers\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Diablo\\Followers\\FollowerRequest\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Diablo\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Diablo\\Client",
+            "method": "items",
+            "line": 25,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new ItemRequest($this);\n+        new ItemRequest($this); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Diablo\\ClientTest::testItems"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Diablo\\ClientTest::testArtisans\nok 2 - Pwnraid\\Bnet\\Test\\Diablo\\ClientTest::testFollowers\nnot ok 3 - Failure: Pwnraid\\Bnet\\Test\\Diablo\\ClientTest::testItems\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Diablo\\Items\\ItemRequest\".'\n  severity: fail\n  ...\n1..3\n"
+        },
+        {
+            "file": "src\\Diablo\\Followers\\FollowerRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Diablo\\Followers\\FollowerRequest",
+            "method": "find",
+            "line": 12,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new FollowerEntity($data);\n     }\n }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Diablo\\Followers\\FollowerRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Diablo\\Followers\\FollowerRequestTest::testFindInvalidId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Diablo\\Followers\\FollowerRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Diablo\\Followers\\FollowerEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Diablo\\Followers\\FollowerRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Diablo\\Followers\\FollowerRequest",
+            "method": "find",
+            "line": 16,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new FollowerEntity($data);\n+        new FollowerEntity($data); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Diablo\\Followers\\FollowerRequestTest::testFind"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Diablo\\Followers\\FollowerRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Diablo\\Followers\\FollowerEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Diablo\\Items\\ItemRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Diablo\\Items\\ItemRequest",
+            "method": "find",
+            "line": 12,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new ItemEntity($data);\n     }\n }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Diablo\\Items\\ItemRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Diablo\\Items\\ItemRequestTest::testFindInvalidId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Diablo\\Items\\ItemRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Diablo\\Items\\ItemEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Diablo\\Items\\ItemRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Diablo\\Items\\ItemRequest",
+            "method": "find",
+            "line": 16,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new ItemEntity($data);\n+        new ItemEntity($data); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Diablo\\Items\\ItemRequestTest::testFind"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Diablo\\Items\\ItemRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Diablo\\Items\\ItemEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Region.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Region",
+            "method": "__construct",
+            "line": 56,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (isset(static::$regions[$region]) === false) {\n+        if (isset(static::$regions[$region]) !== false) {\n             throw new \\InvalidArgumentException($region.' is not a valid region');\n         }\n \n         $this->region = static::$regions[$region];\n \n         if ($locale !== null && in_array($locale, $this->region['locales']) === false) {",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\RegionTest::testRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testInvalidRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testInvalidLocale"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Error: Pwnraid\\Bnet\\Test\\RegionTest::testRegion\n1..1\n"
+        },
+        {
+            "file": "src\\Region.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\FalseValue",
+            "class": "\\Pwnraid\\Bnet\\Region",
+            "method": "__construct",
+            "line": 56,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (isset(static::$regions[$region]) === false) {\n+        if (isset(static::$regions[$region]) === true) {\n             throw new \\InvalidArgumentException($region.' is not a valid region');\n         }\n \n         $this->region = static::$regions[$region];\n \n         if ($locale !== null && in_array($locale, $this->region['locales']) === false) {",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\RegionTest::testRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testInvalidRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testInvalidLocale"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Error: Pwnraid\\Bnet\\Test\\RegionTest::testRegion\n1..1\n"
+        },
+        {
+            "file": "src\\Region.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\NotIdentical",
+            "class": "\\Pwnraid\\Bnet\\Region",
+            "method": "__construct",
+            "line": 62,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($locale !== null && in_array($locale, $this->region['locales']) === false) {\n+        if ($locale === null && in_array($locale, $this->region['locales']) === false) {\n             throw new \\InvalidArgumentException($locale.' is not a valid locale');\n         }\n \n         $this->locale = ($locale === null) ? $this->region['locales'][0] : $locale;\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\RegionTest::testRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testInvalidLocale"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\RegionTest::testRegion\nnot ok 2 - Error: Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale\n1..2\n"
+        },
+        {
+            "file": "src\\Region.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\LogicalAnd",
+            "class": "\\Pwnraid\\Bnet\\Region",
+            "method": "__construct",
+            "line": 62,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($locale !== null && in_array($locale, $this->region['locales']) === false) {\n+        if ($locale !== null || in_array($locale, $this->region['locales']) === false) {\n             throw new \\InvalidArgumentException($locale.' is not a valid locale');\n         }\n \n         $this->locale = ($locale === null) ? $this->region['locales'][0] : $locale;\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\RegionTest::testRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testInvalidLocale"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Error: Pwnraid\\Bnet\\Test\\RegionTest::testRegion\n1..1\n"
+        },
+        {
+            "file": "src\\Region.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Region",
+            "method": "__construct",
+            "line": 62,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($locale !== null && in_array($locale, $this->region['locales']) === false) {\n+        if ($locale !== null && in_array($locale, $this->region['locales']) !== false) {\n             throw new \\InvalidArgumentException($locale.' is not a valid locale');\n         }\n \n         $this->locale = ($locale === null) ? $this->region['locales'][0] : $locale;\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\RegionTest::testRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testInvalidLocale"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Error: Pwnraid\\Bnet\\Test\\RegionTest::testRegion\n1..1\n"
+        },
+        {
+            "file": "src\\Region.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\FalseValue",
+            "class": "\\Pwnraid\\Bnet\\Region",
+            "method": "__construct",
+            "line": 62,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($locale !== null && in_array($locale, $this->region['locales']) === false) {\n+        if ($locale !== null && in_array($locale, $this->region['locales']) === true) {\n             throw new \\InvalidArgumentException($locale.' is not a valid locale');\n         }\n \n         $this->locale = ($locale === null) ? $this->region['locales'][0] : $locale;\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\RegionTest::testRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testInvalidLocale"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Error: Pwnraid\\Bnet\\Test\\RegionTest::testRegion\n1..1\n"
+        },
+        {
+            "file": "src\\Region.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Region",
+            "method": "__construct",
+            "line": 66,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        $this->locale = ($locale === null) ? $this->region['locales'][0] : $locale;\n+        $this->locale = ($locale !== null) ? $this->region['locales'][0] : $locale;\n     }\n \n     public function getApiHost($api)\n     {\n         return sprintf($this->region['hosts']['api'], $api);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\RegionTest::testRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\RegionTest::testRegion\n  ---\n  message: 'Failed asserting that two strings are identical.'\n  severity: fail\n  data:\n      got: en_GB\n      expected: fr_FR\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Region.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Region",
+            "method": "__construct",
+            "line": 66,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        $this->locale = ($locale === null) ? $this->region['locales'][0] : $locale;\n+        $this->locale = ($locale === null) ? $this->region['locales'][1] : $locale;\n     }\n \n     public function getApiHost($api)\n     {\n         return sprintf($this->region['hosts']['api'], $api);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\RegionTest::testRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\RegionTest::testRegion\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale\n  ---\n  message: 'Failed asserting that two strings are identical.'\n  severity: fail\n  data:\n      got: es_ES\n      expected: en_GB\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Region.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\FunctionCall",
+            "class": "\\Pwnraid\\Bnet\\Region",
+            "method": "getApiHost",
+            "line": 71,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return sprintf($this->region['hosts']['api'], $api);\n+        sprintf($this->region['hosts']['api'], $api); return null;\n     }\n \n     \/**\n      * @return string\n      *\/\n     public function getOAuthHost()",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\RegionTest::testRegion",
+                "Pwnraid\\Bnet\\Test\\RegionTest::testDefaultLocale"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\RegionTest::testRegion\n  ---\n  message: 'Failed asserting that null is identical to ''https:\/\/eu.api.battle.net\/wow\/''.'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Utils.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Utils",
+            "method": "realmNameToSlug",
+            "line": 13,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        $slug = str_replace(static::$replaceTable[0], static::$replaceTable[1], $realmName);\n+        $slug = str_replace(static::$replaceTable[1], static::$replaceTable[1], $realmName);\n         $slug = str_replace(['-'], [''], $slug);\n         $slug = preg_replace('![^'.preg_quote('-').'\\pL\\pN\\s]+!u', '', mb_strtolower($slug, 'UTF-8'));\n         $slug = preg_replace('!['.preg_quote('-').'\\s]+!u', '-', $slug);\n         $slug = trim($slug, '-');\n \n         return $slug;",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\UtilsTest::testRealmNameToSlug"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\UtilsTest::testRealmNameToSlug\n  ---\n  message: 'Failed asserting that two strings are identical.'\n  severity: fail\n  data:\n      got: aggra-portugu\u00eas\n      expected: aggra-portugues\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Utils.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Utils",
+            "method": "realmNameToSlug",
+            "line": 13,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        $slug = str_replace(static::$replaceTable[0], static::$replaceTable[1], $realmName);\n+        $slug = str_replace(static::$replaceTable[0], static::$replaceTable[0], $realmName);\n         $slug = str_replace(['-'], [''], $slug);\n         $slug = preg_replace('![^'.preg_quote('-').'\\pL\\pN\\s]+!u', '', mb_strtolower($slug, 'UTF-8'));\n         $slug = preg_replace('!['.preg_quote('-').'\\s]+!u', '-', $slug);\n         $slug = trim($slug, '-');\n \n         return $slug;",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\UtilsTest::testRealmNameToSlug"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\UtilsTest::testRealmNameToSlug\n  ---\n  message: 'Failed asserting that two strings are identical.'\n  severity: fail\n  data:\n      got: aggra-portugu\u00eas\n      expected: aggra-portugues\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Utils.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Utils",
+            "method": "thumbnailToId",
+            "line": 24,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (preg_match('\/\\\/([0-9]+)\\\/([0-9]+)(\\-avatar\\.jpg)$\/', $thumbnailUrl, $match) === 0) {\n+        if (preg_match('\/\\\/([0-9]+)\\\/([0-9]+)(\\-avatar\\.jpg)$\/', $thumbnailUrl, $match) !== 0) {\n             throw new \\RuntimeException('Invalid thumbnail URL \"'.$thumbnailUrl.'\"');\n         }\n \n         return $match[1].$match[2];\n     }\n }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToId",
+                "Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToIdWithInvalidUrl"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\UtilsTest::testRealmNameToSlug\nnot ok 2 - Error: Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToId\n1..2\n"
+        },
+        {
+            "file": "src\\Utils.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Utils",
+            "method": "thumbnailToId",
+            "line": 24,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (preg_match('\/\\\/([0-9]+)\\\/([0-9]+)(\\-avatar\\.jpg)$\/', $thumbnailUrl, $match) === 0) {\n+        if (preg_match('\/\\\/([0-9]+)\\\/([0-9]+)(\\-avatar\\.jpg)$\/', $thumbnailUrl, $match) === 1) {\n             throw new \\RuntimeException('Invalid thumbnail URL \"'.$thumbnailUrl.'\"');\n         }\n \n         return $match[1].$match[2];\n     }\n }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToId",
+                "Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToIdWithInvalidUrl"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\UtilsTest::testRealmNameToSlug\nnot ok 2 - Error: Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToId\n1..2\n"
+        },
+        {
+            "file": "src\\Utils.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Utils",
+            "method": "thumbnailToId",
+            "line": 28,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return $match[1].$match[2];\n+        return $match[0].$match[2];\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\UtilsTest::testRealmNameToSlug\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToId\n  ---\n  message: 'Failed asserting that two strings are identical.'\n  severity: fail\n  data:\n      got: \/207\/104578511-avatar.jpg104578511\n      expected: '207104578511'\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Utils.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Utils",
+            "method": "thumbnailToId",
+            "line": 28,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return $match[1].$match[2];\n+        return $match[1].$match[3];\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\UtilsTest::testRealmNameToSlug\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\UtilsTest::testThumbnailToId\n  ---\n  message: 'Failed asserting that two strings are identical.'\n  severity: fail\n  data:\n      got: 207-avatar.jpg\n      expected: '207104578511'\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Auctions\\AuctionRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Auctions\\AuctionRequest",
+            "method": "download",
+            "line": 13,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         $auctions = [];\n \n         foreach ($data['auctions']['auctions'] as $auction) {",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testDownload",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testDownloadInvalidUrl"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testDownload\n  ---\n  message: 'Failed asserting that null is of type \"array\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Auctions\\AuctionRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Auctions\\AuctionRequest",
+            "method": "index",
+            "line": 30,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new IndexEntity($data['files'][0]);\n     }\n }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testIndex",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testIndexInvalidRealm"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testDownload\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testDownloadInvalidUrl\nnot ok 3 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testIndex\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Auctions\\IndexEntity\".'\n  severity: fail\n  ...\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\Auctions\\AuctionRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Auctions\\AuctionRequest",
+            "method": "index",
+            "line": 34,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new IndexEntity($data['files'][0]);\n+        new IndexEntity($data['files'][0]); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testIndex"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testDownload\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testDownloadInvalidUrl\nnot ok 3 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testIndex\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Auctions\\IndexEntity\".'\n  severity: fail\n  ...\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\Auctions\\AuctionRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Auctions\\AuctionRequest",
+            "method": "index",
+            "line": 34,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new IndexEntity($data['files'][0]);\n+        return new IndexEntity($data['files'][1]);\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testIndex"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testDownload\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testDownloadInvalidUrl\nnot ok 3 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\AuctionRequestTest::testIndex\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\BattlePets\\BattlePetRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\BattlePetRequest",
+            "method": "ability",
+            "line": 12,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new AbilityEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbility",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbilityInvalidId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbility\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\AbilityEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\BattlePets\\BattlePetRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\BattlePetRequest",
+            "method": "ability",
+            "line": 16,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new AbilityEntity($data);\n+        new AbilityEntity($data); return null;\n     }\n \n     public function species($speciesId)\n     {\n         $data = $this->client->get('battlePet\/species\/'.$speciesId);\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbility"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbility\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\AbilityEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\BattlePets\\BattlePetRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\BattlePetRequest",
+            "method": "species",
+            "line": 23,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new SpeciesEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testSpecies",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testSpeciesInvalidId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbility\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbilityInvalidId\nnot ok 3 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testSpecies\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\SpeciesEntity\".'\n  severity: fail\n  ...\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\BattlePets\\BattlePetRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\BattlePetRequest",
+            "method": "species",
+            "line": 27,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new SpeciesEntity($data);\n+        new SpeciesEntity($data); return null;\n     }\n \n     public function stats($speciesId, $level = 1, $breedId = 3, $qualityId = 1)\n     {\n         $data = $this->client->get('battlePet\/stats\/'.$speciesId, [\n             'query' => [",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testSpecies"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbility\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbilityInvalidId\nnot ok 3 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testSpecies\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\SpeciesEntity\".'\n  severity: fail\n  ...\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\BattlePets\\BattlePetRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\BattlePetRequest",
+            "method": "stats",
+            "line": 40,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new StatsEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testStats",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testStatsInvalidId",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testStatsNotDefault"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbility\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbilityInvalidId\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testSpecies\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testSpeciesInvalidId\nnot ok 5 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testStats\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\StatsEntity\".'\n  severity: fail\n  ...\n1..5\n"
+        },
+        {
+            "file": "src\\Warcraft\\BattlePets\\BattlePetRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\BattlePetRequest",
+            "method": "stats",
+            "line": 44,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new StatsEntity($data);\n+        new StatsEntity($data); return null;\n     }\n \n     public function types()\n     {\n         $data  = $this->client->get('data\/pet\/types');\n         $types = [];",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testStats",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testStatsNotDefault"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbility\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testAbilityInvalidId\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testSpecies\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testSpeciesInvalidId\nnot ok 5 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\BattlePetRequestTest::testStats\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\BattlePets\\StatsEntity\".'\n  severity: fail\n  ...\n1..5\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterEntity.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterEntity",
+            "method": "__construct",
+            "line": 13,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if (array_key_exists('thumbnail', $this->attributes) === true) {\n+        if (array_key_exists('thumbnail', $this->attributes) !== true) {\n             $this->attributes['id'] = Utils::thumbnailToId($this->attributes['thumbnail']);\n         }\n \n         if (array_key_exists('lastModified', $this->attributes) === true) {\n             $this->attributes['lastModified'] = $this->attributes['lastModified'] \/ 1000;\n             $this->attributes['lastModified'] = \\DateTime::createFromFormat('U', $this->attributes['lastModified']);",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testLastModifiedAttribute"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute\n  ---\n  message: 'Failed asserting that null is identical to ''22282213342''.'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterEntity.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterEntity",
+            "method": "__construct",
+            "line": 13,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if (array_key_exists('thumbnail', $this->attributes) === true) {\n+        if (array_key_exists('thumbnail', $this->attributes) === false) {\n             $this->attributes['id'] = Utils::thumbnailToId($this->attributes['thumbnail']);\n         }\n \n         if (array_key_exists('lastModified', $this->attributes) === true) {\n             $this->attributes['lastModified'] = $this->attributes['lastModified'] \/ 1000;\n             $this->attributes['lastModified'] = \\DateTime::createFromFormat('U', $this->attributes['lastModified']);",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testLastModifiedAttribute"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute\n  ---\n  message: 'Failed asserting that null is identical to ''22282213342''.'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterEntity.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterEntity",
+            "method": "__construct",
+            "line": 17,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if (array_key_exists('lastModified', $this->attributes) === true) {\n+        if (array_key_exists('lastModified', $this->attributes) !== true) {\n             $this->attributes['lastModified'] = $this->attributes['lastModified'] \/ 1000;\n             $this->attributes['lastModified'] = \\DateTime::createFromFormat('U', $this->attributes['lastModified']);\n         }\n     }\n }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testLastModifiedAttribute"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterEntity.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterEntity",
+            "method": "__construct",
+            "line": 17,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if (array_key_exists('lastModified', $this->attributes) === true) {\n+        if (array_key_exists('lastModified', $this->attributes) === false) {\n             $this->attributes['lastModified'] = $this->attributes['lastModified'] \/ 1000;\n             $this->attributes['lastModified'] = \\DateTime::createFromFormat('U', $this->attributes['lastModified']);\n         }\n     }\n }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testLastModifiedAttribute"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterEntity.php",
+            "mutator": "\\Humbug\\Mutator\\Arithmetic\\Division",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterEntity",
+            "method": "__construct",
+            "line": 18,
+            "diff": "--- Original\n+++ New\n@@ @@\n         if (array_key_exists('lastModified', $this->attributes) === true) {\n-            $this->attributes['lastModified'] = $this->attributes['lastModified'] \/ 1000;\n+            $this->attributes['lastModified'] = $this->attributes['lastModified'] * 1000;\n             $this->attributes['lastModified'] = \\DateTime::createFromFormat('U', $this->attributes['lastModified']);\n         }\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testLastModifiedAttribute"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testLastModifiedAttribute\n  ---\n  message: 'Failed asserting that false is an instance of class \"DateTime\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterEntity.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterEntity",
+            "method": "__construct",
+            "line": 18,
+            "diff": "--- Original\n+++ New\n@@ @@\n         if (array_key_exists('lastModified', $this->attributes) === true) {\n-            $this->attributes['lastModified'] = $this->attributes['lastModified'] \/ 1000;\n+            $this->attributes['lastModified'] = $this->attributes['lastModified'] \/ 1001;\n             $this->attributes['lastModified'] = \\DateTime::createFromFormat('U', $this->attributes['lastModified']);\n         }\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testLastModifiedAttribute"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testIdAttribute\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\Characters\\CharacterEntityTest::testLastModifiedAttribute\n  ---\n  message: 'Failed asserting that false is an instance of class \"DateTime\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest",
+            "method": "achievement",
+            "line": 16,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new AchievementEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievementInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Characters\\AchievementEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest",
+            "method": "achievement",
+            "line": 20,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new AchievementEntity($data);\n+        new AchievementEntity($data); return null;\n     }\n \n     public function achievements()\n     {\n         $data         = $this->client->get('data\/character\/achievements');\n         $achievements = [];",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Characters\\AchievementEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest",
+            "method": "find",
+            "line": 49,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if ($this->realm === null) {\n+        if ($this->realm !== null) {\n             throw new \\RuntimeException('You must set a realm name with on() before calling find()');\n         }\n \n         $data = $this->client->get('character\/'.$this->realm.'\/'.$name, [\n             'query' => [\n                 'fields' => implode(',', $fields),",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithoutOn",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithFields",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievementInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievements\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testClasses\nnot ok 5 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithoutOn\n  ---\n  message: 'Failed asserting that exception of type \"RuntimeException\" is thrown.'\n  severity: fail\n  ...\n1..5\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest",
+            "method": "find",
+            "line": 59,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null || count($data) === 0) {\n+        if ($data !== null || count($data) === 0) {\n             return null;\n         }\n \n         return new CharacterEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithFields",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievementInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievements\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testClasses\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithoutOn\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testOn\nnot ok 7 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterEntity\".'\n  severity: fail\n  ...\n1..7\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest",
+            "method": "find",
+            "line": 59,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null || count($data) === 0) {\n+        if ($data === null || count($data) !== 0) {\n             return null;\n         }\n \n         return new CharacterEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithFields",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievementInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievements\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testClasses\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithoutOn\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testOn\nnot ok 7 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterEntity\".'\n  severity: fail\n  ...\n1..7\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest",
+            "method": "find",
+            "line": 63,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new CharacterEntity($data);\n+        new CharacterEntity($data); return null;\n     }\n \n     public function on($realm)\n     {\n         $this->realm = Utils::realmNameToSlug($realm);\n         return $this;",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithFields"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievementInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievements\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testClasses\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithoutOn\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testOn\nnot ok 7 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterEntity\".'\n  severity: fail\n  ...\n1..7\n"
+        },
+        {
+            "file": "src\\Warcraft\\Characters\\CharacterRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\This",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest",
+            "method": "on",
+            "line": 69,
+            "diff": "--- Original\n+++ New\n@@ @@\n         $this->realm = Utils::realmNameToSlug($realm);\n-        return $this;\n+        return null;\n     }\n \n     public function races()\n     {\n         $data  = $this->client->get('data\/character\/races');\n         $races = [];",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testOn",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithFields",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievement\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievementInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testAchievements\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testClasses\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testFindWithoutOn\nnot ok 6 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\CharacterRequestTest::testOn\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest\".'\n  severity: fail\n  ...\n1..6\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "auctions",
+            "line": 22,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new AuctionRequest($this);\n+        new AuctionRequest($this); return null;\n     }\n \n     public function battlePets()\n     {\n         return new BattlePetRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Auctions\\AuctionRequest\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "battlePets",
+            "line": 27,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new BattlePetRequest($this);\n+        new BattlePetRequest($this); return null;\n     }\n \n     public function characters()\n     {\n         return new CharacterRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\BattlePets\\BattlePetRequest\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "characters",
+            "line": 32,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new CharacterRequest($this);\n+        new CharacterRequest($this); return null;\n     }\n \n     public function guilds()\n     {\n         return new GuildRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testCharacters"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets\nnot ok 3 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testCharacters\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Characters\\CharacterRequest\".'\n  severity: fail\n  ...\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "guilds",
+            "line": 37,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new GuildRequest($this);\n+        new GuildRequest($this); return null;\n     }\n \n     public function items()\n     {\n         return new ItemRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testGuilds"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testCharacters\nnot ok 4 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testGuilds\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildRequest\".'\n  severity: fail\n  ...\n1..4\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "items",
+            "line": 42,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new ItemRequest($this);\n+        new ItemRequest($this); return null;\n     }\n \n     public function leaderboards()\n     {\n         return new LeaderboardRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testItems"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testCharacters\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testGuilds\nnot ok 5 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testItems\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Items\\ItemRequest\".'\n  severity: fail\n  ...\n1..5\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "leaderboards",
+            "line": 47,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new LeaderboardRequest($this);\n+        new LeaderboardRequest($this); return null;\n     }\n \n     public function quests()\n     {\n         return new QuestRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testLeaderboards"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testCharacters\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testGuilds\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testItems\nnot ok 6 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testLeaderboards\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Leaderboards\\LeaderboardRequest\".'\n  severity: fail\n  ...\n1..6\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "quests",
+            "line": 52,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new QuestRequest($this);\n+        new QuestRequest($this); return null;\n     }\n \n     public function realms()\n     {\n         return new RealmRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testQuests"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testCharacters\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testGuilds\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testItems\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testLeaderboards\nnot ok 7 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testQuests\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Quests\\QuestRequest\".'\n  severity: fail\n  ...\n1..7\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "realms",
+            "line": 57,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new RealmRequest($this);\n+        new RealmRequest($this); return null;\n     }\n \n     public function recipes()\n     {\n         return new RecipeRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testRealms"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testCharacters\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testGuilds\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testItems\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testLeaderboards\nok 7 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testQuests\nnot ok 8 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testRealms\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest\".'\n  severity: fail\n  ...\n1..8\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "recipes",
+            "line": 62,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new RecipeRequest($this);\n+        new RecipeRequest($this); return null;\n     }\n \n     public function spells()\n     {\n         return new SpellRequest($this);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testRecipes"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testCharacters\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testGuilds\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testItems\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testLeaderboards\nok 7 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testQuests\nok 8 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testRealms\nnot ok 9 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testRecipes\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Recipes\\RecipeRequest\".'\n  severity: fail\n  ...\n1..9\n"
+        },
+        {
+            "file": "src\\Warcraft\\Client.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Client",
+            "method": "spells",
+            "line": 67,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new SpellRequest($this);\n+        new SpellRequest($this); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testSpells"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testAuctions\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testBattlePets\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testCharacters\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testGuilds\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testItems\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testLeaderboards\nok 7 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testQuests\nok 8 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testRealms\nok 9 - Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testRecipes\nnot ok 10 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ClientTest::testSpells\n  ---\n  message: 'Failed asserting that null is an instance of class \"Pwnraid\\Bnet\\Warcraft\\Spells\\SpellRequest\".'\n  severity: fail\n  ...\n1..10\n"
+        },
+        {
+            "file": "src\\Warcraft\\Guilds\\GuildRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildRequest",
+            "method": "achievements",
+            "line": 15,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new AchievementEntity($data);\n+        new AchievementEntity($data); return null;\n     }\n \n     public function find($name, array $fields = [])\n     {\n         if ($this->realm === null) {\n             throw new \\RuntimeException('You must set a realm name with on() before calling find()');",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testAchievements"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testAchievements\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Guilds\\AchievementEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Guilds\\GuildRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildRequest",
+            "method": "find",
+            "line": 20,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if ($this->realm === null) {\n+        if ($this->realm !== null) {\n             throw new \\RuntimeException('You must set a realm name with on() before calling find()');\n         }\n \n         $data = $this->client->get('guild\/'.$this->realm.'\/'.$name, ['query' => ['fields' => implode(',', $fields)]]);\n \n         if ($data === null) {",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithoutOn",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithFields",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testAchievements\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithoutOn\n  ---\n  message: 'Failed asserting that exception of type \"RuntimeException\" is thrown.'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Guilds\\GuildRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildRequest",
+            "method": "find",
+            "line": 26,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new GuildEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithFields",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testAchievements\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithoutOn\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testOn\nnot ok 4 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildEntity\".'\n  severity: fail\n  ...\n1..4\n"
+        },
+        {
+            "file": "src\\Warcraft\\Guilds\\GuildRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildRequest",
+            "method": "find",
+            "line": 30,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new GuildEntity($data);\n+        new GuildEntity($data); return null;\n     }\n \n     public function on($realm)\n     {\n         $this->realm = Utils::realmNameToSlug($realm);\n         return $this;",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithFields"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testAchievements\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithoutOn\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testOn\nnot ok 4 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildEntity\".'\n  severity: fail\n  ...\n1..4\n"
+        },
+        {
+            "file": "src\\Warcraft\\Guilds\\GuildRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\This",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildRequest",
+            "method": "on",
+            "line": 36,
+            "diff": "--- Original\n+++ New\n@@ @@\n         $this->realm = Utils::realmNameToSlug($realm);\n-        return $this;\n+        return null;\n     }\n \n     public function perks()\n     {\n         $data = $this->client->get('data\/guild\/perks');\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testOn",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithFields",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testAchievements\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithoutOn\nnot ok 3 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testOn\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildRequest\".'\n  severity: fail\n  ...\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\Guilds\\GuildRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildRequest",
+            "method": "perks",
+            "line": 43,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new PerkEntity($data);\n+        new PerkEntity($data); return null;\n     }\n \n     public function rewards()\n     {\n         $data = $this->client->get('data\/guild\/rewards');\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testPerks"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testAchievements\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithoutOn\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testOn\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFind\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithFields\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindInvalid\nnot ok 7 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testPerks\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Guilds\\PerkEntity\".'\n  severity: fail\n  ...\n1..7\n"
+        },
+        {
+            "file": "src\\Warcraft\\Guilds\\GuildRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Guilds\\GuildRequest",
+            "method": "rewards",
+            "line": 50,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new RewardEntity($data);\n+        new RewardEntity($data); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testRewards"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testAchievements\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithoutOn\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testOn\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFind\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindWithFields\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testFindInvalid\nok 7 - Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testPerks\nnot ok 8 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\GuildRequestTest::testRewards\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Guilds\\RewardEntity\".'\n  severity: fail\n  ...\n1..8\n"
+        },
+        {
+            "file": "src\\Warcraft\\Items\\ItemRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemRequest",
+            "method": "classes",
+            "line": 14,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new ClassEntity($data);\n+        new ClassEntity($data); return null;\n     }\n \n     public function find($itemId, $bonusList = [])\n     {\n         $data = $this->client->get(rtrim('item\/'.$itemId.'\/'.$this->context, '\/'), [\n             'query' => [",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testClasses"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testClasses\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Items\\ClassEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Items\\ItemRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemRequest",
+            "method": "find",
+            "line": 25,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         $this->context = '';\n \n         return new ItemEntity($data);",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindInvalidId",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItem",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithContext",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithBonusListWithContext"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testClasses\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemEntity\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Items\\ItemRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemRequest",
+            "method": "find",
+            "line": 31,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new ItemEntity($data);\n+        new ItemEntity($data); return null;\n     }\n \n     public function findSet($setId)\n     {\n         $data = $this->client->get('item\/set\/'.$setId);\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItem",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithContext",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithBonusListWithContext"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testClasses\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemEntity\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Items\\ItemRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemRequest",
+            "method": "findSet",
+            "line": 38,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new ItemSetEntity($data);\n     }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindSet",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindInvalidIdSet"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testClasses\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFind\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindInvalidId\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItem\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithContext\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithBonusListWithContext\nnot ok 7 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindSet\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemSetEntity\".'\n  severity: fail\n  ...\n1..7\n"
+        },
+        {
+            "file": "src\\Warcraft\\Items\\ItemRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemRequest",
+            "method": "findSet",
+            "line": 42,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new ItemSetEntity($data);\n+        new ItemSetEntity($data); return null;\n     }\n \n     public function withContext($context)\n     {\n         $this->context = $context;\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindSet"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testClasses\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFind\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindInvalidId\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItem\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithContext\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindOnContextItemWithBonusListWithContext\nnot ok 7 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\ItemRequestTest::testFindSet\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Items\\ItemSetEntity\".'\n  severity: fail\n  ...\n1..7\n"
+        },
+        {
+            "file": "src\\Warcraft\\Leaderboards\\LeaderboardRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\LeaderboardRequest",
+            "method": "challengeMode",
+            "line": 14,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-            if ($data === null) {\n+            if ($data !== null) {\n                 return null;\n             }\n \n             return new ChallengeModeEntity($data);\n         }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\ChallengeModeEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Leaderboards\\LeaderboardRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\LeaderboardRequest",
+            "method": "challengeMode",
+            "line": 18,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-            return new ChallengeModeEntity($data);\n+            new ChallengeModeEntity($data); return null;\n         }\n \n         $data = $this->client->get('challenge\/region');\n \n         return new ChallengeModeEntity($data);\n     }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\ChallengeModeEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Leaderboards\\LeaderboardRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\LeaderboardRequest",
+            "method": "challengeMode",
+            "line": 23,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new ChallengeModeEntity($data);\n+        new ChallengeModeEntity($data); return null;\n     }\n \n     public function pvp($bracket)\n     {\n         if (in_array($bracket, ['2v2', '3v3', '5v5', 'rbg']) === false) {\n             throw new \\RuntimeException('Invalid bracket type');",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeRegion"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeInvalid\nnot ok 3 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeRegion\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\ChallengeModeEntity\".'\n  severity: fail\n  ...\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\Leaderboards\\LeaderboardRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\LeaderboardRequest",
+            "method": "pvp",
+            "line": 28,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (in_array($bracket, ['2v2', '3v3', '5v5', 'rbg']) === false) {\n+        if (in_array($bracket, ['2v2', '3v3', '5v5', 'rbg']) !== false) {\n             throw new \\RuntimeException('Invalid bracket type');\n         }\n \n         $data = $this->client->get('leaderboard\/'.$bracket);\n \n         return new BracketEntity($data);",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testPvp",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testPvpInvalidBracket"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeRegion\nnot ok 4 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testPvp\n1..4\n"
+        },
+        {
+            "file": "src\\Warcraft\\Leaderboards\\LeaderboardRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\FalseValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\LeaderboardRequest",
+            "method": "pvp",
+            "line": 28,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (in_array($bracket, ['2v2', '3v3', '5v5', 'rbg']) === false) {\n+        if (in_array($bracket, ['2v2', '3v3', '5v5', 'rbg']) === true) {\n             throw new \\RuntimeException('Invalid bracket type');\n         }\n \n         $data = $this->client->get('leaderboard\/'.$bracket);\n \n         return new BracketEntity($data);",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testPvp",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testPvpInvalidBracket"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeRegion\nnot ok 4 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testPvp\n1..4\n"
+        },
+        {
+            "file": "src\\Warcraft\\Leaderboards\\LeaderboardRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\LeaderboardRequest",
+            "method": "pvp",
+            "line": 34,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new BracketEntity($data);\n+        new BracketEntity($data); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testPvp"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeMode\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeInvalid\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testChallengeModeRegion\nnot ok 4 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\LeaderboardRequestTest::testPvp\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Leaderboards\\BracketEntity\".'\n  severity: fail\n  ...\n1..4\n"
+        },
+        {
+            "file": "src\\Warcraft\\Quests\\QuestRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Quests\\QuestRequest",
+            "method": "find",
+            "line": 12,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new QuestEntity($data);\n     }\n }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\QuestRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\QuestRequestTest::testFindInvalidId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\QuestRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Quests\\QuestEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Quests\\QuestRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Quests\\QuestRequest",
+            "method": "find",
+            "line": 16,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new QuestEntity($data);\n+        new QuestEntity($data); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\QuestRequestTest::testFind"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\QuestRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Quests\\QuestEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "battlegroups",
+            "line": 13,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new BattlegroupEntity($data); \/\/ @todo: Return array of objects.\n+        new BattlegroupEntity($data); return null; \/\/ @todo: Return array of objects.\n     }\n \n     \/**\n      * @return RealmEntity|array\n      *\/\n     public function find($realms)",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testBattlegroups"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid\nok 4 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle\nok 5 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple\nok 6 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid\nnot ok 7 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testBattlegroups\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Realms\\BattlegroupEntity\".'\n  severity: fail\n  ...\n1..7\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\FalseValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 21,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        $returnSingle = false;\n+        $returnSingle = true;\n \n         if (is_array($realms) === false) {\n             $realms       = [$realms];\n             $returnSingle = true;\n         }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\nok 3 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid\nnot ok 4 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle\n  ---\n  message: 'Failed asserting that Pwnraid\\Bnet\\Warcraft\\Realms\\RealmEntity Object &000000006205a6dc000000007d1d88ac ('\n  severity: fail\n  ...\n1..4\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 23,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if (is_array($realms) === false) {\n+        if (is_array($realms) !== false) {\n             $realms       = [$realms];\n             $returnSingle = true;\n         }\n \n         foreach ($realms as &$realm) {\n             $realm = Utils::realmNameToSlug($realm);",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\FalseValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 23,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if (is_array($realms) === false) {\n+        if (is_array($realms) === true) {\n             $realms       = [$realms];\n             $returnSingle = true;\n         }\n \n         foreach ($realms as &$realm) {\n             $realm = Utils::realmNameToSlug($realm);",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 25,
+            "diff": "--- Original\n+++ New\n@@ @@\n             $realms       = [$realms];\n-            $returnSingle = true;\n+            $returnSingle = false;\n         }\n \n         foreach ($realms as &$realm) {\n             $realm = Utils::realmNameToSlug($realm);\n         }\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n  ---\n  message: 'Failed asserting that Array (...) is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmEntity\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 35,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($returnSingle === true && $realmCount !== 1) {\n+        if ($returnSingle !== true && $realmCount !== 1) {\n             return null;\n         }\n \n         if ($realmCount !== count($realms)) {\n             throw new \\RuntimeException('Unable to fetch all requested realms');\n         }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\nnot ok 3 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 35,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($returnSingle === true && $realmCount !== 1) {\n+        if ($returnSingle === false && $realmCount !== 1) {\n             return null;\n         }\n \n         if ($realmCount !== count($realms)) {\n             throw new \\RuntimeException('Unable to fetch all requested realms');\n         }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nok 2 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\nnot ok 3 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid\n1..3\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\LogicalAnd",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 35,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($returnSingle === true && $realmCount !== 1) {\n+        if ($returnSingle === true || $realmCount !== 1) {\n             return null;\n         }\n \n         if ($realmCount !== count($realms)) {\n             throw new \\RuntimeException('Unable to fetch all requested realms');\n         }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmEntity\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\NotIdentical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 35,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($returnSingle === true && $realmCount !== 1) {\n+        if ($returnSingle === true && $realmCount === 1) {\n             return null;\n         }\n \n         if ($realmCount !== count($realms)) {\n             throw new \\RuntimeException('Unable to fetch all requested realms');\n         }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmEntity\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 35,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($returnSingle === true && $realmCount !== 1) {\n+        if ($returnSingle === true && $realmCount !== 0) {\n             return null;\n         }\n \n         if ($realmCount !== count($realms)) {\n             throw new \\RuntimeException('Unable to fetch all requested realms');\n         }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingleInvalid",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmEntity\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\NotIdentical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 39,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($realmCount !== count($realms)) {\n+        if ($realmCount === count($realms)) {\n             throw new \\RuntimeException('Unable to fetch all requested realms');\n         }\n \n         $realms = $this->createRealmEntities($data['realms']);\n \n         return ($returnSingle === true) ? $realms[0] : $realms;",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultipleInvalid"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\BracketedStatement",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 45,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return ($returnSingle === true) ? $realms[0] : $realms;\n+        ($returnSingle === true) ? $realms[0] : $realms; return null;\n     }\n \n     public function all()\n     {\n         $data = $this->client->get('realm\/status');\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmEntity\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 45,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return ($returnSingle === true) ? $realms[0] : $realms;\n+        return ($returnSingle !== true) ? $realms[0] : $realms;\n     }\n \n     public function all()\n     {\n         $data = $this->client->get('realm\/status');\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n  ---\n  message: 'Failed asserting that Array (...) is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmEntity\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 45,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return ($returnSingle === true) ? $realms[0] : $realms;\n+        return ($returnSingle === false) ? $realms[0] : $realms;\n     }\n \n     public function all()\n     {\n         $data = $this->client->get('realm\/status');\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n  ---\n  message: 'Failed asserting that Array (...) is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmEntity\".'\n  severity: fail\n  ...\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Realms\\RealmRequest.php",
+            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Realms\\RealmRequest",
+            "method": "find",
+            "line": 45,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return ($returnSingle === true) ? $realms[0] : $realms;\n+        return ($returnSingle === true) ? $realms[1] : $realms;\n     }\n \n     public function all()\n     {\n         $data = $this->client->get('realm\/status');\n ",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindNotSingle",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindMultiple"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nok 1 - Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testAll\nnot ok 2 - Error: Pwnraid\\Bnet\\Test\\Warcraft\\RealmRequestTest::testFindSingle\n1..2\n"
+        },
+        {
+            "file": "src\\Warcraft\\Recipes\\RecipeRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Recipes\\RecipeRequest",
+            "method": "find",
+            "line": 12,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new RecipeEntity($data);\n     }\n }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RecipeRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RecipeRequestTest::testFindInvalidId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RecipeRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Recipes\\RecipeEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Recipes\\RecipeRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Recipes\\RecipeRequest",
+            "method": "find",
+            "line": 16,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new RecipeEntity($data);\n+        new RecipeEntity($data); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\RecipeRequestTest::testFind"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\RecipeRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Recipes\\RecipeEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Spells\\SpellRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Spells\\SpellRequest",
+            "method": "find",
+            "line": 12,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ($data === null) {\n+        if ($data !== null) {\n             return null;\n         }\n \n         return new SpellEntity($data);\n     }\n }",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\SpellRequestTest::testFind",
+                "Pwnraid\\Bnet\\Test\\Warcraft\\SpellRequestTest::testFindInvalidId"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\SpellRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Spells\\SpellEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        },
+        {
+            "file": "src\\Warcraft\\Spells\\SpellRequest.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
+            "class": "\\Pwnraid\\Bnet\\Warcraft\\Spells\\SpellRequest",
+            "method": "find",
+            "line": 16,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return new SpellEntity($data);\n+        new SpellEntity($data); return null;\n     }\n }\n \n",
+            "tests": [
+                "Pwnraid\\Bnet\\Test\\Warcraft\\SpellRequestTest::testFind"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13\nnot ok 1 - Failure: Pwnraid\\Bnet\\Test\\Warcraft\\SpellRequestTest::testFind\n  ---\n  message: 'Failed asserting that null is an instance of class \"\\Pwnraid\\Bnet\\Warcraft\\Spells\\SpellEntity\".'\n  severity: fail\n  ...\n1..1\n"
+        }
+    ]
+}

@@ -1,0 +1,119 @@
+Humbug running test suite to generate logs and code coverage data...
+Humbug has completed the initial test run successfully.
+Tests: 97 Line Coverage: 77.18%
+Humbug is analysing source files...
+Mutation Testing is commencing on 54 files...
+(.: killed, M: escaped, S: uncovered, E: fatal error, T: timed out)
+....SSSSSSSSSSS.....................................SS...... |   60 (26/54)
+....M.M........................ET........................... |  120 (53/54)
+
+120 mutations were generated:
+     103 mutants were killed
+      13 mutants were not covered by tests
+       2 covered mutants were not detected
+       1 fatal errors were encountered
+       1 time outs were encountered
+
+Metrics:
+    Mutation Score Indicator (MSI): 88%
+    Mutation Code Coverage: 89%
+    Covered Code MSI: 98%
+
+Remember that some mutants will inevitably be harmless (i.e. false positives).
+Time: 1.38 minutes Memory: 6.75MB
+Humbug results are being logged as JSON to: build/humbuglog.json
+Humbug results are being logged as TEXT to: build/humbuglog.txt
+------
+Escapes
+------
+
+
+1) \Humbug\Mutator\Boolean\LogicalOr
+Diff on \Pwnraid\Bnet\Warcraft\Characters\CharacterRequest::find() in C:\Users\jyggen\devbox\www2\bnet\src\Warcraft\Characters\CharacterRequest.php:
+--- Original
++++ New
+@@ @@
+ 
+-        if ($data === null || count($data) === 0) {
++        if ($data === null && count($data) === 0) {
+             return null;
+         }
+ 
+         return new CharacterEntity($data);
+     }
+ 
+
+
+2) \Humbug\Mutator\Number\IntegerValue
+Diff on \Pwnraid\Bnet\Warcraft\Characters\CharacterRequest::find() in C:\Users\jyggen\devbox\www2\bnet\src\Warcraft\Characters\CharacterRequest.php:
+--- Original
++++ New
+@@ @@
+ 
+-        if ($data === null || count($data) === 0) {
++        if ($data === null || count($data) === 1) {
+             return null;
+         }
+ 
+         return new CharacterEntity($data);
+     }
+ 
+
+
+------
+Timeouts
+------
+
+
+1) \Humbug\Mutator\ConditionalNegation\NotIdentical
+Diff on \Pwnraid\Bnet\Warcraft\Leaderboards\LeaderboardRequest::challengeMode() in C:\Users\jyggen\devbox\www2\bnet\src\Warcraft\Leaderboards\LeaderboardRequest.php:
+--- Original
++++ New
+@@ @@
+     {
+-        if ($realm !== null) {
++        if ($realm === null) {
+             $data = $this->client->get('challenge/'.Utils::realmNameToSlug($realm));
+ 
+             if ($data === null) {
+                 return null;
+             }
+ 
+
+
+------
+Errors
+------
+
+
+1) \Humbug\Mutator\ReturnValue\This
+Diff on \Pwnraid\Bnet\Warcraft\Items\ItemRequest::withContext() in C:\Users\jyggen\devbox\www2\bnet\src\Warcraft\Items\ItemRequest.php:
+--- Original
++++ New
+@@ @@
+ 
+-        return $this;
++        return null;
+     }
+ }
+ 
+
+
+The following output was received on stderr:
+
+PHP Fatal error:  Call to a member function find() on null in C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php on line 76
+PHP Stack trace:
+PHP   1. {main}() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\phpunit:0
+PHP   2. PHPUnit_TextUI_Command::main() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\phpunit:36
+PHP   3. PHPUnit_TextUI_Command->run() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\TextUI\Command.php:99
+PHP   4. PHPUnit_TextUI_TestRunner->doRun() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\TextUI\Command.php:147
+PHP   5. PHPUnit_Framework_TestSuite->run() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\TextUI\TestRunner.php:428
+PHP   6. PHPUnit_Framework_TestSuite->run() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\Framework\TestSuite.php:738
+PHP   7. PHPUnit_Framework_TestCase->run() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\Framework\TestSuite.php:738
+PHP   8. PHPUnit_Framework_TestResult->run() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\Framework\TestCase.php:702
+PHP   9. PHPUnit_Framework_TestCase->runBare() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\Framework\TestResult.php:601
+PHP  10. PHPUnit_Framework_TestCase->runTest() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\Framework\TestCase.php:746
+PHP  11. ReflectionMethod->invokeArgs() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\Framework\TestCase.php:881
+PHP  12. Pwnraid\Bnet\Test\Warcraft\ItemRequestTest->testFindOnContextItemWithContext() C:\Users\jyggen\devbox\www2\bnet\vendor\phpunit\phpunit\src\Framework\TestCase.php:881
+
+

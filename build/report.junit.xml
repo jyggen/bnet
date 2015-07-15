@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Battle.net API Client" tests="97" assertions="569" failures="0" errors="0" time="5.680174">
+    <testsuite name="Pwnraid\Bnet\Test\ClientFactoryTest" file="C:\Users\jyggen\devbox\www2\bnet\test\ClientFactoryTest.php" tests="6" assertions="6" failures="0" errors="0" time="0.067866">
+      <testcase name="testGetCache" class="Pwnraid\Bnet\Test\ClientFactoryTest" file="C:\Users\jyggen\devbox\www2\bnet\test\ClientFactoryTest.php" line="11" assertions="1" time="0.018148"/>
+      <testcase name="testDefaultCache" class="Pwnraid\Bnet\Test\ClientFactoryTest" file="C:\Users\jyggen\devbox\www2\bnet\test\ClientFactoryTest.php" line="18" assertions="1" time="0.008352"/>
+      <testcase name="testSetCache" class="Pwnraid\Bnet\Test\ClientFactoryTest" file="C:\Users\jyggen\devbox\www2\bnet\test\ClientFactoryTest.php" line="24" assertions="1" time="0.007780"/>
+      <testcase name="testDiablo" class="Pwnraid\Bnet\Test\ClientFactoryTest" file="C:\Users\jyggen\devbox\www2\bnet\test\ClientFactoryTest.php" line="32" assertions="1" time="0.012899"/>
+      <testcase name="testStarcraft" class="Pwnraid\Bnet\Test\ClientFactoryTest" file="C:\Users\jyggen\devbox\www2\bnet\test\ClientFactoryTest.php" line="39" assertions="1" time="0.010701"/>
+      <testcase name="testWarcraft" class="Pwnraid\Bnet\Test\ClientFactoryTest" file="C:\Users\jyggen\devbox\www2\bnet\test\ClientFactoryTest.php" line="46" assertions="1" time="0.009986"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Core\AbstractEntityTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Core\AbstractEntityTest.php" tests="1" assertions="12" failures="0" errors="0" time="0.156392">
+      <testcase name="testAbstractEntity" class="Pwnraid\Bnet\Test\Core\AbstractEntityTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Core\AbstractEntityTest.php" line="9" assertions="12" time="0.156392"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Core\AbstractRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Core\AbstractRequestTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.135540">
+      <testcase name="testAbstractRequest" class="Pwnraid\Bnet\Test\Core\AbstractRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Core\AbstractRequestTest.php" line="9" assertions="1" time="0.135540"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Diablo\Artisans\ArtisanRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\Artisans\ArtisanRequestTest.php" tests="2" assertions="3" failures="0" errors="0" time="0.235430">
+      <testcase name="testFind" class="Pwnraid\Bnet\Test\Diablo\Artisans\ArtisanRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\Artisans\ArtisanRequestTest.php" line="9" assertions="2" time="0.185586"/>
+      <testcase name="testFindInvalidId" class="Pwnraid\Bnet\Test\Diablo\Artisans\ArtisanRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\Artisans\ArtisanRequestTest.php" line="18" assertions="1" time="0.049844"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Diablo\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\ClientTest.php" tests="3" assertions="3" failures="0" errors="0" time="0.175278">
+      <testcase name="testArtisans" class="Pwnraid\Bnet\Test\Diablo\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\ClientTest.php" line="8" assertions="1" time="0.138483"/>
+      <testcase name="testFollowers" class="Pwnraid\Bnet\Test\Diablo\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\ClientTest.php" line="14" assertions="1" time="0.018509"/>
+      <testcase name="testItems" class="Pwnraid\Bnet\Test\Diablo\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\ClientTest.php" line="20" assertions="1" time="0.018286"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Diablo\Followers\FollowerRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\Followers\FollowerRequestTest.php" tests="2" assertions="3" failures="0" errors="0" time="0.088430">
+      <testcase name="testFind" class="Pwnraid\Bnet\Test\Diablo\Followers\FollowerRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\Followers\FollowerRequestTest.php" line="9" assertions="2" time="0.048366"/>
+      <testcase name="testFindInvalidId" class="Pwnraid\Bnet\Test\Diablo\Followers\FollowerRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\Followers\FollowerRequestTest.php" line="18" assertions="1" time="0.040064"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Diablo\Items\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\Items\ItemRequesTest.php" tests="2" assertions="3" failures="0" errors="0" time="0.079948">
+      <testcase name="testFind" class="Pwnraid\Bnet\Test\Diablo\Items\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\Items\ItemRequesTest.php" line="9" assertions="2" time="0.041512"/>
+      <testcase name="testFindInvalidId" class="Pwnraid\Bnet\Test\Diablo\Items\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Diablo\Items\ItemRequesTest.php" line="18" assertions="1" time="0.038436"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\OAuthTest" file="C:\Users\jyggen\devbox\www2\bnet\test\OAuthTest.php" tests="3" assertions="3" failures="0" errors="0" time="0.101489">
+      <testcase name="testGetBaseAuthorizationUrl" class="Pwnraid\Bnet\Test\OAuthTest" file="C:\Users\jyggen\devbox\www2\bnet\test\OAuthTest.php" line="10" assertions="1" time="0.059018"/>
+      <testcase name="testGetBaseAccessTokenUrl" class="Pwnraid\Bnet\Test\OAuthTest" file="C:\Users\jyggen\devbox\www2\bnet\test\OAuthTest.php" line="16" assertions="1" time="0.020322"/>
+      <testcase name="testGetUserDetailsUrl" class="Pwnraid\Bnet\Test\OAuthTest" file="C:\Users\jyggen\devbox\www2\bnet\test\OAuthTest.php" line="22" assertions="1" time="0.022149"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\RegionTest" file="C:\Users\jyggen\devbox\www2\bnet\test\RegionTest.php" tests="4" assertions="10" failures="0" errors="0" time="0.040000">
+      <testcase name="testRegion" class="Pwnraid\Bnet\Test\RegionTest" file="C:\Users\jyggen\devbox\www2\bnet\test\RegionTest.php" line="8" assertions="3" time="0.009468"/>
+      <testcase name="testDefaultLocale" class="Pwnraid\Bnet\Test\RegionTest" file="C:\Users\jyggen\devbox\www2\bnet\test\RegionTest.php" line="16" assertions="3" time="0.010393"/>
+      <testcase name="testInvalidRegion" class="Pwnraid\Bnet\Test\RegionTest" file="C:\Users\jyggen\devbox\www2\bnet\test\RegionTest.php" line="28" assertions="2" time="0.010462"/>
+      <testcase name="testInvalidLocale" class="Pwnraid\Bnet\Test\RegionTest" file="C:\Users\jyggen\devbox\www2\bnet\test\RegionTest.php" line="37" assertions="2" time="0.009677"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\UtilsTest" file="C:\Users\jyggen\devbox\www2\bnet\test\UtilsTest.php" tests="3" assertions="402" failures="0" errors="0" time="0.705163">
+      <testcase name="testRealmNameToSlug" class="Pwnraid\Bnet\Test\UtilsTest" file="C:\Users\jyggen\devbox\www2\bnet\test\UtilsTest.php" line="8" assertions="399" time="0.687658"/>
+      <testcase name="testThumbnailToId" class="Pwnraid\Bnet\Test\UtilsTest" file="C:\Users\jyggen\devbox\www2\bnet\test\UtilsTest.php" line="411" assertions="1" time="0.007763"/>
+      <testcase name="testThumbnailToIdWithInvalidUrl" class="Pwnraid\Bnet\Test\UtilsTest" file="C:\Users\jyggen\devbox\www2\bnet\test\UtilsTest.php" line="420" assertions="2" time="0.009742"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\AuctionRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Auctions\AuctionRequestTest.php" tests="4" assertions="6" failures="0" errors="0" time="0.177878">
+      <testcase name="testDownload" class="Pwnraid\Bnet\Test\Warcraft\AuctionRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Auctions\AuctionRequestTest.php" line="10" assertions="2" time="0.047323"/>
+      <testcase name="testDownloadInvalidUrl" class="Pwnraid\Bnet\Test\Warcraft\AuctionRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Auctions\AuctionRequestTest.php" line="19" assertions="1" time="0.045451"/>
+      <testcase name="testIndex" class="Pwnraid\Bnet\Test\Warcraft\AuctionRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Auctions\AuctionRequestTest.php" line="27" assertions="2" time="0.045477"/>
+      <testcase name="testIndexInvalidRealm" class="Pwnraid\Bnet\Test\Warcraft\AuctionRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Auctions\AuctionRequestTest.php" line="36" assertions="1" time="0.039627"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\BattlePetRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\BattlePets\BattlePetRequestTest.php" tests="8" assertions="18" failures="0" errors="0" time="0.360065">
+      <testcase name="testAbility" class="Pwnraid\Bnet\Test\Warcraft\BattlePetRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\BattlePets\BattlePetRequestTest.php" line="9" assertions="2" time="0.045058"/>
+      <testcase name="testAbilityInvalidId" class="Pwnraid\Bnet\Test\Warcraft\BattlePetRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\BattlePets\BattlePetRequestTest.php" line="18" assertions="1" time="0.040979"/>
+      <testcase name="testSpecies" class="Pwnraid\Bnet\Test\Warcraft\BattlePetRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\BattlePets\BattlePetRequestTest.php" line="26" assertions="2" time="0.043219"/>
+      <testcase name="testSpeciesInvalidId" class="Pwnraid\Bnet\Test\Warcraft\BattlePetRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\BattlePets\BattlePetRequestTest.php" line="35" assertions="1" time="0.039321"/>
+      <testcase name="testStats" class="Pwnraid\Bnet\Test\Warcraft\BattlePetRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\BattlePets\BattlePetRequestTest.php" line="43" assertions="5" time="0.050492"/>
+      <testcase name="testStatsInvalidId" class="Pwnraid\Bnet\Test\Warcraft\BattlePetRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\BattlePets\BattlePetRequestTest.php" line="55" assertions="1" time="0.040188"/>
+      <testcase name="testStatsNotDefault" class="Pwnraid\Bnet\Test\Warcraft\BattlePetRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\BattlePets\BattlePetRequestTest.php" line="63" assertions="5" time="0.055003"/>
+      <testcase name="testType" class="Pwnraid\Bnet\Test\Warcraft\BattlePetRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\BattlePets\BattlePetRequestTest.php" line="75" assertions="1" time="0.045805"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\Characters\CharacterEntityTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterEntityTest.php" tests="2" assertions="3" failures="0" errors="0" time="0.019259">
+      <testcase name="testIdAttribute" class="Pwnraid\Bnet\Test\Warcraft\Characters\CharacterEntityTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterEntityTest.php" line="24" assertions="1" time="0.009789"/>
+      <testcase name="testLastModifiedAttribute" class="Pwnraid\Bnet\Test\Warcraft\Characters\CharacterEntityTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterEntityTest.php" line="33" assertions="2" time="0.009470"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" tests="12" assertions="19" failures="0" errors="0" time="1.233210">
+      <testcase name="testAchievement" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="10" assertions="2" time="0.055292"/>
+      <testcase name="testAchievementInvalid" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="19" assertions="1" time="0.041697"/>
+      <testcase name="testAchievements" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="27" assertions="1" time="0.693416"/>
+      <testcase name="testClasses" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="35" assertions="1" time="0.042394"/>
+      <testcase name="testFindWithoutOn" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="47" assertions="2" time="0.013758"/>
+      <testcase name="testOn" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="53" assertions="1" time="0.011687"/>
+      <testcase name="testFind" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="60" assertions="2" time="0.042180"/>
+      <testcase name="testFindWithFields" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="72" assertions="4" time="0.046074"/>
+      <testcase name="testFindInvalid" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="86" assertions="1" time="0.039579"/>
+      <testcase name="testRaces" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="97" assertions="1" time="0.044391"/>
+      <testcase name="testTalents" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="105" assertions="1" time="0.145845"/>
+      <testcase name="testUser" class="Pwnraid\Bnet\Test\Warcraft\CharacterRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Characters\CharacterRequestTest.php" line="113" assertions="2" time="0.056897"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" tests="10" assertions="10" failures="0" errors="0" time="0.333833">
+      <testcase name="testAuctions" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="16" assertions="1" time="0.167804"/>
+      <testcase name="testBattlePets" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="27" assertions="1" time="0.016165"/>
+      <testcase name="testCharacters" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="38" assertions="1" time="0.016271"/>
+      <testcase name="testGuilds" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="49" assertions="1" time="0.019233"/>
+      <testcase name="testItems" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="60" assertions="1" time="0.018839"/>
+      <testcase name="testLeaderboards" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="71" assertions="1" time="0.019525"/>
+      <testcase name="testQuests" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="82" assertions="1" time="0.019333"/>
+      <testcase name="testRealms" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="93" assertions="1" time="0.018857"/>
+      <testcase name="testRecipes" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="104" assertions="1" time="0.019515"/>
+      <testcase name="testSpells" class="Pwnraid\Bnet\Test\Warcraft\ClientTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\ClientTest.php" line="115" assertions="1" time="0.018291"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\GuildRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Guilds\GuildRequestTest.php" tests="8" assertions="15" failures="0" errors="0" time="0.283943">
+      <testcase name="testAchievements" class="Pwnraid\Bnet\Test\Warcraft\GuildRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Guilds\GuildRequestTest.php" line="9" assertions="2" time="0.046208"/>
+      <testcase name="testFindWithoutOn" class="Pwnraid\Bnet\Test\Warcraft\GuildRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Guilds\GuildRequestTest.php" line="22" assertions="2" time="0.013224"/>
+      <testcase name="testOn" class="Pwnraid\Bnet\Test\Warcraft\GuildRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Guilds\GuildRequestTest.php" line="28" assertions="1" time="0.011260"/>
+      <testcase name="testFind" class="Pwnraid\Bnet\Test\Warcraft\GuildRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Guilds\GuildRequestTest.php" line="35" assertions="2" time="0.042516"/>
+      <testcase name="testFindWithFields" class="Pwnraid\Bnet\Test\Warcraft\GuildRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Guilds\GuildRequestTest.php" line="47" assertions="3" time="0.043849"/>
+      <testcase name="testFindInvalid" class="Pwnraid\Bnet\Test\Warcraft\GuildRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Guilds\GuildRequestTest.php" line="60" assertions="1" time="0.039818"/>
+      <testcase name="testPerks" class="Pwnraid\Bnet\Test\Warcraft\GuildRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Guilds\GuildRequestTest.php" line="71" assertions="2" time="0.042361"/>
+      <testcase name="testRewards" class="Pwnraid\Bnet\Test\Warcraft\GuildRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Guilds\GuildRequestTest.php" line="80" assertions="2" time="0.044707"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php" tests="8" assertions="21" failures="0" errors="0" time="0.332406">
+      <testcase name="testClasses" class="Pwnraid\Bnet\Test\Warcraft\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php" line="9" assertions="2" time="0.042532"/>
+      <testcase name="testFind" class="Pwnraid\Bnet\Test\Warcraft\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php" line="18" assertions="2" time="0.041950"/>
+      <testcase name="testFindInvalidId" class="Pwnraid\Bnet\Test\Warcraft\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php" line="27" assertions="1" time="0.038933"/>
+      <testcase name="testFindOnContextItem" class="Pwnraid\Bnet\Test\Warcraft\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php" line="35" assertions="3" time="0.041422"/>
+      <testcase name="testFindOnContextItemWithContext" class="Pwnraid\Bnet\Test\Warcraft\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php" line="45" assertions="4" time="0.042861"/>
+      <testcase name="testFindOnContextItemWithBonusListWithContext" class="Pwnraid\Bnet\Test\Warcraft\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php" line="56" assertions="6" time="0.044912"/>
+      <testcase name="testFindSet" class="Pwnraid\Bnet\Test\Warcraft\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php" line="69" assertions="2" time="0.041453"/>
+      <testcase name="testFindInvalidIdSet" class="Pwnraid\Bnet\Test\Warcraft\ItemRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Items\ItemRequestTest.php" line="78" assertions="1" time="0.038343"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\LeaderboardRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Leaderboards\LeaderboardRequestTest.php" tests="5" assertions="6" failures="0" errors="0" time="0.517440">
+      <testcase name="testChallengeMode" class="Pwnraid\Bnet\Test\Warcraft\LeaderboardRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Leaderboards\LeaderboardRequestTest.php" line="9" assertions="1" time="0.199933"/>
+      <testcase name="testChallengeModeInvalid" class="Pwnraid\Bnet\Test\Warcraft\LeaderboardRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Leaderboards\LeaderboardRequestTest.php" line="17" assertions="1" time="0.039679"/>
+      <testcase name="testChallengeModeRegion" class="Pwnraid\Bnet\Test\Warcraft\LeaderboardRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Leaderboards\LeaderboardRequestTest.php" line="25" assertions="1" time="0.186183"/>
+      <testcase name="testPvp" class="Pwnraid\Bnet\Test\Warcraft\LeaderboardRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Leaderboards\LeaderboardRequestTest.php" line="33" assertions="1" time="0.078238"/>
+      <testcase name="testPvpInvalidBracket" class="Pwnraid\Bnet\Test\Warcraft\LeaderboardRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Leaderboards\LeaderboardRequestTest.php" line="45" assertions="2" time="0.013407"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\QuestRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Quests\QuestRequestTest.php" tests="2" assertions="3" failures="0" errors="0" time="0.079612">
+      <testcase name="testFind" class="Pwnraid\Bnet\Test\Warcraft\QuestRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Quests\QuestRequestTest.php" line="9" assertions="2" time="0.041331"/>
+      <testcase name="testFindInvalidId" class="Pwnraid\Bnet\Test\Warcraft\QuestRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Quests\QuestRequestTest.php" line="18" assertions="1" time="0.038281"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\RealmRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Realms\RealmRequestTest.php" tests="7" assertions="16" failures="0" errors="0" time="0.386268">
+      <testcase name="testAll" class="Pwnraid\Bnet\Test\Warcraft\RealmRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Realms\RealmRequestTest.php" line="9" assertions="2" time="0.086762"/>
+      <testcase name="testFindSingle" class="Pwnraid\Bnet\Test\Warcraft\RealmRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Realms\RealmRequestTest.php" line="18" assertions="2" time="0.043380"/>
+      <testcase name="testFindSingleInvalid" class="Pwnraid\Bnet\Test\Warcraft\RealmRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Realms\RealmRequestTest.php" line="27" assertions="1" time="0.050553"/>
+      <testcase name="testFindNotSingle" class="Pwnraid\Bnet\Test\Warcraft\RealmRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Realms\RealmRequestTest.php" line="35" assertions="4" time="0.059539"/>
+      <testcase name="testFindMultiple" class="Pwnraid\Bnet\Test\Warcraft\RealmRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Realms\RealmRequestTest.php" line="46" assertions="3" time="0.047162"/>
+      <testcase name="testFindMultipleInvalid" class="Pwnraid\Bnet\Test\Warcraft\RealmRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Realms\RealmRequestTest.php" line="60" assertions="2" time="0.054394"/>
+      <testcase name="testBattlegroups" class="Pwnraid\Bnet\Test\Warcraft\RealmRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Realms\RealmRequestTest.php" line="66" assertions="2" time="0.044478"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\RecipeRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Recipes\RecipeRequestTest.php" tests="2" assertions="3" failures="0" errors="0" time="0.089157">
+      <testcase name="testFind" class="Pwnraid\Bnet\Test\Warcraft\RecipeRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Recipes\RecipeRequestTest.php" line="9" assertions="2" time="0.049043"/>
+      <testcase name="testFindInvalidId" class="Pwnraid\Bnet\Test\Warcraft\RecipeRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Recipes\RecipeRequestTest.php" line="18" assertions="1" time="0.040114"/>
+    </testsuite>
+    <testsuite name="Pwnraid\Bnet\Test\Warcraft\SpellRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Spells\SpellRequestTest.php" tests="2" assertions="3" failures="0" errors="0" time="0.081566">
+      <testcase name="testFind" class="Pwnraid\Bnet\Test\Warcraft\SpellRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Spells\SpellRequestTest.php" line="9" assertions="2" time="0.043398"/>
+      <testcase name="testFindInvalidId" class="Pwnraid\Bnet\Test\Warcraft\SpellRequestTest" file="C:\Users\jyggen\devbox\www2\bnet\test\Warcraft\Spells\SpellRequestTest.php" line="18" assertions="1" time="0.038168"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

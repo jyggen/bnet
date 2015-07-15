@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1436921690">
+  <project timestamp="1436921690">
+    <package name="Pwnraid\Bnet">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/ClientFactory.php">
+        <class name="ClientFactory" namespace="Pwnraid\Bnet">
+          <metrics methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="18" coveredelements="18"/>
+        </class>
+        <line num="27" type="method" name="__construct" crap="2" count="6"/>
+        <line num="29" type="stmt" count="6"/>
+        <line num="31" type="stmt" count="6"/>
+        <line num="32" type="stmt" count="2"/>
+        <line num="33" type="stmt" count="2"/>
+        <line num="35" type="stmt" count="6"/>
+        <line num="36" type="stmt" count="6"/>
+        <line num="41" type="method" name="getCache" crap="1" count="3"/>
+        <line num="43" type="stmt" count="3"/>
+        <line num="51" type="method" name="setCache" crap="1" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="61" type="method" name="diablo" crap="1" count="1"/>
+        <line num="63" type="stmt" count="1"/>
+        <line num="71" type="method" name="starcraft" crap="1" count="1"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="81" type="method" name="warcraft" crap="1" count="1"/>
+        <line num="83" type="stmt" count="1"/>
+        <metrics loc="85" ncloc="52" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="18" coveredelements="18"/>
+      </file>
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/OAuth.php">
+        <class name="OAuth" namespace="Pwnraid\Bnet">
+          <metrics methods="8" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="6" elements="19" coveredelements="10"/>
+        </class>
+        <line num="12" type="method" name="__construct" crap="1" count="3"/>
+        <line num="14" type="stmt" count="3"/>
+        <line num="15" type="stmt" count="3"/>
+        <line num="16" type="stmt" count="3"/>
+        <line num="18" type="method" name="getBaseAuthorizationUrl" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="23" type="method" name="getBaseAccessTokenUrl" crap="1" count="1"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="28" type="method" name="getUserDetailsUrl" crap="1" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="41" type="method" name="getDefaultScopes" crap="2" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="50" type="method" name="getScopeSeparator" crap="2" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="63" type="method" name="checkResponse" crap="2" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="75" type="method" name="createUser" crap="2" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <metrics loc="81" ncloc="53" classes="1" methods="8" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="6" elements="19" coveredelements="10"/>
+      </file>
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Region.php">
+        <class name="Region" namespace="Pwnraid\Bnet">
+          <metrics methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="14" coveredelements="14"/>
+        </class>
+        <line num="91" type="method" name="__construct" crap="5" count="74"/>
+        <line num="93" type="stmt" count="74"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="97" type="stmt" count="73"/>
+        <line num="99" type="stmt" count="73"/>
+        <line num="100" type="stmt" count="1"/>
+        <line num="103" type="stmt" count="72"/>
+        <line num="104" type="stmt" count="72"/>
+        <line num="111" type="method" name="getApiHost" crap="1" count="62"/>
+        <line num="113" type="stmt" count="62"/>
+        <line num="119" type="method" name="getOAuthHost" crap="1" count="4"/>
+        <line num="121" type="stmt" count="4"/>
+        <line num="127" type="method" name="getLocale" crap="1" count="61"/>
+        <line num="129" type="stmt" count="61"/>
+        <metrics loc="131" ncloc="89" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="14" coveredelements="14"/>
+      </file>
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Utils.php">
+        <class name="Utils" namespace="Pwnraid\Bnet">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+        </class>
+        <line num="19" type="method" name="realmNameToSlug" crap="1" count="18"/>
+        <line num="21" type="stmt" count="18"/>
+        <line num="22" type="stmt" count="18"/>
+        <line num="23" type="stmt" count="18"/>
+        <line num="24" type="stmt" count="18"/>
+        <line num="25" type="stmt" count="18"/>
+        <line num="27" type="stmt" count="18"/>
+        <line num="35" type="method" name="thumbnailToId" crap="2" count="6"/>
+        <line num="37" type="stmt" count="6"/>
+        <line num="38" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="5"/>
+        <metrics loc="43" ncloc="30" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Core">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Core/AbstractClient.php">
+        <class name="AbstractClient" namespace="Pwnraid\Bnet\Core">
+          <metrics methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="61" coveredstatements="36" elements="70" coveredelements="39"/>
+        </class>
+        <line num="51" type="method" name="__construct" crap="1" count="67"/>
+        <line num="53" type="stmt" count="67"/>
+        <line num="54" type="stmt" count="67"/>
+        <line num="55" type="stmt" count="67"/>
+        <line num="56" type="stmt" count="67"/>
+        <line num="58" type="stmt" count="67"/>
+        <line num="59" type="stmt" count="67"/>
+        <line num="67" type="method" name="get" crap="2" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="78" type="method" name="getRawUrl" crap="2" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="86" type="method" name="getClient" crap="2" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="96" type="method" name="setClient" crap="2" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="107" type="method" name="getRequestKey" crap="1" count="59"/>
+        <line num="109" type="stmt" count="59"/>
+        <line num="110" type="stmt" count="59"/>
+        <line num="111" type="stmt" count="59"/>
+        <line num="112" type="stmt" count="59"/>
+        <line num="114" type="stmt" count="59"/>
+        <line num="120" type="method" name="getUserAgent" crap="2" count="59"/>
+        <line num="122" type="stmt" count="59"/>
+        <line num="124" type="stmt" count="59"/>
+        <line num="125" type="stmt" count="1"/>
+        <line num="126" type="stmt" count="1"/>
+        <line num="128" type="stmt" count="59"/>
+        <line num="140" type="method" name="handleSuccessfulResponse" crap="8.74" count="59"/>
+        <line num="142" type="stmt" count="59"/>
+        <line num="143" type="stmt" count="59"/>
+        <line num="144" type="stmt" count="59"/>
+        <line num="145" type="stmt" count="59"/>
+        <line num="146" type="stmt" count="0"/>
+        <line num="147" type="stmt" count="0"/>
+        <line num="148" type="stmt" count="0"/>
+        <line num="149" type="stmt" count="0"/>
+        <line num="150" type="stmt" count="0"/>
+        <line num="151" type="stmt" count="59"/>
+        <line num="152" type="stmt" count="0"/>
+        <line num="153" type="stmt" count="0"/>
+        <line num="154" type="stmt" count="0"/>
+        <line num="155" type="stmt" count="0"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="165" type="method" name="makeRequest" crap="6.60" count="59"/>
+        <line num="167" type="stmt" count="59"/>
+        <line num="168" type="stmt" count="0"/>
+        <line num="169" type="stmt" count="0"/>
+        <line num="171" type="stmt" count="59"/>
+        <line num="172" type="stmt" count="59"/>
+        <line num="174" type="stmt" count="59"/>
+        <line num="175" type="stmt" count="0"/>
+        <line num="177" type="stmt" count="0"/>
+        <line num="178" type="stmt" count="0"/>
+        <line num="179" type="stmt" count="0"/>
+        <line num="180" type="stmt" count="0"/>
+        <line num="182" type="stmt" count="59"/>
+        <line num="184" type="stmt" count="59"/>
+        <line num="185" type="stmt" count="59"/>
+        <line num="186" type="stmt" count="59"/>
+        <line num="188" type="stmt" count="59"/>
+        <line num="189" type="stmt" count="59"/>
+        <line num="190" type="stmt" count="59"/>
+        <line num="191" type="stmt" count="59"/>
+        <line num="194" type="stmt" count="59"/>
+        <line num="195" type="stmt" count="59"/>
+        <line num="196" type="stmt" count="0"/>
+        <line num="197" type="stmt" count="0"/>
+        <line num="200" type="stmt" count="0"/>
+        <line num="203" type="stmt" count="59"/>
+        <metrics loc="205" ncloc="138" classes="1" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="61" coveredstatements="36" elements="70" coveredelements="39"/>
+      </file>
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Core/AbstractEntity.php">
+        <class name="AbstractEntity" namespace="Pwnraid\Bnet\Core">
+          <metrics methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="28" coveredelements="28"/>
+        </class>
+        <line num="17" type="method" name="__construct" crap="1" count="44"/>
+        <line num="19" type="stmt" count="44"/>
+        <line num="20" type="stmt" count="44"/>
+        <line num="27" type="method" name="jsonSerialize" crap="1" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="39" type="method" name="__get" crap="2" count="34"/>
+        <line num="41" type="stmt" count="34"/>
+        <line num="42" type="stmt" count="34"/>
+        <line num="43" type="stmt" count="34"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="56" type="method" name="__set" crap="1" count="1"/>
+        <line num="58" type="stmt" count="1"/>
+        <line num="59" type="stmt" count="1"/>
+        <line num="68" type="method" name="offsetExists" crap="1" count="1"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="80" type="method" name="offsetGet" crap="1" count="1"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="93" type="method" name="offsetSet" crap="1" count="1"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="105" type="method" name="offsetUnset" crap="1" count="1"/>
+        <line num="107" type="stmt" count="1"/>
+        <line num="108" type="stmt" count="1"/>
+        <line num="117" type="method" name="__isset" crap="1" count="1"/>
+        <line num="119" type="stmt" count="1"/>
+        <line num="129" type="method" name="__unset" crap="1" count="1"/>
+        <line num="131" type="stmt" count="1"/>
+        <line num="132" type="stmt" count="1"/>
+        <metrics loc="133" ncloc="64" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="28" coveredelements="28"/>
+      </file>
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Core/AbstractRequest.php">
+        <class name="AbstractRequest" namespace="Pwnraid\Bnet\Core">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="14" type="method" name="__construct" crap="1" count="68"/>
+        <line num="16" type="stmt" count="68"/>
+        <line num="17" type="stmt" count="68"/>
+        <metrics loc="18" ncloc="12" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Diablo\Artisans">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Diablo/Artisans/ArtisanRequest.php">
+        <class name="ArtisanRequest" namespace="Pwnraid\Bnet\Diablo\Artisans">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="8" type="method" name="find" crap="2" count="2"/>
+        <line num="10" type="stmt" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Diablo">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Diablo/Client.php">
+        <class name="Client" namespace="Pwnraid\Bnet\Diablo">
+          <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
+        </class>
+        <line num="13" type="method" name="artisans" crap="1" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="18" type="method" name="followers" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="23" type="method" name="items" crap="1" count="1"/>
+        <line num="25" type="stmt" count="1"/>
+        <metrics loc="27" ncloc="27" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Diablo\Followers">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Diablo/Followers/FollowerRequest.php">
+        <class name="FollowerRequest" namespace="Pwnraid\Bnet\Diablo\Followers">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="8" type="method" name="find" crap="2" count="2"/>
+        <line num="10" type="stmt" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Diablo\Items">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Diablo/Items/ItemRequest.php">
+        <class name="ItemRequest" namespace="Pwnraid\Bnet\Diablo\Items">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="8" type="method" name="find" crap="2" count="2"/>
+        <line num="10" type="stmt" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\Auctions">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Auctions/AuctionRequest.php">
+        <class name="AuctionRequest" namespace="Pwnraid\Bnet\Warcraft\Auctions">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
+        </class>
+        <line num="9" type="method" name="download" crap="3" count="2"/>
+        <line num="11" type="stmt" count="2"/>
+        <line num="13" type="stmt" count="2"/>
+        <line num="14" type="stmt" count="1"/>
+        <line num="17" type="stmt" count="1"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="26" type="method" name="index" crap="2" count="2"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <metrics loc="36" ncloc="36" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\BattlePets">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/BattlePets/BattlePetRequest.php">
+        <class name="BattlePetRequest" namespace="Pwnraid\Bnet\Warcraft\BattlePets">
+          <metrics methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="27" coveredelements="27"/>
+        </class>
+        <line num="8" type="method" name="ability" crap="2" count="2"/>
+        <line num="10" type="stmt" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <line num="19" type="method" name="species" crap="2" count="2"/>
+        <line num="21" type="stmt" count="2"/>
+        <line num="23" type="stmt" count="2"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="30" type="method" name="stats" crap="2" count="3"/>
+        <line num="32" type="stmt" count="3"/>
+        <line num="34" type="stmt" count="3"/>
+        <line num="35" type="stmt" count="3"/>
+        <line num="36" type="stmt" count="3"/>
+        <line num="37" type="stmt" count="3"/>
+        <line num="38" type="stmt" count="3"/>
+        <line num="40" type="stmt" count="3"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="2"/>
+        <line num="47" type="method" name="types" crap="2" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <metrics loc="58" ncloc="58" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="27" coveredelements="27"/>
+      </file>
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/BattlePets/SpeciesEntity.php">
+        <class name="SpeciesEntity" namespace="Pwnraid\Bnet\Warcraft\BattlePets">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        </class>
+        <line num="8" type="method" name="__construct" crap="2" count="1"/>
+        <line num="10" type="stmt" count="1"/>
+        <line num="12" type="stmt" count="1"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="14" type="stmt" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <metrics loc="16" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\Characters">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Characters/AchievementCategoryEntity.php">
+        <class name="AchievementCategoryEntity" namespace="Pwnraid\Bnet\Warcraft\Characters">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
+        </class>
+        <line num="11" type="method" name="__construct" crap="4" count="1"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <line num="17" type="stmt" count="1"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <metrics loc="25" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
+      </file>
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Characters/CharacterEntity.php">
+        <class name="CharacterEntity" namespace="Pwnraid\Bnet\Warcraft\Characters">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="10" coveredelements="10"/>
+        </class>
+        <line num="9" type="method" name="__construct" crap="3" count="5"/>
+        <line num="11" type="stmt" count="5"/>
+        <line num="13" type="stmt" count="5"/>
+        <line num="14" type="stmt" count="4"/>
+        <line num="15" type="stmt" count="4"/>
+        <line num="17" type="stmt" count="5"/>
+        <line num="18" type="stmt" count="3"/>
+        <line num="19" type="stmt" count="3"/>
+        <line num="20" type="stmt" count="3"/>
+        <line num="21" type="stmt" count="5"/>
+        <metrics loc="22" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="10" coveredelements="10"/>
+      </file>
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Characters/CharacterRequest.php">
+        <class name="CharacterRequest" namespace="Pwnraid\Bnet\Warcraft\Characters">
+          <metrics methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="53" elements="61" coveredelements="61"/>
+        </class>
+        <line num="12" type="method" name="achievement" crap="2" count="2"/>
+        <line num="14" type="stmt" count="2"/>
+        <line num="16" type="stmt" count="2"/>
+        <line num="17" type="stmt" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="26" type="method" name="achievements" crap="2" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="38" type="method" name="classes" crap="2" count="1"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="50" type="method" name="find" crap="4" count="4"/>
+        <line num="52" type="stmt" count="4"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="3"/>
+        <line num="58" type="stmt" count="3"/>
+        <line num="59" type="stmt" count="3"/>
+        <line num="60" type="stmt" count="3"/>
+        <line num="62" type="stmt" count="3"/>
+        <line num="63" type="stmt" count="1"/>
+        <line num="66" type="stmt" count="2"/>
+        <line num="69" type="method" name="on" crap="1" count="4"/>
+        <line num="71" type="stmt" count="4"/>
+        <line num="72" type="stmt" count="4"/>
+        <line num="75" type="method" name="races" crap="2" count="1"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="78" type="stmt" count="1"/>
+        <line num="80" type="stmt" count="1"/>
+        <line num="81" type="stmt" count="1"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="87" type="method" name="talents" crap="4" count="1"/>
+        <line num="89" type="stmt" count="1"/>
+        <line num="90" type="stmt" count="1"/>
+        <line num="92" type="stmt" count="1"/>
+        <line num="93" type="stmt" count="1"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="98" type="stmt" count="1"/>
+        <line num="99" type="stmt" count="1"/>
+        <line num="100" type="stmt" count="1"/>
+        <line num="102" type="stmt" count="1"/>
+        <line num="103" type="stmt" count="1"/>
+        <line num="104" type="stmt" count="1"/>
+        <line num="105" type="stmt" count="1"/>
+        <line num="107" type="stmt" count="1"/>
+        <line num="110" type="method" name="user" crap="2" count="1"/>
+        <line num="112" type="stmt" count="1"/>
+        <line num="113" type="stmt" count="1"/>
+        <line num="115" type="stmt" count="1"/>
+        <line num="116" type="stmt" count="1"/>
+        <line num="117" type="stmt" count="1"/>
+        <line num="119" type="stmt" count="1"/>
+        <metrics loc="121" ncloc="118" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="53" elements="61" coveredelements="61"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Client.php">
+        <class name="Client" namespace="Pwnraid\Bnet\Warcraft">
+          <metrics methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="20" coveredelements="20"/>
+        </class>
+        <line num="20" type="method" name="auctions" crap="1" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="25" type="method" name="battlePets" crap="1" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="30" type="method" name="characters" crap="1" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="35" type="method" name="guilds" crap="1" count="1"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="40" type="method" name="items" crap="1" count="1"/>
+        <line num="42" type="stmt" count="1"/>
+        <line num="45" type="method" name="leaderboards" crap="1" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="50" type="method" name="quests" crap="1" count="1"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="55" type="method" name="realms" crap="1" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="60" type="method" name="recipes" crap="1" count="1"/>
+        <line num="62" type="stmt" count="1"/>
+        <line num="65" type="method" name="spells" crap="1" count="1"/>
+        <line num="67" type="stmt" count="1"/>
+        <metrics loc="69" ncloc="69" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="20" coveredelements="20"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\Guilds">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Guilds/GuildRequest.php">
+        <class name="GuildRequest" namespace="Pwnraid\Bnet\Warcraft\Guilds">
+          <metrics methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="19" coveredelements="19"/>
+        </class>
+        <line num="11" type="method" name="achievements" crap="1" count="1"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="18" type="method" name="find" crap="3" count="4"/>
+        <line num="20" type="stmt" count="4"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="3"/>
+        <line num="26" type="stmt" count="3"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="33" type="method" name="on" crap="1" count="4"/>
+        <line num="35" type="stmt" count="4"/>
+        <line num="36" type="stmt" count="4"/>
+        <line num="39" type="method" name="perks" crap="1" count="1"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="46" type="method" name="rewards" crap="1" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <metrics loc="52" ncloc="52" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="19" coveredelements="19"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\Items">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Items/ItemRequest.php">
+        <class name="ItemRequest" namespace="Pwnraid\Bnet\Warcraft\Items">
+          <metrics methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="20" coveredelements="20"/>
+        </class>
+        <line num="16" type="method" name="classes" crap="1" count="1"/>
+        <line num="18" type="stmt" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="29" type="method" name="find" crap="2" count="5"/>
+        <line num="31" type="stmt" count="5"/>
+        <line num="33" type="stmt" count="5"/>
+        <line num="34" type="stmt" count="5"/>
+        <line num="35" type="stmt" count="5"/>
+        <line num="37" type="stmt" count="5"/>
+        <line num="38" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="4"/>
+        <line num="43" type="stmt" count="4"/>
+        <line num="51" type="method" name="findSet" crap="2" count="2"/>
+        <line num="53" type="stmt" count="2"/>
+        <line num="55" type="stmt" count="2"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="59" type="stmt" count="1"/>
+        <line num="67" type="method" name="withContext" crap="1" count="2"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="71" type="stmt" count="2"/>
+        <metrics loc="73" ncloc="51" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="20" coveredelements="20"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\Leaderboards">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Leaderboards/LeaderboardRequest.php">
+        <class name="LeaderboardRequest" namespace="Pwnraid\Bnet\Warcraft\Leaderboards">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
+        </class>
+        <line num="9" type="method" name="challengeMode" crap="3" count="3"/>
+        <line num="11" type="stmt" count="3"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="14" type="stmt" count="2"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="18" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="26" type="method" name="pvp" crap="2" count="2"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <metrics loc="36" ncloc="36" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\Quests">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Quests/QuestRequest.php">
+        <class name="QuestRequest" namespace="Pwnraid\Bnet\Warcraft\Quests">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="8" type="method" name="find" crap="2" count="2"/>
+        <line num="10" type="stmt" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\Realms">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Realms/RealmRequest.php">
+        <class name="RealmRequest" namespace="Pwnraid\Bnet\Warcraft\Realms">
+          <metrics methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="29" coveredelements="29"/>
+        </class>
+        <line num="12" type="method" name="battlegroups" crap="1" count="1"/>
+        <line num="14" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <line num="24" type="method" name="find" crap="7" count="5"/>
+        <line num="26" type="stmt" count="5"/>
+        <line num="28" type="stmt" count="5"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="33" type="stmt" count="5"/>
+        <line num="34" type="stmt" count="5"/>
+        <line num="35" type="stmt" count="5"/>
+        <line num="37" type="stmt" count="5"/>
+        <line num="38" type="stmt" count="5"/>
+        <line num="40" type="stmt" count="5"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="4"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="3"/>
+        <line num="50" type="stmt" count="3"/>
+        <line num="56" type="method" name="all" crap="1" count="1"/>
+        <line num="58" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="68" type="method" name="createRealmEntities" crap="2" count="4"/>
+        <line num="70" type="stmt" count="4"/>
+        <line num="72" type="stmt" count="4"/>
+        <line num="73" type="stmt" count="4"/>
+        <line num="74" type="stmt" count="4"/>
+        <line num="76" type="stmt" count="4"/>
+        <metrics loc="78" ncloc="60" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="29" coveredelements="29"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\Recipes">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Recipes/RecipeRequest.php">
+        <class name="RecipeRequest" namespace="Pwnraid\Bnet\Warcraft\Recipes">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="8" type="method" name="find" crap="2" count="2"/>
+        <line num="10" type="stmt" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+    </package>
+    <package name="Pwnraid\Bnet\Warcraft\Spells">
+      <file name="C:\Users\jyggen\devbox\www2\bnet\src/Warcraft/Spells/SpellRequest.php">
+        <class name="SpellRequest" namespace="Pwnraid\Bnet\Warcraft\Spells">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="8" type="method" name="find" crap="2" count="2"/>
+        <line num="10" type="stmt" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+    </package>
+    <metrics files="25" loc="1417" ncloc="1113" classes="25" methods="91" coveredmethods="81" conditionals="0" coveredconditionals="0" statements="338" coveredstatements="308" elements="429" coveredelements="389"/>
+  </project>
+</coverage>
