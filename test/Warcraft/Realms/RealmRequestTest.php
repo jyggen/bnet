@@ -4,17 +4,8 @@ namespace Pwnraid\Bnet\Test\Warcraft;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Realms\RealmRequest;
 
-/**
- * @coversDefaultClass \Pwnraid\Bnet\Warcraft\Realms\RealmRequest
- */
 class RealmRequestTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers ::all
-     * @covers ::createRealmEntities
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testAll()
     {
         $request  = new RealmRequest(new TestClient('wow'));
@@ -24,13 +15,6 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\RealmEntity', $response[0]);
     }
 
-    /**
-     * @covers ::find
-     * @covers ::createRealmEntities
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testFindSingle()
     {
         $request  = new RealmRequest(new TestClient('wow'));
@@ -40,11 +24,6 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('Argent Dawn', $response->name);
     }
 
-    /**
-     * @covers ::find
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testFindSingleInvalid()
     {
         $request  = new RealmRequest(new TestClient('wow'));
@@ -53,13 +32,6 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($response);
     }
 
-    /**
-     * @covers ::find
-     * @covers ::createRealmEntities
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testFindNotSingle()
     {
         $request  = new RealmRequest(new TestClient('wow'));
@@ -71,13 +43,6 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('Argent Dawn', $response[0]->name);
     }
 
-    /**
-     * @covers ::find
-     * @covers ::createRealmEntities
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testFindMultiple()
     {
         $request  = new RealmRequest(new TestClient('wow'));
@@ -89,13 +54,8 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers                   ::find
-     * @covers                   ::createRealmEntities
      * @expectedException        RuntimeException
      * @expectedExceptionMessage Unable to fetch all requested realms
-     * @uses                     \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses                     \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses                     \Pwnraid\Bnet\Utils
      */
     public function testFindMultipleInvalid()
     {
@@ -103,11 +63,6 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
         $request->find(['Argant Dewn', 'Auchindoun']);
     }
 
-    /**
-     * @covers ::battlegroups
-     * @uses    Pwnraid\Bnet\Core\AbstractEntity
-     * @uses    \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testBattlegroups()
     {
         $request  = new RealmRequest(new TestClient('wow'));

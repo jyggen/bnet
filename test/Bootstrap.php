@@ -14,7 +14,7 @@ if (function_exists('getFixture') === false) {
             return null;
         }
 
-        return json_decode(file_get_contents('compress.zlib://'.$filename), true);
+        return file_get_contents('compress.zlib://'.$filename);
     }
 }
 

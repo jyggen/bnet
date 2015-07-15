@@ -3,55 +3,79 @@ namespace Pwnraid\Bnet;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
+use Psr\Http\Message\ResponseInterface;
 
 class OAuth extends AbstractProvider
 {
-    public $scopeSeparator = ' ';
-    public $scopes         = ['wow.profile', 'sc2.profile'];
-
     protected $region;
 
-    public function __construct(Region $region, $options = array())
+    public function __construct(Region $region, array $options = [], array $collaborators = [])
     {
         $this->region = $region;
         parent::__construct($options);
     }
 
-    public function urlAuthorize()
+    public function getBaseAuthorizationUrl()
     {
         return $this->region->getOAuthHost().'oauth/authorize';
     }
 
-    public function urlAccessToken()
+    public function getBaseAccessTokenUrl(array $params)
     {
         return $this->region->getOAuthHost().'oauth/token';
     }
 
-    public function urlUserDetails(AccessToken $token)
+    public function getUserDetailsUrl(AccessToken $token)
     {
         return $this->region->getApiHost('account').'user/id?access_token='.$token;
     }
 
-    public function userDetails($response, AccessToken $token)
+    /**
+     * Get the default scopes used by this provider.
+     *
+     * This should not be a complete list of all scopes, but the minimum
+     * required for the provider user interface!
+     *
+     * @return array
+     */
+    protected function getDefaultScopes()
     {
-        return [
-            'uid' => (int) $response->id,
-        ];
+        return [];
     }
-
-    public function userEmail($response, AccessToken $token)
+    /**
+     * Get the string used to separate scopes.
+     *
+     * @return string
+     */
+    protected function getScopeSeparator()
     {
-    }
-
-    public function userScreenName($response, AccessToken $token)
-    {
+        return ' ';
     }
 
     /**
-     * @return int
+     * Check a provider response for errors.
+     *
+     * @throws IdentityProviderException
+     * @param  ResponseInterface $response
+     * @param  string $data Parsed response data
+     * @return void
      */
-    public function userUid($response, AccessToken $token)
+    protected function checkResponse(ResponseInterface $response, $data)
     {
-        return (int) $response->id;
+
+    }
+
+    /**
+     * Generate a user object from a successful user details request.
+     *
+     * @param object $response
+     * @param AccessToken $token
+     * @return League\OAuth2\Client\Provider\UserInterface
+     */
+    protected function createUser(array $response, AccessToken $token)
+    {
+        return [
+            'uid' => (int) $response['id'],
+        ];
     }
 }

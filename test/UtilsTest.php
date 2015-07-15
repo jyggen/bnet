@@ -3,14 +3,8 @@ namespace Pwnraid\Bnet\Test;
 
 use Pwnraid\Bnet\Utils;
 
-/**
- * @coversDefaultClass \Pwnraid\Bnet\Utils
- */
 class UtilsTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers ::realmNameToSlug
-     */
     public function testRealmNameToSlug()
     {
         $this->assertsame('aegwynn', Utils::realmNameToSlug('Aegwynn'));
@@ -414,16 +408,12 @@ class UtilsTest extends \PHPUnit_Framework_TestCase
         $this->assertsame('雷鱗', Utils::realmNameToSlug('雷鱗'));
     }
 
-    /**
-     * @covers ::thumbnailToId
-     */
     public function testThumbnailToId()
     {
         $this->assertSame('207104578511', Utils::thumbnailToId('internal-record-3702/207/104578511-avatar.jpg'));
     }
 
     /**
-     * @covers                   ::thumbnailToId
      * @expectedException        RuntimeException
      * @expectedExceptionMessage Invalid thumbnail URL "invalid.jpg"
      */

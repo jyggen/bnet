@@ -4,7 +4,7 @@ namespace Pwnraid\Bnet\Core;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Message\ResponseInterface;
+use Psr\Http\Message\ResponseInterface;
 use Pwnraid\Bnet\Exceptions\BattleNetException;
 use Pwnraid\Bnet\Region;
 use SebastianBergmann\Version;
@@ -106,7 +106,11 @@ abstract class AbstractClient
      */
     protected function getRequestKey($url, array $options)
     {
-        $options = array_replace_recursive($this->client->getDefaultOption(), $options);
+        $options = array_replace_recursive([
+            'headers' => $this->client->getConfig('headers'),
+            'query'   => $this->client->getConfig('query'),
+        ], $options);
+
         return hash_hmac('md5', $url, serialize($options));
     }
 
@@ -118,7 +122,7 @@ abstract class AbstractClient
         static $defaultAgent = '';
 
         if ($defaultAgent === '') {
-            $defaultAgent = 'pwnRaid/'.$this->version->getVersion().' '.GuzzleClient::getDefaultUserAgent();
+            $defaultAgent = 'pwnRaid/'.$this->version->getVersion().' '.\GuzzleHttp\default_user_agent();
         }
 
         return $defaultAgent;
@@ -137,13 +141,14 @@ abstract class AbstractClient
     {
         switch ((int) $response->getStatusCode()) {
             case 200:
+                $data = json_decode($response->getBody(), true);
                 if ($response->hasHeader('Last-Modified') === true) {
                     $item->set([
                         'modified' => $response->getHeader('Last-Modified'),
-                        'json'     => $response->json(),
+                        'json'     => $data,
                     ]);
                 }
-                return $response->json();
+                return $data;
             case 304:
                 return $data['json'];
             default:

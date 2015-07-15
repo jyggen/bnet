@@ -5,16 +5,8 @@ use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Auctions\AuctionRequest;
 use Pwnraid\Bnet\Warcraft\Auctions\IndexEntity;
 
-/**
- * @coversDefaultClass \Pwnraid\Bnet\Warcraft\Auctions\AuctionRequest
- */
 class AuctionRequestTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers ::download
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testDownload()
     {
         $request  = new AuctionRequest(new TestClient('wow'));
@@ -24,11 +16,6 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(955294802, $response[0]->auc);
     }
 
-    /**
-     * @covers ::download
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testDownloadInvalidUrl()
     {
         $request  = new AuctionRequest(new TestClient('wow'));
@@ -37,12 +24,6 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($response);
     }
 
-    /**
-     * @covers ::index
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testIndex()
     {
         $request  = new AuctionRequest(new TestClient('wow'));
@@ -52,11 +33,6 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('http://eu.battle.net/auction-data/55fa8d36ecd391f92848bef9fd085137/auctions.json', $response->url);
     }
 
-    /**
-     * @covers ::index
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testIndexInvalidRealm()
     {
         $request  = new AuctionRequest(new TestClient('wow'));

@@ -8,24 +8,16 @@ use Pwnraid\Bnet\Region;
 class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
 {
     static protected $meta;
+    protected $apiKey;
     protected $game;
 
     public function __construct($apiKey, $game)
     {
+        $this->apiKey = $apiKey;
         $this->region = new Region(Region::EUROPE);
         $this->game   = $game;
         $this->client = new GuzzleClient([
-            'base_url' => rtrim($this->region->getApiHost(''), '/'),
-            'defaults' => [
-                'headers' => [
-                    'Accept'     => 'application/json',
-                    'User-Agent' => 'pwnRaid/'.static::VERSION.' '.(new GuzzleClient)->getDefaultUserAgent(),
-                ],
-                'query' => [
-                    'apikey'  => $apiKey,
-                    'locale'  => $this->region->getLocale(),
-                ],
-            ],
+            'base_uri' => rtrim($this->region->getApiHost(''), '/'),
         ]);
     }
 
@@ -43,7 +35,13 @@ class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
                     $response = $this->client->get($this->game.'/'.$url, array_replace_recursive($options, [
                         'headers' => [
                             'If-Modified-Since' => $fixture['modified'],
-                        ]
+                            'Accept'            => 'application/json',
+                            'User-Agent'        => 'pwnRaid/'.static::VERSION.' '.\GuzzleHttp\default_user_agent(),
+                        ],
+                        'query' => [
+                            'apikey'  => $this->apiKey,
+                            'locale'  => $this->region->getLocale(),
+                        ],
                     ]));
 
                     $this->saveFixture($filename, $response);

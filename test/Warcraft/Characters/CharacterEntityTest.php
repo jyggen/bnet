@@ -3,9 +3,6 @@ namespace Pwnraid\Bnet\Test\Warcraft\Characters;
 
 use Pwnraid\Bnet\Warcraft\Characters\CharacterEntity;
 
-/**
- * @coversDefaultClass \Pwnraid\Bnet\Warcraft\Characters\CharacterEntity
- */
 class CharacterEntityTest extends \PHPUnit_Framework_TestCase
 {
     protected $timezone;
@@ -24,11 +21,6 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
         parent::tearDown();
     }
 
-    /**
-     * @covers ::__construct
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testIdAttribute()
     {
         $character = new CharacterEntity([
@@ -38,10 +30,6 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('22282213342', $character->id);
     }
 
-    /**
-     * @covers ::__construct
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     */
     public function testLastModifiedAttribute()
     {
         $timestamp = time();

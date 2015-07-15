@@ -4,16 +4,8 @@ namespace Pwnraid\Bnet\Test\Warcraft;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Items\ItemRequest;
 
-/**
- * @coversDefaultClass \Pwnraid\Bnet\Warcraft\Items\ItemRequest
- */
 class ItemRequestTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers ::classes
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testClasses()
     {
         $request  = new ItemRequest(new TestClient('wow'));
@@ -23,11 +15,6 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $response->classes);
     }
 
-    /**
-     * @covers ::find
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testFind()
     {
         $request  = new ItemRequest(new TestClient('wow'));
@@ -37,10 +24,6 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(18803, $response->id);
     }
 
-    /**
-     * @covers ::find
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testFindInvalidId()
     {
         $request  = new ItemRequest(new TestClient('wow'));
@@ -49,11 +32,6 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($response);
     }
 
-    /**
-     * @covers ::find
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testFindOnContextItem()
     {
         $request  = new ItemRequest(new TestClient('wow'));
@@ -64,12 +42,6 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($response->name);
     }
 
-    /**
-     * @covers ::find
-     * @covers ::withContext
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testFindOnContextItemWithContext()
     {
         $request  = new ItemRequest(new TestClient('wow'));
@@ -81,12 +53,6 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('dungeon-level-up-1', $response->context);
     }
 
-    /**
-     * @covers ::find
-     * @covers ::withContext
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testFindOnContextItemWithBonusListWithContext()
     {
         $request  = new ItemRequest(new TestClient('wow'));
@@ -100,11 +66,6 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(in_array(41, $response->bonusLists));
     }
 
-    /**
-     * @covers ::findSet
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testFindSet()
     {
         $request  = new ItemRequest(new TestClient('wow'));
@@ -114,10 +75,6 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(1060, $response->id);
     }
 
-    /**
-     * @covers ::findSet
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testFindInvalidIdSet()
     {
         $request  = new ItemRequest(new TestClient('wow'));

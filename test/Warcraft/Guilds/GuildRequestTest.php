@@ -4,16 +4,8 @@ namespace Pwnraid\Bnet\Test\Warcraft;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Guilds\GuildRequest;
 
-/**
- * @coversDefaultClass \Pwnraid\Bnet\Warcraft\Guilds\GuildRequest
- */
 class GuildRequestTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers ::achievements
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testAchievements()
     {
         $request  = new GuildRequest(new TestClient('wow'));
@@ -24,10 +16,8 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers                   ::find
      * @expectedException        RuntimeException
      * @expectedExceptionMessage You must set a realm name with on() before calling find()
-     * @uses                     \Pwnraid\Bnet\Core\AbstractRequest
      */
     public function testFindWithoutOn()
     {
@@ -35,11 +25,6 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
         $request->find('Blinkspeed Couriers');
     }
 
-    /**
-     * @covers ::on
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testOn()
     {
         $request = new GuildRequest(new TestClient('wow'));
@@ -47,13 +32,6 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\GuildRequest', $request->on('Auchindoun'));
     }
 
-    /**
-     * @covers ::find
-     * @covers ::on
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testFind()
     {
         $request = new GuildRequest(new TestClient('wow'));
@@ -66,13 +44,6 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('Blinkspeed Couriers', $response->name);
     }
 
-    /**
-     * @covers ::find
-     * @covers ::on
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testFindWithFields()
     {
         $request = new GuildRequest(new TestClient('wow'));
@@ -86,12 +57,6 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $response->news);
     }
 
-    /**
-     * @covers ::find
-     * @covers ::on
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     * @uses   \Pwnraid\Bnet\Utils
-     */
     public function testFindInvalid()
     {
         $request = new GuildRequest(new TestClient('wow'));
@@ -103,11 +68,6 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($response);
     }
 
-    /**
-     * @covers ::perks
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testPerks()
     {
         $request  = new GuildRequest(new TestClient('wow'));
@@ -117,11 +77,6 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $response->perks);
     }
 
-    /**
-     * @covers ::rewards
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testRewards()
     {
         $request  = new GuildRequest(new TestClient('wow'));

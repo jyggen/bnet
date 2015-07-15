@@ -4,16 +4,8 @@ namespace Pwnraid\Bnet\Test\Warcraft;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest;
 
-/**
- * @coversDefaultClass \Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest
- */
 class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers ::ability
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testAbility()
     {
         $request  = new BattlePetRequest(new TestClient('wow'));
@@ -23,10 +15,6 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(640, $response->id);
     }
 
-    /**
-     * @covers ::ability
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testAbilityInvalidId()
     {
         $request  = new BattlePetRequest(new TestClient('wow'));
@@ -35,12 +23,6 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($response);
     }
 
-    /**
-     * @covers ::species
-     * @uses   \Pwnraid\Bnet\Warcraft\BattlePets\SpeciesEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testSpecies()
     {
         $request  = new BattlePetRequest(new TestClient('wow'));
@@ -50,10 +32,6 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(258, $response->speciesId);
     }
 
-    /**
-     * @covers ::species
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testSpeciesInvalidId()
     {
         $request  = new BattlePetRequest(new TestClient('wow'));
@@ -62,11 +40,6 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($response);
     }
 
-    /**
-     * @covers ::stats
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testStats()
     {
         $request  = new BattlePetRequest(new TestClient('wow'));
@@ -79,10 +52,6 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(1, $response->petQualityId);
     }
 
-    /**
-     * @covers ::stats
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testStatsInvalidId()
     {
         $request  = new BattlePetRequest(new TestClient('wow'));
@@ -91,11 +60,6 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($response);
     }
 
-    /**
-     * @covers ::stats
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testStatsNotDefault()
     {
         $request  = new BattlePetRequest(new TestClient('wow'));
@@ -108,11 +72,6 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(4, $response->petQualityId);
     }
 
-    /**
-     * @covers ::types
-     * @uses   \Pwnraid\Bnet\Core\AbstractEntity
-     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
-     */
     public function testType()
     {
         $request  = new BattlePetRequest(new TestClient('wow'));
