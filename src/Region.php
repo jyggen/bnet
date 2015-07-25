@@ -128,4 +128,12 @@ class Region
     {
         return $this->locale;
     }
+    
+    /**
+     * @return array
+     */
+    public static function getRegions()
+    {
+        return static::$regions;
+    }
 }
