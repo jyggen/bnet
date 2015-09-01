@@ -16,7 +16,7 @@ class AuctionRequest extends AbstractRequest
 
         $auctions = [];
 
-        foreach ($data['auctions']['auctions'] as $auction) {
+        foreach ($data['auctions'] as $auction) {
             $auctions[] = new AuctionEntity($auction);
         }
 
