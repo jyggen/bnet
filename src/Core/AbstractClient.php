@@ -182,6 +182,7 @@ abstract class AbstractClient
         $options = array_replace_recursive($options, [
             'headers' => [
                 'Accept'     => 'application/json',
+                'Accept-Encoding' => 'gzip',
                 'User-Agent' => $this->getUserAgent(),
             ],
             'query' => [
