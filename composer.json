@@ -17,13 +17,12 @@
     "require": {
         "php": ">=5.5",
         "guzzlehttp/guzzle": "~6.0",
-        "league/oauth2-client": "1.0-alpha2",
-        "tedivm/stash": "0.12.*",
+        "league/oauth2-client": "~1.0",
+        "tedivm/stash": "0.13.*",
         "sebastian/version": "~1.0"
     },
     "require-dev": {
         "humbug/humbug": "~1.0",
-        "ircmaxell/tuli": "dev-master",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0"
     },
