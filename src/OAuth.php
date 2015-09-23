@@ -25,7 +25,7 @@ class OAuth extends AbstractProvider
         return $this->region->getOAuthHost().'oauth/token';
     }
 
-    public function getUserDetailsUrl(AccessToken $token)
+    public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
         return $this->region->getApiHost('account').'user/id?access_token='.$token;
     }
@@ -66,13 +66,14 @@ class OAuth extends AbstractProvider
     }
 
     /**
-     * Generate a user object from a successful user details request.
+     * Generates a resource owner object from a successful resource owner
+     * details request.
      *
-     * @param object $response
-     * @param AccessToken $token
-     * @return League\OAuth2\Client\Provider\UserInterface
+     * @param  array $response
+     * @param  AccessToken $token
+     * @return ResourceOwnerInterface
      */
-    protected function createUser(array $response, AccessToken $token)
+    protected function createResourceOwner(array $response, AccessToken $token)
     {
         return [
             'uid' => (int) $response['id'],

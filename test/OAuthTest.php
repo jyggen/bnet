@@ -19,10 +19,10 @@ class OAuthTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('https://eu.battle.net/oauth/token', $oauth->getBaseAccessTokenUrl([]));
     }
 
-    public function testGetUserDetailsUrl()
+    public function testgetResourceOwnerDetailsUrl()
     {
         $token = new AccessToken(['access_token' => 'foobar']);
         $oauth = new OAuth(new Region(Region::EUROPE));
-        $this->assertSame('https://eu.api.battle.net/account/user/id?access_token=foobar', $oauth->getUserDetailsUrl($token));
+        $this->assertSame('https://eu.api.battle.net/account/user/id?access_token=foobar', $oauth->getResourceOwnerDetailsUrl($token));
     }
 }

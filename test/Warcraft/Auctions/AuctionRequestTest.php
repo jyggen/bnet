@@ -7,23 +7,6 @@ use Pwnraid\Bnet\Warcraft\Auctions\IndexEntity;
 
 class AuctionRequestTest extends \PHPUnit_Framework_TestCase
 {
-    public function testDownload()
-    {
-        $request  = new AuctionRequest(new TestClient('wow'));
-        $response = $request->download(new IndexEntity(['url' => 'auctions']));
-
-        $this->assertInternalType('array', $response);
-        $this->assertSame(955294802, $response[0]->auc);
-    }
-
-    public function testDownloadInvalidUrl()
-    {
-        $request  = new AuctionRequest(new TestClient('wow'));
-        $response = $request->download(new IndexEntity(['url' => 'invalid']));
-
-        $this->assertNull($response);
-    }
-
     public function testIndex()
     {
         $request  = new AuctionRequest(new TestClient('wow'));
@@ -37,6 +20,24 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
     {
         $request  = new AuctionRequest(new TestClient('wow'));
         $response = $request->index('Invalid');
+
+        $this->assertNull($response);
+    }
+
+    public function testDownload()
+    {
+        $request  = new AuctionRequest(new TestClient('wow'));
+        $response = $request->index('Auchindoun');
+        $response = $request->download($response);
+
+        $this->assertInternalType('array', $response);
+        $this->assertSame(1298519171, $response[0]->auc);
+    }
+
+    public function testDownloadInvalidUrl()
+    {
+        $request  = new AuctionRequest(new TestClient('wow'));
+        $response = $request->download(new IndexEntity(['url' => 'invalid']));
 
         $this->assertNull($response);
     }

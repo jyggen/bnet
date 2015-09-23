@@ -21,7 +21,12 @@ class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
         ]);
     }
 
-    public function get($url, array $options = [])
+    public function getRawUrl($url, array $options = [])
+    {
+        return $this->get($url, $options, true);
+    }
+
+    public function get($url, array $options = [], $raw = false)
     {
         $query    = (array_key_exists('query', $options) === false) ? '' : implode('&', $options['query']);
         $url      = $url.'?'.$query;
@@ -32,7 +37,8 @@ class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
         if (strtotime($fixture['modified']) < strtotime('-1 day')) {
             do {
                 try {
-                    $response = $this->client->get($this->game.'/'.$url, array_replace_recursive($options, [
+                    $url      = ($raw === true) ? $url : $this->game.'/'.$url;
+                    $response = $this->client->get($url, array_replace_recursive($options, [
                         'headers' => [
                             'If-Modified-Since' => $fixture['modified'],
                             'Accept'            => 'application/json',
@@ -81,7 +87,11 @@ class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
         switch ((int) $response->getStatusCode()) {
             case 200:
                 if ($response->hasHeader('Last-Modified')) {
-                    static::$meta[md5($filename)] = $response->getHeader('Last-Modified');
+                    if (is_array($response->getHeader('Last-Modified'))) {
+                        static::$meta[md5($filename)] = $response->getHeader('Last-Modified')[0];
+                    } else {
+                        static::$meta[md5($filename)] = $response->getHeader('Last-Modified');
+                    }
                 } else {
                     static::$meta[md5($filename)] = date(DATE_RFC1123, time());
                 }

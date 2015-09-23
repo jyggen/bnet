@@ -1,10 +1,11 @@
 <?php
-require_once __DIR__.'/../Bootstrap.php';
+require_once __DIR__.'/../../phpunit.php';
 
 use Pwnraid\Bnet\Test\FixtureClient;
 use Pwnraid\Bnet\Diablo\Artisans\ArtisanRequest;
 use Pwnraid\Bnet\Diablo\Followers\FollowerRequest;
 use Pwnraid\Bnet\Diablo\Items\ItemRequest as D3ItemRequest;
+use Pwnraid\Bnet\Warcraft\Auctions\AuctionRequest;
 use Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest;
 use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
 use Pwnraid\Bnet\Warcraft\Guilds\GuildRequest;
@@ -24,6 +25,8 @@ $wowClient = new FixtureClient($argv[1], 'wow');
 
 // Call all the endpoints we need fixtures/dummy data for in our tests.
 (new ArtisanRequest($d3Client))->find('mystic');
+$auction = (new AuctionRequest($wowClient))->index('Auchindoun');
+(new AuctionRequest($wowClient))->download($auction);
 (new BattlePetRequest($wowClient))->ability(640);
 (new BattlePetRequest($wowClient))->species(258);
 (new BattlePetRequest($wowClient))->stats(258);
@@ -63,4 +66,3 @@ try { // Workaround for error handler.
 (new WowItemRequest($wowClient))->find(110050);
 (new WowItemRequest($wowClient))->withContext('dungeon-level-up-1')->find(110050);
 (new WowItemRequest($wowClient))->withContext('dungeon-level-up-1')->find(110050, [40, 41]);
-
