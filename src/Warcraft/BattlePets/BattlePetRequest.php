@@ -7,7 +7,7 @@ class BattlePetRequest extends AbstractRequest
 {
     public function ability($abilityId)
     {
-        $data = $this->client->get('battlePet/ability/'.$abilityId);
+        $data = $this->client->get('pet/ability/'.$abilityId);
 
         if ($data === null) {
             return null;
@@ -18,7 +18,7 @@ class BattlePetRequest extends AbstractRequest
 
     public function species($speciesId)
     {
-        $data = $this->client->get('battlePet/species/'.$speciesId);
+        $data = $this->client->get('pet/species/'.$speciesId);
 
         if ($data === null) {
             return null;
@@ -29,7 +29,7 @@ class BattlePetRequest extends AbstractRequest
 
     public function stats($speciesId, $level = 1, $breedId = 3, $qualityId = 1)
     {
-        $data = $this->client->get('battlePet/stats/'.$speciesId, [
+        $data = $this->client->get('pet/stats/'.$speciesId, [
             'query' => [
                 'level'     => $level,
                 'breedId'   => $breedId,

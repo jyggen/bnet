@@ -47,7 +47,7 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
     public function testFindWithoutOn()
     {
         $request  = new CharacterRequest(new TestClient('wow'));
-        $request->find('Jyggen');
+        $request->find('Morloderex');
     }
 
     public function testOn()
@@ -73,12 +73,12 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
     {
         $request  = new CharacterRequest(new TestClient('wow'));
 
-        $request->on('Auchindoun');
+        $request->on('Frostwhisper');
 
-        $response = $request->find('Jyggen', ['mounts', 'titles']);
+        $response = $request->find('Morloderex', ['mounts', 'titles']);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response);
-        $this->assertSame('Jyggen', $response->name);
+        $this->assertSame('Morloderex', $response->name);
         $this->assertInternalType('array', $response->mounts);
         $this->assertInternalType('array', $response->titles);
     }
