@@ -57,9 +57,9 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 
 - [x] /wow/achievement/:id
 - [x] /wow/auction/data/:realm
-- [x] /wow/battlepet/ability/:abilityid
-- [x] /wow/battlepet/species/:speciesid
-- [x] /wow/battlepet/stats/:speciesid
+- [x] /wow/pet/ability/:abilityid
+- [x] /wow/pet/species/:speciesid
+- [x] /wow/pet/stats/:speciesid
 - [x] /wow/challenge/:realm
 - [x] /wow/challenge/region
 - [x] /wow/character/:realm/:charactername
@@ -81,7 +81,7 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 - [x] /wow/data/item/classes
 - [x] /wow/data/talents
 - [x] /wow/data/pet/types
-
+- [ ] /wow/mount 
 ## License
 
 The MIT License (MIT). Please see [License File](https://github.com/pwnraid/bnet/blob/master/LICENSE) for more information.
