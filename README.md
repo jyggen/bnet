@@ -82,6 +82,7 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 - [x] /wow/data/talents
 - [x] /wow/data/pet/types
 - [ ] /wow/mount 
+
 ## License
 
 The MIT License (MIT). Please see [License File](https://github.com/pwnraid/bnet/blob/master/LICENSE) for more information.
