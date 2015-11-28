@@ -194,11 +194,13 @@ abstract class AbstractClient
         try {
             $response = $this->client->get($url, $options);
         } catch (ClientException $exception) {
-            if ($exception->getCode() === 404) {
-                return null;
+            switch ($exception->getCode()) {
+                case 404:
+                    return null;
+                default:
+                    $data = json_decode($exception->getResponse()->getBody(), true);
+                    throw new BattleNetException($data['detail'], $exception->getCode());
             }
-
-            throw new BattleNetException($exception->getResponse()->json()['detail'], $exception->getCode());
         }
 
         return $this->handleSuccessfulResponse($response, $item, $data);
