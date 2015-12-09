@@ -1,7 +1,8 @@
 <?php
 namespace Pwnraid\Bnet\Test\Warcraft\Characters;
 
-use Pwnraid\Bnet\Warcraft\Characters\CharacterEntity;
+use Pwnraid\Bnet\Warcraft\Characters;
+
 
 class CharacterEntityTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,9 +22,18 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
         parent::tearDown();
     }
 
+    public function testClassAttribute()
+    {
+        $character = new Characters\CharacterEntity([
+            'class' => 1,
+        ]);
+
+        $this->assertInstanceOf(Characters\ClassEntity::class, $character->class);
+    }
+
     public function testIdAttribute()
     {
-        $character = new CharacterEntity([
+        $character = new Characters\CharacterEntity([
             'thumbnail' => 'auchindoun/222/82213342-avatar.jpg',
         ]);
 
@@ -33,11 +43,20 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
     public function testLastModifiedAttribute()
     {
         $timestamp = time();
-        $character = new CharacterEntity([
+        $character = new Characters\CharacterEntity([
             'lastModified' => ($timestamp * 1000),
         ]);
 
         $this->assertInstanceOf('DateTime', $character->lastModified);
         $this->assertSame(date('Y-m-d H:i:s', $timestamp), $character->lastModified->format('Y-m-d H:i:s'));
+    }
+
+    public function testRaceAttribute()
+    {
+        $character = new Characters\CharacterEntity([
+            'race' => 1,
+        ]);
+
+        $this->assertInstanceOf(Characters\RaceEntity::class, $character->race);
     }
 }
