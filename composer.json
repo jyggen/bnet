@@ -36,9 +36,6 @@
             "Pwnraid\\Bnet\\Test\\": "test"
         }
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"

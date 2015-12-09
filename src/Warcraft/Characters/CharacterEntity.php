@@ -10,6 +10,14 @@ class CharacterEntity extends AbstractEntity
     {
         parent::__construct($body);
 
+        if (array_key_exists('class', $this->attributes) === true) {
+            $this->attributes['class'] = ClassEntity::fromId($this->attributes['class']);
+        }
+
+        if (array_key_exists('race', $this->attributes) === true) {
+            $this->attributes['race'] = RaceEntity::fromId($this->attributes['race']);
+        }
+
         if (array_key_exists('thumbnail', $this->attributes) === true) {
             $this->attributes['id'] = Utils::thumbnailToId($this->attributes['thumbnail']);
         }

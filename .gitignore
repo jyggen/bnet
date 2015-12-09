@@ -1,5 +1,4 @@
 vendor
-bin
 coverage
 coverage.xml
 composer.lock
