@@ -34,7 +34,7 @@ class FixtureClient extends \Pwnraid\Bnet\Core\AbstractClient
         $fixture  = $this->getFixture($filename);
         $success  = false;
 
-        if (strtotime($fixture['modified']) < strtotime('-1 day')) {
+        if (strtotime($fixture['modified']) < strtotime('-1 hour')) {
             do {
                 try {
                     $url      = ($raw === true) ? $url : $this->game.'/'.$url;
