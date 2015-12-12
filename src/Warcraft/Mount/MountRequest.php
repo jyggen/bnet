@@ -23,13 +23,6 @@ class MountRequest extends AbstractRequest
 		}
 
 		return $mountsArray;
-
-		
-		
-
-
-
-		//"https://eu.api.battle.net/wow/mount?apikey=hwgpcuphxgyqxfcgk2j9ts8xehtwj8qj&locale=en_GB"
-		//"https://eu.api.battle.net/wow/mount/?locale=en_GB&apikey=hwgpcuphxgyqxfcgk2j9ts8xehtwj8qj"	
+	
 	}
 }
