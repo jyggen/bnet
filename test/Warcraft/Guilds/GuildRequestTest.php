@@ -85,4 +85,20 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\RewardEntity', $response);
         $this->assertInternalType('array', $response->rewards);
     }
+
+    /**
+     * @test
+     */
+    public function it_returns_an_array_with_rank_and_characterEntity_objects_if_members_field_has_been_provided_on_the_fields_array()
+    {
+        $request = new GuildRequest(new TestClient('wow'));
+
+        $request->on('Auchindoun');
+
+        $response = $request->find('Dyslectic Defnenders', ['members']);
+
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response->members[0]['character']);
+
+        $this->assertArrayHasKey('rank', $response->members[0]);
+    }
 }
