@@ -46,6 +46,7 @@ $auction = (new AuctionRequest($wowClient))->index('Auchindoun');
 (new GuildRequest($wowClient))->achievements();
 (new GuildRequest($wowClient))->on('Argent Dawn')->find('Blinkspeed Couriers');
 (new GuildRequest($wowClient))->on('Auchindoun')->find('Dyslectic Defnenders', ['news']);
+(new GuildRequest($wowClient))->on('Auchindoun')->find('Dyslectic Defnenders', ['members']);
 (new GuildRequest($wowClient))->perks();
 (new GuildRequest($wowClient))->rewards();
 (new LeaderboardRequest($wowClient))->challengeMode();
