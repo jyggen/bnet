@@ -13,7 +13,8 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
         $response = $request->index('Auchindoun');
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Auctions\IndexEntity', $response);
-        $this->assertSame('http://eu.battle.net/auction-data/55fa8d36ecd391f92848bef9fd085137/auctions.json', $response->url);
+        $this->assertSame('http://auction-api-eu.worldofwarcraft.com/auction-data/55fa8d36ecd391f92848bef9fd085137/auctions.json',
+            $response->url);
     }
 
     public function testIndexInvalidRealm()
@@ -31,7 +32,7 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
         $response = $request->download($response);
 
         $this->assertInternalType('array', $response);
-        $this->assertSame(1337789948, $response[0]->auc);
+        $this->assertSame(1362752818, $response[0]->auc);
     }
 
     public function testDownloadInvalidUrl()
