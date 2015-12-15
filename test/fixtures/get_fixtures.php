@@ -11,7 +11,7 @@ use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
 use Pwnraid\Bnet\Warcraft\Guilds\GuildRequest;
 use Pwnraid\Bnet\Warcraft\Items\ItemRequest as WowItemRequest;
 use Pwnraid\Bnet\Warcraft\Leaderboards\LeaderboardRequest;
-use Pwnraid\Bnet\Warcraft\Mounts\MountsRequest;
+use Pwnraid\Bnet\Warcraft\Mount\MountRequest;
 use Pwnraid\Bnet\Warcraft\Quests\QuestRequest;
 use Pwnraid\Bnet\Warcraft\Realms\RealmRequest;
 use Pwnraid\Bnet\Warcraft\Recipes\RecipeRequest;
@@ -25,6 +25,7 @@ $d3Client  = new FixtureClient($argv[1], 'd3');
 $wowClient = new FixtureClient($argv[1], 'wow');
 
 // Call all the endpoints we need fixtures/dummy data for in our tests.
+(new MountRequest($wowClient))->all();
 (new ArtisanRequest($d3Client))->find('mystic');
 $auction = (new AuctionRequest($wowClient))->index('Auchindoun');
 (new AuctionRequest($wowClient))->download($auction);
@@ -45,6 +46,7 @@ $auction = (new AuctionRequest($wowClient))->index('Auchindoun');
 (new GuildRequest($wowClient))->achievements();
 (new GuildRequest($wowClient))->on('Argent Dawn')->find('Blinkspeed Couriers');
 (new GuildRequest($wowClient))->on('Auchindoun')->find('Dyslectic Defnenders', ['news']);
+(new GuildRequest($wowClient))->on('Auchindoun')->find('Dyslectic Defnenders', ['members']);
 (new GuildRequest($wowClient))->perks();
 (new GuildRequest($wowClient))->rewards();
 (new LeaderboardRequest($wowClient))->challengeMode();

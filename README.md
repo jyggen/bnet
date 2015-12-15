@@ -81,7 +81,7 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 - [x] /wow/data/item/classes
 - [x] /wow/data/talents
 - [x] /wow/data/pet/types
-- [ ] /wow/mount 
+- [x] /wow/mount
 
 ## License
 
