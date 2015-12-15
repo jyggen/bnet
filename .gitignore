@@ -1,5 +1,8 @@
-vendor
-coverage
-coverage.xml
+.idea/
+*.phar
+.DS_Store
+build
 composer.lock
-/.idea
+docs
+phpunit.xml
+vendor

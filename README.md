@@ -1,21 +1,23 @@
-# Battle.net API Client
+## Battle.net API Client
 
-[![Latest Version](https://img.shields.io/github/release/pwnraid/bnet.svg?style=flat-square)](https://github.com/pwnraid/bnet/releases)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/pwnraid/bnet/master.svg?style=flat-square)](https://travis-ci.org/pwnraid/bnet)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/pwnraid/bnet.svg?style=flat-square)](https://scrutinizer-ci.com/g/pwnraid/bnet/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/pwnraid/bnet.svg?style=flat-square)](https://scrutinizer-ci.com/g/pwnraid/bnet)
-[![Total Downloads](https://img.shields.io/packagist/dt/pwnraid/bnet.svg?style=flat-square)](https://packagist.org/packages/pwnraid/bnet)
+[![Source Code][badge-source]][source]
+[![Latest Version][badge-release]][release]
+[![Software License][badge-license]][license]
+[![Build Status][badge-build]][build]
+[![HHVM Status][badge-hhvm]][hhvm]
+[![Scrutinizer][badge-quality]][quality]
+[![Coverage Status][badge-coverage]][coverage]
+[![Total Downloads][badge-downloads]][downloads]
 
-A library to work with the Battle.net Web APIs. This package is compliant with [PSR-1], [PSR-2] and [PSR-4].
+pwnraid/bnet is a PHP 5.5+ library for working with the Battle.net Web APIs. This package is compliant with [PSR-1], [PSR-2] and [PSR-4].
 
-[Find Battle.net API Client on Packagist/Composer](https://packagist.org/packages/pwnraid/bnet)
+[Find Curl on Packagist/Composer](https://packagist.org/packages/pwnraid/bnet)
 
-[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
-[PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
-[PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
+### API Documentation
 
-## Road to 1.0
+The [latest class API documentation][apidocs] is available online.
+
+### Road to 1.0
 
 - [ ] Implement all available API endpoints (see below).
 - [ ] Write some documentation.
@@ -24,14 +26,14 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 - [ ] Switch cache from [tedivm/stash](https://github.com/tedious/Stash) to [PSR-6](https://github.com/php-fig/fig-standards/blob/master/proposed/cache.md) interfaces.
 - [x] Stable release (>=1.0) of [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client).
 
-### Implementation Status
+#### Implementation Status
 
-#### Account API
+##### Account API
 
 - [x] /account/user/id
 - [x] /account/user/battletag
 
-#### D3 Community API
+##### D3 Community API
 
 - [ ] /d3/profile/:battletag/
 - [ ] /d3/profile/:battletag/hero/:id
@@ -39,12 +41,12 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 - [x] /d3/data/follower/:follower
 - [x] /d3/data/artisan/:artisan
 
-#### Community OAuth Profile APIs
+##### Community OAuth Profile APIs
 
 - [ ] /sc2/profile/user
 - [x] /wow/user/characters
 
-#### SC2 Community APIs
+##### SC2 Community APIs
 
 - [ ] /sc2/profile/:id/:region/:name/
 - [ ] /sc2/profile/:id/:region/:name/ladders
@@ -53,7 +55,7 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 - [ ] /sc2/data/achievements
 - [ ] /sc2/data/rewards
 
-#### WoW Community APIs
+##### WoW Community APIs
 
 - [x] /wow/achievement/:id
 - [x] /wow/auction/data/:realm
@@ -81,12 +83,32 @@ A library to work with the Battle.net Web APIs. This package is compliant with [
 - [x] /wow/data/item/classes
 - [x] /wow/data/talents
 - [x] /wow/data/pet/types
-- [ ] /wow/mount 
+- [ ] /wow/mount
 
-## License
+### License
 
-The MIT License (MIT). Please see [License File](https://github.com/pwnraid/bnet/blob/master/LICENSE) for more information.
+This library is licensed under the MIT license.
 
 Battle.net, Warcraft, World of Warcraft, StarCraft and Diablo are copyrighted by Blizzard Entertainment, Inc.
 
 This library is neither endorsed by nor associated with Blizzard Entertainment, Inc.
+
+[apidocs]: https://docs.pwnraid.org/bnet/latest/
+
+[badge-source]: https://img.shields.io/badge/source-pwnraid/bnet-blue.svg?style=flat-square
+[badge-release]: https://img.shields.io/github/release/pwnraid/bnet.svg?style=flat-square
+[badge-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[badge-build]: https://img.shields.io/travis/pwnraid/bnet/master.svg?style=flat-square
+[badge-hhvm]: https://img.shields.io/hhvm/pwnraid/bnet.svg?style=flat-square
+[badge-quality]: https://img.shields.io/scrutinizer/g/pwnraid/bnet/master.svg?style=flat-square
+[badge-coverage]: https://img.shields.io/coveralls/pwnraid/bnet/master.svg?style=flat-square
+[badge-downloads]: https://img.shields.io/packagist/dt/pwnraid/bnet.svg?style=flat-square
+
+[source]: https://github.com/pwnraid/bnet
+[release]: https://github.com/pwnraid/bnet/releases
+[license]: https://github.com/pwnraid/bnet/blob/master/LICENSE
+[build]: https://travis-ci.org/pwnraid/bnet
+[hhvm]: http://hhvm.h4cc.de/package/pwnraid/bnet
+[quality]: https://scrutinizer-ci.com/g/pwnraid/bnet/
+[coverage]: https://coveralls.io/r/pwnraid/bnet?branch=master
+[downloads]: https://packagist.org/packages/pwnraid/bnet
