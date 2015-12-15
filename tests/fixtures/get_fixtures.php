@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/../../phpunit.php';
+require_once __DIR__.'/../bootstrap.php';
 
 use Pwnraid\Bnet\Test\FixtureClient;
 use Pwnraid\Bnet\Diablo\Artisans\ArtisanRequest;
