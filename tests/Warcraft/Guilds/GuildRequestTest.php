@@ -50,11 +50,13 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
 
         $request->on('Auchindoun');
 
-        $response = $request->find('Dyslectic Defnenders', ['news']);
+        $response = $request->find('Dyslectic Defnenders', ['news', 'members']);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\GuildEntity', $response);
         $this->assertSame('Dyslectic Defnenders', $response->name);
         $this->assertInternalType('array', $response->news);
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response->members[0]['character']);
+        $this->assertArrayHasKey('rank', $response->members[0]);
     }
 
     public function testFindInvalid()
