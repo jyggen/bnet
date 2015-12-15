@@ -121,5 +121,4 @@ class RaceEntity extends AbstractEntity
 
         return new static(static::$races[$raceId]);
     }
-
 }

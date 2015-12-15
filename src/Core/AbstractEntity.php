@@ -38,10 +38,10 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      */
     public function __get($key)
     {
-        if (array_key_exists($key, $this->attributes) === true)
-        {
+        if (array_key_exists($key, $this->attributes) === true) {
             return $this->attributes[$key];
         }
+
         return null;
     }
 
