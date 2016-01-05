@@ -1,10 +1,10 @@
 <?php
 
-namespace Pwnraid\Bnet\Test\Warcraft\Mount;
+namespace Pwnraid\Bnet\Test\Warcraft\Mounts;
 
 
 use Pwnraid\Bnet\Test\TestClient;
-use Pwnraid\Bnet\Warcraft\Mount\MountRequest;
+use Pwnraid\Bnet\Warcraft\Mounts\MountRequest;
 
 class MountRequestTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,6 +12,6 @@ class MountRequestTest extends \PHPUnit_Framework_TestCase
 
         $response = (new MountRequest(new TestClient('wow')))->all();
 
-        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Mount\MountEntity', $response[0]);
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Mounts\MountEntity', $response[0]);
     }
 }
