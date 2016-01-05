@@ -39,7 +39,7 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Items\ItemEntity', $response);
         $this->assertSame(110050, $response->id);
-        $this->assertNull($response->name);
+        $this->assertSame('Dagger of the Sanguine Emeralds', $response->name);
     }
 
     public function testFindOnContextItemWithContext()

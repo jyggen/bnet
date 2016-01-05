@@ -83,7 +83,7 @@ The [latest class API documentation][apidocs] is available online.
 - [x] /wow/data/item/classes
 - [x] /wow/data/talents
 - [x] /wow/data/pet/types
-- [ ] /wow/mount
+- [x] /wow/mount
 
 ### License
 
