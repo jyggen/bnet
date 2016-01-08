@@ -43,6 +43,7 @@ The [latest class API documentation][apidocs] is available online.
 
 ##### Community OAuth Profile APIs
 
+- [ ] /account/user
 - [ ] /sc2/profile/user
 - [x] /wow/user/characters
 
@@ -59,9 +60,11 @@ The [latest class API documentation][apidocs] is available online.
 
 - [x] /wow/achievement/:id
 - [x] /wow/auction/data/:realm
+- [ ] /wow/pet
 - [x] /wow/pet/ability/:abilityid
 - [x] /wow/pet/species/:speciesid
 - [x] /wow/pet/stats/:speciesid
+- [x] /wow/mount
 - [x] /wow/challenge/:realm
 - [x] /wow/challenge/region
 - [x] /wow/character/:realm/:charactername
@@ -73,7 +76,7 @@ The [latest class API documentation][apidocs] is available online.
 - [x] /wow/realm/status
 - [x] /wow/recipe/:recipeid
 - [x] /wow/spell/:spellid
-- [x] /wow/data/battlegroups/
+- [x] /wow/data/battlegroups
 - [x] /wow/data/character/races
 - [x] /wow/data/character/classes
 - [x] /wow/data/character/achievements
@@ -83,7 +86,15 @@ The [latest class API documentation][apidocs] is available online.
 - [x] /wow/data/item/classes
 - [x] /wow/data/talents
 - [x] /wow/data/pet/types
-- [x] /wow/mount
+
+##### Game Data APIs
+
+- [ ] /data/d3/season
+- [ ] /data/d3/season/:id
+- [ ] /data/d3/season/:id/leaderboard/:leaderboard
+- [ ] /data/d3/era
+- [ ] /data/d3/era/:id
+- [ ] /data/d3/era/:id/leaderboard/:leaderboard
 
 ### License
 
