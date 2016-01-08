@@ -107,13 +107,13 @@ This library is neither endorsed by nor associated with Blizzard Entertainment, 
 [apidocs]: https://docs.pwnraid.org/bnet/latest/
 
 [badge-gitter]: https://img.shields.io/badge/gitter-join_chat-brightgreen.svg?style=flat-square
-[badge-source]: https://img.shields.io/badge/source-/pwnraid/bnet-blue.svg?style=flat-square
-[badge-release]: https://img.shields.io/packagist/v//pwnraid/bnet.svg?style=flat-square
+[badge-source]: https://img.shields.io/badge/source-pwnraid/bnet-blue.svg?style=flat-square
+[badge-release]: https://img.shields.io/packagist/v/pwnraid/bnet.svg?style=flat-square
 [badge-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[badge-build]: https://img.shields.io/travis//pwnraid/bnet/master.svg?style=flat-square
-[badge-quality]: https://img.shields.io/scrutinizer/g//pwnraid/bnet/master.svg?style=flat-square
-[badge-coverage]: https://img.shields.io/coveralls//pwnraid/bnet/master.svg?style=flat-square
-[badge-downloads]: https://img.shields.io/packagist/dt//pwnraid/bnet.svg?style=flat-square
+[badge-build]: https://img.shields.io/travis/pwnraid/bnet/master.svg?style=flat-square
+[badge-quality]: https://img.shields.io/scrutinizer/g/pwnraid/bnet/master.svg?style=flat-square
+[badge-coverage]: https://img.shields.io/coveralls/pwnraid/bnet/master.svg?style=flat-square
+[badge-downloads]: https://img.shields.io/packagist/dt/pwnraid/bnet.svg?style=flat-square
 
 [gitter]: https://gitter.im/pwnraid/bnet
 [source]: https://github.com/pwnraid/bnet
