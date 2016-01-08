@@ -1,10 +1,10 @@
 ## Battle.net API Client
 
+[![Gitter Chat][badge-gitter]][gitter]
 [![Source Code][badge-source]][source]
 [![Latest Version][badge-release]][release]
 [![Software License][badge-license]][license]
 [![Build Status][badge-build]][build]
-[![HHVM Status][badge-hhvm]][hhvm]
 [![Scrutinizer][badge-quality]][quality]
 [![Coverage Status][badge-coverage]][coverage]
 [![Total Downloads][badge-downloads]][downloads]
@@ -106,20 +106,20 @@ This library is neither endorsed by nor associated with Blizzard Entertainment, 
 
 [apidocs]: https://docs.pwnraid.org/bnet/latest/
 
-[badge-source]: https://img.shields.io/badge/source-pwnraid/bnet-blue.svg?style=flat-square
-[badge-release]: https://img.shields.io/github/release/pwnraid/bnet.svg?style=flat-square
+[badge-gitter]: https://img.shields.io/badge/gitter-join_chat-brightgreen.svg?style=flat-square
+[badge-source]: https://img.shields.io/badge/source-/pwnraid/bnet-blue.svg?style=flat-square
+[badge-release]: https://img.shields.io/packagist/v//pwnraid/bnet.svg?style=flat-square
 [badge-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[badge-build]: https://img.shields.io/travis/pwnraid/bnet/master.svg?style=flat-square
-[badge-hhvm]: https://img.shields.io/hhvm/pwnraid/bnet.svg?style=flat-square
-[badge-quality]: https://img.shields.io/scrutinizer/g/pwnraid/bnet/master.svg?style=flat-square
-[badge-coverage]: https://img.shields.io/coveralls/pwnraid/bnet/master.svg?style=flat-square
-[badge-downloads]: https://img.shields.io/packagist/dt/pwnraid/bnet.svg?style=flat-square
+[badge-build]: https://img.shields.io/travis//pwnraid/bnet/master.svg?style=flat-square
+[badge-quality]: https://img.shields.io/scrutinizer/g//pwnraid/bnet/master.svg?style=flat-square
+[badge-coverage]: https://img.shields.io/coveralls//pwnraid/bnet/master.svg?style=flat-square
+[badge-downloads]: https://img.shields.io/packagist/dt//pwnraid/bnet.svg?style=flat-square
 
+[gitter]: https://gitter.im/pwnraid/bnet
 [source]: https://github.com/pwnraid/bnet
-[release]: https://github.com/pwnraid/bnet/releases
+[release]: https://packagist.org/packages/pwnraid/bnet
 [license]: https://github.com/pwnraid/bnet/blob/master/LICENSE
 [build]: https://travis-ci.org/pwnraid/bnet
-[hhvm]: http://hhvm.h4cc.de/package/pwnraid/bnet
 [quality]: https://scrutinizer-ci.com/g/pwnraid/bnet/
 [coverage]: https://coveralls.io/r/pwnraid/bnet?branch=master
 [downloads]: https://packagist.org/packages/pwnraid/bnet
