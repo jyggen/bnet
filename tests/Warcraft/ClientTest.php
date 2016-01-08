@@ -76,6 +76,17 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::__construct
+     * @covers ::mounts
+     * @uses   \Pwnraid\Bnet\Core\AbstractRequest
+     */
+    public function testMounts()
+    {
+        $client = (new Mockery)->mock('Pwnraid\Bnet\Warcraft\Client')->shouldDeferMissing();
+        $this->assertInstanceOf('Pwnraid\Bnet\Warcraft\Mounts\MountRequest', $client->mounts());
+    }
+
+    /**
+     * @covers ::__construct
      * @covers ::quests
      * @uses   \Pwnraid\Bnet\Core\AbstractRequest
      */

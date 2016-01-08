@@ -8,6 +8,7 @@ use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
 use Pwnraid\Bnet\Warcraft\Guilds\GuildRequest;
 use Pwnraid\Bnet\Warcraft\Items\ItemRequest;
 use Pwnraid\Bnet\Warcraft\Leaderboards\LeaderboardRequest;
+use Pwnraid\Bnet\Warcraft\Mounts\MountRequest;
 use Pwnraid\Bnet\Warcraft\Quests\QuestRequest;
 use Pwnraid\Bnet\Warcraft\Realms\RealmRequest;
 use Pwnraid\Bnet\Warcraft\Recipes\RecipeRequest;
@@ -45,6 +46,11 @@ class Client extends AbstractClient
     public function leaderboards()
     {
         return new LeaderboardRequest($this);
+    }
+
+    public function mounts()
+    {
+        return new MountRequest($this);
     }
 
     public function quests()
