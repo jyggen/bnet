@@ -23,7 +23,7 @@ The [latest class API documentation][apidocs] is available online.
 - [ ] Write some documentation.
 - [ ] Clean up response entities.
 - [ ] 100% test coverage.
-- [x] Switch cache from [tedivm/stash](https://github.com/tedious/Stash) to [PSR-6](https://github.com/php-fig/fig-standards/blob/master/proposed/cache.md) interfaces.
+- [x] Switch cache from [tedivm/stash](https://github.com/tedious/Stash) to [PSR-6](http://www.php-fig.org/psr/psr-6/) interfaces.
 - [x] Stable release (>=1.0) of [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client).
 
 #### Implementation Status
