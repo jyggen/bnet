@@ -1,13 +1,12 @@
 <?php
 namespace Pwnraid\Bnet\Test;
 
+use Fig\Cache\Memory\MemoryPool;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Pwnraid\Bnet\Region;
-use Stash\Driver\Ephemeral;
-use Stash\Pool;
 
 class TestClient extends \Pwnraid\Bnet\Core\AbstractClient
 {
@@ -22,7 +21,7 @@ class TestClient extends \Pwnraid\Bnet\Core\AbstractClient
             'handler' => HandlerStack::create($this->mock)
         ]);
 
-        parent::__construct('foobar', new Region(Region::EUROPE), new Pool(new Ephemeral));
+        parent::__construct('foobar', new Region(Region::EUROPE), new MemoryPool);
     }
 
     public function get($url, array $options = [])

@@ -4,9 +4,7 @@ namespace Pwnraid\Bnet;
 use Pwnraid\Bnet\Diablo\Client as DiabloClient;
 use Pwnraid\Bnet\Starcraft\Client as StarcraftClient;
 use Pwnraid\Bnet\Warcraft\Client as WarcraftClient;
-use Stash\Driver\Ephemeral;
-use Stash\Interfaces\PoolInterface;
-use Stash\Pool;
+use Psr\Cache\CacheItemPoolInterface;
 
 class ClientFactory
 {
@@ -16,41 +14,26 @@ class ClientFactory
     protected $apiKey;
 
     /**
-     * @var PoolInterface
+     * @var CacheItemPoolInterface
      */
     protected $cache;
 
     /**
-     * @param string        $apiKey
-     * @param PoolInterface $cache
+     * @param string                 $apiKey
+     * @param CacheItemPoolInterface $cache
      */
-    public function __construct($apiKey, PoolInterface $cache = null)
+    public function __construct($apiKey, CacheItemPoolInterface $cache)
     {
         $this->apiKey = $apiKey;
-
-        if ($cache === null) {
-            $cache = new Pool(new Ephemeral);
-        }
-
-        $this->cache = $cache;
+        $this->cache  = $cache;
     }
 
     /**
-     * @return PoolInterface
+     * @return CacheItemPoolInterface
      */
     public function getCache()
     {
         return $this->cache;
-    }
-
-    /**
-     * @param PoolInterface $cache
-     *
-     * @return void
-     */
-    public function setCache(PoolInterface $cache)
-    {
-        $this->cache = $cache;
     }
 
     /**

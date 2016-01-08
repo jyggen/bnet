@@ -7,9 +7,9 @@ use GuzzleHttp\Exception\ClientException;
 use Psr\Http\Message\ResponseInterface;
 use Pwnraid\Bnet\Exceptions\BattleNetException;
 use Pwnraid\Bnet\Region;
+use Psr\Cache\CacheItemInterface;
+use Psr\Cache\CacheItemPoolInterface;
 use SebastianBergmann\Version;
-use Stash\Interfaces\ItemInterface;
-use Stash\Interfaces\PoolInterface;
 
 abstract class AbstractClient
 {
@@ -24,7 +24,7 @@ abstract class AbstractClient
     protected $apiKey;
 
     /**
-     * @var PoolInterface
+     * @var CacheItemPoolInterface
      */
     protected $cache;
 
@@ -44,18 +44,16 @@ abstract class AbstractClient
     protected $version;
 
     /**
-     * @param string        $apiKey
-     * @param Region        $region
-     * @param PoolInterface $cache
+     * @param string                 $apiKey
+     * @param Region                 $region
+     * @param CacheItemPoolInterface $cache
      */
-    public function __construct($apiKey, Region $region, PoolInterface $cache)
+    public function __construct($apiKey, Region $region, CacheItemPoolInterface $cache)
     {
         $this->apiKey  = $apiKey;
         $this->cache   = $cache;
         $this->region  = $region;
         $this->version = new Version(static::VERSION, dirname(dirname(__DIR__)));
-
-        $this->cache->setNamespace(str_replace('\\', '', get_class($this)));
     }
 
     /**
@@ -129,15 +127,15 @@ abstract class AbstractClient
     }
 
     /**
-     * @param ResponseInterface $response
-     * @param ItemInterface     $item
-     * @param array|null        $data
+     * @param ResponseInterface  $response
+     * @param CacheItemInterface $item
+     * @param array|null         $data
      *
      * @throws \RuntimeException
      *
      * @return array
      */
-    protected function handleSuccessfulResponse(ResponseInterface $response, ItemInterface $item, $data)
+    protected function handleSuccessfulResponse(ResponseInterface $response, CacheItemInterface $item, $data)
     {
         switch ((int) $response->getStatusCode()) {
             case 200:
@@ -171,7 +169,7 @@ abstract class AbstractClient
         $item = $this->cache->getItem($this->getRequestKey($url, $options));
         $data = $item->get();
 
-        if ($item->isMiss() === false) {
+        if ($item->isHit() === true) {
             $options = array_replace_recursive($options, [
                 'headers' => [
                     'If-Modified-Since' => $data['modified'],
