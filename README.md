@@ -1,5 +1,7 @@
 ## Battle.net API Client
 
+[![Join the chat at https://gitter.im/pwnraid/bnet](https://badges.gitter.im/pwnraid/bnet.svg)](https://gitter.im/pwnraid/bnet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Source Code][badge-source]][source]
 [![Latest Version][badge-release]][release]
 [![Software License][badge-license]][license]
