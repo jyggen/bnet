@@ -1,4 +1,4 @@
-## Battle.net API Client
+# Battle.net API Client
 
 [![Gitter Chat][badge-gitter]][gitter]
 [![Source Code][badge-source]][source]
@@ -11,13 +11,19 @@
 
 pwnraid/bnet is a PHP 5.5+ library for working with the Battle.net Web APIs.
 
-[Find Curl on Packagist/Composer](https://packagist.org/packages/pwnraid/bnet)
+## Installation
 
-### API Documentation
+The preferred method of installation is via [Packagist][] and [Composer][]. Run the following command to install the package and add it as a requirement to your project's `composer.json`:
+
+```bash
+composer require pwnraid/bnet
+```
+
+## API Documentation
 
 The [latest class API documentation][apidocs] is available online.
 
-### Road to 1.0
+## Road to 1.0
 
 - [ ] Implement all available API endpoints (see below).
 - [ ] Write some documentation.
@@ -26,14 +32,14 @@ The [latest class API documentation][apidocs] is available online.
 - [x] Switch cache from [tedivm/stash](https://github.com/tedious/Stash) to [PSR-6](http://www.php-fig.org/psr/psr-6/) interfaces.
 - [x] Stable release (>=1.0) of [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client).
 
-#### Implementation Status
+### Implementation Status
 
-##### Account API
+#### Account API
 
 - [x] /account/user/id
 - [x] /account/user/battletag
 
-##### D3 Community API
+#### D3 Community API
 
 - [ ] /d3/profile/:battletag/
 - [ ] /d3/profile/:battletag/hero/:id
@@ -41,13 +47,13 @@ The [latest class API documentation][apidocs] is available online.
 - [x] /d3/data/follower/:follower
 - [x] /d3/data/artisan/:artisan
 
-##### Community OAuth Profile APIs
+#### Community OAuth Profile APIs
 
 - [ ] /account/user
 - [ ] /sc2/profile/user
 - [x] /wow/user/characters
 
-##### SC2 Community APIs
+#### SC2 Community APIs
 
 - [ ] /sc2/profile/:id/:region/:name/
 - [ ] /sc2/profile/:id/:region/:name/ladders
@@ -56,7 +62,7 @@ The [latest class API documentation][apidocs] is available online.
 - [ ] /sc2/data/achievements
 - [ ] /sc2/data/rewards
 
-##### WoW Community APIs
+#### WoW Community APIs
 
 - [x] /wow/achievement/:id
 - [x] /wow/auction/data/:realm
@@ -91,7 +97,7 @@ The [latest class API documentation][apidocs] is available online.
 - [ ] /wow/boss/
 - [ ] /wow/boss/:bossid
 
-##### Game Data APIs
+#### Game Data APIs
 
 - [ ] /data/d3/season
 - [ ] /data/d3/season/:id
@@ -100,7 +106,7 @@ The [latest class API documentation][apidocs] is available online.
 - [ ] /data/d3/era/:id
 - [ ] /data/d3/era/:id/leaderboard/:leaderboard
 
-### License
+## License
 
 This library is licensed under the MIT license.
 
@@ -108,6 +114,8 @@ Battle.net, Warcraft, World of Warcraft, StarCraft and Diablo are copyrighted by
 
 This library is neither endorsed by nor associated with Blizzard Entertainment, Inc.
 
+[packagist]: https://packagist.org/packages/pwnraid/bnet
+[composer]: http://getcomposer.org/
 [apidocs]: https://docs.pwnraid.org/bnet/latest/
 
 [badge-gitter]: https://img.shields.io/badge/gitter-join_chat-brightgreen.svg?style=flat-square
