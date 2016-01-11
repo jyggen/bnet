@@ -23,6 +23,14 @@ composer require pwnraid/bnet
 
 The [latest class API documentation][apidocs] is available online.
 
+This project uses [ApiGen](http://apigen.org/) to generate this documentation. To generate the documentation on your own, install dev dependencies and run the following command from the root of the project:
+
+```
+./vendor/bin/apigen generate --source="src" --destination="build/apidocs" --title="pwnraid/bnet" --template-theme="bootstrap" --deprecated --todo
+```
+
+This will generate documentation in the `build/apidocs/` folder.
+
 ## Road to 1.0
 
 - [ ] Implement all available API endpoints (see below).
@@ -106,9 +114,9 @@ The [latest class API documentation][apidocs] is available online.
 - [ ] /data/d3/era/:id
 - [ ] /data/d3/era/:id/leaderboard/:leaderboard
 
-## License
+## Copyright and License
 
-This library is licensed under the MIT license.
+The pwnraid/bnet library is copyright © [Jonas Stendahl](https://stendahl.me/) and licensed for use under the MIT License (MIT). Please see [LICENSE][] for more information.
 
 Battle.net, Warcraft, World of Warcraft, StarCraft and Diablo are copyrighted by Blizzard Entertainment, Inc.
 
