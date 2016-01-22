@@ -85,6 +85,14 @@ class Region
     protected $region;
 
     /**
+     * @return array
+     */
+    public static function all()
+    {
+        return static::$regions;
+    }
+
+    /**
      * @param string $region
      * @param string $locale
      */
@@ -127,13 +135,5 @@ class Region
     public function getLocale()
     {
         return $this->locale;
-    }
-    
-    /**
-     * @return array
-     */
-    public static function getRegions()
-    {
-        return static::$regions;
     }
 }

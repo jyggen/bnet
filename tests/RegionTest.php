@@ -38,4 +38,10 @@ class RegionTest extends \PHPUnit_Framework_TestCase
     {
         new Region(Region::EUROPE, 'invalid');
     }
+
+    public function testAll()
+    {
+        $this->assertInternalType('array', Region::all());
+        $this->assertSame('https://eu.api.battle.net/%s/', Region::all()[Region::EUROPE]['hosts']['api']);
+    }
 }
