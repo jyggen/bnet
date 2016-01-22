@@ -48,7 +48,7 @@ abstract class AbstractClient
      * @param Region                 $region
      * @param CacheItemPoolInterface $cache
      */
-    public function __construct($apiKey, Region $region, CacheItemPoolInterface $cache)
+    public function __construct($apiKey, Region $region, CacheItemPoolInterface $cache = null)
     {
         $this->apiKey  = $apiKey;
         $this->cache   = $cache;
@@ -135,12 +135,12 @@ abstract class AbstractClient
      *
      * @return array
      */
-    protected function handleSuccessfulResponse(ResponseInterface $response, CacheItemInterface $item, $data)
+    protected function handleSuccessfulResponse(ResponseInterface $response, CacheItemInterface $item = null)
     {
         switch ((int) $response->getStatusCode()) {
             case 200:
                 $data = json_decode($response->getBody(), true);
-                if ($response->hasHeader('Last-Modified') === true) {
+                if ($item !== null && $response->hasHeader('Last-Modified') === true) {
                     $item->set([
                         'modified' => $response->getHeader('Last-Modified'),
                         'json'     => $data,
@@ -148,7 +148,7 @@ abstract class AbstractClient
                 }
                 return $data;
             case 304:
-                return $data['json'];
+                return $item->get()['json'];
             default:
                 throw new \RuntimeException('No support added for HTTP Status Code '.$response->getStatusCode());
         }
@@ -166,15 +166,19 @@ abstract class AbstractClient
             $this->client = new GuzzleClient;
         }
 
-        $item = $this->cache->getItem($this->getRequestKey($url, $options));
-        $data = $item->get();
+        $item = null;
 
-        if ($item->isHit() === true) {
-            $options = array_replace_recursive($options, [
-                'headers' => [
-                    'If-Modified-Since' => $data['modified'],
-                ],
-            ]);
+        if ($this->cache !== null) {
+            $item = $this->cache->getItem($this->getRequestKey($url, $options));
+            $data = $item->get();
+
+            if ($item->isHit() === true) {
+                $options = array_replace_recursive($options, [
+                    'headers' => [
+                        'If-Modified-Since' => $data['modified'],
+                    ],
+                ]);
+            }
         }
 
         $options = array_replace_recursive($options, [
@@ -201,6 +205,6 @@ abstract class AbstractClient
             }
         }
 
-        return $this->handleSuccessfulResponse($response, $item, $data);
+        return $this->handleSuccessfulResponse($response, $item);
     }
 }

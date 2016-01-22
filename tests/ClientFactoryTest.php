@@ -14,6 +14,12 @@ class ClientFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($pool, $factory->getCache());
     }
 
+    public function testGetCacheWithoutCache()
+    {
+        $factory = new ClientFactory('apikey');
+        $this->assertSame(null, $factory->getCache());
+    }
+
     public function testDiablo()
     {
         $pool    = new MemoryPool;

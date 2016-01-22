@@ -22,7 +22,7 @@ class ClientFactory
      * @param string                 $apiKey
      * @param CacheItemPoolInterface $cache
      */
-    public function __construct($apiKey, CacheItemPoolInterface $cache)
+    public function __construct($apiKey, CacheItemPoolInterface $cache = null)
     {
         $this->apiKey = $apiKey;
         $this->cache  = $cache;
