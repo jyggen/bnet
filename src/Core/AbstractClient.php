@@ -191,7 +191,7 @@ abstract class AbstractClient
                 'apikey' => $this->apiKey,
                 'locale' => $this->region->getLocale(),
             ],
-			'timeout' => 60,
+            'timeout' => 60,
         ]);
 
         try {
