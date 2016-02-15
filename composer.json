@@ -1,9 +1,9 @@
 {
     "name": "pwnraid/bnet",
-    "description": "Library for Battle.net Web APIs",
-    "type": "library",
-    "keywords": ["Battle.net", "Blizzard", "Warcraft", "Starcraft", "Diablo"],
+    "description": "Library for working with the Battle.net Web APIs.",
+    "keywords": ["Battle.net", "Blizzard", "Warcraft", "Starcraft", "Diablo", "API", "bnet"],
     "homepage": "https://github.com/pwnraid/bnet",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -17,8 +17,9 @@
         }
     ],
     "support": {
-       "issues": "https://github.com/pwnraid/bnet/issues",
-       "source": "https://github.com/pwnraid/bnet"
+        "docs": "https://docs.pwnraid.org/bnet/latest",
+        "issues": "https://github.com/pwnraid/bnet/issues",
+        "source": "https://github.com/pwnraid/bnet"
    },
     "require": {
         "php": ">=5.5",
@@ -46,5 +47,13 @@
         "branch-alias": {
             "dev-master": "1.0-dev"
         }
+    },
+    "scripts": {
+        "test": [
+            "mkdir -p build/logs",
+            "parallel-lint . --exclude vendor",
+            "phpunit --coverage-text",
+            "phpcs src --standard=psr2 -sp"
+        ]
     }
 }

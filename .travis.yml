@@ -8,6 +8,9 @@ php:
 
 sudo: false
 
+matrix:
+  fast_finish: true
+
 env:
   - COMPOSER_OPTS=""
   - COMPOSER_OPTS="--prefer-lowest"
@@ -16,11 +19,7 @@ before_script:
   - travis_retry composer self-update
   - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_OPTS
 
-script:
-  - mkdir -p build/logs
-  - ./vendor/bin/parallel-lint src tests
-  - ./vendor/bin/phpunit --coverage-text
-  - ./vendor/bin/phpcs src --standard=psr2 -sp
+script: composer test
 
 after_script:
   - php vendor/bin/coveralls
