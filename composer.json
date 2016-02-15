@@ -53,7 +53,8 @@
             "mkdir -p build/logs",
             "parallel-lint . --exclude vendor",
             "phpunit --coverage-text",
-            "phpcs src --standard=psr2 -sp"
+            "phpcs src --standard=psr2 -sp",
+            "composer validate --strict"
         ]
     }
 }
