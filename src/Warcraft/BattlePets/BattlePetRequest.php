@@ -13,7 +13,7 @@ class BattlePetRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -28,7 +28,7 @@ class BattlePetRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -49,7 +49,7 @@ class BattlePetRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -64,11 +64,11 @@ class BattlePetRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
-        return array_map(function($type){
+        return array_map(function ($type) {
             return new TypeEntity($type);
         }, $data['petTypes']);
     }

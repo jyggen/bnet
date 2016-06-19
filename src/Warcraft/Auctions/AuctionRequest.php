@@ -27,11 +27,11 @@ class AuctionRequest extends AbstractRequest
     {
         $data = $this->client->get('auction/data/'.Utils::realmNameToSlug($realm));
 
-        if(is_null($data)) {
+        if (is_null($data)) {
             return null;
         }
 
-        if($this->asJson == true) {
+        if ($this->asJson == true) {
             return json_encode($data, true);
         }
 

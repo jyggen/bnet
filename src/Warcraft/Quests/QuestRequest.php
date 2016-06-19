@@ -13,7 +13,7 @@ class QuestRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 

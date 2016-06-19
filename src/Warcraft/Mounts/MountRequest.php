@@ -14,11 +14,11 @@ class MountRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
-        return array_map(function($mount) {
+        return array_map(function ($mount) {
             return new MountEntity($mount);
         }, $data['mounts']);
     }

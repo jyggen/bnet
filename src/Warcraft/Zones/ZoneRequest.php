@@ -8,7 +8,6 @@
 
 namespace Pwnraid\Bnet\Warcraft\Zones;
 
-
 use Pwnraid\Bnet\Core\AbstractRequest;
 
 class ZoneRequest extends AbstractRequest
@@ -21,13 +20,13 @@ class ZoneRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
-        return array_map(function($zone) {
+        return array_map(function ($zone) {
             return new ZoneEntity($zone);
-        },$data['zones']);
+        }, $data['zones']);
     }
 
     public function find($id)
@@ -38,11 +37,10 @@ class ZoneRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
         return new ZoneEntity($data);
     }
-
 }

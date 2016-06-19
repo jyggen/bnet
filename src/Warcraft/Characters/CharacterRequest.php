@@ -13,11 +13,11 @@ class CharacterRequest extends AbstractRequest
     {
         $data = $this->client->get('achievement/'.$achievementId);
 
-        if(is_null($data)) {
+        if (is_null($data)) {
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -31,15 +31,15 @@ class CharacterRequest extends AbstractRequest
     {
         $data         = $this->client->get('data/character/achievements');
 
-        if(is_null($data)) {
+        if (is_null($data)) {
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
-        return array_map(function($achievement) {
+        return array_map(function ($achievement) {
             return new AchievementCategoryEntity($achievement);
         }, $data['achievements']);
     }
@@ -48,17 +48,17 @@ class CharacterRequest extends AbstractRequest
     {
         $data    = $this->client->get('data/character/classes');
 
-        if(is_null($data)) {
+        if (is_null($data)) {
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
-        return array_map(function($class) {
+        return array_map(function ($class) {
             return new ClassEntity($class);
-        },$data['classes']);
+        }, $data['classes']);
     }
 
     public function find($name, array $fields = [])
@@ -77,7 +77,7 @@ class CharacterRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -98,12 +98,12 @@ class CharacterRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
-        return array_map(function($race) {
-           return new RaceEntity($race);
+        return array_map(function ($race) {
+             return new RaceEntity($race);
         }, $data['races']);
     }
 
@@ -115,7 +115,7 @@ class CharacterRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -147,7 +147,7 @@ class CharacterRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 

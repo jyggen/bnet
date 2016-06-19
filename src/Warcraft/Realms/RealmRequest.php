@@ -17,11 +17,11 @@ class RealmRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
-        return array_map(function($battlegroup) {
+        return array_map(function ($battlegroup) {
             return new BattlegroupEntity($battlegroup);
         }, $data['battlegroups']);
     }
@@ -40,7 +40,7 @@ class RealmRequest extends AbstractRequest
             $returnSingle = true;
         }
 
-        $realms = array_filter($realms, function(&$realm) {
+        $realms = array_filter($realms, function (&$realm) {
             return Utils::realmNameToSlug($realm);
         });
 
@@ -50,7 +50,7 @@ class RealmRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -80,7 +80,7 @@ class RealmRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -94,7 +94,7 @@ class RealmRequest extends AbstractRequest
      */
     protected function createRealmEntities(array $realmsList)
     {
-        return array_map(function($realm) {
+        return array_map(function ($realm) {
             return new RealmEntity($realm);
         }, $realmsList);
     }

@@ -8,7 +8,6 @@
 
 namespace Pwnraid\Bnet\Warcraft\Boss;
 
-
 use Pwnraid\Bnet\Core\AbstractRequest;
 
 class BossRequest extends AbstractRequest
@@ -17,15 +16,15 @@ class BossRequest extends AbstractRequest
     {
         $data = $this->client->get('boss/');
 
-        if(is_null($data)) {
+        if (is_null($data)) {
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
-        return array_map(function($boss) {
+        return array_map(function ($boss) {
             return new BossEntity($boss);
         }, $data['bosses']);
     }
@@ -34,11 +33,11 @@ class BossRequest extends AbstractRequest
     {
         $data = $this->client->get("boss/{$id}");
 
-        if(is_null($data)) {
+        if (is_null($data)) {
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 

@@ -8,10 +8,8 @@
 
 namespace Pwnraid\Bnet\Warcraft\Boss;
 
-
 use Pwnraid\Bnet\Core\AbstractEntity;
 
 class BossEntity extends AbstractEntity
 {
-
 }

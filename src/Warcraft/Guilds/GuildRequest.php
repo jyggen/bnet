@@ -12,11 +12,11 @@ class GuildRequest extends AbstractRequest
     {
         $data = $this->client->get('data/guild/achievements');
 
-        if(is_null($data)) {
+        if (is_null($data)) {
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -35,7 +35,7 @@ class GuildRequest extends AbstractRequest
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -57,11 +57,11 @@ class GuildRequest extends AbstractRequest
     {
         $data = $this->client->get('data/guild/perks');
 
-        if(is_null($data)) {
+        if (is_null($data)) {
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
@@ -72,11 +72,11 @@ class GuildRequest extends AbstractRequest
     {
         $data = $this->client->get('data/guild/rewards');
 
-        if(is_null($data)) {
+        if (is_null($data)) {
             return null;
         }
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data);
         }
 
