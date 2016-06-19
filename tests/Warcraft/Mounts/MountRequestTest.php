@@ -1,7 +1,5 @@
 <?php
-
 namespace Pwnraid\Bnet\Test\Warcraft\Mounts;
-
 
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Mounts\MountRequest;

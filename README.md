@@ -100,10 +100,10 @@ This will generate documentation in the `build/apidocs/` folder.
 - [x] /wow/data/item/classes
 - [x] /wow/data/talents
 - [x] /wow/data/pet/types
-- [ ] /wow/zone/
-- [ ] /wow/zone/:zoneid
-- [ ] /wow/boss/
-- [ ] /wow/boss/:bossid
+- [x] /wow/zone/
+- [x] /wow/zone/:zoneid
+- [x] /wow/boss/
+- [x] /wow/boss/:bossid
 
 #### Game Data APIs
 

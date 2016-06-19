@@ -6,10 +6,16 @@ use Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest;
 
 class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 {
+    protected $request;
+
+    protected function setUp()
+    {
+        $this->request = new BattlePetRequest(new TestClient('wow'));
+    }
+
     public function testAbility()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->ability(640);
+        $response = $this->request->ability(640);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\AbilityEntity', $response);
         $this->assertSame(640, $response->id);
@@ -17,16 +23,14 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testAbilityInvalidId()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->ability('invalid');
+        $response = $this->request->ability('invalid');
 
         $this->assertNull($response);
     }
 
     public function testSpecies()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->species(258);
+        $response = $this->request->species(258);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\SpeciesEntity', $response);
         $this->assertSame(258, $response->speciesId);
@@ -34,16 +38,14 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testSpeciesInvalidId()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->species('invalid');
+        $response = $this->request->species('invalid');
 
         $this->assertNull($response);
     }
 
     public function testStats()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->stats(258);
+        $response = $this->request->stats(258);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\StatsEntity', $response);
         $this->assertSame(258, $response->speciesId);
@@ -54,16 +56,14 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testStatsInvalidId()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->stats('invalid');
+        $response = $this->request->stats('invalid');
 
         $this->assertNull($response);
     }
 
     public function testStatsNotDefault()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->stats(258, 25, 5, 4);
+        $response = $this->request->stats(258, 25, 5, 4);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\StatsEntity', $response);
         $this->assertSame(258, $response->speciesId);
@@ -74,8 +74,7 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testType()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->types();
+        $response = $this->request->types();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\TypeEntity', $response[0]);
     }

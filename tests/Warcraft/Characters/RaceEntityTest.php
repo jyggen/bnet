@@ -14,7 +14,7 @@ class RaceEntityTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Pwnraid\Bnet\Exceptions\InvalidRaceException
+     * @expectedException \Pwnraid\Bnet\Exceptions\InvalidRaceException
      */
     public function testFromIdWithInvalidId()
     {

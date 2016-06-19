@@ -6,10 +6,16 @@ use Pwnraid\Bnet\Warcraft\Guilds\GuildRequest;
 
 class GuildRequestTest extends \PHPUnit_Framework_TestCase
 {
+    protected $request;
+
+    public function setUp()
+    {
+        $this->request = new GuildRequest(new TestClient('wow'));
+    }
+
     public function testAchievements()
     {
-        $request  = new GuildRequest(new TestClient('wow'));
-        $response = $request->achievements();
+        $response = $this->request->achievements();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\AchievementEntity', $response);
         $this->assertInternalType('array', $response->achievements);
@@ -21,8 +27,7 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testFindWithoutOn()
     {
-        $request  = new GuildRequest(new TestClient('wow'));
-        $request->find('Blinkspeed Couriers');
+        $this->request->find('Blinkspeed Couriers');
     }
 
     public function testOn()
@@ -34,11 +39,7 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFind()
     {
-        $request = new GuildRequest(new TestClient('wow'));
-
-        $request->on('Argent Dawn');
-
-        $response = $request->find('Blinkspeed Couriers');
+        $response = $this->request->on('Argent Dawn')->find('Blinkspeed Couriers');
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\GuildEntity', $response);
         $this->assertSame('Blinkspeed Couriers', $response->name);
@@ -46,11 +47,7 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindWithFields()
     {
-        $request = new GuildRequest(new TestClient('wow'));
-
-        $request->on('Auchindoun');
-
-        $response = $request->find('Dyslectic Defnenders', ['news', 'members']);
+        $response = $this->request->on('Auchindoun')->find('Dyslectic Defnenders', ['news', 'members']);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\GuildEntity', $response);
         $this->assertSame('Dyslectic Defnenders', $response->name);
@@ -61,19 +58,14 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindInvalid()
     {
-        $request = new GuildRequest(new TestClient('wow'));
-
-        $request->on('Argent Dawn');
-
-        $response = $request->find('Invalid');
+        $response = $this->request->on('Argent Dawn')->find('Invalid');
 
         $this->assertNull($response);
     }
 
     public function testPerks()
     {
-        $request  = new GuildRequest(new TestClient('wow'));
-        $response = $request->perks();
+        $response = $this->request->perks();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\PerkEntity', $response);
         $this->assertInternalType('array', $response->perks);
@@ -81,8 +73,7 @@ class GuildRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRewards()
     {
-        $request  = new GuildRequest(new TestClient('wow'));
-        $response = $request->rewards();
+        $response = $this->request->rewards();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Guilds\RewardEntity', $response);
         $this->assertInternalType('array', $response->rewards);

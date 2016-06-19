@@ -10,8 +10,6 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        parent::setUp();
-
         $this->timezone = date_default_timezone_get();
         date_default_timezone_set('UTC');
     }
@@ -19,7 +17,6 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
     public function tearDown()
     {
         date_default_timezone_set($this->timezone);
-        parent::tearDown();
     }
 
     public function testClassAttribute()

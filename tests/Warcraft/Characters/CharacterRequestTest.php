@@ -7,10 +7,16 @@ use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
 
 class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 {
+    protected $request;
+
+    public function setUp()
+    {
+        $this->request = new CharacterRequest(new TestClient('wow'));
+    }
+
     public function testAchievement()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->achievement(2144);
+        $response = $this->request->achievement(2144);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\AchievementEntity', $response);
         $this->assertSame(2144, $response->id);
@@ -18,24 +24,21 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testAchievementInvalid()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->achievement('invalid');
+        $response = $this->request->achievement('invalid');
 
         $this->assertNull($response);
     }
 
     public function testAchievements()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->achievements();
+        $response = $this->request->achievements();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\AchievementCategoryEntity', $response[0]);
     }
 
     public function testClasses()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->classes();
+        $response = $this->request->classes();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\ClassEntity', $response[0]);
     }
@@ -46,8 +49,7 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testFindWithoutOn()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $request->find('Morloderex');
+        $this->request->find('Morloderex');
     }
 
     public function testOn()
@@ -59,11 +61,7 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFind()
     {
-        $request = new CharacterRequest(new TestClient('wow'));
-
-        $request->on('Argent Dawn');
-
-        $response = $request->find('Picaboo');
+        $response = $this->request->on('Argent Dawn')->find('Picaboo');
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response);
         $this->assertSame('Picaboo', $response->name);
@@ -71,11 +69,7 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindWithFields()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-
-        $request->on('Frostwhisper');
-
-        $response = $request->find('Morloderex', ['mounts', 'titles']);
+        $response = $this->request->on('Frostwhisper')->find('Morloderex', ['mounts', 'titles']);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response);
         $this->assertSame('Morloderex', $response->name);
@@ -85,35 +79,28 @@ class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindInvalid()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-
-        $request->on('Argent Dawn');
-
-        $response = $request->find('Invalid');
+        $response = $this->request->on('Argent Dawn')->find('Invalid');
 
         $this->assertNull($response);
     }
 
     public function testRaces()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->races();
+        $response = $this->request->races();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\RaceEntity', $response[0]);
     }
 
     public function testTalents()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->talents();
+        $response = $this->request->talents();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\TalentEntity', $response[1]['talents'][0]);
     }
 
     public function testUser()
     {
-        $request  = new CharacterRequest(new TestClient('wow'));
-        $response = $request->user(new AccessToken(['access_token' => 'accesstoken']));
+        $response = $this->request->user(new AccessToken(['access_token' => 'accesstoken']));
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\CharacterEntity', $response[0]);
         $this->assertSame('Zealotry', $response[0]->name);

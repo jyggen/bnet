@@ -13,7 +13,9 @@ class RealmRequest extends AbstractRequest
     {
         $data = $this->client->get('data/battlegroups/');
 
-        return new BattlegroupEntity($data); // @todo: Return array of objects.
+        return array_map(function ($battlegroup) {
+            return new BattlegroupEntity($battlegroup);
+        }, $data['battlegroups']);
     }
 
     /**
@@ -67,12 +69,8 @@ class RealmRequest extends AbstractRequest
      */
     protected function createRealmEntities(array $realmsList)
     {
-        $realms = [];
-
-        foreach ($realmsList as $realm) {
-            $realms[] = new RealmEntity($realm);
-        }
-
-        return $realms;
+        return array_map(function ($realm) {
+            return new RealmEntity($realm);
+        }, $realmsList);
     }
 }

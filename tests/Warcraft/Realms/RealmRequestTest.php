@@ -6,10 +6,16 @@ use Pwnraid\Bnet\Warcraft\Realms\RealmRequest;
 
 class RealmRequestTest extends \PHPUnit_Framework_TestCase
 {
+    protected $request;
+
+    public function setUp()
+    {
+        $this->request = new RealmRequest(new TestClient('wow'));
+    }
+
     public function testAll()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->all();
+        $response = $this->request->all();
 
         $this->assertInternalType('array', $response);
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\RealmEntity', $response[0]);
@@ -17,25 +23,21 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindSingle()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->find('Argent Dawn');
-
+        $response = $this->request->find('Argent Dawn');
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\RealmEntity', $response);
         $this->assertSame('Argent Dawn', $response->name);
     }
 
     public function testFindSingleInvalid()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->find('Invalid');
+        $response = $this->request->find('Invalid');
 
         $this->assertNull($response);
     }
 
     public function testFindNotSingle()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->find(['Argent Dawn']);
+        $response = $this->request->find(['Argent Dawn']);
 
         $this->assertInternalType('array', $response);
         $this->assertSame(1, count($response));
@@ -45,8 +47,7 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindMultiple()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->find(['Argent Dawn', 'Auchindoun']);
+        $response = $this->request->find(['Argent Dawn', 'Auchindoun']);
 
         $this->assertInternalType('array', $response);
         $this->assertSame(2, count($response));
@@ -59,16 +60,13 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testFindMultipleInvalid()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $request->find(['Argant Dewn', 'Auchindoun']);
+        $this->request->find(['Frostwhispers', 'Auchindsoun']);
     }
 
     public function testBattlegroups()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->battlegroups();
-
-        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\BattlegroupEntity', $response);
-        $this->assertInternalType('array', $response->battlegroups);
+        $response = $this->request->battlegroups();
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\BattlegroupEntity', $response[0]);
+        $this->assertEquals('sturmangriff-charge', $response[6]->slug);
     }
 }

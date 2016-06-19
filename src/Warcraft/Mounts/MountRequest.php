@@ -7,13 +7,10 @@ class MountRequest extends AbstractRequest
 {
     public function all()
     {
-        $data   = $this->client->get('mount');
-        $mounts = [];
+        $data   = $this->client->get('mount/');
 
-        foreach ($data['mounts'] as $mount) {
-            $mounts[] = new MountEntity($mount);
-        }
-
-        return $mounts;
+        return array_map(function ($mount) {
+            return new MountEntity($mount);
+        }, $data['mounts']);
     }
 }

@@ -8,7 +8,6 @@ class GuildEntity extends AbstractEntity
 {
     public function __construct(array $body)
     {
-
         parent::__construct($body);
 
         if (array_key_exists('members', $this->attributes) === true) {

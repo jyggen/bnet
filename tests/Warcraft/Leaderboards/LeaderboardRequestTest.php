@@ -1,39 +1,43 @@
 <?php
 namespace Pwnraid\Bnet\Test\Warcraft;
 
+use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Leaderboards\LeaderboardRequest;
 
 class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
 {
-    public function testChallengeMode()
+    protected $request;
+
+    protected function setUp()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $response = $request->challengeMode('Argent Dawn');
+        $this->request = new LeaderboardRequest(new TestClient('wow'));
+    }
+
+    public function testChallengeModeRealm()
+    {
+        $response = $this->request->challengeMode('Argent Dawn');
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Leaderboards\ChallengeModeEntity', $response);
     }
 
-    public function testChallengeModeInvalid()
+    public function testChallengeModeInvalidRealm()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $response = $request->challengeMode('Invalid');
+        $response = $this->request->challengeMode('Invalid');
 
         $this->assertNull($response);
     }
 
-    public function testChallengeModeRegion()
+    public function testChallengeMode()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $response = $request->challengeMode();
+        $response = $this->request->challengeMode();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Leaderboards\ChallengeModeEntity', $response);
     }
 
     public function testPvp()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $response = $request->pvp('2v2');
+        $response = $this->request->pvp('2v2');
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Leaderboards\BracketEntity', $response);
     }
@@ -44,7 +48,6 @@ class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPvpInvalidBracket()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $request->pvp('invalid');
+        $this->request->pvp('invalid');
     }
 }

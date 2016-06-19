@@ -14,7 +14,7 @@ class ClassEntityTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Pwnraid\Bnet\Exceptions\InvalidClassException
+     * @expectedException \Pwnraid\Bnet\Exceptions\InvalidClassException
      */
     public function testFromIdWithInvalidId()
     {

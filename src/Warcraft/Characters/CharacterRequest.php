@@ -25,26 +25,20 @@ class CharacterRequest extends AbstractRequest
      */
     public function achievements()
     {
-        $data         = $this->client->get('data/character/achievements');
-        $achievements = [];
+        $data = $this->client->get('data/character/achievements');
 
-        foreach ($data['achievements'] as $category) {
-            $achievements[] = new AchievementCategoryEntity($category);
-        }
-
-        return $achievements;
+        return array_map(function ($achievement) {
+            return new AchievementCategoryEntity($achievement);
+        }, $data['achievements']);
     }
 
     public function classes()
     {
-        $data    = $this->client->get('data/character/classes');
-        $classes = [];
+        $data = $this->client->get('data/character/classes');
 
-        foreach ($data['classes'] as $class) {
-            $classes[] = new ClassEntity($class);
-        }
-
-        return $classes;
+        return array_map(function ($class) {
+            return new ClassEntity($class);
+        }, $data['classes']);
     }
 
     public function find($name, array $fields = [])
@@ -74,14 +68,11 @@ class CharacterRequest extends AbstractRequest
 
     public function races()
     {
-        $data  = $this->client->get('data/character/races');
-        $races = [];
+        $data = $this->client->get('data/character/races');
 
-        foreach ($data['races'] as $race) {
-            $races[] = new RaceEntity($race);
-        }
-
-        return $races;
+        return array_map(function ($race) {
+             return new RaceEntity($race);
+        }, $data['races']);
     }
 
     public function talents()

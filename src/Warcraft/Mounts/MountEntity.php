@@ -5,5 +5,4 @@ use Pwnraid\Bnet\Core\AbstractEntity;
 
 class MountEntity extends AbstractEntity
 {
-
 }

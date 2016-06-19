@@ -1,15 +1,22 @@
 <?php
 namespace Pwnraid\Bnet\Test\Warcraft;
 
+use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Items\ItemRequest;
 
 class ItemRequestTest extends \PHPUnit_Framework_TestCase
 {
+    protected $request;
+
+    public function setUp()
+    {
+        $this->request = new ItemRequest(new TestClient('wow'));
+    }
+
     public function testClasses()
     {
-        $request  = new ItemRequest(new TestClient('wow'));
-        $response = $request->classes();
+        $response = $this->request->classes();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Items\ClassEntity', $response);
         $this->assertInternalType('array', $response->classes);
@@ -17,8 +24,7 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFind()
     {
-        $request  = new ItemRequest(new TestClient('wow'));
-        $response = $request->find(18803);
+        $response = $this->request->find(18803);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Items\ItemEntity', $response);
         $this->assertSame(18803, $response->id);
@@ -26,16 +32,14 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindInvalidId()
     {
-        $request  = new ItemRequest(new TestClient('wow'));
-        $response = $request->find('invalid');
+        $response = $this->request->find('invalid');
 
         $this->assertNull($response);
     }
 
     public function testFindOnContextItem()
     {
-        $request  = new ItemRequest(new TestClient('wow'));
-        $response = $request->find(110050);
+        $response = $this->request->find(110050);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Items\ItemEntity', $response);
         $this->assertSame(110050, $response->id);
@@ -55,8 +59,7 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindOnContextItemWithBonusListWithContext()
     {
-        $request  = new ItemRequest(new TestClient('wow'));
-        $response = $request->withContext('dungeon-level-up-1')->find(110050, [40, 41]);
+        $response = $this->request->withContext('dungeon-level-up-1')->find(110050, [40, 41]);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Items\ItemEntity', $response);
         $this->assertSame(110050, $response->id);
@@ -68,8 +71,7 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindSet()
     {
-        $request  = new ItemRequest(new TestClient('wow'));
-        $response = $request->findSet(1060);
+        $response = $this->request->findSet(1060);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Items\ItemSetEntity', $response);
         $this->assertSame(1060, $response->id);
@@ -77,8 +79,7 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindInvalidIdSet()
     {
-        $request  = new ItemRequest(new TestClient('wow'));
-        $response = $request->findSet('invalid');
+        $response = $this->request->findSet('invalid');
 
         $this->assertNull($response);
     }
