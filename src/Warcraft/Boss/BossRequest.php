@@ -38,6 +38,10 @@ class BossRequest extends AbstractRequest
             return null;
         }
 
+        if($this->asJson) {
+            return json_encode($data);
+        }
+
         return new BossEntity($data);
     }
 }
