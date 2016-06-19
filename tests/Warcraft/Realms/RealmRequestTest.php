@@ -31,17 +31,16 @@ class RealmRequestTest extends TestCase
      */
     public function it_finds_a_single_realm_by_its_name()
     {
-        $response = $this->request->find('Argent Dawn');
-
+        $response = $this->request->find('Frostwhisper');
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\RealmEntity', $response);
-        $this->assertSame('Argent Dawn', $response->name);
+        $this->assertSame('Frostwhisper', $response->name);
 
-        $response_with_array = $this->request->find(['Argent Dawn']);
+        $response_with_array = $this->request->find(['Frostwhisper']);
 
         $this->assertInternalType('array', $response_with_array);
         $this->assertSame(1, count($response_with_array));
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\RealmEntity', $response_with_array[0]);
-        $this->assertSame('Argent Dawn', $response_with_array[0]->name);
+        $this->assertSame('Frostwhisper', $response_with_array[0]->name);
     }
 
     /**
@@ -59,7 +58,7 @@ class RealmRequestTest extends TestCase
      */
     public function it_finds_multiple_realms()
     {
-        $response = $this->request->find(['Argent Dawn', 'Auchindoun']);
+        $response = $this->request->find(['Frostwhisper', 'Auchindoun']);
 
         $this->assertInternalType('array', $response);
         $this->assertSame(2, count($response));
@@ -73,7 +72,7 @@ class RealmRequestTest extends TestCase
      */
     public function it_fails_if_invalid_name_is_provided()
     {
-        $this->request->find(['Argant Dewn', 'Auchindoun']);
+        $this->request->find(['Frostwhispers', 'Auchindsoun']);
     }
 
     /**
@@ -91,7 +90,7 @@ class RealmRequestTest extends TestCase
      */
     public function it_can_be_raw_json()
     {
-        $response = $this->request->asJson()->find(['Argent Dawn', 'Auchindoun']);
+        $response = $this->request->asJson()->find(['Frostwhisper', 'Auchindoun']);
 
         $this->assertJson($response);
     }

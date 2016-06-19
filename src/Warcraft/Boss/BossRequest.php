@@ -14,7 +14,7 @@ class BossRequest extends AbstractRequest
 {
     public function all()
     {
-        $data = $this->client->get('boss/');
+        $data = $this->client->get('boss');
 
         if (is_null($data)) {
             return null;

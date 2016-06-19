@@ -145,6 +145,8 @@ abstract class AbstractClient
                         'modified' => $response->getHeader('Last-Modified'),
                         'json'     => $data,
                     ]);
+
+                    $this->cache->save($item);
                 }
                 return $data;
             case 304:

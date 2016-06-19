@@ -14,7 +14,7 @@ class ZoneRequest extends AbstractRequest
 {
     public function all()
     {
-        $data = $this->client->get('zone/');
+        $data = $this->client->get('zone');
 
         if (is_null($data)) {
             return null;

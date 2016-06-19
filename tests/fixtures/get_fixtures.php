@@ -28,7 +28,7 @@ $wowClient = new FixtureClient($argv[1], 'wow');
 
 // Call all the endpoints we need fixtures/dummy data for in our tests.
 (new ZoneRequest($wowClient))->find(4131);
-(new BossRequest($wowClient))->find(24723);
+(new BossRequest($wowClient))->find(24744);
 (new BossRequest($wowClient))->all();
 (new ZoneRequest($wowClient))->all();
 (new MountRequest($wowClient))->all();
@@ -59,10 +59,10 @@ $auction = (new AuctionRequest($wowClient))->index('Auchindoun');
 (new LeaderboardRequest($wowClient))->pvp('2v2');
 (new QuestRequest($wowClient))->find(13146);
 (new RealmRequest($wowClient))->all();
-(new RealmRequest($wowClient))->find('Argent Dawn');
-(new RealmRequest($wowClient))->find(['Argent Dawn', 'Auchindoun']);
+(new RealmRequest($wowClient))->find('Frostwhisper');
+(new RealmRequest($wowClient))->find(['Frostwhisper', 'Auchindoun']);
 try { // Workaround for error handler.
-    (new RealmRequest($wowClient))->find(['Argant Dewn', 'Auchindoun']);
+    (new RealmRequest($wowClient))->find(['Frostwhisper', 'Auchindoun']);
 } catch (\RuntimeException $e) {
 }
 (new RealmRequest($wowClient))->battlegroups();
