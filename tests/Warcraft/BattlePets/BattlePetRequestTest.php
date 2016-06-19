@@ -1,10 +1,11 @@
 <?php
 namespace Pwnraid\Bnet\Test\Warcraft;
 
+use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest;
 
-class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
+class BattlePetRequestTest extends TestCase
 {
     public function testAbility()
     {
@@ -78,5 +79,16 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $response = $request->types();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\TypeEntity', $response[0]);
+    }
+
+    public function testCanAsJson()
+    {
+        $request  = new BattlePetRequest(new TestClient('wow'));
+        $typeResponse = $request->asJson()->types();
+        $statsResponse = $request->asJson()->stats(258);
+
+
+        $this->assertJson($typeResponse);
+        $this->assertJson($statsResponse);
     }
 }

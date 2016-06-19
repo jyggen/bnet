@@ -5,7 +5,10 @@ use Pwnraid\Bnet\Utils;
 
 class UtilsTest extends \PHPUnit_Framework_TestCase
 {
-    public function testRealmNameToSlug()
+    /**
+     * @test
+     */
+    public function it_can_transform_the_blizzard_realm_names()
     {
         $this->assertsame('aegwynn', Utils::realmNameToSlug('Aegwynn'));
         $this->assertsame('aerie-peak', Utils::realmNameToSlug('Aerie Peak'));
@@ -408,16 +411,20 @@ class UtilsTest extends \PHPUnit_Framework_TestCase
         $this->assertsame('雷鱗', Utils::realmNameToSlug('雷鱗'));
     }
 
-    public function testThumbnailToId()
+    /**
+     * @test
+     */
+    public function it_can_convert_thumbnails_to_ids()
     {
-        $this->assertSame('207104578511', Utils::thumbnailToId('internal-record-3702/207/104578511-avatar.jpg'));
+        $this->assertEquals(207104578511, Utils::thumbnailToId('internal-record-3702/207/104578511-avatar.jpg'));
     }
 
     /**
+     * @test
      * @expectedException        RuntimeException
      * @expectedExceptionMessage Invalid thumbnail URL "invalid.jpg"
      */
-    public function testThumbnailToIdWithInvalidUrl()
+    public function it_throws_exception_if_invalid_thumbnail_url_is_provided()
     {
         Utils::thumbnailToId('invalid.jpg');
     }

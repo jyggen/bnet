@@ -13,7 +13,17 @@ class RealmRequest extends AbstractRequest
     {
         $data = $this->client->get('data/battlegroups/');
 
-        return new BattlegroupEntity($data); // @todo: Return array of objects.
+        if (is_null($data)) {
+            return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
+        }
+
+        return array_map(function($battlegroup) {
+            return new BattlegroupEntity($battlegroup);
+        }, $data['battlegroups']);
     }
 
     /**
@@ -25,19 +35,28 @@ class RealmRequest extends AbstractRequest
     {
         $returnSingle = false;
 
-        if (is_array($realms) === false) {
+        if (! is_array($realms)) {
             $realms       = [$realms];
             $returnSingle = true;
         }
 
-        foreach ($realms as &$realm) {
-            $realm = Utils::realmNameToSlug($realm);
-        }
+        $realms = array_filter($realms, function(&$realm) {
+            return Utils::realmNameToSlug($realm);
+        });
 
         $data       = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realms)]]);
+
+        if (is_null($data)) {
+            return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
+        }
+
         $realmCount = count($data['realms']);
 
-        if ($returnSingle === true && $realmCount !== 1) {
+        if ($returnSingle && $realmCount !== 1) {
             return null;
         }
 
@@ -47,7 +66,7 @@ class RealmRequest extends AbstractRequest
 
         $realms = $this->createRealmEntities($data['realms']);
 
-        return ($returnSingle === true) ? $realms[0] : $realms;
+        return ($returnSingle) ? $realms[0] : $realms;
     }
 
     /**
@@ -56,6 +75,14 @@ class RealmRequest extends AbstractRequest
     public function all()
     {
         $data = $this->client->get('realm/status');
+
+        if (is_null($data)) {
+            return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
+        }
 
         return $this->createRealmEntities($data['realms']);
     }
@@ -67,12 +94,8 @@ class RealmRequest extends AbstractRequest
      */
     protected function createRealmEntities(array $realmsList)
     {
-        $realms = [];
-
-        foreach ($realmsList as $realm) {
-            $realms[] = new RealmEntity($realm);
-        }
-
-        return $realms;
+        return array_map(function($realm) {
+            return new RealmEntity($realm);
+        }, $realmsList);
     }
 }

@@ -3,8 +3,9 @@ namespace Pwnraid\Bnet\Test\Core;
 
 use Mockery;
 use Pwnraid\Bnet\Core\AbstractEntity;
+use Pwnraid\Bnet\Test\TestCase;
 
-class AbstractEntityTest extends \PHPUnit_Framework_TestCase
+class AbstractEntityTest extends TestCase
 {
     public function testAbstractEntity()
     {

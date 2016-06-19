@@ -9,8 +9,12 @@ class RecipeRequest extends AbstractRequest
     {
         $data = $this->client->get('recipe/'.$recipeId);
 
-        if ($data === null) {
+        if (is_null($data)) {
             return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
         }
 
         return new RecipeEntity($data);

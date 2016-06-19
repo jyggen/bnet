@@ -9,8 +9,12 @@ class SpellRequest extends AbstractRequest
     {
         $data = $this->client->get('spell/'.$spellId);
 
-        if ($data === null) {
+        if (is_null($data)) {
             return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
         }
 
         return new SpellEntity($data);

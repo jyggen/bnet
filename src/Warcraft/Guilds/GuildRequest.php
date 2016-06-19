@@ -12,6 +12,14 @@ class GuildRequest extends AbstractRequest
     {
         $data = $this->client->get('data/guild/achievements');
 
+        if(is_null($data)) {
+            return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
+        }
+
         return new AchievementEntity($data);
     }
 
@@ -27,6 +35,10 @@ class GuildRequest extends AbstractRequest
             return null;
         }
 
+        if($this->asJson) {
+            return json_encode($data);
+        }
+
         return new GuildEntity($data);
     }
 
@@ -36,9 +48,22 @@ class GuildRequest extends AbstractRequest
         return $this;
     }
 
+    public function getCurrentRealm()
+    {
+        return $this->realm;
+    }
+
     public function perks()
     {
         $data = $this->client->get('data/guild/perks');
+
+        if(is_null($data)) {
+            return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
+        }
 
         return new PerkEntity($data);
     }
@@ -46,6 +71,14 @@ class GuildRequest extends AbstractRequest
     public function rewards()
     {
         $data = $this->client->get('data/guild/rewards');
+
+        if(is_null($data)) {
+            return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
+        }
 
         return new RewardEntity($data);
     }

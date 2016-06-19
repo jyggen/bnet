@@ -1,52 +1,65 @@
 <?php
 namespace Pwnraid\Bnet\Test\Warcraft;
 
+use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Realms\RealmRequest;
 
-class RealmRequestTest extends \PHPUnit_Framework_TestCase
+class RealmRequestTest extends TestCase
 {
-    public function testAll()
+    protected $request;
+
+    public function setUp()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->all();
+        parent::setUp();
+
+        $this->request = new RealmRequest(new TestClient('wow'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_finds_all_realms()
+    {
+        $response = $this->request->all();
 
         $this->assertInternalType('array', $response);
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\RealmEntity', $response[0]);
     }
-
-    public function testFindSingle()
+    /**
+     * @test
+     */
+    public function it_finds_a_single_realm_by_its_name()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->find('Argent Dawn');
+        $response = $this->request->find('Argent Dawn');
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\RealmEntity', $response);
         $this->assertSame('Argent Dawn', $response->name);
+
+        $response_with_array = $this->request->find(['Argent Dawn']);
+
+        $this->assertInternalType('array', $response_with_array);
+        $this->assertSame(1, count($response_with_array));
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\RealmEntity', $response_with_array[0]);
+        $this->assertSame('Argent Dawn', $response_with_array[0]->name);
     }
 
-    public function testFindSingleInvalid()
+    /**
+     * @test
+     */
+    public function it_returns_null_if_invalid_name_is_provided()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->find('Invalid');
+        $response = $this->request->find('Invalid');
 
         $this->assertNull($response);
     }
 
-    public function testFindNotSingle()
+    /**
+     * @test
+     */
+    public function it_finds_multiple_realms()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->find(['Argent Dawn']);
-
-        $this->assertInternalType('array', $response);
-        $this->assertSame(1, count($response));
-        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\RealmEntity', $response[0]);
-        $this->assertSame('Argent Dawn', $response[0]->name);
-    }
-
-    public function testFindMultiple()
-    {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->find(['Argent Dawn', 'Auchindoun']);
+        $response = $this->request->find(['Argent Dawn', 'Auchindoun']);
 
         $this->assertInternalType('array', $response);
         $this->assertSame(2, count($response));
@@ -54,21 +67,32 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @test
      * @expectedException        RuntimeException
      * @expectedExceptionMessage Unable to fetch all requested realms
      */
-    public function testFindMultipleInvalid()
+    public function it_fails_if_invalid_name_is_provided()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $request->find(['Argant Dewn', 'Auchindoun']);
+        $this->request->find(['Argant Dewn', 'Auchindoun']);
     }
 
-    public function testBattlegroups()
+    /**
+     * @test
+     */
+    public function it_finds_all_battlegroups()
     {
-        $request  = new RealmRequest(new TestClient('wow'));
-        $response = $request->battlegroups();
+        $response = $this->request->battlegroups();
+        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\BattlegroupEntity', $response[0]);
+        $this->assertEquals('sturmangriff-charge', $response[6]->slug);
+    }
 
-        $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Realms\BattlegroupEntity', $response);
-        $this->assertInternalType('array', $response->battlegroups);
+    /**
+     * @test
+     */
+    public function it_can_be_raw_json()
+    {
+        $response = $this->request->asJson()->find(['Argent Dawn', 'Auchindoun']);
+
+        $this->assertJson($response);
     }
 }

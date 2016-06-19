@@ -1,50 +1,80 @@
 <?php
 namespace Pwnraid\Bnet\Test\Warcraft;
 
+use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Leaderboards\LeaderboardRequest;
 
-class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
+class LeaderboardRequestTest extends TestCase
 {
-    public function testChallengeMode()
+    protected $request;
+
+    protected function setUp()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $response = $request->challengeMode('Argent Dawn');
+        parent::setUp();
+
+        $this->request = $request  = new LeaderboardRequest(new TestClient('wow'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_get_challengeModes_for_a_single_realm()
+    {
+        $response = $this->request->challengeMode('Argent Dawn');
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Leaderboards\ChallengeModeEntity', $response);
     }
 
-    public function testChallengeModeInvalid()
+    /**
+     * @test
+     */
+    public function it_returns_null_if_invalid_challengeMode_provided()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $response = $request->challengeMode('Invalid');
+        $response = $this->request->challengeMode('Invalid');
 
         $this->assertNull($response);
     }
 
-    public function testChallengeModeRegion()
+    /**
+     * @test
+     */
+    public function it_can_get_challengeModes_region_wide()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $response = $request->challengeMode();
+        $response = $this->request->challengeMode();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Leaderboards\ChallengeModeEntity', $response);
     }
 
-    public function testPvp()
+    /**
+     * @test
+     */
+    public function it_can_get_pvp_brackets()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $response = $request->pvp('2v2');
+        $response = $this->request->pvp('2v2');
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Leaderboards\BracketEntity', $response);
     }
 
     /**
+     * @test
      * @expectedException        RuntimeException
      * @expectedExceptionMessage Invalid bracket type
      */
-    public function testPvpInvalidBracket()
+    public function it_throws_exception_if_invalid_bracket_is_provided()
     {
-        $request  = new LeaderboardRequest(new TestClient('wow'));
-        $request->pvp('invalid');
+        $this->request->pvp('invalid');
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_be_raw_json()
+    {
+        $bracket = $this->request->asJson()->pvp('2v2');
+        $challengeMode = $this->request->asJson()->challengeMode('Argent Dawn');
+
+        $this->assertJson($bracket);
+        $this->assertJson($challengeMode);
     }
 }

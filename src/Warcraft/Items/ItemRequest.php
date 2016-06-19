@@ -17,6 +17,14 @@ class ItemRequest extends AbstractRequest
     {
         $data = $this->client->get('data/item/classes');
 
+        if(is_null($data)) {
+            return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
+        }
+
         return new ClassEntity($data);
     }
 
@@ -34,8 +42,12 @@ class ItemRequest extends AbstractRequest
             ],
         ]);
 
-        if ($data === null) {
+        if(is_null($data)) {
             return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
         }
 
         $this->context = '';
@@ -52,8 +64,12 @@ class ItemRequest extends AbstractRequest
     {
         $data = $this->client->get('item/set/'.$setId);
 
-        if ($data === null) {
+        if(is_null($data)) {
             return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
         }
 
         return new ItemSetEntity($data);

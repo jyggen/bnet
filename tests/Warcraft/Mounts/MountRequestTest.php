@@ -3,12 +3,16 @@
 namespace Pwnraid\Bnet\Test\Warcraft\Mounts;
 
 
+use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Mounts\MountRequest;
 
-class MountRequestTest extends \PHPUnit_Framework_TestCase
+class MountRequestTest extends TestCase
 {
-    public function testAll() {
+    /**
+     * @test
+     */
+    public function it_gets_all_mounts() {
 
         $response = (new MountRequest(new TestClient('wow')))->all();
 

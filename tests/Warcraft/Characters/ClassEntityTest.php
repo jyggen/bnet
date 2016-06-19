@@ -6,7 +6,10 @@ use Pwnraid\Bnet\Warcraft\Characters\ClassEntity;
 
 class ClassEntityTest extends \PHPUnit_Framework_TestCase
 {
-    public function testFromIdWithValidId()
+    /**
+     * @test
+     */
+    public function it_can_covert_to_correct_id()
     {
         $race = ClassEntity::fromId(1);
 
@@ -14,9 +17,10 @@ class ClassEntityTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Pwnraid\Bnet\Exceptions\InvalidClassException
+     * @test
+     * @expectedException \Pwnraid\Bnet\Exceptions\InvalidClassException
      */
-    public function testFromIdWithInvalidId()
+    public function it_throws_exception_if_the_id_is_invalid()
     {
         ClassEntity::fromId(123);
     }

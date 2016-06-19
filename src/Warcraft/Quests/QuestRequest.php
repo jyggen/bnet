@@ -9,8 +9,12 @@ class QuestRequest extends AbstractRequest
     {
         $data = $this->client->get('quest/'.$questId);
 
-        if ($data === null) {
+        if (is_null($data)) {
             return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
         }
 
         return new QuestEntity($data);

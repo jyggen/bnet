@@ -9,8 +9,12 @@ class BattlePetRequest extends AbstractRequest
     {
         $data = $this->client->get('pet/ability/'.$abilityId);
 
-        if ($data === null) {
+        if (is_null($data)) {
             return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
         }
 
         return new AbilityEntity($data);
@@ -20,8 +24,12 @@ class BattlePetRequest extends AbstractRequest
     {
         $data = $this->client->get('pet/species/'.$speciesId);
 
-        if ($data === null) {
+        if (is_null($data)) {
             return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
         }
 
         return new SpeciesEntity($data);
@@ -37,8 +45,12 @@ class BattlePetRequest extends AbstractRequest
             ],
         ]);
 
-        if ($data === null) {
+        if (is_null($data)) {
             return null;
+        }
+
+        if($this->asJson) {
+            return json_encode($data);
         }
 
         return new StatsEntity($data);
@@ -47,12 +59,17 @@ class BattlePetRequest extends AbstractRequest
     public function types()
     {
         $data  = $this->client->get('data/pet/types');
-        $types = [];
 
-        foreach ($data['petTypes'] as $type) {
-            $types[] = new TypeEntity($type);
+        if (is_null($data)) {
+            return null;
         }
 
-        return $types;
+        if($this->asJson) {
+            return json_encode($data);
+        }
+
+        return array_map(function($type){
+            return new TypeEntity($type);
+        }, $data['petTypes']);
     }
 }
