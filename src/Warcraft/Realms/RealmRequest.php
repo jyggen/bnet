@@ -35,28 +35,23 @@ class RealmRequest extends AbstractRequest
     {
         $returnSingle = false;
 
-        if (! is_array($realms)) {
+        if (is_array($realms) === false) {
             $realms       = [$realms];
             $returnSingle = true;
         }
 
-        $realms = array_filter($realms, function (&$realm) {
-            return Utils::realmNameToSlug($realm);
-        });
+        foreach ($realms as &$realm) {
+            $realm = Utils::realmNameToSlug($realm);
+        }
 
         $data       = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realms)]]);
-
-        if (is_null($data)) {
-            return null;
-        }
-
-        if ($this->asJson) {
-            return json_encode($data);
-        }
-
         $realmCount = count($data['realms']);
 
-        if ($returnSingle && $realmCount !== 1) {
+        if($this->asJson) {
+            return json_encode($data['realms']);
+        }
+
+        if ($returnSingle === true && $realmCount !== 1) {
             return null;
         }
 
@@ -66,7 +61,7 @@ class RealmRequest extends AbstractRequest
 
         $realms = $this->createRealmEntities($data['realms']);
 
-        return ($returnSingle) ? $realms[0] : $realms;
+        return ($returnSingle === true) ? $realms[0] : $realms;
     }
 
     /**

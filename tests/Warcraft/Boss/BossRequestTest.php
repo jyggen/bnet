@@ -39,7 +39,7 @@ class BossRequestTest extends TestCase
     public function it_can_be_raw_json()
     {
         $allBosses = $this->request->asJson()->all();
-        $singleBoss = $this->request->asJson()->find(24723);
+        $singleBoss = $this->request->asJson()->find(24744);
         $this->assertJson($allBosses);
         $this->assertJson($singleBoss);
     }
@@ -49,10 +49,10 @@ class BossRequestTest extends TestCase
      */
     public function it_can_get_a_single_boss_by_its_id()
     {
-        $response = $this->request->find(24723);
+        $response = $this->request->find(24744);
 
         $this->assertInstanceOf(BossEntity::class, $response);
-        $this->assertEquals(24723, $response->id);
+        $this->assertEquals(24744, $response->id);
     }
 
 }
