@@ -201,8 +201,7 @@ abstract class AbstractClient
         } catch (ClientException $exception) {
             switch ($exception->getCode()) {
                 case 404:
-                    $data = json_decode($exception->getResponse()->getBody(), true);
-                    throw new BattleNetException($data['reason'], $exception->getCode());
+                    return null;
                 default:
                     $data = json_decode($exception->getResponse()->getBody(), true);
                     throw new BattleNetException($data['reason'], $exception->getCode());
