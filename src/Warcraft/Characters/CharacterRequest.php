@@ -13,8 +13,12 @@ class CharacterRequest extends AbstractRequest
     {
         $data = $this->client->get('achievement/'.$achievementId);
 
-        if ($data === null) {
+        if (is_null($data)) {
             return null;
+        }
+
+        if ($this->asJson) {
+            return json_encode($data);
         }
 
         return new AchievementEntity($data);
@@ -26,25 +30,35 @@ class CharacterRequest extends AbstractRequest
     public function achievements()
     {
         $data         = $this->client->get('data/character/achievements');
-        $achievements = [];
 
-        foreach ($data['achievements'] as $category) {
-            $achievements[] = new AchievementCategoryEntity($category);
+        if (is_null($data)) {
+            return null;
         }
 
-        return $achievements;
+        if ($this->asJson) {
+            return json_encode($data);
+        }
+
+        return array_map(function ($achievement) {
+            return new AchievementCategoryEntity($achievement);
+        }, $data['achievements']);
     }
 
     public function classes()
     {
         $data    = $this->client->get('data/character/classes');
-        $classes = [];
 
-        foreach ($data['classes'] as $class) {
-            $classes[] = new ClassEntity($class);
+        if (is_null($data)) {
+            return null;
         }
 
-        return $classes;
+        if ($this->asJson) {
+            return json_encode($data);
+        }
+
+        return array_map(function ($class) {
+            return new ClassEntity($class);
+        }, $data['classes']);
     }
 
     public function find($name, array $fields = [])
@@ -59,8 +73,12 @@ class CharacterRequest extends AbstractRequest
             ],
         ]);
 
-        if ($data === null || count($data) === 0) {
+        if (is_null($data) || count($data) === 0) {
             return null;
+        }
+
+        if ($this->asJson) {
+            return json_encode($data);
         }
 
         return new CharacterEntity($data);
@@ -75,18 +93,32 @@ class CharacterRequest extends AbstractRequest
     public function races()
     {
         $data  = $this->client->get('data/character/races');
-        $races = [];
 
-        foreach ($data['races'] as $race) {
-            $races[] = new RaceEntity($race);
+        if (is_null($data)) {
+            return null;
         }
 
-        return $races;
+        if ($this->asJson) {
+            return json_encode($data);
+        }
+
+        return array_map(function ($race) {
+             return new RaceEntity($race);
+        }, $data['races']);
     }
 
     public function talents()
     {
         $data    = $this->client->get('data/talents');
+
+        if (is_null($data)) {
+            return null;
+        }
+
+        if ($this->asJson) {
+            return json_encode($data);
+        }
+
         $classes = [];
 
         foreach ($data as $classId => $class) {
@@ -109,7 +141,16 @@ class CharacterRequest extends AbstractRequest
 
     public function user(AccessToken $token)
     {
-        $data       = $this->client->get('user/characters', ['query' => ['access_token' =>$token]]);
+        $data       = $this->client->get('user/characters', ['query' => ['access_token' => $token]]);
+
+        if (is_null($data)) {
+            return null;
+        }
+
+        if ($this->asJson) {
+            return json_encode($data);
+        }
+
         $characters = [];
 
         foreach ($data['characters'] as $character) {
@@ -117,5 +158,10 @@ class CharacterRequest extends AbstractRequest
         }
 
         return $characters;
+    }
+
+    public function currentRealm()
+    {
+        return $this->realm;
     }
 }

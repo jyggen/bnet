@@ -7,6 +7,7 @@ use Pwnraid\Bnet\Diablo\Followers\FollowerRequest;
 use Pwnraid\Bnet\Diablo\Items\ItemRequest as D3ItemRequest;
 use Pwnraid\Bnet\Warcraft\Auctions\AuctionRequest;
 use Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest;
+use Pwnraid\Bnet\Warcraft\Boss\BossRequest;
 use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
 use Pwnraid\Bnet\Warcraft\Guilds\GuildRequest;
 use Pwnraid\Bnet\Warcraft\Items\ItemRequest as WowItemRequest;
@@ -16,6 +17,7 @@ use Pwnraid\Bnet\Warcraft\Quests\QuestRequest;
 use Pwnraid\Bnet\Warcraft\Realms\RealmRequest;
 use Pwnraid\Bnet\Warcraft\Recipes\RecipeRequest;
 use Pwnraid\Bnet\Warcraft\Spells\SpellRequest;
+use Pwnraid\Bnet\Warcraft\Zones\ZoneRequest;
 
 if (isset($argv[1]) === false) {
     exit("You must supply an api key, run the file like this:\n> php get_fixtures.php bnet-api-key-here\n");
@@ -25,12 +27,16 @@ $d3Client  = new FixtureClient($argv[1], 'd3');
 $wowClient = new FixtureClient($argv[1], 'wow');
 
 // Call all the endpoints we need fixtures/dummy data for in our tests.
+(new ZoneRequest($wowClient))->find(4131);
+(new BossRequest($wowClient))->find(24744);
+(new BossRequest($wowClient))->all();
+(new ZoneRequest($wowClient))->all();
 (new MountRequest($wowClient))->all();
 (new ArtisanRequest($d3Client))->find('mystic');
 $auction = (new AuctionRequest($wowClient))->index('Auchindoun');
 (new AuctionRequest($wowClient))->download($auction);
 (new BattlePetRequest($wowClient))->ability(640);
-(new BattlePetRequest($wowClient))->species(258);
+(new BattlePetRequest($wowClient))->specie(258);
 (new BattlePetRequest($wowClient))->stats(258);
 (new BattlePetRequest($wowClient))->stats(258, 25, 5, 4);
 (new BattlePetRequest($wowClient))->types();
@@ -53,12 +59,8 @@ $auction = (new AuctionRequest($wowClient))->index('Auchindoun');
 (new LeaderboardRequest($wowClient))->pvp('2v2');
 (new QuestRequest($wowClient))->find(13146);
 (new RealmRequest($wowClient))->all();
-(new RealmRequest($wowClient))->find('Argent Dawn');
-(new RealmRequest($wowClient))->find(['Argent Dawn', 'Auchindoun']);
-try { // Workaround for error handler.
-    (new RealmRequest($wowClient))->find(['Argant Dewn', 'Auchindoun']);
-} catch (\RuntimeException $e) {
-}
+(new RealmRequest($wowClient))->find(['Frostwhisper']);
+(new RealmRequest($wowClient))->find(['Frostwhisper', 'Argent Dawn']);
 (new RealmRequest($wowClient))->battlegroups();
 (new RecipeRequest($wowClient))->find(33994);
 (new SpellRequest($wowClient))->find(8056);

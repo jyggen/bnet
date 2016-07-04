@@ -22,7 +22,10 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
         parent::tearDown();
     }
 
-    public function testClassAttribute()
+    /**
+     * @test
+     */
+    public function it_provides_the_class_for_the_character()
     {
         $character = new Characters\CharacterEntity([
             'class' => 1,
@@ -31,7 +34,10 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Characters\ClassEntity::class, $character->class);
     }
 
-    public function testIdAttribute()
+    /**
+     * @test
+     */
+    public function it_can_provide_the_character_id()
     {
         $character = new Characters\CharacterEntity([
             'thumbnail' => 'auchindoun/222/82213342-avatar.jpg',
@@ -40,7 +46,10 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('22282213342', $character->id);
     }
 
-    public function testLastModifiedAttribute()
+    /**
+     * @test
+     */
+    public function it_can_get_mutate_the_modified_date()
     {
         $timestamp = time();
         $character = new Characters\CharacterEntity([
@@ -51,7 +60,10 @@ class CharacterEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(date('Y-m-d H:i:s', $timestamp), $character->lastModified->format('Y-m-d H:i:s'));
     }
 
-    public function testRaceAttribute()
+    /**
+     * @test
+     */
+    public function it_provides_the_race_for_character()
     {
         $character = new Characters\CharacterEntity([
             'race' => 1,

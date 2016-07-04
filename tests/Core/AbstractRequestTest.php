@@ -3,6 +3,7 @@ namespace Pwnraid\Bnet\Test\Core;
 
 use Mockery;
 use Pwnraid\Bnet\Core\AbstractRequest;
+use Pwnraid\Bnet\Test\TestCase;
 
 class AbstractRequestTest extends \PHPUnit_Framework_TestCase
 {

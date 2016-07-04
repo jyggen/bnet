@@ -1,49 +1,67 @@
 <?php
 namespace Pwnraid\Bnet\Test\Warcraft;
 
+use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest;
 
 class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
 {
-    public function testAbility()
+    protected $request;
+
+    protected function setUp()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->ability(640);
+        $this->request = new BattlePetRequest(new TestClient('wow'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_get_a_single_ability()
+    {
+        $response = $this->request->ability(640);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\AbilityEntity', $response);
         $this->assertSame(640, $response->id);
     }
 
-    public function testAbilityInvalidId()
+    /**
+     * @test
+     */
+    public function it_returns_null_if_invalid_ability_id_has_been_provided()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->ability('invalid');
+        $response = $this->request->ability('invalid');
 
         $this->assertNull($response);
     }
 
-    public function testSpecies()
+    /**
+     * @test
+     */
+    public function it_can_get_a_pet_specie()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->species(258);
+        $response = $this->request->specie(258);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\SpeciesEntity', $response);
         $this->assertSame(258, $response->speciesId);
     }
 
-    public function testSpeciesInvalidId()
+    /**
+     * @test
+     */
+    public function it_returns_null_if_invalid_specie_id_has_been_provided()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->species('invalid');
+        $response = $this->request->specie('invalid');
 
         $this->assertNull($response);
     }
 
-    public function testStats()
+    /**
+     * @test
+     */
+    public function it_can_get_all_stats()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->stats(258);
+        $response = $this->request->stats(258);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\StatsEntity', $response);
         $this->assertSame(258, $response->speciesId);
@@ -52,18 +70,22 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(1, $response->petQualityId);
     }
 
-    public function testStatsInvalidId()
+    /**
+     * @test
+     */
+    public function it_returns_null_if_invalid_stats_id_has_been_provided()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->stats('invalid');
+        $response = $this->request->stats('invalid');
 
         $this->assertNull($response);
     }
 
-    public function testStatsNotDefault()
+    /**
+     * @test
+     */
+    public function it_can_be_non_default_values()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->stats(258, 25, 5, 4);
+        $response = $this->request->stats(258, 25, 5, 4);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\StatsEntity', $response);
         $this->assertSame(258, $response->speciesId);
@@ -72,11 +94,25 @@ class BattlePetRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(4, $response->petQualityId);
     }
 
-    public function testType()
+    /**
+     * @test
+     */
+    public function it_can_get_pet_types()
     {
-        $request  = new BattlePetRequest(new TestClient('wow'));
-        $response = $request->types();
+        $response = $this->request->types();
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\BattlePets\TypeEntity', $response[0]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_be_raw_json()
+    {
+        $typeResponse = $this->request->asJson()->types();
+        $statsResponse = $this->request->asJson()->stats(258);
+
+        $this->assertJson($typeResponse);
+        $this->assertJson($statsResponse);
     }
 }

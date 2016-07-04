@@ -145,6 +145,8 @@ abstract class AbstractClient
                         'modified' => $response->getHeader('Last-Modified'),
                         'json'     => $data,
                     ]);
+
+                    $this->cache->save($item);
                 }
                 return $data;
             case 304:
@@ -202,7 +204,7 @@ abstract class AbstractClient
                     return null;
                 default:
                     $data = json_decode($exception->getResponse()->getBody(), true);
-                    throw new BattleNetException($data['detail'], $exception->getCode());
+                    throw new BattleNetException($data['reason'], $exception->getCode());
             }
         }
 

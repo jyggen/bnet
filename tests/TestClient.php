@@ -38,4 +38,5 @@ class TestClient extends \Pwnraid\Bnet\Core\AbstractClient
     {
         return $this->get($url, $options);
     }
+
 }
