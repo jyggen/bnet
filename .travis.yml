@@ -40,11 +40,24 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-before_script:
-  - travis_retry composer self-update
-  - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_OPTS
+before_install:
+    - mv $HOME/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini $HOME/xdebug.ini || return 0
 
-script: composer test
+install:
+  - travis_retry composer self-update
+  - travis_retry composer global require hirak/prestissimo
+  - travis_retry composer update --no-interaction ${COMPOSER_OPTS}
+
+before_script:
+  - mkdir -p build/logs
+
+script:
+  - parallel-lint . --exclude vendor
+  - cp $HOME/xdebug.ini $HOME/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
+  - phpunit --coverage-text
+  - phpenv config-rm xdebug.ini || return 0
+  - php-cs-fixer --diff --dry-run -v fix
+  - composer validate --strict
 
 after_script:
   - php vendor/bin/coveralls
