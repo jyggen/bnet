@@ -7,7 +7,7 @@ use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Mounts\MountRequest;
 
-class MountRequestTest extends TestCase
+class MountRequestTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test

@@ -5,7 +5,7 @@ use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Spells\SpellRequest;
 
-class SpellRequestTest extends TestCase
+class SpellRequestTest extends \PHPUnit_Framework_TestCase
 {
     protected $request;
 

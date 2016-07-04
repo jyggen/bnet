@@ -5,7 +5,7 @@ use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Realms\RealmRequest;
 
-class RealmRequestTest extends TestCase
+class RealmRequestTest extends \PHPUnit_Framework_TestCase
 {
     protected $request;
 

@@ -5,7 +5,7 @@ use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Leaderboards\LeaderboardRequest;
 
-class LeaderboardRequestTest extends TestCase
+class LeaderboardRequestTest extends \PHPUnit_Framework_TestCase
 {
     protected $request;
 

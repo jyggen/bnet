@@ -6,7 +6,7 @@ use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Characters\CharacterRequest;
 
-class CharacterRequestTest extends TestCase
+class CharacterRequestTest extends \PHPUnit_Framework_TestCase
 {
     protected $request;
 
@@ -133,6 +133,17 @@ class CharacterRequestTest extends TestCase
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Characters\TalentEntity', $response[1]['talents'][0]);
     }
+
+    /**
+     * @test
+     */
+    public function it_can_be_raw_json()
+    {
+        $achievementResponse = $this->request->asJson()->achievements();
+
+        $this->assertJson($achievementResponse);
+    }
+
 
     /**
      * @test

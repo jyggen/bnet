@@ -5,7 +5,7 @@ use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Guilds\GuildRequest;
 
-class GuildRequestTest extends TestCase
+class GuildRequestTest extends \PHPUnit_Framework_TestCase
 {
     protected $request;
 

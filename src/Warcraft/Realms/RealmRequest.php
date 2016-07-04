@@ -47,7 +47,7 @@ class RealmRequest extends AbstractRequest
         $data       = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realms)]]);
         $realmCount = count($data['realms']);
 
-        if($this->asJson) {
+        if ($this->asJson) {
             return json_encode($data['realms']);
         }
 

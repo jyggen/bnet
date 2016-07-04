@@ -5,7 +5,7 @@ use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Recipes\RecipeRequest;
 
-class RecipeRequestTest extends TestCase
+class RecipeRequestTest extends \PHPUnit_Framework_TestCase
 {
     protected $request;
 

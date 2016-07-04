@@ -20,7 +20,7 @@ class BattlePetRequest extends AbstractRequest
         return new AbilityEntity($data);
     }
 
-    public function species($speciesId)
+    public function specie($speciesId)
     {
         $data = $this->client->get('pet/species/'.$speciesId);
 

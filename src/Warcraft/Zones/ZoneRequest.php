@@ -16,10 +16,6 @@ class ZoneRequest extends AbstractRequest
     {
         $data = $this->client->get('zone');
 
-        if (is_null($data)) {
-            return null;
-        }
-
         if ($this->asJson) {
             return json_encode($data);
         }

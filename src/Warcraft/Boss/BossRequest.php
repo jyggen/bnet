@@ -16,10 +16,6 @@ class BossRequest extends AbstractRequest
     {
         $data = $this->client->get('boss');
 
-        if (is_null($data)) {
-            return null;
-        }
-
         if ($this->asJson) {
             return json_encode($data);
         }

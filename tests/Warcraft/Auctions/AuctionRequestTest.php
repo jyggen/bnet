@@ -6,7 +6,7 @@ use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Auctions\AuctionRequest;
 use Pwnraid\Bnet\Warcraft\Auctions\IndexEntity;
 
-class AuctionRequestTest extends TestCase
+class AuctionRequestTest extends \PHPUnit_Framework_TestCase
 {
     protected $request;
 

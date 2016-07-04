@@ -5,7 +5,7 @@ use Mockery;
 use Pwnraid\Bnet\Core\AbstractRequest;
 use Pwnraid\Bnet\Test\TestCase;
 
-class AbstractRequestTest extends TestCase
+class AbstractRequestTest extends \PHPUnit_Framework_TestCase
 {
     public function testAbstractRequest()
     {

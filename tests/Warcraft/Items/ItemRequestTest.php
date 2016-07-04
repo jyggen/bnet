@@ -5,7 +5,7 @@ use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Items\ItemRequest;
 
-class ItemRequestTest extends TestCase
+class ItemRequestTest extends \PHPUnit_Framework_TestCase
 {
     protected $request;
 

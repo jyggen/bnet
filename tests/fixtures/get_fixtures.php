@@ -36,7 +36,7 @@ $wowClient = new FixtureClient($argv[1], 'wow');
 $auction = (new AuctionRequest($wowClient))->index('Auchindoun');
 (new AuctionRequest($wowClient))->download($auction);
 (new BattlePetRequest($wowClient))->ability(640);
-(new BattlePetRequest($wowClient))->species(258);
+(new BattlePetRequest($wowClient))->specie(258);
 (new BattlePetRequest($wowClient))->stats(258);
 (new BattlePetRequest($wowClient))->stats(258, 25, 5, 4);
 (new BattlePetRequest($wowClient))->types();

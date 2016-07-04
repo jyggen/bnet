@@ -5,7 +5,7 @@ use Mockery;
 use Pwnraid\Bnet\Core\AbstractEntity;
 use Pwnraid\Bnet\Test\TestCase;
 
-class AbstractEntityTest extends TestCase
+class AbstractEntityTest extends \PHPUnit_Framework_TestCase
 {
     public function testAbstractEntity()
     {

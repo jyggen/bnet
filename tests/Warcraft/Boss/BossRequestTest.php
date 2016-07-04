@@ -14,7 +14,7 @@ use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Boss\BossEntity;
 use Pwnraid\Bnet\Warcraft\Boss\BossRequest;
 
-class BossRequestTest extends TestCase
+class BossRequestTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
@@ -29,6 +29,7 @@ class BossRequestTest extends TestCase
     public function it_can_get_all_bosses()
     {
         $response = $this->request->all();
+
         $this->assertInstanceOf(BossEntity::class, $response[0]);
         $this->assertEquals(24723, $response[0]->id);
     }
@@ -55,4 +56,13 @@ class BossRequestTest extends TestCase
         $this->assertEquals(24744, $response->id);
     }
 
+    /**
+     * @test
+     */
+    public function it_returns_null_if_invalid_id_has_been_provided()
+    {
+        $response = $this->request->find(24745);
+
+        $this->assertNull($response);
+    }
 }

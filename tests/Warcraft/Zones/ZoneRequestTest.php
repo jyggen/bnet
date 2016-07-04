@@ -14,7 +14,7 @@ use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Zones\ZoneEntity;
 use Pwnraid\Bnet\Warcraft\Zones\ZoneRequest;
 
-class ZoneRequestTest extends TestCase
+class ZoneRequestTest extends \PHPUnit_Framework_TestCase
 {
     protected $request;
 
