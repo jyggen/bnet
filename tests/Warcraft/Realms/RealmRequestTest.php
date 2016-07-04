@@ -58,7 +58,7 @@ class RealmRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function it_finds_multiple_realms()
     {
-        $response = $this->request->find(['Frostwhisper', 'Auchindoun']);
+        $response = $this->request->find(['Frostwhisper', 'Argent Dawn']);
 
         $this->assertInternalType('array', $response);
         $this->assertSame(2, count($response));

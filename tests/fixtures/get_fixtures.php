@@ -59,12 +59,8 @@ $auction = (new AuctionRequest($wowClient))->index('Auchindoun');
 (new LeaderboardRequest($wowClient))->pvp('2v2');
 (new QuestRequest($wowClient))->find(13146);
 (new RealmRequest($wowClient))->all();
-(new RealmRequest($wowClient))->find('Frostwhisper');
-(new RealmRequest($wowClient))->find(['Frostwhisper', 'Auchindoun']);
-try { // Workaround for error handler.
-    (new RealmRequest($wowClient))->find(['Frostwhisper', 'Auchindoun']);
-} catch (\RuntimeException $e) {
-}
+(new RealmRequest($wowClient))->find(['Frostwhisper']);
+(new RealmRequest($wowClient))->find(['Frostwhisper', 'Argent Dawn']);
 (new RealmRequest($wowClient))->battlegroups();
 (new RecipeRequest($wowClient))->find(33994);
 (new SpellRequest($wowClient))->find(8056);

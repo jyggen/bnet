@@ -141,7 +141,7 @@ class CharacterRequest extends AbstractRequest
 
     public function user(AccessToken $token)
     {
-        $data       = $this->client->get('user/characters', ['query' => ['access_token' =>$token]]);
+        $data       = $this->client->get('user/characters', ['query' => ['access_token' => $token]]);
 
         if (is_null($data)) {
             return null;
