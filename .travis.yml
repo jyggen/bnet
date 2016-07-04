@@ -52,11 +52,11 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - parallel-lint . --exclude vendor
+  - ./vendor/bin/parallel-lint . --exclude vendor
   - cp $HOME/xdebug.ini $HOME/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
-  - phpunit --coverage-text
+  - ./vendor/bin/phpunit --coverage-text
   - phpenv config-rm xdebug.ini || return 0
-  - php-cs-fixer --diff --dry-run -v fix
+  - ./vendor/bin/php-cs-fixer --diff --dry-run -v fix
   - composer validate --strict
 
 after_script:
