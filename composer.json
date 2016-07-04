@@ -31,7 +31,7 @@
     "require-dev": {
         "apigen/apigen": "^4.1",
         "fig/cache-util": "dev-master",
-		"friendsofphp/php-cs-fixer": "^1.11",
+        "friendsofphp/php-cs-fixer": "^1.11",
         "jakub-onderka/php-parallel-lint": "^0.9",
         "mockery/mockery": "^0.9",
         "phpunit/phpunit": "^4.8",
