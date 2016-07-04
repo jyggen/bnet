@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet\Warcraft\Leaderboards;
 
 use Pwnraid\Bnet\Core\AbstractRequest;
@@ -12,7 +22,7 @@ class LeaderboardRequest extends AbstractRequest
             $data = $this->client->get('challenge/'.Utils::realmNameToSlug($realm));
 
             if ($data === null) {
-                return null;
+                return;
             }
 
             return new ChallengeModeEntity($data);
@@ -25,7 +35,7 @@ class LeaderboardRequest extends AbstractRequest
 
     public function pvp($bracket)
     {
-        if (in_array($bracket, ['2v2', '3v3', '5v5', 'rbg']) === false) {
+        if (in_array($bracket, ['2v2', '3v3', '5v5', 'rbg'], true) === false) {
             throw new \RuntimeException('Invalid bracket type');
         }
 

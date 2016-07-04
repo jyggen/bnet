@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
@@ -55,10 +65,10 @@ class OAuth extends AbstractProvider
     /**
      * Check a provider response for errors.
      *
+     * @param ResponseInterface $response
+     * @param string            $data     Parsed response data
+     *
      * @throws IdentityProviderException
-     * @param  ResponseInterface $response
-     * @param  string $data Parsed response data
-     * @return void
      */
     protected function checkResponse(ResponseInterface $response, $data)
     {
@@ -68,8 +78,9 @@ class OAuth extends AbstractProvider
      * Generates a resource owner object from a successful resource owner
      * details request.
      *
-     * @param  array $response
-     * @param  AccessToken $token
+     * @param array       $response
+     * @param AccessToken $token
+     *
      * @return ResourceOwnerInterface
      */
     protected function createResourceOwner(array $response, AccessToken $token)

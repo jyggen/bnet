@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet\Test;
 
 use Fig\Cache\Memory\MemoryPool;
@@ -15,19 +25,19 @@ class TestClient extends \Pwnraid\Bnet\Core\AbstractClient
 
     public function __construct($game)
     {
-        $this->game   = $game;
-        $this->mock   = new MockHandler([]);
+        $this->game = $game;
+        $this->mock = new MockHandler([]);
         $this->client = new Client([
-            'handler' => HandlerStack::create($this->mock)
+            'handler' => HandlerStack::create($this->mock),
         ]);
 
-        parent::__construct('foobar', new Region(Region::EUROPE), new MemoryPool);
+        parent::__construct('foobar', new Region(Region::EUROPE), new MemoryPool());
     }
 
     public function get($url, array $options = [])
     {
         $query = (empty($options) === true) ? '' : implode('&', $options['query']);
-        $body  = getFixture($this->game, $url.'?'.$query);
+        $body = getFixture($this->game, $url.'?'.$query);
 
         $this->mock->append(new Response(200, [], $body));
 

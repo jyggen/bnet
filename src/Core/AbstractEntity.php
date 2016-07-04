@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet\Core;
 
 use ArrayAccess;
@@ -42,7 +52,7 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
             return $this->attributes[$key];
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -50,8 +60,6 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      *
      * @param string $key
      * @param mixed  $value
-     *
-     * @return void
      */
     public function __set($key, $value)
     {
@@ -87,8 +95,6 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      *
      * @param mixed $offset
      * @param mixed $value
-     *
-     * @return void
      */
     public function offsetSet($offset, $value)
     {
@@ -99,8 +105,6 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      * Unset the value for a given offset.
      *
      * @param mixed $offset
-     *
-     * @return void
      */
     public function offsetUnset($offset)
     {
@@ -116,15 +120,13 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
      */
     public function __isset($key)
     {
-        return (isset($this->attributes[$key]));
+        return isset($this->attributes[$key]);
     }
 
     /**
      * Unset an attribute on the entity.
      *
      * @param string $key
-     *
-     * @return void
      */
     public function __unset($key)
     {

@@ -1,19 +1,30 @@
 language: php
 
-php:
-  - 5.5
-  - 5.6
-  - 7.0
-  - hhvm
-
 sudo: false
 
 matrix:
   fast_finish: true
+  include:
+    - php: 5.5
+    - php: 5.6
+    - php: 7.0
+    - php: 7.1
+    - php: hhvm-3.12
+      sudo: required
+      dist: trusty
+      group: edge
+    - php: hhvm
+      sudo: required
+      dist: trusty
+      group: edge
 
 env:
   - COMPOSER_OPTS=""
-  - COMPOSER_OPTS="--prefer-lowest"
+  - COMPOSER_OPTS="--prefer-stable --prefer-lowest"
+
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 before_script:
   - travis_retry composer self-update

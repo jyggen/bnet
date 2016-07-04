@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 require_once './vendor/autoload.php';
 
 define('FIXTURES_DIR', __DIR__.'/fixtures');
@@ -9,7 +19,7 @@ if (function_exists('getFixture') === false) {
         $filename = FIXTURES_DIR.'/'.urlToFilename($game, $url);
 
         if (file_exists($filename) === false) {
-            return null;
+            return;
         }
 
         return file_get_contents('compress.zlib://'.$filename);

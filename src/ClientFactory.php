@@ -1,10 +1,20 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet;
 
+use Psr\Cache\CacheItemPoolInterface;
 use Pwnraid\Bnet\Diablo\Client as DiabloClient;
 use Pwnraid\Bnet\Starcraft\Client as StarcraftClient;
 use Pwnraid\Bnet\Warcraft\Client as WarcraftClient;
-use Psr\Cache\CacheItemPoolInterface;
 
 class ClientFactory
 {
@@ -25,7 +35,7 @@ class ClientFactory
     public function __construct($apiKey, CacheItemPoolInterface $cache = null)
     {
         $this->apiKey = $apiKey;
-        $this->cache  = $cache;
+        $this->cache = $cache;
     }
 
     /**

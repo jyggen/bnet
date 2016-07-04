@@ -1,7 +1,16 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet\Test\Warcraft;
 
-use Pwnraid\Bnet\Test\TestCase;
 use Pwnraid\Bnet\Test\TestClient;
 use Pwnraid\Bnet\Warcraft\Items\ItemRequest;
 
@@ -48,7 +57,7 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testFindOnContextItemWithContext()
     {
-        $request  = new ItemRequest(new TestClient('wow'));
+        $request = new ItemRequest(new TestClient('wow'));
         $response = $request->withContext('dungeon-level-up-1')->find(110050);
 
         $this->assertInstanceOf('\Pwnraid\Bnet\Warcraft\Items\ItemEntity', $response);
@@ -65,8 +74,8 @@ class ItemRequestTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(110050, $response->id);
         $this->assertSame('Dagger of the Sanguine Emeralds', $response->name);
         $this->assertSame('dungeon-level-up-1', $response->context);
-        $this->assertTrue(in_array(40, $response->bonusLists));
-        $this->assertTrue(in_array(41, $response->bonusLists));
+        $this->assertTrue(in_array(40, $response->bonusLists, true));
+        $this->assertTrue(in_array(41, $response->bonusLists, true));
     }
 
     public function testFindSet()

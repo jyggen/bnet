@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet;
 
 class Region
@@ -34,36 +44,36 @@ class Region
     protected static $regions = [
         self::CHINA => [
             'locales' => ['zh_CN'],
-            'hosts'   => [
-                'api'   => 'https://www.battlenet.com.cn/%s/',
+            'hosts' => [
+                'api' => 'https://www.battlenet.com.cn/%s/',
                 'oauth' => 'https://cn.battle.net/',
             ],
         ],
         self::EUROPE => [
             'locales' => ['en_GB', 'es_ES', 'fr_FR', 'ru_RU', 'de_DE', 'pt_PT', 'it_IT'],
-            'hosts'   => [
-                'api'   => 'https://eu.api.battle.net/%s/',
+            'hosts' => [
+                'api' => 'https://eu.api.battle.net/%s/',
                 'oauth' => 'https://eu.battle.net/',
             ],
         ],
         self::KOREA => [
             'locales' => ['ko_KR'],
-            'hosts'   => [
-                'api'   => 'https://kr.api.battle.net/%s/',
+            'hosts' => [
+                'api' => 'https://kr.api.battle.net/%s/',
                 'oauth' => 'https://kr.battle.net/',
             ],
         ],
         self::TAIWAN => [
             'locales' => ['zh_TW'],
-            'hosts'   => [
-                'api'   => 'https://tw.api.battle.net/%s/',
+            'hosts' => [
+                'api' => 'https://tw.api.battle.net/%s/',
                 'oauth' => 'https://tw.battle.net/',
             ],
         ],
         self::US => [
             'locales' => ['en_US', 'es_MX', 'pt_BR'],
-            'hosts'   => [
-                'api'   => 'https://us.api.battle.net/%s/',
+            'hosts' => [
+                'api' => 'https://us.api.battle.net/%s/',
                 'oauth' => 'https://us.battle.net/',
             ],
         ],
@@ -104,7 +114,7 @@ class Region
 
         $this->region = static::$regions[$region];
 
-        if ($locale !== null && in_array($locale, $this->region['locales']) === false) {
+        if ($locale !== null && in_array($locale, $this->region['locales'], true) === false) {
             throw new \InvalidArgumentException($locale.' is not a valid locale');
         }
 

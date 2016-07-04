@@ -1,10 +1,20 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 require_once __DIR__.'/../bootstrap.php';
 
-use Pwnraid\Bnet\Test\FixtureClient;
 use Pwnraid\Bnet\Diablo\Artisans\ArtisanRequest;
 use Pwnraid\Bnet\Diablo\Followers\FollowerRequest;
 use Pwnraid\Bnet\Diablo\Items\ItemRequest as D3ItemRequest;
+use Pwnraid\Bnet\Test\FixtureClient;
 use Pwnraid\Bnet\Warcraft\Auctions\AuctionRequest;
 use Pwnraid\Bnet\Warcraft\BattlePets\BattlePetRequest;
 use Pwnraid\Bnet\Warcraft\Bosses\BossRequest;
@@ -23,7 +33,7 @@ if (isset($argv[1]) === false) {
     exit("You must supply an api key, run the file like this:\n> php get_fixtures.php bnet-api-key-here\n");
 }
 
-$d3Client  = new FixtureClient($argv[1], 'd3');
+$d3Client = new FixtureClient($argv[1], 'd3');
 $wowClient = new FixtureClient($argv[1], 'wow');
 
 // Call all the endpoints we need fixtures/dummy data for in our tests.

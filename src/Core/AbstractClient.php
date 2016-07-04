@@ -1,14 +1,24 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet\Core;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use Psr\Cache\CacheItemInterface;
+use Psr\Cache\CacheItemPoolInterface;
 use Psr\Http\Message\ResponseInterface;
 use Pwnraid\Bnet\Exceptions\BattleNetException;
 use Pwnraid\Bnet\Region;
-use Psr\Cache\CacheItemInterface;
-use Psr\Cache\CacheItemPoolInterface;
 use SebastianBergmann\Version;
 
 abstract class AbstractClient
@@ -50,9 +60,9 @@ abstract class AbstractClient
      */
     public function __construct($apiKey, Region $region, CacheItemPoolInterface $cache = null)
     {
-        $this->apiKey  = $apiKey;
-        $this->cache   = $cache;
-        $this->region  = $region;
+        $this->apiKey = $apiKey;
+        $this->cache = $cache;
+        $this->region = $region;
         $this->version = new Version(static::VERSION, dirname(dirname(__DIR__)));
     }
 
@@ -88,8 +98,6 @@ abstract class AbstractClient
 
     /**
      * @param ClientInterface $client
-     *
-     * @return void
      */
     public function setClient(ClientInterface $client)
     {
@@ -98,7 +106,7 @@ abstract class AbstractClient
 
     /**
      * @param string $url
-     * @param array $options
+     * @param array  $options
      *
      * @return string
      */
@@ -106,7 +114,7 @@ abstract class AbstractClient
     {
         $options = array_replace_recursive([
             'headers' => $this->client->getConfig('headers'),
-            'query'   => $this->client->getConfig('query'),
+            'query' => $this->client->getConfig('query'),
         ], $options);
 
         return hash_hmac('md5', $url, serialize($options));
@@ -143,11 +151,12 @@ abstract class AbstractClient
                 if ($item !== null && $response->hasHeader('Last-Modified') === true) {
                     $item->set([
                         'modified' => $response->getHeader('Last-Modified'),
-                        'json'     => $data,
+                        'json' => $data,
                     ]);
 
                     $this->cache->save($item);
                 }
+
                 return $data;
             case 304:
                 return $item->get()['json'];
@@ -165,7 +174,7 @@ abstract class AbstractClient
     protected function makeRequest($url, array $options = [])
     {
         if ($this->client === null) {
-            $this->client = new GuzzleClient;
+            $this->client = new GuzzleClient();
         }
 
         $item = null;
@@ -185,7 +194,7 @@ abstract class AbstractClient
 
         $options = array_replace_recursive($options, [
             'headers' => [
-                'Accept'     => 'application/json',
+                'Accept' => 'application/json',
                 'Accept-Encoding' => 'gzip',
                 'User-Agent' => $this->getUserAgent(),
             ],
@@ -201,7 +210,7 @@ abstract class AbstractClient
         } catch (ClientException $exception) {
             switch ($exception->getCode()) {
                 case 404:
-                    return null;
+                    return;
                 default:
                     $data = json_decode($exception->getResponse()->getBody(), true);
                     throw new BattleNetException($data['reason'], $exception->getCode());

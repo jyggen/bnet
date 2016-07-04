@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet\Warcraft\Realms;
 
 use Pwnraid\Bnet\Core\AbstractRequest;
@@ -28,7 +38,7 @@ class RealmRequest extends AbstractRequest
         $returnSingle = false;
 
         if (is_array($realms) === false) {
-            $realms       = [$realms];
+            $realms = [$realms];
             $returnSingle = true;
         }
 
@@ -36,11 +46,11 @@ class RealmRequest extends AbstractRequest
             $realm = Utils::realmNameToSlug($realm);
         }
 
-        $data       = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realms)]]);
+        $data = $this->client->get('realm/status', ['query' => ['realms' => implode(',', $realms)]]);
         $realmCount = count($data['realms']);
 
         if ($returnSingle === true && $realmCount !== 1) {
-            return null;
+            return;
         }
 
         if ($realmCount !== count($realms)) {

@@ -1,14 +1,23 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet\Test\Core;
 
 use Mockery;
-use Pwnraid\Bnet\Core\AbstractEntity;
 
 class AbstractEntityTest extends \PHPUnit_Framework_TestCase
 {
     public function testAbstractEntity()
     {
-        $entity = (new Mockery)->mock('Pwnraid\Bnet\Core\AbstractEntity', [['foo' => 'bar']])->shouldDeferMissing();
+        $entity = (new Mockery())->mock('Pwnraid\Bnet\Core\AbstractEntity', [['foo' => 'bar']])->shouldDeferMissing();
         $this->assertSame('bar', $entity->foo);
         $this->assertSame('bar', $entity['foo']);
         $this->assertFalse(isset($entity->baz));

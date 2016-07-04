@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet\Warcraft\BattlePets;
 
 use Pwnraid\Bnet\Core\AbstractRequest;
@@ -10,7 +20,7 @@ class BattlePetRequest extends AbstractRequest
         $data = $this->client->get('pet/ability/'.$abilityId);
 
         if ($data === null) {
-            return null;
+            return;
         }
 
         return new AbilityEntity($data);
@@ -21,7 +31,7 @@ class BattlePetRequest extends AbstractRequest
         $data = $this->client->get('pet/species/'.$speciesId);
 
         if ($data === null) {
-            return null;
+            return;
         }
 
         return new SpeciesEntity($data);
@@ -31,14 +41,14 @@ class BattlePetRequest extends AbstractRequest
     {
         $data = $this->client->get('pet/stats/'.$speciesId, [
             'query' => [
-                'level'     => $level,
-                'breedId'   => $breedId,
+                'level' => $level,
+                'breedId' => $breedId,
                 'qualityId' => $qualityId,
             ],
         ]);
 
         if ($data === null) {
-            return null;
+            return;
         }
 
         return new StatsEntity($data);
@@ -46,7 +56,7 @@ class BattlePetRequest extends AbstractRequest
 
     public function types()
     {
-        $data  = $this->client->get('data/pet/types');
+        $data = $this->client->get('data/pet/types');
 
         return array_map(function ($type) {
             return new TypeEntity($type);

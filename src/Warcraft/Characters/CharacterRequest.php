@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Pwnraid\Bnet\Warcraft\Characters;
 
 use League\OAuth2\Client\Token\AccessToken;
@@ -14,7 +24,7 @@ class CharacterRequest extends AbstractRequest
         $data = $this->client->get('achievement/'.$achievementId);
 
         if ($data === null) {
-            return null;
+            return;
         }
 
         return new AchievementEntity($data);
@@ -54,7 +64,7 @@ class CharacterRequest extends AbstractRequest
         ]);
 
         if ($data === null || count($data) === 0) {
-            return null;
+            return;
         }
 
         return new CharacterEntity($data);
@@ -63,6 +73,7 @@ class CharacterRequest extends AbstractRequest
     public function on($realm)
     {
         $this->realm = Utils::realmNameToSlug($realm);
+
         return $this;
     }
 
@@ -77,12 +88,12 @@ class CharacterRequest extends AbstractRequest
 
     public function talents()
     {
-        $data    = $this->client->get('data/talents');
+        $data = $this->client->get('data/talents');
         $classes = [];
 
         foreach ($data as $classId => $class) {
             $classes[$classId] = [
-                'glyphs'  => [],
+                'glyphs' => [],
                 'talents' => [],
             ];
 
@@ -100,7 +111,7 @@ class CharacterRequest extends AbstractRequest
 
     public function user(AccessToken $token)
     {
-        $data       = $this->client->get('user/characters', ['query' => ['access_token' =>$token]]);
+        $data = $this->client->get('user/characters', ['query' => ['access_token' => $token]]);
         $characters = [];
 
         foreach ($data['characters'] as $character) {

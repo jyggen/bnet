@@ -31,11 +31,11 @@
     "require-dev": {
         "apigen/apigen": "^4.1",
         "fig/cache-util": "dev-master",
+		"friendsofphp/php-cs-fixer": "^1.11",
         "jakub-onderka/php-parallel-lint": "^0.9",
         "mockery/mockery": "^0.9",
         "phpunit/phpunit": "^4.8",
-        "satooshi/php-coveralls": "^1.0",
-        "squizlabs/php_codesniffer": "^2.5"
+        "satooshi/php-coveralls": "^1.0"
     },
     "autoload": {
         "psr-4": {"Pwnraid\\Bnet\\": "src"}
@@ -53,7 +53,7 @@
             "mkdir -p build/logs",
             "parallel-lint . --exclude vendor",
             "phpunit --coverage-text",
-            "phpcs src --standard=psr2 -sp",
+            "php-cs-fixer --diff --dry-run -v fix",
             "composer validate --strict"
         ]
     }
