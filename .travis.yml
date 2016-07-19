@@ -14,9 +14,9 @@ matrix:
     - php: 7.0
       env: 'COMPOSER_OPTS="--prefer-stable --prefer-lowest"'
     - php: 7.0
-    - php: 7.1.0alpha1
+    - php: 7.1
       env: 'COMPOSER_OPTS="--prefer-stable --prefer-lowest"'
-    - php: 7.1.0alpha1
+    - php: 7.1
     - php: hhvm-3.12
       sudo: required
       dist: trusty
