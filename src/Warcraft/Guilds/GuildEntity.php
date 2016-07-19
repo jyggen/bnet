@@ -22,7 +22,7 @@ class GuildEntity extends AbstractEntity
 
         if (array_key_exists('members', $this->attributes) === true) {
             foreach ($this->attributes['members'] as $key => $member) {
-                $this->attributes['members'][$key]['character'] = new CharacterEntity($member);
+                $this->attributes['members'][$key]['character'] = new CharacterEntity($member['character']);
             }
         }
     }
