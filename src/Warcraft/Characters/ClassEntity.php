@@ -83,6 +83,12 @@ class ClassEntity extends AbstractEntity
             'powerType' => 'mana',
             'name' => 'Druid',
         ],
+        12 => [
+            'id' => 12,
+            'mask' => 2048,
+            'powerType' => 'fury',
+            'name' => 'Demon Hunter',
+        ],
     ];
 
     public static function fromId($classId)
