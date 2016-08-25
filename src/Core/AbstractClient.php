@@ -213,7 +213,7 @@ abstract class AbstractClient
                     return;
                 default:
                     $data = json_decode($exception->getResponse()->getBody(), true);
-                    throw new BattleNetException($data['reason'], $exception->getCode());
+                    throw new BattleNetException($data['detail'], $exception->getCode());
             }
         }
 
