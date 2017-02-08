@@ -27,7 +27,6 @@ class BossRequestTest extends \PHPUnit_Framework_TestCase
         $response = $this->request->all();
 
         $this->assertInstanceOf(BossEntity::class, $response[0]);
-        $this->assertEquals(24723, $response[0]->id);
     }
 
     public function testFind()

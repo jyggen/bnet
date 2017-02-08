@@ -97,10 +97,6 @@ class CharacterRequest extends AbstractRequest
                 'talents' => [],
             ];
 
-            foreach ($class['glyphs'] as $glyph) {
-                $classes[$classId]['glyphs'][] = new GlyphEntity($glyph);
-            }
-
             foreach ($class['talents'] as $talent) {
                 $classes[$classId]['talents'][] = new TalentEntity($talent);
             }

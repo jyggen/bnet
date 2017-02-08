@@ -45,7 +45,7 @@ class AuctionRequestTest extends \PHPUnit_Framework_TestCase
         $response = $this->request->download($response);
 
         $this->assertInternalType('array', $response);
-        $this->assertSame(1538972289, $response[0]->auc);
+        $this->assertSame(1763666201, $response[0]->auc);
     }
 
     public function testDownloadInvalidUrl()
