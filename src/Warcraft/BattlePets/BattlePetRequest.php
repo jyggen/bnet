@@ -15,6 +15,14 @@ use Pwnraid\Bnet\Core\AbstractRequest;
 
 class BattlePetRequest extends AbstractRequest
 {
+
+    public function all() {
+        $data = $this->client->get('pet/');
+        return array_map(function ($type) {
+            return new PetEntity($type);
+        }, $data['pets']);
+    }
+
     public function ability($abilityId)
     {
         $data = $this->client->get('pet/ability/'.$abilityId);
