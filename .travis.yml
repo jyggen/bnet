@@ -1,7 +1,6 @@
 ---
 after_success:
-  - "if [ $TASK_TESTS_COVERAGE == 1 ]; phpdbg -qrr ./vendor/bin/phpunit --coverage-clover=coverage.xml; fi"
-  - "if [ $TASK_TESTS_COVERAGE == 1 ]; bash < (curl -s https://codecov.io/bash); fi"
+  - "if [[ \"$TASK_TESTS_COVERAGE\" = 1 ]]; then bash < (curl -s https://codecov.io/bash); fi"
 before_install:
   - "phpdbg --version 2> /dev/null || export TASK_TESTS_COVERAGE=0"
   - "phpenv config-rm xdebug.ini || return 0"
@@ -28,4 +27,5 @@ php:
   - 7.1snapshot
 script:
   - "./vendor/bin/grumphp run"
+  - "if [[ \"$TASK_TESTS_COVERAGE\" = 1 ]]; then phpdbg -qrr ./vendor/bin/phpunit --coverage-clover=coverage.xml; fi"
 sudo: false
