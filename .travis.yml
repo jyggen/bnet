@@ -1,7 +1,7 @@
 ---
 after_success:
-  - "./vendor/bin/phpunit --coverage-clover=coverage.xml"
-  - "bash < (curl -s https://codecov.io/bash)"
+  - "if [ $TASK_TESTS_COVERAGE == 1 ]; phpdbg -qrr ./vendor/bin/phpunit --coverage-clover=coverage.xml; fi"
+  - "if [ $TASK_TESTS_COVERAGE == 1 ]; bash < (curl -s https://codecov.io/bash); fi"
 before_install:
   - "phpdbg --version 2> /dev/null || export TASK_TESTS_COVERAGE=0"
   - "phpenv config-rm xdebug.ini || return 0"
