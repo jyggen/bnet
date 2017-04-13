@@ -1,6 +1,6 @@
 ---
 after_success:
-  - "if [[ \"$TASK_TESTS_COVERAGE\" = 1 ]]; then bash < (curl -s https://codecov.io/bash); fi"
+  - "if [[ \"$TASK_TESTS_COVERAGE\" = 1 ]]; then bash <(curl -s https://codecov.io/bash); fi"
 before_install:
   - "phpdbg --version 2> /dev/null || export TASK_TESTS_COVERAGE=0"
   - "phpenv config-rm xdebug.ini || return 0"
