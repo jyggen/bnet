@@ -11,7 +11,7 @@ cache:
     - $HOME/.composer
 env:
   global:
-    - "DEFAULT_COMPOSER_FLAGS=\"--no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable\""
+    - "composer global show -ND 2>&1 | grep \"hirak/prestissimo\" || DEFAULT_COMPOSER_FLAGS=\"--no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable\""
     - TASK_TESTS_COVERAGE=1
   matrix:
     - DEPENDENCIES=high
