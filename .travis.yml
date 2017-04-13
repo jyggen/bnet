@@ -1,71 +1,25 @@
-language: php
-
-sudo: false
-
-matrix:
-  fast_finish: true
-  include:
-    - php: 5.5
-      env: 'COMPOSER_OPTS="--prefer-stable --prefer-lowest"'
-    - php: 5.5
-    - php: 5.6
-      env: 'COMPOSER_OPTS="--prefer-stable --prefer-lowest"'
-    - php: 5.6
-    - php: 7.0
-      env: 'COMPOSER_OPTS="--prefer-stable --prefer-lowest"'
-    - php: 7.0
-    - php: 7.1
-      env: 'COMPOSER_OPTS="--prefer-stable --prefer-lowest"'
-    - php: 7.1
-    - php: hhvm-3.12
-      sudo: required
-      dist: trusty
-      group: edge
-      env: 'COMPOSER_OPTS="--prefer-stable --prefer-lowest"'
-    - php: hhvm-3.12
-      sudo: required
-      dist: trusty
-      group: edge
-    - php: hhvm
-      sudo: required
-      dist: trusty
-      group: edge
-      env: 'COMPOSER_OPTS="--prefer-stable --prefer-lowest"'
-    - php: hhvm
-      sudo: required
-      dist: trusty
-      group: edge
-
-cache:
-  directories:
-    - $HOME/.composer/cache
-
+---
+after_success:
+  - "./vendor/bin/phpunit --coverage-clover=coverage.xml"
+  - "bash < (curl -s https://codecov.io/bash)"
 before_install:
-    - mv $HOME/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini $HOME/xdebug.ini || return 0
-
+  - "travis_retry composer self-update"
+  - "travis_retry composer clear-cache"
+env:
+  matrix:
+    - DEPENDENCIES="high"
+    - DEPENDENCIES="low"
 install:
-  - travis_retry composer self-update
-  - travis_retry composer global require hirak/prestissimo
-  - travis_retry composer update --no-interaction ${COMPOSER_OPTS}
-
-before_script:
-  - mkdir -p build/logs
-
+  - "if [[ \"$DEPENDENCIES\" = 'high' ]]; then travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable; fi"
+  - "if [[ \"$DEPENDENCIES\" = 'low' ]]; then travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable --prefer-lowest; fi"
+language: php
+php:
+  - 7.0
+  - 7.0snapshot
+  - 7.1
+  - 7.1snapshot
+  - master
+  - hhvm
 script:
-  - ./vendor/bin/parallel-lint . --exclude vendor
-  - cp $HOME/xdebug.ini $HOME/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
-  - ./vendor/bin/phpunit --coverage-text
-  - phpenv config-rm xdebug.ini || return 0
-  - ./vendor/bin/php-cs-fixer --diff --dry-run -v fix
-  - composer validate --strict
-
-after_script:
-  - php vendor/bin/coveralls
-
-notifications:
-  webhooks:
-    urls:
-      - 'https://webhooks.gitter.im/e/6e5e2dea76dada46bf9d'
-    on_success: change
-    on_failure: always
-    on_start: never
+  - "./vendor/bin/grumphp run"
+sudo: false

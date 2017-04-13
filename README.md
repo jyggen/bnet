@@ -9,7 +9,7 @@
 [![Coverage Status][badge-coverage]][coverage]
 [![Total Downloads][badge-downloads]][downloads]
 
-pwnraid/bnet is a PHP 5.5+ library for working with the Battle.net Web APIs.
+pwnraid/bnet is a PHP 7.0+ library for working with the Battle.net Web APIs.
 
 ## Installation
 
