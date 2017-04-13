@@ -18,8 +18,6 @@ php:
   - 7.0snapshot
   - 7.1
   - 7.1snapshot
-  - master
-  - hhvm
 script:
   - "./vendor/bin/grumphp run"
 sudo: false
