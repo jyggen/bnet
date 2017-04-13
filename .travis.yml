@@ -3,15 +3,23 @@ after_success:
   - "./vendor/bin/phpunit --coverage-clover=coverage.xml"
   - "bash < (curl -s https://codecov.io/bash)"
 before_install:
+  - "phpdbg --version 2> /dev/null || export TASK_TESTS_COVERAGE=0"
+  - "phpenv config-rm xdebug.ini || return 0"
   - "travis_retry composer self-update"
-  - "travis_retry composer clear-cache"
+  - "travis_retry composer global require $DEFAULT_COMPOSER_FLAGS hirak/prestissimo"
+cache:
+  directories:
+    - $HOME/.composer
 env:
+  global:
+    - "DEFAULT_COMPOSER_FLAGS=\"--no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable\""
+    - TASK_TESTS_COVERAGE=1
   matrix:
-    - DEPENDENCIES="high"
-    - DEPENDENCIES="low"
+    - DEPENDENCIES=high
+    - DEPENDENCIES=low
 install:
-  - "if [[ \"$DEPENDENCIES\" = 'high' ]]; then travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable; fi"
-  - "if [[ \"$DEPENDENCIES\" = 'low' ]]; then travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable --prefer-lowest; fi"
+  - "if [[ \"$DEPENDENCIES\" = 'high' ]]; then travis_retry composer update $DEFAULT_COMPOSER_FLAGS; fi"
+  - "if [[ \"$DEPENDENCIES\" = 'low' ]]; then travis_retry composer update $DEFAULT_COMPOSER_FLAGS --prefer-lowest; fi"
 language: php
 php:
   - 7.0
