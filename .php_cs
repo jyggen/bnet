@@ -51,6 +51,9 @@ $config->setRules([
     ],
     'heredoc_to_nowdoc' => true,
     'linebreak_after_opening_tag' => true,
+    'list_syntax' => [
+        'syntax' => 'long', // "short" in PHP 7.1+
+    ],
     'mb_str_functions' => true,
     'native_function_invocation' => false,
     'no_multiline_whitespace_before_semicolons' => true,

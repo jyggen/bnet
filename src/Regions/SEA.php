@@ -60,8 +60,7 @@ final class SEA implements RegionInterface
      */
     public function getOAuthBaseUrl(): string
     {
-        // In order to use OAuth on the SEA SC2 Community
-        // APIs we need to use the US OAuth servers.
-        return (new US())->getOAuthBaseUrl();
+        // SEA SC2 Community APIs uses the US OAuth endpoint.
+        return 'https://us.battle.net/';
     }
 }

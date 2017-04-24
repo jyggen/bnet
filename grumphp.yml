@@ -25,6 +25,7 @@ parameters:
         - naming
         - unusedcode
     phpstan:
+      configuration: phpstan.neon
       level: 5
     phpunit: ~
     xmllint:
