@@ -32,7 +32,7 @@ final class SEA implements RegionInterface
      */
     public function __construct($locale = RegionInterface::EN_US)
     {
-        if (in_array($locale, $this->locales, true) === false) {
+        if (in_array($locale, self::$locales, true) === false) {
             // @todo: Throw exception.
         }
 

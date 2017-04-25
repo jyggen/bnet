@@ -32,7 +32,7 @@ final class CN implements RegionInterface
      */
     public function __construct($locale = RegionInterface::ZH_CN)
     {
-        if (in_array($locale, $this->locales, true) === false) {
+        if (in_array($locale, self::$locales, true) === false) {
             // @todo: Throw exception.
         }
 

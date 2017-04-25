@@ -39,7 +39,7 @@ final class EU implements RegionInterface
      */
     public function __construct($locale = RegionInterface::EN_GB)
     {
-        if (in_array($locale, $this->locales, true) === false) {
+        if (in_array($locale, self::$locales, true) === false) {
             // @todo: Throw exception.
         }
 

@@ -23,14 +23,14 @@ final class ZoneApiTest extends AbstractApiTestCase
 {
     public function testConstructor()
     {
-        $zoneApi = new ZoneApi($this->mockFactory);
+        $zoneApi = new ZoneApi($this->getMockFactory());
 
         $this->assertInstanceOf(ZoneApi::class, $zoneApi);
     }
 
     public function testGetMasterListAgainstMock()
     {
-        $zoneApi = new ZoneApi($this->mockFactory);
+        $zoneApi = new ZoneApi($this->getMockFactory());
         $request = $zoneApi->getMasterList();
 
         $this->assertInstanceOf(RequestInterface::class, $request);
@@ -38,13 +38,37 @@ final class ZoneApiTest extends AbstractApiTestCase
         $this->assertSame('wow/zone/', $request->getRequestTarget());
     }
 
+    public function testGetMasterListAgainstLive()
+    {
+        $zoneApi = new ZoneApi($this->getApiFactory());
+        $request = $zoneApi->getMasterList();
+
+        $this->assertInstanceOf(RequestInterface::class, $request);
+
+        $response = $this->getClient()->send($request);
+
+        $this->assertSame(200, $response->getStatusCode());
+    }
+
     public function testGetZoneAgainstMock()
     {
-        $zoneApi = new ZoneApi($this->mockFactory);
+        $zoneApi = new ZoneApi($this->getMockFactory());
         $request = $zoneApi->getZone(4131);
 
         $this->assertInstanceOf(RequestInterface::class, $request);
         $this->assertSame(RequestMethodInterface::METHOD_GET, $request->getMethod());
         $this->assertSame('wow/zone/4131', $request->getRequestTarget());
+    }
+
+    public function testGetZoneAgainstLive()
+    {
+        $zoneApi = new ZoneApi($this->getApiFactory());
+        $request = $zoneApi->getZone(4131);
+
+        $this->assertInstanceOf(RequestInterface::class, $request);
+
+        $response = $this->getClient()->send($request);
+
+        $this->assertSame(200, $response->getStatusCode());
     }
 }

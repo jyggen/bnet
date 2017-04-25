@@ -18,6 +18,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\UriInterface;
+use function GuzzleHttp\Psr7\build_query;
 
 final class RequestFactory implements RequestFactoryInterface
 {
@@ -49,16 +50,15 @@ final class RequestFactory implements RequestFactoryInterface
         $uri = new Uri(vsprintf('%s%s?%s', [
             $this->region->getApiBaseUrl(),
             $path,
-            http_build_query(array_merge($query, [
+            build_query(array_merge($query, [
                 'apikey' => $this->apiKey,
                 'locale' => $this->region->getLocale(),
-            ]), null, '&', PHP_QUERY_RFC3986)
+            ]))
         ]));
 
         return new Request($method, $uri, [
             'Accept' => 'application/json',
             'Accept-Encoding' => 'gzip',
-            'User-Agent' => 'boo/bnet',
         ]);
     }
 }

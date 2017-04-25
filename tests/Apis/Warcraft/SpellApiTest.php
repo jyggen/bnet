@@ -23,18 +23,30 @@ final class SpellApiTest extends AbstractApiTestCase
 {
     public function testConstructor()
     {
-        $zoneApi = new SpellApi($this->mockFactory);
+        $zoneApi = new SpellApi($this->getMockFactory());
 
         $this->assertInstanceOf(SpellApi::class, $zoneApi);
     }
 
     public function testGetSpellAgainstMock()
     {
-        $zoneApi = new SpellApi($this->mockFactory);
+        $zoneApi = new SpellApi($this->getMockFactory());
         $request = $zoneApi->getSpell(8056);
 
         $this->assertInstanceOf(RequestInterface::class, $request);
         $this->assertSame(RequestMethodInterface::METHOD_GET, $request->getMethod());
         $this->assertSame('wow/spell/8056', $request->getRequestTarget());
+    }
+
+    public function testGetSpellAgainstLive()
+    {
+        $zoneApi = new SpellApi($this->getApiFactory());
+        $request = $zoneApi->getSpell(8056);
+
+        $this->assertInstanceOf(RequestInterface::class, $request);
+
+        $response = $this->getClient()->send($request);
+
+        $this->assertSame(200, $response->getStatusCode());
     }
 }
