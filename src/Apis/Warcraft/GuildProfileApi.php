@@ -65,7 +65,7 @@ final class GuildProfileApi
         return $this->factory->make(
             RequestMethodInterface::METHOD_GET,
             sprintf('wow/guild/%s/%s', $realm, $name),
-            $fields
+            ['fields' => implode(',', $fields)]
         );
     }
 

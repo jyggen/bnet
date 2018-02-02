@@ -140,7 +140,7 @@ final class CharacterProfileApi
         return $this->factory->make(
             RequestMethodInterface::METHOD_GET,
             sprintf('wow/character/%s/%s', $realm, $name),
-            $fields
+            ['fields' => implode(',', $fields)]
         );
     }
 
