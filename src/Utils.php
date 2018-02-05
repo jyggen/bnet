@@ -69,6 +69,6 @@ final class Utils
             ]));
         }
 
-        return $match[1].$match[2];
+        return ltrim($match[1].$match[2], '0');
     }
 }
