@@ -121,6 +121,29 @@ class RaceEntity extends AbstractEntity
             'name' => 'Pandaren',
 
         ],
+        27 => [
+            'id' => 27,
+            'mask' => 67108864,
+            'side' => 'horde',
+            'name' => 'Nightborne'
+        ],
+        28 => [
+            'id' => 28,
+            'mask' => 134217728,
+            'side' => 'horde',
+            'name' => 'Highmountain Tauren'
+        ],
+        29 => [
+            'id' => 29,
+            'mask' => 268435456,
+            'side' => 'alliance',
+            'name' => 'Void Elf'
+        ],
+        30 => [
+            'id' => 30,
+            'mask' => 536870912,
+            'side' => 'alliance',
+            'name' => 'Lightforged Draenei'
     ];
 
     public static function fromId($raceId)
