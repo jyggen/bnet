@@ -37,7 +37,7 @@ class OAuth extends AbstractProvider
 
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return $this->region->getApiHost('account').'user/id?access_token='.$token;
+        return $this->region->getApiHost('account').'user?access_token='.$token;
     }
 
     /**
@@ -86,6 +86,7 @@ class OAuth extends AbstractProvider
     protected function createResourceOwner(array $response, AccessToken $token)
     {
         return [
+            'battletag' => $response['battletag'],
             'uid' => (int) $response['id'],
         ];
     }
