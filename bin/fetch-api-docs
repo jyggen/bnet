@@ -1,0 +1,94 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+use GuzzleHttp\Client;
+use Symfony\Component\DomCrawler\Crawler;
+
+set_error_handler(static function ($severity, $message, $file, $line): void {
+    if ($severity & error_reporting()) {
+        throw new ErrorException($message, 0, $severity, $file, $line);
+    }
+});
+
+chdir(dirname(__DIR__));
+
+require_once 'vendor/autoload.php';
+
+$client = new Client();
+$response = $client->get('https://dev.battle.net/io-docs');
+$htmlBody = (string) $response->getBody();
+$crawler = new Crawler($htmlBody);
+$apiIds = $crawler->filter('#apiId');
+$crawler = $crawler->filter('ul.endpointList');
+$docs = $crawler->each(static function (Crawler $endpointList) use ($apiIds) {
+    $apiId = mb_substr($endpointList->attr('id'), 3);
+    $apiName = trim($apiIds->filter('option[value="'.$apiId.'"]')->text());
+    $apiAuthType = trim($endpointList->attr('data-auth-type'));
+    $endpoints = $endpointList->filter('li.endpoint');
+    $endpoints = $endpoints->each(static function (Crawler $endpoint) {
+        $endpointName = trim($endpoint->filter('h3.title > span.name')->text());
+        $methods = $endpoint->filter('ul.methods > li.method');
+        $methods = $methods->each(static function (Crawler $method) {
+            $methodName = trim($method->filter('input[name="methodName"]')->attr('value'));
+            $httpMethod = trim($method->filter('input[name="httpMethod"]')->attr('value'));
+            $methodUri = trim($method->filter('input[name="methodUri"]')->attr('value'));
+            $parameters = $method->filter('table.parameters > tbody > tr');
+            $parameters = $parameters->each(static function (Crawler $parameter) {
+                $classes = explode(' ', trim($parameter->attr('class')));
+                $name = trim($parameter->filter('td.name')->text());
+                $value = $parameter->filter('td.parameter input, option[selected="selected"]')->attr('value');
+                $type = trim($parameter->filter('td.type')->text());
+                $description = trim($parameter->filter('td.description')->text());
+                $kind = null;
+
+                foreach ($classes as $class) {
+                    if (false === mb_strpos($class, 'type-')) {
+                        continue;
+                    }
+
+                    $kind = mb_substr($class, 5);
+                }
+
+                return [
+                    'kind' => $kind,
+                    'name' => $name,
+                    'value' => $value,
+                    'type' => $type,
+                    'description' => $description,
+                ];
+            });
+
+            return [
+                'name' => $methodName,
+                'method' => $httpMethod,
+                'uri' => $methodUri,
+                'parameters' => $parameters,
+            ];
+        });
+
+        return [
+            'name' => $endpointName,
+            'methods' => $methods,
+        ];
+    });
+
+    return [
+        'id' => $apiId,
+        'name' => $apiName,
+        'auth' => $apiAuthType,
+        'endpoints' => $endpoints,
+    ];
+});
+
+file_put_contents('resources/api.json', json_encode($docs, JSON_PRETTY_PRINT));

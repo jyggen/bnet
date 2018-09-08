@@ -1,0 +1,93 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Boo\BattleNet\Apis\{{ namespace }};
+
+{% if hasUnavailable %}
+use Boo\BattleNet\Exceptions\UnavailableRegionException;
+{%  endif %}
+use Boo\BattleNet\Regions\RegionInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\RequestInterface;
+
+final class {{ className }}
+{
+    /**
+     * @var RequestFactoryInterface
+     */
+    private $factory;
+
+    /**
+     * @var array<string, int|string>
+     */
+    private $queryString;
+
+    /**
+     * @var RegionInterface
+     */
+    private $region;
+
+    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string ${{ auth }})
+    {
+        $this->factory = $factory;
+        $this->region = $region;
+        $this->queryString = [
+{% if auth is same  as("apiKey") %}
+            'apikey' => ${{ auth }},
+{% else %}
+            'access_token' => ${{ auth }},
+{% endif %}
+            'locale' => $this->region->getLocale(),
+        ];
+    }
+{% for url, endpoint in endpoints %}
+
+    public function {{ endpoint.method }}({{ endpoint.arguments }}): RequestInterface
+    {
+{% for region in endpoint.unavailable %}
+        if ('{{ region }}' === $this->region->getName()) {
+            throw new UnavailableRegionException('{{ region }} does not support this endpoint');
+        }
+
+{% endfor %}
+        $url = {{  endpoint.url|raw }};
+{% for override in endpoint.overrides %}
+
+        if ('{{ override.region }}' === $this->region->getName()) {
+            $url = {{  override.url|raw }};
+        }
+{% endfor %}
+
+{% if endpoint.queryArgs is empty %}
+        return $this->createRequest({{  endpoint.verb|raw }}, $url);
+{% else %}
+        return $this->createRequest({{  endpoint.verb|raw }}, $url, [
+{% for argument in endpoint.queryArgs %}
+            '{{ argument.name }}' => ${{ argument.name }},
+{% endfor %}
+        ]);
+{% endif %}
+    }
+{% endfor %}
+
+    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
+    {
+        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
+        $url = $this->region->getApiBaseUrl().$url;
+        $request = $this->factory->createRequest($verb, $url);
+        $request = $request->withHeader('Accept', 'application/json');
+        $request = $request->withHeader('Accept-Encoding', 'gzip');
+
+        return $request;
+    }
+}

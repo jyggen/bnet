@@ -1630,7 +1630,7 @@ final class UtilsTest extends TestCase
     /**
      * Tests that the class isn't instantiable.
      */
-    public function testNotInstantiable()
+    public function testNotInstantiable(): void
     {
         $this->expectException(Error::class);
         $this->expectExceptionMessage('Call to private');
@@ -1646,7 +1646,7 @@ final class UtilsTest extends TestCase
      * @param string $expected
      * @param string $name
      */
-    public function testRealmNameToSlug(string $expected, string $name)
+    public function testRealmNameToSlug(string $expected, string $name): void
     {
         $this->assertSame($expected, Utils::realmNameToSlug($name));
     }
@@ -1654,7 +1654,7 @@ final class UtilsTest extends TestCase
     /**
      * Tests that a character's unique ID can properly be extracted.
      */
-    public function testThumbnailToId()
+    public function testThumbnailToId(): void
     {
         $this->assertSame('207104578511', Utils::thumbnailToId('internal-record-3702/207/104578511-avatar.jpg'));
     }
@@ -1662,7 +1662,7 @@ final class UtilsTest extends TestCase
     /**
      * Tests that an exception is raised on an invalid thumbnail URL.
      */
-    public function testThumbnailToIdWithInvalidUrl()
+    public function testThumbnailToIdWithInvalidUrl(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Invalid thumbnail URL "invalid.jpg"');

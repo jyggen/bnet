@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -10,12 +11,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+namespace Boo\BattleNet\Exceptions;
 
-use Sami\Sami;
+use Exception;
 
-return new Sami('src', [
-    'title' => 'boo/bnet',
-    'build_dir' => __DIR__.'/build/docs',
-    'cache_dir' => __DIR__.'/build/cache',
-    'default_opened_level' => 2,
-]);
+final class UnavailableRegionException extends Exception
+{
+}

@@ -1,7 +1,7 @@
 {
     "name": "boo/bnet",
     "description": "Library for working with the Battle.net Web APIs.",
-    "keywords": ["Battle.net", "Blizzard", "Warcraft", "Starcraft", "Diablo", "API", "bnet"],
+    "keywords": ["Battle.net", "Blizzard", "Warcraft", "Starcraft", "Diablo", "Overwatch", "API", "bnet"],
     "homepage": "https://github.com/jyggen/bnet",
     "type": "library",
     "license": "MIT",
@@ -17,23 +17,22 @@
         "source": "https://github.com/jyggen/bnet"
    },
     "require": {
-        "php": "^7.0",
-        "guzzlehttp/guzzle": "^6.0",
-        "guzzlehttp/psr7": "^1.0",
+        "php": "^7.1",
+        "ext-mbstring": "*",
         "league/oauth2-client": "^2.0",
-        "psr/http-message": "^1.0",
-        "fig/http-message-util": "^1.0"
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.3.0",
-        "jakub-onderka/php-parallel-lint": "^0.9.2",
-        "phpmd/phpmd": "^2.6.0",
-        "phpro/grumphp": "^0.11.4",
-        "phpstan/phpstan": "^0.6.4",
-        "phpunit/phpunit": "^6.1.1",
-        "sami/sami": "^4.0.1",
-        "sebastian/phpcpd": "^3.0.0",
-        "symfony/var-dumper": "^3.2.7"
+        "ext-json": "*",
+        "boo/code-standard": "^0.1.1",
+        "guzzlehttp/guzzle": "^6.0",
+        "http-interop/http-factory-guzzle": "^1.0.0",
+        "phpunit/phpunit": "^6.2.4",
+        "symfony/css-selector": "^4.0",
+        "symfony/dom-crawler": "^4.0",
+        "symfony/var-dumper": "^4.0",
+        "twig/twig": "^2.0"
     },
     "autoload": {
         "psr-4": {

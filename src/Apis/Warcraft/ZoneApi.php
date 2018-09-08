@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\Warcraft;
 
+use Boo\BattleNet\Exceptions\UnavailableRegionException;
 use Boo\BattleNet\Regions\RegionInterface;
-use Boo\BattleNet\RequestFactoryInterface;
-use Fig\Http\Message\RequestMethodInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 
 final class ZoneApi
@@ -26,34 +26,63 @@ final class ZoneApi
     private $factory;
 
     /**
-     * @param RequestFactoryInterface $factory
+     * @var array<string, int|string>
      */
-    public function __construct(RequestFactoryInterface $factory)
+    private $queryString;
+
+    /**
+     * @var RegionInterface
+     */
+    private $region;
+
+    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $apiKey)
     {
         $this->factory = $factory;
+        $this->region = $region;
+        $this->queryString = [
+            'apikey' => $apiKey,
+            'locale' => $this->region->getLocale(),
+        ];
     }
 
-    /**
-     * @return RequestInterface
-     */
     public function getMasterList(): RequestInterface
     {
-        return $this->factory->make(
-            RequestMethodInterface::METHOD_GET,
-            'wow/zone/'
-        );
+        if ('CN' === $this->region->getName()) {
+            throw new UnavailableRegionException('CN does not support this endpoint');
+        }
+
+        if ('SEA' === $this->region->getName()) {
+            throw new UnavailableRegionException('SEA does not support this endpoint');
+        }
+
+        $url = '/wow/zone/';
+
+        return $this->createRequest('GET', $url);
     }
 
-    /**
-     * @param int $zoneId
-     *
-     * @return RequestInterface
-     */
-    public function getZone(int $zoneId): RequestInterface
+    public function getZone(string $zoneid): RequestInterface
     {
-        return $this->factory->make(
-            RequestMethodInterface::METHOD_GET,
-            sprintf('wow/zone/%u', $zoneId)
-        );
+        if ('CN' === $this->region->getName()) {
+            throw new UnavailableRegionException('CN does not support this endpoint');
+        }
+
+        if ('SEA' === $this->region->getName()) {
+            throw new UnavailableRegionException('SEA does not support this endpoint');
+        }
+
+        $url = '/wow/zone/'.$zoneid;
+
+        return $this->createRequest('GET', $url);
+    }
+
+    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
+    {
+        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
+        $url = $this->region->getApiBaseUrl().$url;
+        $request = $this->factory->createRequest($verb, $url);
+        $request = $request->withHeader('Accept', 'application/json');
+        $request = $request->withHeader('Accept-Encoding', 'gzip');
+
+        return $request;
     }
 }

@@ -1,0 +1,193 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+function to_camel_case(string $string): string
+{
+    return str_replace(' ', '', ucwords(strtolower($string)));
+}
+
+function get_method_from_name_and_verb(string $name, string $verb): string
+{
+    if (strpos($name, 'get') === 0) {
+        $name = substr($name, 3);
+    }
+
+    if (strpos($name, ' ') === false) {
+        $name = preg_replace('/(.)(?=[A-Z])/u', '$1 ', $name);
+    }
+
+    return strtolower($verb).to_camel_case($name);
+}
+
+function get_namespace_from_name(string $name): string
+{
+    static $lookup = [
+        'Community OAuth Profile APIs' => 'OAuth',
+        'D3 Community API' => 'Diablo',
+        'Game Data APIs' => 'Diablo',
+        'SC2 Community APIs' => 'Starcraft',
+        'WoW Community APIs' => 'Warcraft',
+        'WoW Game Data' => 'Warcraft',
+    ];
+
+    if (array_key_exists($name, $lookup)) {
+        return $lookup[$name];
+    }
+
+    fwrite(STDERR, 'No namespace defined for "'.$name.'"');
+    exit(1);
+}
+
+function get_class_from_name(string $name): string
+{
+    static $lookup = [
+        'Data Resources' => 'DataResourcesApi',
+        'D3' => 'OAuthApi',
+    ];
+
+    if (array_key_exists($name, $lookup)) {
+        return $lookup[$name];
+    }
+
+    if (strpos($name, 'D3 ') === 0) {
+        $name = substr($name, 3);
+    }
+
+    return to_camel_case($name);
+}
+
+set_error_handler(function ($severity, $message, $file, $line) {
+    if ($severity & error_reporting()) {
+        throw new ErrorException($message, 0, $severity, $file, $line);
+    }
+});
+
+chdir(dirname(__DIR__));
+
+require_once 'vendor/autoload.php';
+
+if (file_exists('resources/api.json') === false) {
+    fwrite(STDERR, 'Unable to load API definition');
+    exit(1);
+}
+
+$apiDocs = json_decode(file_get_contents('resources/api.json'));
+$apis = [];
+$china = [];
+$methods = [];
+
+foreach ($apiDocs as $category) {
+    [$apiName, $region] = explode(' - ', $category->name);
+
+    if ($region === 'CN') {
+        $china[] = $category;
+        continue;
+    }
+
+    $apiName = get_namespace_from_name($apiName);
+
+    if (array_key_exists($apiName, $apis) === false) {
+        $apis[$apiName] = [];
+    }
+
+    foreach ($category->endpoints as $endpoint) {
+        $className = get_class_from_name($endpoint->name);
+
+        if (array_key_exists($className, $apis[$apiName]) === false) {
+            $apis[$apiName][$className] = [
+                'auth' => $category->auth,
+                'endpoints' => [],
+            ];
+        }
+
+        foreach ($endpoint->methods as $method) {
+            if (array_key_exists($method->uri, $apis[$apiName][$className]['endpoints']) === false) {
+                $apis[$apiName][$className]['endpoints'][$method->uri] = [
+                    'name' => get_method_from_name_and_verb($method->name, $method->method),
+                    'parameters' => $method->parameters,
+                    'regions' => [],
+                    'overrides' => [],
+                    'verb' => $method->method,
+                ];
+
+                if (array_key_exists($method->uri, $methods)) {
+                    fwrite(STDERR, 'Unable to create lookup for duplicated endpoint "'.$method->uri.'"');
+                    exit(1);
+                }
+
+                $methods[$method->uri] = &$apis[$apiName][$className]['endpoints'][$method->uri];
+            }
+
+            if (in_array($region, $apis[$apiName][$className]['endpoints'][$method->uri]['regions'], true) === false) {
+                $apis[$apiName][$className]['endpoints'][$method->uri]['regions'][] = $region;
+            }
+        }
+    }
+}
+
+foreach ($china as $category) {
+    foreach ($category->endpoints as $endpoint) {
+        foreach ($endpoint->methods as $method) {
+            $override = null;
+
+            switch ($method->uri) {
+                case '/data/wow/token/':
+                    $override = $method->uri;
+                    $method->uri = '/token/';
+            }
+
+            if (array_key_exists($method->uri, $methods) === false) {
+                fwrite(STDERR, 'Unable to map unique China endpoint "'.$method->uri.'"');
+                exit(1);
+            }
+
+            if (in_array('CN', $methods[$method->uri]['regions'], true) === false) {
+                $methods[$method->uri]['regions'][] = 'CN';
+            }
+
+            if ($override !== null) {
+                $methods[$method->uri]['overrides'][] = [
+                    'region' => 'CN',
+                    'url' => $override,
+                ];
+            }
+        }
+    }
+}
+
+$allRegions = [
+    'CN',
+    'EU',
+    'KR',
+    'SEA',
+    'US',
+];
+
+foreach ($apis as $namespace => $stuff) {
+    foreach ($stuff as $className => $data) {
+        foreach ($data['endpoints'] as $url => $metadata) {
+            $metadata['unavailable'] = array_values(array_diff($allRegions, $metadata['regions']));
+            $metadata['url'] = $url;
+
+            unset($metadata['regions']);
+
+            $apis[$namespace][$className]['endpoints'][$url] = $metadata;
+        }
+
+        $apis[$namespace][$className]['endpoints'] = array_values($apis[$namespace][$className]['endpoints']);
+
+    }
+}
+
+file_put_contents('resources/metadata.json', json_encode($apis, JSON_PRETTY_PRINT));

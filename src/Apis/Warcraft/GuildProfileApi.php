@@ -13,103 +13,63 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\Warcraft;
 
+use Boo\BattleNet\Exceptions\UnavailableRegionException;
 use Boo\BattleNet\Regions\RegionInterface;
-use Boo\BattleNet\RequestFactoryInterface;
-use Fig\Http\Message\RequestMethodInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 
 final class GuildProfileApi
 {
-    /**
-     * @var string
-     */
-    const FIELD_MEMBERS = 'members';
-
-    /**
-     * @var string
-     */
-    const FIELD_ACHIEVEMENTS = 'achievements';
-
-    /**
-     * @var string
-     */
-    const FIELD_NEWS = 'news';
-
-    /**
-     * @var string
-     */
-    const FIELD_CHALLENGE = 'challenge';
-
     /**
      * @var RequestFactoryInterface
      */
     private $factory;
 
     /**
-     * @param RequestFactoryInterface $factory
+     * @var array<string, int|string>
      */
-    public function __construct(RequestFactoryInterface $factory)
+    private $queryString;
+
+    /**
+     * @var RegionInterface
+     */
+    private $region;
+
+    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $apiKey)
     {
         $this->factory = $factory;
+        $this->region = $region;
+        $this->queryString = [
+            'apikey' => $apiKey,
+            'locale' => $this->region->getLocale(),
+        ];
     }
 
-    /**
-     * @param string   $realm
-     * @param string   $name
-     * @param string[] $fields
-     *
-     * @return RequestInterface
-     */
-    public function getGuildProfile(string $realm, string $name, array $fields = []): RequestInterface
+    public function getGuildProfile(string $realm, string $guildName, string $fields): RequestInterface
     {
-        return $this->factory->make(
-            RequestMethodInterface::METHOD_GET,
-            sprintf('wow/guild/%s/%s', $realm, $name),
-            ['fields' => implode(',', $fields)]
-        );
+        if ('CN' === $this->region->getName()) {
+            throw new UnavailableRegionException('CN does not support this endpoint');
+        }
+
+        if ('SEA' === $this->region->getName()) {
+            throw new UnavailableRegionException('SEA does not support this endpoint');
+        }
+
+        $url = '/wow/guild/'.$realm.'/'.$guildName;
+
+        return $this->createRequest('GET', $url, [
+            'fields' => $fields,
+        ]);
     }
 
-    /**
-     * @param string   $realm
-     * @param string   $name
-     *
-     * @return RequestInterface
-     */
-    public function getMembers(string $realm, string $name): RequestInterface
+    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
     {
-        return $this->getGuildProfile($realm, $name, [self::FIELD_MEMBERS]);
-    }
+        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
+        $url = $this->region->getApiBaseUrl().$url;
+        $request = $this->factory->createRequest($verb, $url);
+        $request = $request->withHeader('Accept', 'application/json');
+        $request = $request->withHeader('Accept-Encoding', 'gzip');
 
-    /**
-     * @param string   $realm
-     * @param string   $name
-     *
-     * @return RequestInterface
-     */
-    public function getAchievements(string $realm, string $name): RequestInterface
-    {
-        return $this->getGuildProfile($realm, $name, [self::FIELD_ACHIEVEMENTS]);
-    }
-
-    /**
-     * @param string   $realm
-     * @param string   $name
-     *
-     * @return RequestInterface
-     */
-    public function getNews(string $realm, string $name): RequestInterface
-    {
-        return $this->getGuildProfile($realm, $name, [self::FIELD_NEWS]);
-    }
-
-    /**
-     * @param string   $realm
-     * @param string   $name
-     *
-     * @return RequestInterface
-     */
-    public function getChallenge(string $realm, string $name): RequestInterface
-    {
-        return $this->getGuildProfile($realm, $name, [self::FIELD_CHALLENGE]);
+        return $request;
     }
 }

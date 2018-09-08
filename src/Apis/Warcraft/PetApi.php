@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\Warcraft;
 
+use Boo\BattleNet\Exceptions\UnavailableRegionException;
 use Boo\BattleNet\Regions\RegionInterface;
-use Boo\BattleNet\RequestFactoryInterface;
-use Fig\Http\Message\RequestMethodInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 
 final class PetApi
@@ -26,68 +26,97 @@ final class PetApi
     private $factory;
 
     /**
-     * @param RequestFactoryInterface $factory
+     * @var array<string, int|string>
      */
-    public function __construct(RequestFactoryInterface $factory)
+    private $queryString;
+
+    /**
+     * @var RegionInterface
+     */
+    private $region;
+
+    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $apiKey)
     {
         $this->factory = $factory;
+        $this->region = $region;
+        $this->queryString = [
+            'apikey' => $apiKey,
+            'locale' => $this->region->getLocale(),
+        ];
     }
 
-    /**
-     * @return RequestInterface
-     */
     public function getMasterList(): RequestInterface
     {
-        return $this->factory->make(
-            RequestMethodInterface::METHOD_GET,
-            'wow/pet/'
-        );
+        if ('CN' === $this->region->getName()) {
+            throw new UnavailableRegionException('CN does not support this endpoint');
+        }
+
+        if ('SEA' === $this->region->getName()) {
+            throw new UnavailableRegionException('SEA does not support this endpoint');
+        }
+
+        $url = '/wow/pet/';
+
+        return $this->createRequest('GET', $url);
     }
 
-    /**
-     * @param int $abilityId
-     *
-     * @return RequestInterface
-     */
-    public function getAbilities(int $abilityId): RequestInterface
+    public function getAbilities(string $abilityID): RequestInterface
     {
-        return $this->factory->make(
-            RequestMethodInterface::METHOD_GET,
-            sprintf('wow/pet/ability/%u', $abilityId)
-        );
+        if ('CN' === $this->region->getName()) {
+            throw new UnavailableRegionException('CN does not support this endpoint');
+        }
+
+        if ('SEA' === $this->region->getName()) {
+            throw new UnavailableRegionException('SEA does not support this endpoint');
+        }
+
+        $url = '/wow/pet/ability/'.$abilityID;
+
+        return $this->createRequest('GET', $url);
     }
 
-    /**
-     * @param int $speciesId
-     *
-     * @return RequestInterface
-     */
-    public function getSpecies(int $speciesId): RequestInterface
+    public function getSpecies(string $speciesID): RequestInterface
     {
-        return $this->factory->make(
-            RequestMethodInterface::METHOD_GET,
-            sprintf('wow/pet/species/%u', $speciesId)
-        );
+        if ('CN' === $this->region->getName()) {
+            throw new UnavailableRegionException('CN does not support this endpoint');
+        }
+
+        if ('SEA' === $this->region->getName()) {
+            throw new UnavailableRegionException('SEA does not support this endpoint');
+        }
+
+        $url = '/wow/pet/species/'.$speciesID;
+
+        return $this->createRequest('GET', $url);
     }
 
-    /**
-     * @param int $speciesId
-     * @param int $level
-     * @param int $breedId
-     * @param int $qualityId
-     *
-     * @return RequestInterface
-     */
-    public function getStats(int $speciesId, int $level = 1, int $breedId = 3, int $qualityId = 1): RequestInterface
+    public function getStats(string $speciesID, int $level, int $breedId, int $qualityId): RequestInterface
     {
-        return $this->factory->make(
-            RequestMethodInterface::METHOD_GET,
-            sprintf('wow/pet/species/%u', $speciesId),
-            [
-                'breedId' => $breedId,
-                'level' => $level,
-                'qualityId' => $qualityId,
-            ]
-        );
+        if ('CN' === $this->region->getName()) {
+            throw new UnavailableRegionException('CN does not support this endpoint');
+        }
+
+        if ('SEA' === $this->region->getName()) {
+            throw new UnavailableRegionException('SEA does not support this endpoint');
+        }
+
+        $url = '/wow/pet/stats/'.$speciesID;
+
+        return $this->createRequest('GET', $url, [
+            'level' => $level,
+            'breedId' => $breedId,
+            'qualityId' => $qualityId,
+        ]);
+    }
+
+    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
+    {
+        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
+        $url = $this->region->getApiBaseUrl().$url;
+        $request = $this->factory->createRequest($verb, $url);
+        $request = $request->withHeader('Accept', 'application/json');
+        $request = $request->withHeader('Accept-Encoding', 'gzip');
+
+        return $request;
     }
 }

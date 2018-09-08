@@ -1,39 +1,8 @@
 ---
 parameters:
-  ascii:
-    failed: ~
-    succeeded: ~
-  tasks:
-    composer:
-      no_check_all: true
-      strict: true
-    jsonlint:
-      detect_key_conflicts: true
-    phpcpd:
-      exclude:
-        - build
-        - vendor
-    phpcsfixer2:
-      allow_risky: true
-      config: .php_cs
-      using_cache: true
-    phplint: ~
-    phpmd:
-      ruleset:
-        - controversial
-        - design
-        - naming
-        - unusedcode
-    phpstan:
-      configuration: phpstan.neon
-      level: 5
-    phpunit: ~
-    xmllint:
-      dtd_validation: true
-      load_from_net: true
-      scheme_validation: true
-      triggered_by:
-        - xml
-        - xml.dist
-      x_include: true
-    yamllint: ~
+    bin_dir: vendor/bin
+    extensions:
+        - Boo\CodeStandard\GrumPHP
+    git_dir: .
+    tasks:
+        phpunit: ~

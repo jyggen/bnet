@@ -14,39 +14,35 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\SpellApi;
-use Boo\BattleNet\RequestFactoryInterface;
-use Boo\BattleNet\Tests\Apis\AbstractApiTestCase;
-use Fig\Http\Message\RequestMethodInterface;
-use Psr\Http\Message\RequestInterface;
+use Boo\BattleNet\Regions;
+use Http\Factory\Guzzle\RequestFactory;
+use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\RequestFactoryInterface;
 
-final class SpellApiTest extends AbstractApiTestCase
+final class SpellApiTest extends TestCase
 {
-    public function testConstructor()
+    /**
+     * @return array<int, array<int, RequestFactoryInterface>>
+     */
+    public function requestFactoryProvider(): array
     {
-        $zoneApi = new SpellApi($this->getMockFactory());
-
-        $this->assertInstanceOf(SpellApi::class, $zoneApi);
+        return [
+            [
+                new RequestFactory(),
+            ],
+        ];
     }
 
-    public function testGetSpellAgainstMock()
+    /**
+     * @dataProvider requestFactoryProvider
+     */
+    public function testGetSpell(RequestFactoryInterface $factory): void
     {
-        $zoneApi = new SpellApi($this->getMockFactory());
-        $request = $zoneApi->getSpell(8056);
+        $api = new SpellApi($factory, new Regions\EU(), 'foobar');
+        $request = $api->getSpell('8056');
 
-        $this->assertInstanceOf(RequestInterface::class, $request);
-        $this->assertSame(RequestMethodInterface::METHOD_GET, $request->getMethod());
-        $this->assertSame('wow/spell/8056', $request->getRequestTarget());
-    }
-
-    public function testGetSpellAgainstLive()
-    {
-        $zoneApi = new SpellApi($this->getApiFactory());
-        $request = $zoneApi->getSpell(8056);
-
-        $this->assertInstanceOf(RequestInterface::class, $request);
-
-        $response = $this->getClient()->send($request);
-
-        $this->assertSame(200, $response->getStatusCode());
+        self::assertSame('GET', $request->getMethod());
+        self::assertSame('application/json', $request->getHeaderLine('Accept'));
+        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 }

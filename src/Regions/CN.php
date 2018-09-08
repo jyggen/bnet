@@ -32,7 +32,7 @@ final class CN implements RegionInterface
      */
     public function __construct($locale = RegionInterface::ZH_CN)
     {
-        if (in_array($locale, self::$locales, true) === false) {
+        if (false === \in_array($locale, self::$locales, true)) {
             // @todo: Throw exception.
         }
 
@@ -53,6 +53,14 @@ final class CN implements RegionInterface
     public function getLocale(): string
     {
         return $this->locale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName(): string
+    {
+        return 'CN';
     }
 
     /**

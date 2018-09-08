@@ -47,11 +47,11 @@ final class Utils
      */
     public static function realmNameToSlug(string $name): string
     {
-        $name = mb_strtolower($name, 'UTF-8');
-        $slug = str_replace(static::$replaceTable[0], static::$replaceTable[1], $name);
-        $slug = preg_replace(static::$regexTable[0], static::$regexTable[1], $slug);
+        $name = \mb_strtolower($name, 'UTF-8');
+        $slug = \str_replace(static::$replaceTable[0], static::$replaceTable[1], $name);
+        $slug = \preg_replace(static::$regexTable[0], static::$regexTable[1], $slug);
 
-        return trim($slug, '-');
+        return \trim($slug, '-');
     }
 
     /**
@@ -63,8 +63,8 @@ final class Utils
      */
     public static function thumbnailToId(string $thumbnailUrl): string
     {
-        if (preg_match('/\/([\d]+)\/([\d]+)(\-avatar\.jpg)$/', $thumbnailUrl, $match) !== 1) {
-            throw new \RuntimeException(vsprintf('Invalid thumbnail URL "%s"', [
+        if (1 !== \preg_match('/\/([\d]+)\/([\d]+)(\-avatar\.jpg)$/', $thumbnailUrl, $match)) {
+            throw new \RuntimeException(\vsprintf('Invalid thumbnail URL "%s"', [
                 $thumbnailUrl,
             ]));
         }

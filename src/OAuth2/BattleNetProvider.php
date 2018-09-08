@@ -15,7 +15,6 @@ namespace Boo\BattleNet\OAuth2;
 
 use Boo\BattleNet\Regions\RegionInterface;
 use League\OAuth2\Client\Provider\AbstractProvider;
-use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class BattleNetProvider extends AbstractProvider
@@ -30,9 +29,9 @@ abstract class BattleNetProvider extends AbstractProvider
      */
     public function getBaseAuthorizationUrl(): string
     {
-        return sprintf(
+        return \sprintf(
             '%s/oauth/authorize',
-            rtrim($this->region->getOAuthBaseUrl(), '/')
+            \rtrim($this->region->getOAuthBaseUrl(), '/')
         );
     }
 
@@ -41,17 +40,16 @@ abstract class BattleNetProvider extends AbstractProvider
      */
     public function getBaseAccessTokenUrl(array $params): string
     {
-        return sprintf(
+        return \sprintf(
             '%s/oauth/token',
-            rtrim($this->region->getOAuthBaseUrl(), '/')
+            \rtrim($this->region->getOAuthBaseUrl(), '/')
         );
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function checkResponse(ResponseInterface $response, $data)
+    protected function checkResponse(ResponseInterface $response, $data): void
     {
-
     }
 }

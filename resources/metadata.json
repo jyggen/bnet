@@ -1,0 +1,2330 @@
+{
+    "Diablo": {
+        "ActApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getActIndex",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/act"
+                },
+                {
+                    "name": "getAct",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{actId}",
+                            "value": "1",
+                            "type": "integer",
+                            "description": "The id of the act"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/act\/{actId}"
+                }
+            ]
+        },
+        "ArtisanAndRecipeApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getArtisan",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{artisanSlug}",
+                            "value": "blacksmith",
+                            "type": "string",
+                            "description": "The slug of the artisan"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/artisan\/{artisanSlug}"
+                },
+                {
+                    "name": "getRecipe",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{artisanSlug}",
+                            "value": "blacksmith",
+                            "type": "string",
+                            "description": "The slug of the artisan"
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": "{recipeSlug}",
+                            "value": "apprentice-flamberge",
+                            "type": "string",
+                            "description": "The slug of the recipe"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/artisan\/{artisanSlug}\/recipe\/{recipeSlug}"
+                }
+            ]
+        },
+        "FollowerApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getFollower",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{followerSlug}",
+                            "value": "templar",
+                            "type": "string",
+                            "description": "The slug of the follower"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/follower\/{followerSlug}"
+                }
+            ]
+        },
+        "CharacterClassAndSkillApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getCharacterClass",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{classSlug}",
+                            "value": "barbarian",
+                            "type": "string",
+                            "description": "The slug of the character class"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/hero\/{classSlug}"
+                },
+                {
+                    "name": "getApiSkill",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{classSlug}",
+                            "value": "barbarian",
+                            "type": "string",
+                            "description": "The slug of the character class"
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": "{skillSlug}",
+                            "value": "bash",
+                            "type": "string",
+                            "description": "The slug of the skill"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/hero\/{classSlug}\/skill\/{skillSlug}"
+                }
+            ]
+        },
+        "ItemTypeApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getItemTypeIndex",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/item-type"
+                },
+                {
+                    "name": "getItemType",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{itemTypeSlug}",
+                            "value": "sword2h",
+                            "type": "string",
+                            "description": "The slug of the item type"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/item-type\/{itemTypeSlug}"
+                }
+            ]
+        },
+        "ItemApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getItem",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{itemSlugAndId}",
+                            "value": "corrupted-ashbringer-Unique_Sword_2H_104_x1",
+                            "type": "string",
+                            "description": "The slug and ID of the item"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/data\/item\/{itemSlugAndId}"
+                }
+            ]
+        },
+        "ProfileApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getApiAccount",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{account}",
+                            "value": "",
+                            "type": "string",
+                            "description": "The Battle Tag for the account."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/profile\/{account}\/"
+                },
+                {
+                    "name": "getApiHero",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{account}",
+                            "value": "",
+                            "type": "string",
+                            "description": "The Battle Tag for the account."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": "{heroId}",
+                            "value": "",
+                            "type": "string",
+                            "description": "The id of the hero."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/profile\/{account}\/hero\/{heroId}"
+                },
+                {
+                    "name": "getApiDetailedHeroItems",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{account}",
+                            "value": "",
+                            "type": "string",
+                            "description": "The Battle Tag for the account."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": "{heroId}",
+                            "value": "",
+                            "type": "string",
+                            "description": "The id of the hero."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/profile\/{account}\/hero\/{heroId}\/items"
+                },
+                {
+                    "name": "getApiDetailedFollowerItems",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{account}",
+                            "value": "",
+                            "type": "string",
+                            "description": "The Battle Tag for the account."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": "{heroId}",
+                            "value": "",
+                            "type": "string",
+                            "description": "The id of the hero."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/d3\/profile\/{account}\/hero\/{heroId}\/follower-items"
+                }
+            ]
+        },
+        "OAuthApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getSeasonIndex",
+                    "parameters": [],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/data\/d3\/season\/"
+                },
+                {
+                    "name": "getSeason",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":id",
+                            "value": "1",
+                            "type": "integer",
+                            "description": "The season to lookup"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/data\/d3\/season\/:id"
+                },
+                {
+                    "name": "getSeasonLeaderboard",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":id",
+                            "value": "1",
+                            "type": "integer",
+                            "description": "The season to lookup"
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":leaderboard",
+                            "value": "achievement-points",
+                            "type": "string",
+                            "description": "The leaderboard to lookup, you can find these strings in the Season API call"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/data\/d3\/season\/:id\/leaderboard\/:leaderboard"
+                },
+                {
+                    "name": "getEraIndex",
+                    "parameters": [],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/data\/d3\/era\/"
+                },
+                {
+                    "name": "getEra",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":id",
+                            "value": "1",
+                            "type": "integer",
+                            "description": "The era to lookup"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/data\/d3\/era\/:id"
+                },
+                {
+                    "name": "getEraLeaderboard",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":id",
+                            "value": "1",
+                            "type": "integer",
+                            "description": "The era to lookup"
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":leaderboard",
+                            "value": "rift-barbarian",
+                            "type": "string",
+                            "description": "The leaderboard to lookup, you can find these strings in the Era API call"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/data\/d3\/era\/:id\/leaderboard\/:leaderboard"
+                }
+            ]
+        }
+    },
+    "OAuth": {
+        "AccountApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getUser",
+                    "parameters": [],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [],
+                    "url": "\/account\/user"
+                }
+            ]
+        },
+        "ProfileApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getSc2OauthProfile",
+                    "parameters": [],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [],
+                    "url": "\/sc2\/profile\/user"
+                },
+                {
+                    "name": "getWowOauthProfile",
+                    "parameters": [],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN"
+                    ],
+                    "url": "\/wow\/user\/characters"
+                }
+            ]
+        }
+    },
+    "Starcraft": {
+        "ProfileApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getProfile",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":id",
+                            "value": "",
+                            "type": "string",
+                            "description": "The ID of the profile to retrieve."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":region",
+                            "value": "1",
+                            "type": "string",
+                            "description": "The region of the profile to retrieve."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":name",
+                            "value": "",
+                            "type": "string",
+                            "description": "The name of the profile to retrieve."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "callback",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [],
+                    "url": "\/sc2\/profile\/:id\/:region\/:name\/"
+                },
+                {
+                    "name": "getLadders",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":id",
+                            "value": "",
+                            "type": "string",
+                            "description": "The ID of the profile to retrieve."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":region",
+                            "value": "1",
+                            "type": "string",
+                            "description": "The region of the profile to retrieve."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":name",
+                            "value": "",
+                            "type": "string",
+                            "description": "The name of the profile to retrieve."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "callback",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [],
+                    "url": "\/sc2\/profile\/:id\/:region\/:name\/ladders"
+                },
+                {
+                    "name": "getMatchHistory",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":id",
+                            "value": "",
+                            "type": "string",
+                            "description": "The ID of the profile to retrieve."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":region",
+                            "value": "1",
+                            "type": "string",
+                            "description": "The region of the profile to retrieve."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":name",
+                            "value": "",
+                            "type": "string",
+                            "description": "The name of the profile to retrieve."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "callback",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [],
+                    "url": "\/sc2\/profile\/:id\/:region\/:name\/matches"
+                }
+            ]
+        },
+        "LadderApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getLadder",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":id",
+                            "value": "655",
+                            "type": "string",
+                            "description": "The ID of the ladder to retrieve."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "callback",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [],
+                    "url": "\/sc2\/ladder\/:id"
+                }
+            ]
+        },
+        "DataResourcesApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getAchievements",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "callback",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [],
+                    "url": "\/sc2\/data\/achievements"
+                },
+                {
+                    "name": "getRewards",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "callback",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [],
+                    "url": "\/sc2\/data\/rewards"
+                }
+            ]
+        }
+    },
+    "Warcraft": {
+        "AchievementApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getAchievement",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":id",
+                            "value": "2144",
+                            "type": "string",
+                            "description": "The ID of the achievement to retrieve."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/achievement\/:id"
+                }
+            ]
+        },
+        "AuctionApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getAuctionDataStatus",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":realm",
+                            "value": "medivh",
+                            "type": "string",
+                            "description": "The realm being requested."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/auction\/data\/:realm"
+                }
+            ]
+        },
+        "BossApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getMasterList",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/boss\/"
+                },
+                {
+                    "name": "getBoss",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":bossid",
+                            "value": "24723",
+                            "type": "string",
+                            "description": "The ID of the boss you want to retrieve."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/boss\/:bossid"
+                }
+            ]
+        },
+        "ChallengeModeApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getRealmLeaderboard",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":realm",
+                            "value": "medivh",
+                            "type": "string",
+                            "description": "The realm being requested."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/challenge\/:realm"
+                },
+                {
+                    "name": "getRegionLeaderboard",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/challenge\/region"
+                }
+            ]
+        },
+        "CharacterProfileApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getCharacterProfile",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":realm",
+                            "value": "test-realm",
+                            "type": "string",
+                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":characterName",
+                            "value": "Peratryn",
+                            "type": "string",
+                            "description": "The name of the character you want to retrieve."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": "fields",
+                            "value": "",
+                            "type": "string",
+                            "description": "The dataset you wish to retrieve for the character. Each field value is explained in more detail in the following methods. If no fields are specified the API will only return basic data about the character."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/character\/:realm\/:characterName"
+                }
+            ]
+        },
+        "GuildProfileApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getGuildProfile",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":realm",
+                            "value": "Medivh",
+                            "type": "string",
+                            "description": "The realm the guild lives on."
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": ":guildName",
+                            "value": "Temp Guild Name",
+                            "type": "string",
+                            "description": "Name of the guild being queried"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "fields",
+                            "value": "achievements,challenge",
+                            "type": "string",
+                            "description": "The optional data you want to retrieve about the guild. Each field value is explained in more detail in the following methods. If no fields are specified the API will only return basic data about the guild."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/guild\/:realm\/:guildName"
+                }
+            ]
+        },
+        "ItemApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getItem",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":itemId",
+                            "value": "18803",
+                            "type": "number",
+                            "description": "Unique ID of the item being requested."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/item\/:itemId"
+                },
+                {
+                    "name": "getItemSet",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":setId",
+                            "value": "1060",
+                            "type": "string",
+                            "description": "Unique ID of the set being requested."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/item\/set\/:setId"
+                }
+            ]
+        },
+        "MountApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getMasterList",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/mount\/"
+                }
+            ]
+        },
+        "PetApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getMasterList",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/pet\/"
+                },
+                {
+                    "name": "getAbilities",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":abilityID",
+                            "value": "640",
+                            "type": "string",
+                            "description": "The ID of the ability you want to retrieve."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/pet\/ability\/:abilityID"
+                },
+                {
+                    "name": "getSpecies",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":speciesID",
+                            "value": "258",
+                            "type": "string",
+                            "description": "The species you want to retrieve data on."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/pet\/species\/:speciesID"
+                },
+                {
+                    "name": "getStats",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":speciesID",
+                            "value": "258",
+                            "type": "string",
+                            "description": "The pet's species ID. This can be found by querying a users' list of pets via the Character Profile API."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "level",
+                            "value": "25",
+                            "type": "number",
+                            "description": "The pet's level. Pet levels max out at 25. If omitted the API assumes a default value of 1."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "breedId",
+                            "value": "5",
+                            "type": "number",
+                            "description": "The pet's breed. Retrievable via the Character Profile API. If omitted the API assumes a default value of 3."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "qualityId",
+                            "value": "4",
+                            "type": "number",
+                            "description": "The pet's quality. Retrievable via the Character Profile API. Pet quality can range from 0 to 5 (0 is poor quality and 5 is legendary). If omitted the API will assume a default value of 1."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/pet\/stats\/:speciesID"
+                }
+            ]
+        },
+        "PvpApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getLeaderboards",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":bracket",
+                            "value": "2v2",
+                            "type": "string",
+                            "description": "The type of leaderboard you want to retrieve. Valid entries are 2v2, 3v3, 5v5, and rbg."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/leaderboard\/:bracket"
+                }
+            ]
+        },
+        "QuestApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getQuest",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":questId",
+                            "value": "13146",
+                            "type": "string",
+                            "description": "The ID of the desired quest."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/quest\/:questId"
+                }
+            ]
+        },
+        "RealmStatusApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getRealmStatus",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/realm\/status"
+                }
+            ]
+        },
+        "RecipeApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getRecipe",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":recipeId",
+                            "value": "33994",
+                            "type": "string",
+                            "description": "Unique ID for the desired recipe."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/recipe\/:recipeId"
+                }
+            ]
+        },
+        "SpellApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getSpell",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":spellId",
+                            "value": "8056",
+                            "type": "string",
+                            "description": "The ID of the spell you want to retrieve."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/spell\/:spellId"
+                }
+            ]
+        },
+        "ZoneApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getMasterList",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/zone\/"
+                },
+                {
+                    "name": "getZone",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": ":zoneid",
+                            "value": "4131",
+                            "type": "string",
+                            "description": "The ID of the zone you want to retrieve."
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/zone\/:zoneid"
+                }
+            ]
+        },
+        "DataResourcesApi": {
+            "auth": "key",
+            "endpoints": [
+                {
+                    "name": "getBattlegroups",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/battlegroups\/"
+                },
+                {
+                    "name": "getCharacterRaces",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/character\/races"
+                },
+                {
+                    "name": "getCharacterClasses",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/character\/classes"
+                },
+                {
+                    "name": "getCharacterAchievements",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/character\/achievements"
+                },
+                {
+                    "name": "getGuildRewards",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/guild\/rewards"
+                },
+                {
+                    "name": "getGuildPerks",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/guild\/perks"
+                },
+                {
+                    "name": "getGuildAchievements",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/guild\/achievements"
+                },
+                {
+                    "name": "getItemClasses",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/item\/classes"
+                },
+                {
+                    "name": "getTalents",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/talents"
+                },
+                {
+                    "name": "getPetTypes",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "What locale to use in the response"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "jsonp",
+                            "value": "",
+                            "type": "string",
+                            "description": "Request data to be returned as a JsonP callback"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/wow\/data\/pet\/types"
+                }
+            ]
+        },
+        "ConnectedRealmApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getConnectedRealmIndex",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/connected-realm\/"
+                },
+                {
+                    "name": "getConnectedRealm",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{connectedRealmId}",
+                            "value": "509",
+                            "type": "integer",
+                            "description": "The id of the connected realm"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/connected-realm\/{connectedRealmId}"
+                }
+            ]
+        },
+        "MythicKeystoneLeaderboardApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getMythicLeaderboardIndex",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{connectedRealmId}",
+                            "value": "509",
+                            "type": "integer",
+                            "description": "The id of the connected realm"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/connected-realm\/{connectedRealmId}\/mythic-leaderboard\/"
+                },
+                {
+                    "name": "getMythicLeaderboard",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{connectedRealmId}",
+                            "value": "509",
+                            "type": "integer",
+                            "description": "The id of the connected realm"
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": "{dungeonId}",
+                            "value": "197",
+                            "type": "integer",
+                            "description": "The id of the dungeon"
+                        },
+                        {
+                            "kind": "pathReplace",
+                            "name": "{period}",
+                            "value": "641",
+                            "type": "integer",
+                            "description": "The unique identifier for the leaderboard period"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/connected-realm\/{connectedRealmId}\/mythic-leaderboard\/{dungeonId}\/period\/{period}"
+                }
+            ]
+        },
+        "MythicChallengeModeApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getMythicChallengeModeIndex",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/mythic-challenge-mode\/"
+                }
+            ]
+        },
+        "PlayableClassApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getPlayableClassesIndex",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "static-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/playable-class\/"
+                },
+                {
+                    "name": "getPlayableClass",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{classId}",
+                            "value": "7",
+                            "type": "integer",
+                            "description": "The id of a playable class"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "static-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/playable-class\/{classId}"
+                }
+            ]
+        },
+        "PlayableSpecializationApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getPlayableSpecializationIndex",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "static-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/playable-specialization\/"
+                },
+                {
+                    "name": "getPlayableSpecialization",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{specId}",
+                            "value": "262",
+                            "type": "integer",
+                            "description": "The id of a playable specialization"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "static-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/playable-specialization\/{specId}"
+                }
+            ]
+        },
+        "RealmApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getRealmIndex",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/realm\/"
+                },
+                {
+                    "name": "getRealm",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{realmSlug}",
+                            "value": "tichondrius",
+                            "type": "string",
+                            "description": "The slug of the realm"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/realm\/{realmSlug}"
+                }
+            ]
+        },
+        "RegionApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getRegionIndex",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/region\/"
+                },
+                {
+                    "name": "getRegion",
+                    "parameters": [
+                        {
+                            "kind": "pathReplace",
+                            "name": "{regionId}",
+                            "value": "3",
+                            "type": "integer",
+                            "description": "The id of the region"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [],
+                    "verb": "GET",
+                    "unavailable": [
+                        "CN",
+                        "SEA"
+                    ],
+                    "url": "\/region\/{regionId}"
+                }
+            ]
+        },
+        "WowTokenApi": {
+            "auth": "oauth2",
+            "endpoints": [
+                {
+                    "name": "getTokenIndex",
+                    "parameters": [
+                        {
+                            "kind": "query",
+                            "name": "namespace",
+                            "value": "dynamic-eu",
+                            "type": "string",
+                            "description": "The namespace that should be used to locate this document"
+                        },
+                        {
+                            "kind": "query",
+                            "name": "locale",
+                            "value": "en_GB",
+                            "type": "string",
+                            "description": "The locale that should be reflected in localized data"
+                        }
+                    ],
+                    "overrides": [
+                        {
+                            "region": "CN",
+                            "url": "\/data\/wow\/token\/"
+                        }
+                    ],
+                    "verb": "GET",
+                    "unavailable": [
+                        "SEA"
+                    ],
+                    "url": "\/token\/"
+                }
+            ]
+        }
+    }
+}

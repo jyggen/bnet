@@ -14,61 +14,48 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\ZoneApi;
-use Boo\BattleNet\RequestFactoryInterface;
-use Boo\BattleNet\Tests\Apis\AbstractApiTestCase;
-use Fig\Http\Message\RequestMethodInterface;
-use Psr\Http\Message\RequestInterface;
+use Boo\BattleNet\Regions;
+use Http\Factory\Guzzle\RequestFactory;
+use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\RequestFactoryInterface;
 
-final class ZoneApiTest extends AbstractApiTestCase
+final class ZoneApiTest extends TestCase
 {
-    public function testConstructor()
+    /**
+     * @return array<int, array<int, RequestFactoryInterface>>
+     */
+    public function requestFactoryProvider(): array
     {
-        $zoneApi = new ZoneApi($this->getMockFactory());
-
-        $this->assertInstanceOf(ZoneApi::class, $zoneApi);
+        return [
+            [
+                new RequestFactory(),
+            ],
+        ];
     }
 
-    public function testGetMasterListAgainstMock()
+    /**
+     * @dataProvider requestFactoryProvider
+     */
+    public function testGetMasterList(RequestFactoryInterface $factory): void
     {
-        $zoneApi = new ZoneApi($this->getMockFactory());
-        $request = $zoneApi->getMasterList();
+        $api = new ZoneApi($factory, new Regions\EU(), 'foobar');
+        $request = $api->getMasterList();
 
-        $this->assertInstanceOf(RequestInterface::class, $request);
-        $this->assertSame(RequestMethodInterface::METHOD_GET, $request->getMethod());
-        $this->assertSame('wow/zone/', $request->getRequestTarget());
+        self::assertSame('GET', $request->getMethod());
+        self::assertSame('application/json', $request->getHeaderLine('Accept'));
+        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    public function testGetMasterListAgainstLive()
+    /**
+     * @dataProvider requestFactoryProvider
+     */
+    public function testGetZone(RequestFactoryInterface $factory): void
     {
-        $zoneApi = new ZoneApi($this->getApiFactory());
-        $request = $zoneApi->getMasterList();
+        $api = new ZoneApi($factory, new Regions\EU(), 'foobar');
+        $request = $api->getZone('4131');
 
-        $this->assertInstanceOf(RequestInterface::class, $request);
-
-        $response = $this->getClient()->send($request);
-
-        $this->assertSame(200, $response->getStatusCode());
-    }
-
-    public function testGetZoneAgainstMock()
-    {
-        $zoneApi = new ZoneApi($this->getMockFactory());
-        $request = $zoneApi->getZone(4131);
-
-        $this->assertInstanceOf(RequestInterface::class, $request);
-        $this->assertSame(RequestMethodInterface::METHOD_GET, $request->getMethod());
-        $this->assertSame('wow/zone/4131', $request->getRequestTarget());
-    }
-
-    public function testGetZoneAgainstLive()
-    {
-        $zoneApi = new ZoneApi($this->getApiFactory());
-        $request = $zoneApi->getZone(4131);
-
-        $this->assertInstanceOf(RequestInterface::class, $request);
-
-        $response = $this->getClient()->send($request);
-
-        $this->assertSame(200, $response->getStatusCode());
+        self::assertSame('GET', $request->getMethod());
+        self::assertSame('application/json', $request->getHeaderLine('Accept'));
+        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 }

@@ -21,8 +21,6 @@ install:
   - "if [[ \"$DEPENDENCIES\" = 'low' ]]; then travis_retry composer update $DEFAULT_COMPOSER_FLAGS --prefer-lowest; fi"
 language: php
 php:
-  - 7.0
-  - 7.0snapshot
   - 7.1
   - 7.1snapshot
 script:
