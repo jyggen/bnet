@@ -16,14 +16,27 @@ namespace Boo\BattleNet\OAuth2;
 use Boo\BattleNet\Exceptions\OAuthException;
 use Boo\BattleNet\Regions\RegionInterface;
 use League\OAuth2\Client\Provider\AbstractProvider;
+use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 
-final class BattleNetProvider extends AbstractProvider
+abstract class BattleNetProvider extends AbstractProvider
 {
     /**
      * @var RegionInterface
      */
     protected $region;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct(array $options = [], array $collaborators = [])
+    {
+        parent::__construct($options, $collaborators);
+
+        if ($this->region instanceof RegionInterface === false) {
+            throw new OAuthException('Missing required option "region"');
+        }
+    }
 
     /**
      * {@inheritdoc}
@@ -44,14 +57,6 @@ final class BattleNetProvider extends AbstractProvider
     /**
      * {@inheritdoc}
      */
-    public function getResourceOwnerDetailsUrl(AccessToken $token)
-    {
-        throw new OAuthException('Use one of the OAuth APIs instead!');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     protected function checkResponse(ResponseInterface $response, $data): bool
     {
         if (array_key_exists('error_description', $data)) {
@@ -59,20 +64,5 @@ final class BattleNetProvider extends AbstractProvider
         }
 
         return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function createResourceOwner(array $response, AccessToken $token): void
-    {
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getDefaultScopes(): array
-    {
-        return [];
     }
 }
