@@ -44,7 +44,7 @@ final class CN implements RegionInterface
      */
     public function getApiBaseUrl(): string
     {
-        return 'https://api.battlenet.com.cn/';
+        return 'https://api.battlenet.com.cn';
     }
 
     /**
@@ -68,6 +68,6 @@ final class CN implements RegionInterface
      */
     public function getOAuthBaseUrl(): string
     {
-        return 'https://www.battlenet.com.cn/';
+        return 'https://www.battlenet.com.cn';
     }
 }

@@ -44,7 +44,7 @@ final class KR implements RegionInterface
      */
     public function getApiBaseUrl(): string
     {
-        return 'https://kr.api.battle.net/';
+        return 'https://kr.api.battle.net';
     }
 
     /**
@@ -68,6 +68,6 @@ final class KR implements RegionInterface
      */
     public function getOAuthBaseUrl(): string
     {
-        return 'https://kr.battle.net/';
+        return 'https://kr.battle.net';
     }
 }

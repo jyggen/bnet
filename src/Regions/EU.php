@@ -51,7 +51,7 @@ final class EU implements RegionInterface
      */
     public function getApiBaseUrl(): string
     {
-        return 'https://eu.api.battle.net/';
+        return 'https://eu.api.battle.net';
     }
 
     /**
@@ -75,6 +75,6 @@ final class EU implements RegionInterface
      */
     public function getOAuthBaseUrl(): string
     {
-        return 'https://eu.battle.net/';
+        return 'https://eu.battle.net';
     }
 }

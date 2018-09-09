@@ -13,43 +13,66 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\OAuth2;
 
+use Boo\BattleNet\Exceptions\OAuthException;
 use Boo\BattleNet\Regions\RegionInterface;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use Psr\Http\Message\ResponseInterface;
 
-abstract class BattleNetProvider extends AbstractProvider
+final class BattleNetProvider extends AbstractProvider
 {
     /**
      * @var RegionInterface
      */
-    private $region;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBaseAuthorizationUrl(): string
-    {
-        return \sprintf(
-            '%s/oauth/authorize',
-            \rtrim($this->region->getOAuthBaseUrl(), '/')
-        );
-    }
+    protected $region;
 
     /**
      * {@inheritdoc}
      */
     public function getBaseAccessTokenUrl(array $params): string
     {
-        return \sprintf(
-            '%s/oauth/token',
-            \rtrim($this->region->getOAuthBaseUrl(), '/')
-        );
+        return $this->region->getOAuthBaseUrl().'/oauth/token';
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function checkResponse(ResponseInterface $response, $data): void
+    public function getBaseAuthorizationUrl(): string
     {
+        return $this->region->getOAuthBaseUrl().'/oauth/authorize';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getResourceOwnerDetailsUrl(AccessToken $token)
+    {
+        throw new OAuthException('Use one of the OAuth APIs instead!');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function checkResponse(ResponseInterface $response, $data): bool
+    {
+        if (array_key_exists('error_description', $data)) {
+            throw new OAuthException($data['error_description']);
+        }
+
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function createResourceOwner(array $response, AccessToken $token): void
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDefaultScopes(): array
+    {
+        return [];
     }
 }

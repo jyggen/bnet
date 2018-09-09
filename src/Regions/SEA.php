@@ -44,7 +44,7 @@ final class SEA implements RegionInterface
      */
     public function getApiBaseUrl(): string
     {
-        return 'https://sea.api.battle.net/';
+        return 'https://sea.api.battle.net';
     }
 
     /**
@@ -69,6 +69,6 @@ final class SEA implements RegionInterface
     public function getOAuthBaseUrl(): string
     {
         // SEA SC2 Community APIs uses the US OAuth endpoint.
-        return 'https://us.battle.net/';
+        return 'https://us.battle.net';
     }
 }
