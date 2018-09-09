@@ -19,7 +19,7 @@ use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 
-abstract class BattleNetProvider extends AbstractProvider
+final class BattleNetProvider extends AbstractProvider
 {
     /**
      * @var RegionInterface
@@ -57,12 +57,36 @@ abstract class BattleNetProvider extends AbstractProvider
     /**
      * {@inheritdoc}
      */
+    public function getResourceOwnerDetailsUrl(AccessToken $token): string
+    {
+        return $this->region->getApiBaseUrl().'/account/user?access_token='.$token->getToken();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDefaultScopes(): array
+    {
+        return [];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function checkResponse(ResponseInterface $response, $data): bool
     {
-        if (array_key_exists('error_description', $data)) {
-            throw new OAuthException($data['error_description']);
+        if (array_key_exists('error', $data)) {
+            throw new OAuthException($data['error'].': '.$data['error_description']);
         }
 
         return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function createResourceOwner(array $response, AccessToken $token): \stdClass
+    {
+        return (object) $response;
     }
 }
