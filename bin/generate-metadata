@@ -93,6 +93,8 @@ function normalize_parameters(array $parameters, string $authType): array
         // Values
         '8056' => '80353',
         'achievements,challenge' => '',
+        'apprentice-flamberge' => 'flawless-amethyst',
+        'blacksmith' => 'jeweler',
         // Names
         '{account}' => 'StingDuck-2452',
         '{heroId}' => '111436732',

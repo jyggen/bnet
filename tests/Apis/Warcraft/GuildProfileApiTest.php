@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class GuildProfileApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_GuildProfileApi.yml
+     * @vcr Warcraft_GuildProfileApi.json
      */
     public function testGetGuildProfile(): void
     {
@@ -41,7 +41,7 @@ final class GuildProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_GuildProfileApi.yml
+     * @vcr Warcraft_GuildProfileApi.json
      */
     public function testGetMembers(): void
     {
@@ -59,7 +59,7 @@ final class GuildProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_GuildProfileApi.yml
+     * @vcr Warcraft_GuildProfileApi.json
      */
     public function testGetAchievements(): void
     {
@@ -77,7 +77,7 @@ final class GuildProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_GuildProfileApi.yml
+     * @vcr Warcraft_GuildProfileApi.json
      */
     public function testGetNews(): void
     {
@@ -95,7 +95,7 @@ final class GuildProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_GuildProfileApi.yml
+     * @vcr Warcraft_GuildProfileApi.json
      */
     public function testGetChallenge(): void
     {

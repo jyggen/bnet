@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class AuctionApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_AuctionApi.yml
+     * @vcr Warcraft_AuctionApi.json
      */
     public function testGetAuctionDataStatus(): void
     {

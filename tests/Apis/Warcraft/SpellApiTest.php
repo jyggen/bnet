@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class SpellApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_SpellApi.yml
+     * @vcr Warcraft_SpellApi.json
      */
     public function testGetSpell(): void
     {

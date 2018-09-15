@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ItemApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_ItemApi.yml
+     * @vcr Warcraft_ItemApi.json
      */
     public function testGetItem(): void
     {
@@ -41,7 +41,7 @@ final class ItemApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_ItemApi.yml
+     * @vcr Warcraft_ItemApi.json
      */
     public function testGetItemSet(): void
     {

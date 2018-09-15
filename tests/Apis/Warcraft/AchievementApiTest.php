@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class AchievementApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_AchievementApi.yml
+     * @vcr Warcraft_AchievementApi.json
      */
     public function testGetAchievement(): void
     {

@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class PetApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_PetApi.yml
+     * @vcr Warcraft_PetApi.json
      */
     public function testGetMasterList(): void
     {
@@ -41,7 +41,7 @@ final class PetApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_PetApi.yml
+     * @vcr Warcraft_PetApi.json
      */
     public function testGetAbilities(): void
     {
@@ -59,7 +59,7 @@ final class PetApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_PetApi.yml
+     * @vcr Warcraft_PetApi.json
      */
     public function testGetSpecies(): void
     {
@@ -77,7 +77,7 @@ final class PetApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_PetApi.yml
+     * @vcr Warcraft_PetApi.json
      */
     public function testGetStats(): void
     {

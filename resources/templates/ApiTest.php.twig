@@ -28,7 +28,7 @@ final class {{ className }}Test extends AbstractApiTest
 {% endif %}
 {% if not endpoint.isOAuth %}
     /**
-     * @vcr {{ namespace }}_{{ className }}.yml
+     * @vcr {{ namespace }}_{{ className }}.json
      */
 {% endif %}
     public function test{{ endpoint.method|ucwords }}(): void

@@ -40,7 +40,7 @@
                         {
                             "kind": "pathReplace",
                             "name": "{artisanSlug}",
-                            "value": "blacksmith",
+                            "value": "jeweler",
                             "type": "string",
                             "description": "The slug of the artisan",
                             "isConstant": false
@@ -57,7 +57,7 @@
                         {
                             "kind": "pathReplace",
                             "name": "{artisanSlug}",
-                            "value": "blacksmith",
+                            "value": "jeweler",
                             "type": "string",
                             "description": "The slug of the artisan",
                             "isConstant": false
@@ -65,7 +65,7 @@
                         {
                             "kind": "pathReplace",
                             "name": "{recipeSlug}",
-                            "value": "apprentice-flamberge",
+                            "value": "flawless-amethyst",
                             "type": "string",
                             "description": "The slug of the recipe",
                             "isConstant": false

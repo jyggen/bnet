@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class MountApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_MountApi.yml
+     * @vcr Warcraft_MountApi.json
      */
     public function testGetMasterList(): void
     {

@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ItemApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Diablo_ItemApi.yml
+     * @vcr Diablo_ItemApi.json
      */
     public function testGetItem(): void
     {

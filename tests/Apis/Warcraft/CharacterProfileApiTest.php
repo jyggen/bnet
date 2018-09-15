@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class CharacterProfileApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetCharacterProfile(): void
     {
@@ -41,7 +41,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetAchievements(): void
     {
@@ -59,7 +59,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetAppearance(): void
     {
@@ -77,7 +77,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetFeed(): void
     {
@@ -95,7 +95,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetGuild(): void
     {
@@ -113,7 +113,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetHunterPets(): void
     {
@@ -131,7 +131,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetItems(): void
     {
@@ -149,7 +149,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetMounts(): void
     {
@@ -167,7 +167,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetPets(): void
     {
@@ -185,7 +185,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetPetSlots(): void
     {
@@ -203,7 +203,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetProfessions(): void
     {
@@ -221,7 +221,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetProgression(): void
     {
@@ -239,7 +239,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetPVP(): void
     {
@@ -257,7 +257,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetQuests(): void
     {
@@ -275,7 +275,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetReputation(): void
     {
@@ -293,7 +293,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetStatistics(): void
     {
@@ -311,7 +311,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetStats(): void
     {
@@ -329,7 +329,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetTalents(): void
     {
@@ -347,7 +347,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetTitles(): void
     {
@@ -365,7 +365,7 @@ final class CharacterProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_CharacterProfileApi.yml
+     * @vcr Warcraft_CharacterProfileApi.json
      */
     public function testGetAudit(): void
     {

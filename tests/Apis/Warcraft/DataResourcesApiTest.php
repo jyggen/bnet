@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class DataResourcesApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetBattlegroups(): void
     {
@@ -41,7 +41,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetCharacterRaces(): void
     {
@@ -59,7 +59,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetCharacterClasses(): void
     {
@@ -77,7 +77,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetCharacterAchievements(): void
     {
@@ -95,7 +95,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetGuildRewards(): void
     {
@@ -113,7 +113,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetGuildPerks(): void
     {
@@ -131,7 +131,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetGuildAchievements(): void
     {
@@ -149,7 +149,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetItemClasses(): void
     {
@@ -167,7 +167,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetTalents(): void
     {
@@ -185,7 +185,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.yml
+     * @vcr Warcraft_DataResourcesApi.json
      */
     public function testGetPetTypes(): void
     {

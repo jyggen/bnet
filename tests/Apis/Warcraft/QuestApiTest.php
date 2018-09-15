@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class QuestApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_QuestApi.yml
+     * @vcr Warcraft_QuestApi.json
      */
     public function testGetQuest(): void
     {

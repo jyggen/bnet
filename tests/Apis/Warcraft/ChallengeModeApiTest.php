@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ChallengeModeApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_ChallengeModeApi.yml
+     * @vcr Warcraft_ChallengeModeApi.json
      */
     public function testGetRealmLeaderboard(): void
     {
@@ -41,7 +41,7 @@ final class ChallengeModeApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_ChallengeModeApi.yml
+     * @vcr Warcraft_ChallengeModeApi.json
      */
     public function testGetRegionLeaderboard(): void
     {

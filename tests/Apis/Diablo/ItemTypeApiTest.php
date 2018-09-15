@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ItemTypeApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Diablo_ItemTypeApi.yml
+     * @vcr Diablo_ItemTypeApi.json
      */
     public function testGetItemTypeIndex(): void
     {
@@ -41,7 +41,7 @@ final class ItemTypeApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Diablo_ItemTypeApi.yml
+     * @vcr Diablo_ItemTypeApi.json
      */
     public function testGetItemType(): void
     {

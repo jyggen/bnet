@@ -23,13 +23,13 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ArtisanAndRecipeApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Diablo_ArtisanAndRecipeApi.yml
+     * @vcr Diablo_ArtisanAndRecipeApi.json
      */
     public function testGetArtisan(): void
     {
         $client = $this->getClient();
         $api = new ArtisanAndRecipeApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
-        $request = $api->getArtisan('blacksmith');
+        $request = $api->getArtisan('jeweler');
 
         $this->assertSame('GET', $request->getMethod());
         $this->assertSame('application/json', $request->getHeaderLine('Accept'));
@@ -41,13 +41,13 @@ final class ArtisanAndRecipeApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Diablo_ArtisanAndRecipeApi.yml
+     * @vcr Diablo_ArtisanAndRecipeApi.json
      */
     public function testGetRecipe(): void
     {
         $client = $this->getClient();
         $api = new ArtisanAndRecipeApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
-        $request = $api->getRecipe('blacksmith', 'apprentice-flamberge');
+        $request = $api->getRecipe('jeweler', 'flawless-amethyst');
 
         $this->assertSame('GET', $request->getMethod());
         $this->assertSame('application/json', $request->getHeaderLine('Accept'));

@@ -23,7 +23,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class FollowerApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Diablo_FollowerApi.yml
+     * @vcr Diablo_FollowerApi.json
      */
     public function testGetFollower(): void
     {
