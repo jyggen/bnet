@@ -46,7 +46,7 @@ jobs:
         - travis_retry composer update $DEFAULT_COMPOSER_FLAGS $COMPOSER_FLAGS
         - composer info -D | sort
         script:
-        - vendor/bin/parallel-lint --exclude vendor . .php_cs bin/generate || travis_terminate 1
+        - vendor/bin/parallel-lint --exclude vendor . .php_cs bin/fetch-api-docs bin/generate-classes bin/generate-metadata || travis_terminate 1
         - vendor/bin/phpunit
 
     -
