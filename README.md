@@ -1,4 +1,4 @@
-# Battle.net API Client (PHP implementation)
+# Battle.net API Client
 
 [![Source Code][badge-source]][source]
 [![Latest Version][badge-release]][release]
