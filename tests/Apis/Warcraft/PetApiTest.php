@@ -20,7 +20,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
  * DO NOT EDIT. This file was auto-generated based on the Battle.net API docs.
  *
  * @internal
- * @covers Boo\BattleNet\Apis\Warcraft\PetApi
+ * @covers \Boo\BattleNet\Apis\Warcraft\PetApi
  */
 final class PetApiTest extends AbstractApiTest
 {

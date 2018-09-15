@@ -20,7 +20,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
  * DO NOT EDIT. This file was auto-generated based on the Battle.net API docs.
  *
  * @internal
- * @covers Boo\BattleNet\Apis\Warcraft\SpellApi
+ * @covers \Boo\BattleNet\Apis\Warcraft\SpellApi
  */
 final class SpellApiTest extends AbstractApiTest
 {

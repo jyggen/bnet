@@ -20,7 +20,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
  * DO NOT EDIT. This file was auto-generated based on the Battle.net API docs.
  *
  * @internal
- * @covers Boo\BattleNet\Apis\Starcraft\DataResourcesApi
+ * @covers \Boo\BattleNet\Apis\Starcraft\DataResourcesApi
  */
 final class DataResourcesApiTest extends AbstractApiTest
 {
