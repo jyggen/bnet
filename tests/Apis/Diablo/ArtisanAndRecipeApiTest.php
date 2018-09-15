@@ -17,6 +17,8 @@ use Boo\BattleNet\Apis\Diablo\ArtisanAndRecipeApi;
 use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
 /**
+ * DO NOT EDIT. This file was auto-generated based on the Battle.net API docs.
+ *
  * @internal
  * @coversNothing
  */

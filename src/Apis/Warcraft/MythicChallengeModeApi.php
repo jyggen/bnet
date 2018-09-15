@@ -16,6 +16,9 @@ namespace Boo\BattleNet\Apis\Warcraft;
 use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
+/**
+ * DO NOT EDIT. This file was auto-generated based on the Battle.net API docs.
+ */
 final class MythicChallengeModeApi extends AbstractApi
 {
     public function getMythicChallengeModeIndex(string $namespace, string $accessToken): RequestInterface

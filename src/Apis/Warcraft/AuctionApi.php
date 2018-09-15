@@ -16,6 +16,9 @@ namespace Boo\BattleNet\Apis\Warcraft;
 use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
+/**
+ * DO NOT EDIT. This file was auto-generated based on the Battle.net API docs.
+ */
 final class AuctionApi extends AbstractApi
 {
     public function getAuctionDataStatus(string $realm): RequestInterface

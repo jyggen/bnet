@@ -16,6 +16,9 @@ namespace Boo\BattleNet\Apis\Starcraft;
 use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
+/**
+ * DO NOT EDIT. This file was auto-generated based on the Battle.net API docs.
+ */
 final class LadderApi extends AbstractApi
 {
     public function getLadder(string $id): RequestInterface
