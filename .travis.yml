@@ -47,7 +47,7 @@ jobs:
         - composer info -D | sort
         script:
         - vendor/bin/parallel-lint --exclude vendor . .php_cs bin/fetch-api-docs bin/generate-classes bin/generate-metadata || travis_terminate 1
-        - vendor/bin/phpunit
+        - vendor/bin/phpunit -d memory_limit=256M
 
     -
         <<: *TEST_JOB
@@ -65,7 +65,7 @@ jobs:
         php: 7.2
         script:
         - phpdbg --version 2> /dev/null || travis_terminate 0
-        - phpdbg -qrr vendor/bin/phpunit --coverage-clover build/logs/clover.xml || travis_terminate 1
+        - phpdbg -qrr vendor/bin/phpunit -d memory_limit=256M --coverage-clover build/logs/clover.xml || travis_terminate 1
         - php vendor/bin/php-coveralls -v
 
 allow_failures:
