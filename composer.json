@@ -2,7 +2,17 @@
     "name": "boo/bnet",
     "type": "library",
     "description": "Library for working with the Battle.net Web APIs.",
-    "keywords": ["Battle.net", "Blizzard", "Warcraft", "Starcraft", "Diablo", "Overwatch", "API", "bnet"],
+    "keywords": [
+        "API",
+        "Battle.net",
+        "Blizzard",
+        "bnet",
+        "Diablo",
+        "Hearthstone",
+        "Overwatch",
+        "Starcraft",
+        "Warcraft"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -32,6 +42,11 @@
         "symfony/var-dumper": "^4.1.4",
         "twig/twig": "^2.5.0"
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Boo\\BattleNet\\": "src"
@@ -40,11 +55,6 @@
     "autoload-dev": {
         "psr-4": {
             "Boo\\BattleNet\\Tests\\": "tests"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.x-dev"
         }
     },
     "support": {
