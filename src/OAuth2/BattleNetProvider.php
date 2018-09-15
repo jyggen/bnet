@@ -33,7 +33,8 @@ final class BattleNetProvider extends AbstractProvider
     {
         parent::__construct($options, $collaborators);
 
-        if (false === $this->region instanceof RegionInterface) {
+        if (false === array_key_exists('region', $options) ||
+            false === $options['region'] instanceof RegionInterface) {
             throw new OAuthException('Missing required option "region"');
         }
     }
