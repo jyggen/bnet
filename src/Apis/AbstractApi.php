@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Battle.net API Client package.
+ * This file is part of boo/bnet.
  *
  * (c) Jonas Stendahl <jonas@stendahl.me>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Boo\BattleNet\Apis;
@@ -54,9 +54,8 @@ abstract class AbstractApi
         $url = sprintf('%s%s?%s', $this->region->getApiBaseUrl(), $url, http_build_query($queryString));
         $request = $this->factory->createRequest($verb, $url);
         $request = $request->withHeader('Accept', 'application/json');
-        $request = $request->withHeader('Accept-Encoding', 'gzip');
 
-        return $request;
+        return $request->withHeader('Accept-Encoding', 'gzip');
     }
 
     final protected function getRegionName(): string

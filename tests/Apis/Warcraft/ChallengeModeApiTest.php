@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Battle.net API Client package.
+ * This file is part of boo/bnet.
  *
  * (c) Jonas Stendahl <jonas@stendahl.me>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
@@ -16,6 +16,10 @@ namespace Boo\BattleNet\Tests\Apis\Warcraft;
 use Boo\BattleNet\Apis\Warcraft\ChallengeModeApi;
 use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class ChallengeModeApiTest extends AbstractApiTest
 {
     /**
@@ -27,13 +31,13 @@ final class ChallengeModeApiTest extends AbstractApiTest
         $api = new ChallengeModeApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getRealmLeaderboard('draenor');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -45,12 +49,12 @@ final class ChallengeModeApiTest extends AbstractApiTest
         $api = new ChallengeModeApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getRegionLeaderboard();
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 }

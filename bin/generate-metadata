@@ -19,11 +19,11 @@ function to_camel_case(string $string): string
 
 function get_method_from_name_and_verb(string $name, string $verb): string
 {
-    if (strpos($name, 'get') === 0) {
+    if (0 === strpos($name, 'get')) {
         $name = substr($name, 3);
     }
 
-    if (strpos($name, ' ') === false) {
+    if (false === strpos($name, ' ')) {
         $name = preg_replace('/(.)(?=[A-Z])/u', '$1 ', $name);
     }
 
@@ -60,7 +60,7 @@ function get_class_from_name(string $name): string
         return $nameOverrides[$name];
     }
 
-    if (strpos($name, 'D3 ') === 0) {
+    if (0 === strpos($name, 'D3 ')) {
         $name = substr($name, 3);
     }
 
@@ -76,10 +76,10 @@ function normalize_parameters(array $parameters, string $authType): array
     ];
 
     $parameters = array_filter($parameters, function (stdClass $parameter) use ($unwanted): bool {
-        return in_array($parameter->name, $unwanted, true) === false;
+        return false === in_array($parameter->name, $unwanted, true);
     });
 
-    if ($authType === 'oauth2') {
+    if ('oauth2' === $authType) {
         $parameters[] = (object) [
             'kind' => 'query',
             'name' => 'access_token',
@@ -122,10 +122,10 @@ function normalize_parameters(array $parameters, string $authType): array
 
             $parameter->isConstant = false;
 
-            if ($parameter->name === 'fields') {
+            if ('fields' === $parameter->name) {
                 $parameter->kind = 'query';
                 $parameter->type = 'commaSeparatedStrings';
-                $parameter->isConstant = $parameter->value !== '';
+                $parameter->isConstant = '' !== $parameter->value;
             }
 
             $parameters[] = $parameter;
@@ -146,7 +146,7 @@ chdir(dirname(__DIR__));
 
 require_once 'vendor/autoload.php';
 
-if (file_exists('resources/api.json') === false) {
+if (false === file_exists('resources/api.json')) {
     fwrite(STDERR, 'Unable to load API definition');
     exit(1);
 }
@@ -157,23 +157,24 @@ $china = [];
 $methods = [];
 
 foreach ($apiDocs as $category) {
-    [$apiName, $region] = explode(' - ', $category->name);
+    list($apiName, $region) = explode(' - ', $category->name);
 
-    if ($region === 'CN') {
+    if ('CN' === $region) {
         $china[] = $category;
+
         continue;
     }
 
     $apiName = get_namespace_from_name($apiName);
 
-    if (array_key_exists($apiName, $apis) === false) {
+    if (false === array_key_exists($apiName, $apis)) {
         $apis[$apiName] = [];
     }
 
     foreach ($category->endpoints as $endpoint) {
         $className = get_class_from_name($endpoint->name);
 
-        if (array_key_exists($className, $apis[$apiName]) === false) {
+        if (false === array_key_exists($className, $apis[$apiName])) {
             $apis[$apiName][$className] = [
                 'endpoints' => [],
                 'unavailable' => [],
@@ -184,7 +185,7 @@ foreach ($apiDocs as $category) {
             $methodName = get_method_from_name_and_verb($method->name, $method->method);
             $methodKey = $method->uri.$methodName;
 
-            if (array_key_exists($methodKey, $apis[$apiName][$className]['endpoints']) === false) {
+            if (false === array_key_exists($methodKey, $apis[$apiName][$className]['endpoints'])) {
                 $apis[$apiName][$className]['endpoints'][$methodKey] = [
                     'name' => $methodName,
                     'parameters' => normalize_parameters($method->parameters, $category->auth),
@@ -203,7 +204,7 @@ foreach ($apiDocs as $category) {
                 $methods[$methodKey] = &$apis[$apiName][$className]['endpoints'][$methodKey];
             }
 
-            if (in_array($region, $apis[$apiName][$className]['endpoints'][$methodKey]['regions'], true) === false) {
+            if (false === in_array($region, $apis[$apiName][$className]['endpoints'][$methodKey]['regions'], true)) {
                 $apis[$apiName][$className]['endpoints'][$methodKey]['regions'][] = $region;
             }
         }
@@ -218,6 +219,7 @@ foreach ($china as $category) {
             switch ($method->name) {
                 case 'Token':
                     $method->name = 'Token Index';
+
                     break;
             }
 
@@ -225,22 +227,23 @@ foreach ($china as $category) {
                 case '/data/wow/token/':
                     $override = $method->uri;
                     $method->uri = '/token/';
+
                     break;
             }
 
             $methodName = get_method_from_name_and_verb($method->name, $method->method);
             $methodKey = $method->uri.$methodName;
 
-            if (array_key_exists($methodKey, $methods) === false) {
+            if (false === array_key_exists($methodKey, $methods)) {
                 fwrite(STDERR, 'Unable to map unique China endpoint "'.$methodKey.'"');
                 exit(1);
             }
 
-            if (in_array('CN', $methods[$methodKey]['regions'], true) === false) {
+            if (false === in_array('CN', $methods[$methodKey]['regions'], true)) {
                 $methods[$methodKey]['regions'][] = 'CN';
             }
 
-            if ($override !== null) {
+            if (null !== $override) {
                 $methods[$methodKey]['overrides'][] = [
                     'region' => 'CN',
                     'url' => $override,
@@ -265,7 +268,7 @@ foreach ($apis as $namespace => $stuff) {
         foreach ($data['endpoints'] as $key => $metadata) {
             $metadata['unavailable'] = array_values(array_diff($allRegions, $metadata['regions']));
 
-            if ($unavailable === null) {
+            if (null === $unavailable) {
                 $unavailable = $metadata['unavailable'];
             }
 
@@ -287,7 +290,7 @@ foreach ($apis as $namespace => $stuff) {
             $metadata['unavailable'] = array_filter(
                 $metadata['unavailable'],
                 function (string $region) use ($unavailable): bool {
-                    return in_array($region, $unavailable, true) === false;
+                    return false === in_array($region, $unavailable, true);
                 }
             );
 

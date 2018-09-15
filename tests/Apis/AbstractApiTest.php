@@ -3,17 +3,16 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Battle.net API Client package.
+ * This file is part of boo/bnet.
  *
  * (c) Jonas Stendahl <jonas@stendahl.me>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Boo\BattleNet\Tests\Apis;
 
-use Boo\BattleNet\Apis\Diablo\ActApi;
 use Boo\BattleNet\Regions;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,7 +34,7 @@ abstract class AbstractApiTest extends TestCase
     {
         $apiKey = getenv('BNET_API_KEY');
 
-        return $apiKey !== false ? $apiKey : 'foobar';
+        return false !== $apiKey ? $apiKey : 'foobar';
     }
 
     final protected function getClient(): ClientInterface
@@ -45,10 +44,9 @@ abstract class AbstractApiTest extends TestCase
 
         $mockClient->send(Argument::type(RequestInterface::class))->willReturn(new Response());
 
-        return $apiKey !== false ? new Client([
+        return false !== $apiKey ? new Client([
             'http_errors' => false,
         ]) : $mockClient->reveal();
-
     }
 
     final protected function getRegion(): Regions\RegionInterface

@@ -35,7 +35,7 @@ jobs:
         - composer info -D | sort
         script:
         - $HOME/.composer/vendor/bin/phpstan analyse -l 7 src/ || travis_terminate 1
-        - $HOME/.composer/vendor/bin/php-cs-fixer --diff --dry-run -v fix
+        - $HOME/.composer/vendor/bin/php-cs-fixer --diff --diff-format=udiff --dry-run -v fix
         - $HOME/.composer/vendor/bin/composer-require-checker check --config-file=.composer-require-checker.json composer.json || travis_terminate 1
         - composer normalize ./composer.json --dry-run
 

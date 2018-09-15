@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Battle.net API Client package.
+ * This file is part of boo/bnet.
  *
  * (c) Jonas Stendahl <jonas@stendahl.me>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Boo\BattleNet\Tests\Apis\{{ namespace }};
@@ -16,6 +16,10 @@ namespace Boo\BattleNet\Tests\Apis\{{ namespace }};
 use Boo\BattleNet\Apis\{{ namespace }}\{{ className }};
 use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class {{ className }}Test extends AbstractApiTest
 {
 {% for url, endpoint in endpoints %}
@@ -33,14 +37,14 @@ final class {{ className }}Test extends AbstractApiTest
         $api = new {{ className }}($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->{{ endpoint.method }}({{ endpoint.argumentValues|raw }});
 
-        self::assertSame({{ endpoint.verb|raw }}, $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame({{ endpoint.verb|raw }}, $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 {% if not endpoint.isOAuth %}
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
 {% endif %}
     }
 {% endfor %}

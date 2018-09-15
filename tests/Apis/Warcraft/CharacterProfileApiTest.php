@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Battle.net API Client package.
+ * This file is part of boo/bnet.
  *
  * (c) Jonas Stendahl <jonas@stendahl.me>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
@@ -16,6 +16,10 @@ namespace Boo\BattleNet\Tests\Apis\Warcraft;
 use Boo\BattleNet\Apis\Warcraft\CharacterProfileApi;
 use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 final class CharacterProfileApiTest extends AbstractApiTest
 {
     /**
@@ -27,13 +31,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getCharacterProfile('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -45,13 +49,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getAchievements('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -63,13 +67,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getAppearance('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -81,13 +85,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getFeed('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -99,13 +103,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getGuild('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -117,13 +121,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getHunterPets('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -135,13 +139,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getItems('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -153,13 +157,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getMounts('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -171,13 +175,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getPets('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -189,13 +193,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getPetSlots('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -207,13 +211,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getProfessions('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -225,13 +229,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getProgression('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -243,13 +247,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getPVP('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -261,13 +265,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getQuests('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -279,13 +283,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getReputation('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -297,13 +301,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getStatistics('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -315,13 +319,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getStats('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -333,13 +337,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getTalents('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -351,13 +355,13 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getTitles('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /**
@@ -369,12 +373,12 @@ final class CharacterProfileApiTest extends AbstractApiTest
         $api = new CharacterProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getAudit('draenor', 'Jyggen');
 
-        self::assertSame('GET', $request->getMethod());
-        self::assertSame('application/json', $request->getHeaderLine('Accept'));
-        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+        $this->assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
 
         $response = $client->send($request);
 
-        self::assertSame(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 }

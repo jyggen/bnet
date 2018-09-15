@@ -147,7 +147,7 @@ foreach ($metadata as $namespace => $apis) {
                         return $isOAuth;
                     }
 
-                    return ($parameter['name'] === 'access_token');
+                    return 'access_token' === $parameter['name'];
                 }, false),
                 'verb' => '\''.$endpoint->verb.'\'',
                 'overrides' => array_map(static function (stdClass $override): stdClass {
