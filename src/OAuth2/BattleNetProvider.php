@@ -76,7 +76,7 @@ final class BattleNetProvider extends AbstractProvider
      */
     protected function checkResponse(ResponseInterface $response, $data): void
     {
-        if (array_key_exists('error', $data)) {
+        if (\is_array($data) && array_key_exists('error', $data)) {
             throw new OAuthException($data['error'].': '.$data['error_description']);
         }
     }
