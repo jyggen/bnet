@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ArtisanAndRecipeApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Diablo_ArtisanAndRecipeApi.json
+     * @vcr Diablo_ArtisanAndRecipeApi_GetArtisan.json
      */
     public function testGetArtisan(): void
     {
@@ -43,7 +43,7 @@ final class ArtisanAndRecipeApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Diablo_ArtisanAndRecipeApi.json
+     * @vcr Diablo_ArtisanAndRecipeApi_GetRecipe.json
      */
     public function testGetRecipe(): void
     {

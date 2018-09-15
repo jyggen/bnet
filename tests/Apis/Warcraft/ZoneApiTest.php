@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ZoneApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_ZoneApi.json
+     * @vcr Warcraft_ZoneApi_GetMasterList.json
      */
     public function testGetMasterList(): void
     {
@@ -43,7 +43,7 @@ final class ZoneApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_ZoneApi.json
+     * @vcr Warcraft_ZoneApi_GetZone.json
      */
     public function testGetZone(): void
     {

@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class CharacterClassAndSkillApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Diablo_CharacterClassAndSkillApi.json
+     * @vcr Diablo_CharacterClassAndSkillApi_GetCharacterClass.json
      */
     public function testGetCharacterClass(): void
     {
@@ -43,7 +43,7 @@ final class CharacterClassAndSkillApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Diablo_CharacterClassAndSkillApi.json
+     * @vcr Diablo_CharacterClassAndSkillApi_GetApiSkill.json
      */
     public function testGetApiSkill(): void
     {

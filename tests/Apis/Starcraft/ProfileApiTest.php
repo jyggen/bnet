@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ProfileApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Starcraft_ProfileApi.json
+     * @vcr Starcraft_ProfileApi_GetProfile.json
      */
     public function testGetProfile(): void
     {
@@ -43,7 +43,7 @@ final class ProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Starcraft_ProfileApi.json
+     * @vcr Starcraft_ProfileApi_GetLadders.json
      */
     public function testGetLadders(): void
     {
@@ -61,7 +61,7 @@ final class ProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Starcraft_ProfileApi.json
+     * @vcr Starcraft_ProfileApi_GetMatchHistory.json
      */
     public function testGetMatchHistory(): void
     {

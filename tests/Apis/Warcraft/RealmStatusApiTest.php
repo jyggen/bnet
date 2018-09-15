@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class RealmStatusApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_RealmStatusApi.json
+     * @vcr Warcraft_RealmStatusApi_GetRealmStatus.json
      */
     public function testGetRealmStatus(): void
     {

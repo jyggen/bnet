@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class DataResourcesApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetBattlegroups.json
      */
     public function testGetBattlegroups(): void
     {
@@ -43,7 +43,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetCharacterRaces.json
      */
     public function testGetCharacterRaces(): void
     {
@@ -61,7 +61,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetCharacterClasses.json
      */
     public function testGetCharacterClasses(): void
     {
@@ -79,7 +79,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetCharacterAchievements.json
      */
     public function testGetCharacterAchievements(): void
     {
@@ -97,7 +97,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetGuildRewards.json
      */
     public function testGetGuildRewards(): void
     {
@@ -115,7 +115,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetGuildPerks.json
      */
     public function testGetGuildPerks(): void
     {
@@ -133,7 +133,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetGuildAchievements.json
      */
     public function testGetGuildAchievements(): void
     {
@@ -151,7 +151,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetItemClasses.json
      */
     public function testGetItemClasses(): void
     {
@@ -169,7 +169,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetTalents.json
      */
     public function testGetTalents(): void
     {
@@ -187,7 +187,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_DataResourcesApi.json
+     * @vcr Warcraft_DataResourcesApi_GetPetTypes.json
      */
     public function testGetPetTypes(): void
     {

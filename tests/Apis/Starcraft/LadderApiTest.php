@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class LadderApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Starcraft_LadderApi.json
+     * @vcr Starcraft_LadderApi_GetLadder.json
      */
     public function testGetLadder(): void
     {

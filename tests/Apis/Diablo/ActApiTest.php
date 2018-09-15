@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ActApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Diablo_ActApi.json
+     * @vcr Diablo_ActApi_GetActIndex.json
      */
     public function testGetActIndex(): void
     {
@@ -43,7 +43,7 @@ final class ActApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Diablo_ActApi.json
+     * @vcr Diablo_ActApi_GetAct.json
      */
     public function testGetAct(): void
     {

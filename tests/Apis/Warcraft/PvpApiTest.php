@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class PvpApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_PvpApi.json
+     * @vcr Warcraft_PvpApi_GetLeaderboards.json
      */
     public function testGetLeaderboards(): void
     {

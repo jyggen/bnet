@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class RecipeApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_RecipeApi.json
+     * @vcr Warcraft_RecipeApi_GetRecipe.json
      */
     public function testGetRecipe(): void
     {

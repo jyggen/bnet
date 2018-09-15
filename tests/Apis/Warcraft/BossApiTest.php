@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class BossApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Warcraft_BossApi.json
+     * @vcr Warcraft_BossApi_GetMasterList.json
      */
     public function testGetMasterList(): void
     {
@@ -43,7 +43,7 @@ final class BossApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Warcraft_BossApi.json
+     * @vcr Warcraft_BossApi_GetBoss.json
      */
     public function testGetBoss(): void
     {

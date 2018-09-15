@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class ProfileApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Diablo_ProfileApi.json
+     * @vcr Diablo_ProfileApi_GetApiAccount.json
      */
     public function testGetApiAccount(): void
     {
@@ -43,7 +43,7 @@ final class ProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Diablo_ProfileApi.json
+     * @vcr Diablo_ProfileApi_GetApiHero.json
      */
     public function testGetApiHero(): void
     {
@@ -61,7 +61,7 @@ final class ProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Diablo_ProfileApi.json
+     * @vcr Diablo_ProfileApi_GetApiDetailedHeroItems.json
      */
     public function testGetApiDetailedHeroItems(): void
     {
@@ -79,7 +79,7 @@ final class ProfileApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Diablo_ProfileApi.json
+     * @vcr Diablo_ProfileApi_GetApiDetailedFollowerItems.json
      */
     public function testGetApiDetailedFollowerItems(): void
     {

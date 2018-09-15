@@ -25,7 +25,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 final class DataResourcesApiTest extends AbstractApiTest
 {
     /**
-     * @vcr Starcraft_DataResourcesApi.json
+     * @vcr Starcraft_DataResourcesApi_GetAchievements.json
      */
     public function testGetAchievements(): void
     {
@@ -43,7 +43,7 @@ final class DataResourcesApiTest extends AbstractApiTest
     }
 
     /**
-     * @vcr Starcraft_DataResourcesApi.json
+     * @vcr Starcraft_DataResourcesApi_GetRewards.json
      */
     public function testGetRewards(): void
     {
