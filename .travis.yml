@@ -1,29 +1,72 @@
----
-after_success:
-  - "if [[ \"$TASK_TESTS_COVERAGE\" = 1 ]]; then bash <(curl -s https://codecov.io/bash); fi"
-before_install:
-  - "phpdbg --version 2> /dev/null || export TASK_TESTS_COVERAGE=0"
-  - "phpenv config-rm xdebug.ini || return 0"
-  - "travis_retry composer self-update"
-  - "composer global show -ND 2>&1 | grep \"hirak/prestissimo\" || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS hirak/prestissimo"
-cache:
-  directories:
-    - $HOME/.composer
-env:
-  global:
-    - "DEFAULT_COMPOSER_FLAGS=\"--no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable\""
-    - TASK_TESTS_COVERAGE=1
-  matrix:
-    - DEPENDENCIES=high
-    - DEPENDENCIES=low
-install:
-  - "if [[ \"$DEPENDENCIES\" = 'high' ]]; then travis_retry composer update $DEFAULT_COMPOSER_FLAGS; fi"
-  - "if [[ \"$DEPENDENCIES\" = 'low' ]]; then travis_retry composer update $DEFAULT_COMPOSER_FLAGS --prefer-lowest; fi"
 language: php
-php:
-  - 7.1
-  - 7.1snapshot
-script:
-  - "./vendor/bin/grumphp run"
-  - "if [[ \"$TASK_TESTS_COVERAGE\" = 1 ]]; then phpdbg -qrr ./vendor/bin/phpunit --coverage-clover=coverage.xml; fi"
+
 sudo: false
+
+git:
+    depth: 1
+
+cache:
+    directories:
+    - $HOME/.composer
+    - tests/fixtures
+
+env:
+    global:
+    - DEFAULT_COMPOSER_FLAGS="--optimize-autoloader --no-interaction --no-progress"
+    - COMPOSER_FLAGS=""
+
+before_install:
+- phpenv config-rm xdebug.ini || return 0
+- composer global show hirak/prestissimo -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS hirak/prestissimo
+
+jobs:
+    include:
+    -
+        stage: Code Standard
+        php: 7.2
+        env: COMPOSER_FLAGS="--no-dev --prefer-stable"
+        install:
+        - composer global show friendsofphp/php-cs-fixer -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS friendsofphp/php-cs-fixer
+        - composer global show localheinz/composer-normalize -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS localheinz/composer-normalize
+        - composer global show maglnet/composer-require-checker -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS maglnet/composer-require-checker
+        - composer global show phpstan/phpstan -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS phpstan/phpstan
+        - composer global info -D | sort
+        - travis_retry composer update $DEFAULT_COMPOSER_FLAGS $COMPOSER_FLAGS
+        - composer info -D | sort
+        script:
+        - $HOME/.composer/vendor/bin/phpstan analyse -l 7 src/ functions.php || travis_terminate 1
+        - $HOME/.composer/vendor/bin/php-cs-fixer --diff --dry-run -v fix
+        - $HOME/.composer/vendor/bin/composer-require-checker check --config-file=.composer-require-checker.json composer.json || travis_terminate 1
+        - composer normalize ./composer.json --dry-run
+
+    - &TEST_JOB
+        stage: Test
+        php: 7.2
+        install:
+        - travis_retry composer update $DEFAULT_COMPOSER_FLAGS $COMPOSER_FLAGS
+        - composer info -D | sort
+        script:
+        - vendor/bin/parallel-lint --exclude vendor . .php_cs bin/generate || travis_terminate 1
+        - vendor/bin/phpunit
+
+    -
+        <<: *TEST_JOB
+        stage: Test
+        php: 7.1
+        env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
+
+    -
+        <<: *TEST_JOB
+        php: nightly
+
+    -
+        <<: *TEST_JOB
+        stage: Code Coverage
+        php: 7.2
+        script:
+        - phpdbg --version 2> /dev/null || travis_terminate 0
+        - phpdbg -qrr vendor/bin/phpunit --coverage-clover build/logs/clover.xml || travis_terminate 1
+        - php vendor/bin/php-coveralls -v
+
+allow_failures:
+- php: nightly

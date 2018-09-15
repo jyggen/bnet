@@ -14,35 +14,25 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Diablo;
 
 use Boo\BattleNet\Apis\Diablo\FollowerApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class FollowerApiTest extends TestCase
+final class FollowerApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Diablo_FollowerApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetFollower(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetFollower(RequestFactoryInterface $factory): void
-    {
-        $api = new FollowerApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new FollowerApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getFollower('templar');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

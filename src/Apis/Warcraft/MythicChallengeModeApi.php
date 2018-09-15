@@ -13,63 +13,27 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\Warcraft;
 
-use Boo\BattleNet\Exceptions\UnavailableRegionException;
-use Boo\BattleNet\Regions\RegionInterface;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
-final class MythicChallengeModeApi
+final class MythicChallengeModeApi extends AbstractApi
 {
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var array<string, int|string>
-     */
-    private $queryString;
-
-    /**
-     * @var RegionInterface
-     */
-    private $region;
-
-    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $accessToken)
+    public function getMythicChallengeModeIndex(string $namespace, string $accessToken): RequestInterface
     {
-        $this->factory = $factory;
-        $this->region = $region;
-        $this->queryString = [
-            'access_token' => $accessToken,
-            'locale' => $this->region->getLocale(),
-        ];
-    }
-
-    public function getMythicChallengeModeIndex(string $namespace): RequestInterface
-    {
-        if ('CN' === $this->region->getName()) {
-            throw new UnavailableRegionException('CN does not support this endpoint');
-        }
-
-        if ('SEA' === $this->region->getName()) {
-            throw new UnavailableRegionException('SEA does not support this endpoint');
-        }
-
-        $url = '/mythic-challenge-mode/';
-
-        return $this->createRequest('GET', $url, [
+        return $this->createRequest('GET', '/mythic-challenge-mode/', [
             'namespace' => $namespace,
+            'access_token' => $accessToken,
         ]);
     }
 
-    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
+    /**
+     * {@inheritdoc}
+     */
+    protected function getRestrictedRegions(): array
     {
-        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
-        $url = $this->region->getApiBaseUrl().$url;
-        $request = $this->factory->createRequest($verb, $url);
-        $request = $request->withHeader('Accept', 'application/json');
-        $request = $request->withHeader('Accept-Encoding', 'gzip');
-
-        return $request;
+        return [
+            'CN',
+            'SEA',
+        ];
     }
 }

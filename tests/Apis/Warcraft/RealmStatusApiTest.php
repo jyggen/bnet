@@ -14,35 +14,25 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\RealmStatusApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class RealmStatusApiTest extends TestCase
+final class RealmStatusApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Warcraft_RealmStatusApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetRealmStatus(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetRealmStatus(RequestFactoryInterface $factory): void
-    {
-        $api = new RealmStatusApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new RealmStatusApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getRealmStatus();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

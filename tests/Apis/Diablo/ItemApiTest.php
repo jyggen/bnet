@@ -14,35 +14,25 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Diablo;
 
 use Boo\BattleNet\Apis\Diablo\ItemApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class ItemApiTest extends TestCase
+final class ItemApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Diablo_ItemApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetItem(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetItem(RequestFactoryInterface $factory): void
-    {
-        $api = new ItemApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new ItemApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getItem('corrupted-ashbringer-Unique_Sword_2H_104_x1');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

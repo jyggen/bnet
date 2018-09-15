@@ -13,81 +13,64 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\{{ namespace }};
 
-{% if hasUnavailable %}
-use Boo\BattleNet\Exceptions\UnavailableRegionException;
-{%  endif %}
-use Boo\BattleNet\Regions\RegionInterface;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
-final class {{ className }}
+final class {{ className }} extends AbstractApi
 {
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var array<string, int|string>
-     */
-    private $queryString;
-
-    /**
-     * @var RegionInterface
-     */
-    private $region;
-
-    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string ${{ auth }})
-    {
-        $this->factory = $factory;
-        $this->region = $region;
-        $this->queryString = [
-{% if auth is same  as("apiKey") %}
-            'apikey' => ${{ auth }},
-{% else %}
-            'access_token' => ${{ auth }},
-{% endif %}
-            'locale' => $this->region->getLocale(),
-        ];
-    }
 {% for url, endpoint in endpoints %}
-
     public function {{ endpoint.method }}({{ endpoint.arguments }}): RequestInterface
     {
+{% if endpoint.unavailable is not empty %}
+        $this->preventRegionUsage([
 {% for region in endpoint.unavailable %}
-        if ('{{ region }}' === $this->region->getName()) {
-            throw new UnavailableRegionException('{{ region }} does not support this endpoint');
-        }
-
+            '{{ region }}',
 {% endfor %}
-        $url = {{  endpoint.url|raw }};
-{% for override in endpoint.overrides %}
+        ]);
 
-        if ('{{ override.region }}' === $this->region->getName()) {
+{% endif %}
+{% if endpoint.overrides is not empty %}
+        $url = {{ endpoint.url|raw }};
+
+{% for override in endpoint.overrides %}
+        if ('{{ override.region }}' === $this->getRegionName()) {
             $url = {{  override.url|raw }};
         }
-{% endfor %}
 
-{% if endpoint.queryArgs is empty %}
-        return $this->createRequest({{  endpoint.verb|raw }}, $url);
-{% else %}
-        return $this->createRequest({{  endpoint.verb|raw }}, $url, [
+{% endfor %}
+{% endif %}
+{% if endpoint.constants is empty and endpoint.queryArgs is empty %}
+        return $this->createRequest({{  endpoint.verb|raw }}, {% if endpoint.overrides is not empty %}$url{% else %}{{ endpoint.url|raw }}{% endif %});
+{%  else %}
+        return $this->createRequest({{  endpoint.verb|raw }}, {% if endpoint.overrides is not empty %}$url{% else %}{{ endpoint.url|raw }}{% endif %}, [
+{% for argument in endpoint.constants %}
+            '{{ argument.name }}' => '{{ argument.value }}',
+{% endfor %}
 {% for argument in endpoint.queryArgs %}
-            '{{ argument.name }}' => ${{ argument.name }},
+{% if argument.docType is same as("string[]") %}
+            '{{ argument.name }}' => implode(',', ${{ argument.variable }}),
+{% else %}
+            '{{ argument.name }}' => ${{ argument.variable }},
+{% endif %}
 {% endfor %}
         ]);
 {% endif %}
     }
+
 {% endfor %}
-
-    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
+    /**
+     * {@inheritdoc}
+     */
+    protected function getRestrictedRegions(): array
     {
-        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
-        $url = $this->region->getApiBaseUrl().$url;
-        $request = $this->factory->createRequest($verb, $url);
-        $request = $request->withHeader('Accept', 'application/json');
-        $request = $request->withHeader('Accept-Encoding', 'gzip');
-
-        return $request;
+{% if unavailable is not empty %}
+        return [
+{% for region in unavailable %}
+            '{{ region }}',
+{% endfor %}
+        ];
+{% else %}
+        return [];
+{% endif %}
     }
 }

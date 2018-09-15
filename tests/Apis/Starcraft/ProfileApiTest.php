@@ -14,61 +14,61 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Starcraft;
 
 use Boo\BattleNet\Apis\Starcraft\ProfileApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class ProfileApiTest extends TestCase
+final class ProfileApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Starcraft_ProfileApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetProfile(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetProfile(RequestFactoryInterface $factory): void
-    {
-        $api = new ProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getProfile('', '1', '');
+        $client = $this->getClient();
+        $api = new ProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getProfile('5179818', '1', 'soul');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Starcraft_ProfileApi.yml
      */
-    public function testGetLadders(RequestFactoryInterface $factory): void
+    public function testGetLadders(): void
     {
-        $api = new ProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getLadders('', '1', '');
+        $client = $this->getClient();
+        $api = new ProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getLadders('5179818', '1', 'soul');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Starcraft_ProfileApi.yml
      */
-    public function testGetMatchHistory(RequestFactoryInterface $factory): void
+    public function testGetMatchHistory(): void
     {
-        $api = new ProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getMatchHistory('', '1', '');
+        $client = $this->getClient();
+        $api = new ProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getMatchHistory('5179818', '1', 'soul');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

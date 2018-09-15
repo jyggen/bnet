@@ -14,45 +14,26 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\RegionApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class RegionApiTest extends TestCase
+final class RegionApiTest extends AbstractApiTest
 {
-    /**
-     * @return array<int, array<int, RequestFactoryInterface>>
-     */
-    public function requestFactoryProvider(): array
+    public function testGetRegionIndex(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetRegionIndex(RequestFactoryInterface $factory): void
-    {
-        $api = new RegionApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getRegionIndex('dynamic-eu');
+        $client = $this->getClient();
+        $api = new RegionApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getRegionIndex('dynamic-eu', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetRegion(RequestFactoryInterface $factory): void
+    public function testGetRegion(): void
     {
-        $api = new RegionApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getRegion(3, 'dynamic-eu');
+        $client = $this->getClient();
+        $api = new RegionApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getRegion(3, 'dynamic-eu', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));

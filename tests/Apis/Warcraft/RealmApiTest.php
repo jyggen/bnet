@@ -14,45 +14,26 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\RealmApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class RealmApiTest extends TestCase
+final class RealmApiTest extends AbstractApiTest
 {
-    /**
-     * @return array<int, array<int, RequestFactoryInterface>>
-     */
-    public function requestFactoryProvider(): array
+    public function testGetRealmIndex(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetRealmIndex(RequestFactoryInterface $factory): void
-    {
-        $api = new RealmApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getRealmIndex('dynamic-eu');
+        $client = $this->getClient();
+        $api = new RealmApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getRealmIndex('dynamic-eu', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetRealm(RequestFactoryInterface $factory): void
+    public function testGetRealm(): void
     {
-        $api = new RealmApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getRealm('tichondrius', 'dynamic-eu');
+        $client = $this->getClient();
+        $api = new RealmApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getRealm('tichondrius', 'dynamic-eu', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));

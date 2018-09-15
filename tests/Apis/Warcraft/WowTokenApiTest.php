@@ -14,32 +14,15 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\WowTokenApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class WowTokenApiTest extends TestCase
+final class WowTokenApiTest extends AbstractApiTest
 {
-    /**
-     * @return array<int, array<int, RequestFactoryInterface>>
-     */
-    public function requestFactoryProvider(): array
+    public function testGetTokenIndex(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetTokenIndex(RequestFactoryInterface $factory): void
-    {
-        $api = new WowTokenApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getTokenIndex('dynamic-eu');
+        $client = $this->getClient();
+        $api = new WowTokenApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getTokenIndex('dynamic-eu', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));

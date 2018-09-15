@@ -14,35 +14,97 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\GuildProfileApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class GuildProfileApiTest extends TestCase
+final class GuildProfileApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Warcraft_GuildProfileApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetGuildProfile(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetGuildProfile(RequestFactoryInterface $factory): void
-    {
-        $api = new GuildProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getGuildProfile('Medivh', 'Temp Guild Name', 'achievements,challenge');
+        $client = $this->getClient();
+        $api = new GuildProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getGuildProfile('draenor', 'Malaxnytt');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
+    }
+
+    /**
+     * @vcr Warcraft_GuildProfileApi.yml
+     */
+    public function testGetMembers(): void
+    {
+        $client = $this->getClient();
+        $api = new GuildProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getMembers('draenor', 'Malaxnytt');
+
+        self::assertSame('GET', $request->getMethod());
+        self::assertSame('application/json', $request->getHeaderLine('Accept'));
+        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
+    }
+
+    /**
+     * @vcr Warcraft_GuildProfileApi.yml
+     */
+    public function testGetAchievements(): void
+    {
+        $client = $this->getClient();
+        $api = new GuildProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getAchievements('draenor', 'Malaxnytt');
+
+        self::assertSame('GET', $request->getMethod());
+        self::assertSame('application/json', $request->getHeaderLine('Accept'));
+        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
+    }
+
+    /**
+     * @vcr Warcraft_GuildProfileApi.yml
+     */
+    public function testGetNews(): void
+    {
+        $client = $this->getClient();
+        $api = new GuildProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getNews('draenor', 'Malaxnytt');
+
+        self::assertSame('GET', $request->getMethod());
+        self::assertSame('application/json', $request->getHeaderLine('Accept'));
+        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
+    }
+
+    /**
+     * @vcr Warcraft_GuildProfileApi.yml
+     */
+    public function testGetChallenge(): void
+    {
+        $client = $this->getClient();
+        $api = new GuildProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getChallenge('draenor', 'Malaxnytt');
+
+        self::assertSame('GET', $request->getMethod());
+        self::assertSame('application/json', $request->getHeaderLine('Accept'));
+        self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

@@ -14,48 +14,43 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\ChallengeModeApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class ChallengeModeApiTest extends TestCase
+final class ChallengeModeApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Warcraft_ChallengeModeApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetRealmLeaderboard(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetRealmLeaderboard(RequestFactoryInterface $factory): void
-    {
-        $api = new ChallengeModeApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getRealmLeaderboard('medivh');
+        $client = $this->getClient();
+        $api = new ChallengeModeApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getRealmLeaderboard('draenor');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_ChallengeModeApi.yml
      */
-    public function testGetRegionLeaderboard(RequestFactoryInterface $factory): void
+    public function testGetRegionLeaderboard(): void
     {
-        $api = new ChallengeModeApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new ChallengeModeApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getRegionLeaderboard();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

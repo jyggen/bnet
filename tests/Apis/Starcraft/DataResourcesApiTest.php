@@ -14,48 +14,43 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Starcraft;
 
 use Boo\BattleNet\Apis\Starcraft\DataResourcesApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class DataResourcesApiTest extends TestCase
+final class DataResourcesApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Starcraft_DataResourcesApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetAchievements(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetAchievements(RequestFactoryInterface $factory): void
-    {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getAchievements();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Starcraft_DataResourcesApi.yml
      */
-    public function testGetRewards(RequestFactoryInterface $factory): void
+    public function testGetRewards(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getRewards();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

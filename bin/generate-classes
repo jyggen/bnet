@@ -12,6 +12,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+function to_camel_case(string $string): string
+{
+    if (false === strpos($string, '_')) {
+        return $string;
+    }
+
+    return lcfirst(str_replace(['_'], '', ucwords(strtolower($string), '_')));
+}
+
 set_error_handler(static function ($severity, $message, $file, $line): void {
     if ($severity & error_reporting()) {
         throw new ErrorException($message, 0, $severity, $file, $line);
@@ -58,22 +67,36 @@ foreach ($metadata as $namespace => $apis) {
 
     foreach ($apis as $className => $data) {
         $endpoints = [];
-        $hasUnavailable = false;
 
         foreach ($data->endpoints as $endpoint) {
             $arguments = [];
             $argumentValues = [];
             $pathArgs = [];
             $queryArgs = [];
+            $constants = [];
 
             foreach ($endpoint->parameters as $parameter) {
-                if ('query' === $parameter->kind && in_array($parameter->name, ['callback', 'jsonp', 'locale'], true)) {
-                    continue;
-                }
-
                 $name = str_replace(['{', '}', ':'], '', $parameter->name);
+                $parameterData = [
+                    'name' => $name,
+                    'default' => 'commaSeparatedStrings' === $parameter->type ? '[]' : null,
+                    'docType' => 'commaSeparatedStrings' === $parameter->type ? 'string[]' : null,
+                    'type' => str_replace([
+                        'integer',
+                        'number',
+                        'commaSeparatedStrings',
+                    ], [
+                        'int',
+                        'int',
+                        'array',
+                    ], $parameter->type),
+                    'value' => $parameter->value,
+                    'variable' => to_camel_case($name),
+                ];
 
-                if ('pathReplace' === $parameter->kind) {
+                if ($parameter->isConstant) {
+                    $constants[] = $parameterData;
+                } elseif ('pathReplace' === $parameter->kind) {
                     $endpoint->url = str_replace(
                         $parameter->name,
                         '\'.$'.$name.'.\'',
@@ -90,22 +113,10 @@ foreach ($metadata as $namespace => $apis) {
                         }
                     }
 
-                    $pathArgs[] = [
-                        'name' => $name,
-                        'type' => str_replace(['integer', 'number'], 'int', $parameter->type),
-                        'value' => $parameter->value,
-                    ];
+                    $pathArgs[] = $parameterData;
                 } elseif ('query' === $parameter->kind) {
-                    $queryArgs[] = [
-                        'name' => $name,
-                        'type' => str_replace(['integer', 'number'], 'int', $parameter->type),
-                        'value' => $parameter->value,
-                    ];
+                    $queryArgs[] = $parameterData;
                 }
-            }
-
-            if (false === $hasUnavailable && count($endpoint->unavailable) > 0) {
-                $hasUnavailable = true;
             }
 
             $arguments = array_merge($pathArgs, $queryArgs);
@@ -113,16 +124,31 @@ foreach ($metadata as $namespace => $apis) {
                 'method' => $endpoint->name,
                 'url' => str_replace('.\'\'', '', '\''.$endpoint->url.'\''),
                 'arguments' => implode(', ', array_map(static function (array $argument): string {
-                    return $argument['type'].' $'.$argument['name'];
+                    $argumentString = $argument['type'].' $'.$argument['variable'];
+
+                    if (null !== $argument['default']) {
+                        $argumentString .= ' = '.$argument['default'];
+                    }
+
+                    return $argumentString;
                 }, $arguments)),
-                'argumentValues' => implode(', ', array_map(static function (array $argument): string {
+                'argumentDocTypes' => array_filter(array_column($arguments, 'docType')),
+                'argumentValues' => implode(', ', array_filter(array_map(static function (array $argument): string {
                     if ('string' === $argument['type']) {
                         return '\''.$argument['value'].'\'';
                     }
 
                     return $argument['value'];
-                }, $arguments)),
+                }, $arguments))),
                 'queryArgs' => $queryArgs,
+                'constants' => $constants,
+                'isOAuth' => array_reduce($queryArgs, function (bool $isOAuth, array $parameter): bool {
+                    if ($isOAuth) {
+                        return $isOAuth;
+                    }
+
+                    return ($parameter['name'] === 'access_token');
+                }, false),
                 'verb' => '\''.$endpoint->verb.'\'',
                 'overrides' => array_map(static function (stdClass $override): stdClass {
                     $override->url = str_replace('.\'\'', '', '\''.$override->url.'\'');
@@ -136,22 +162,20 @@ foreach ($metadata as $namespace => $apis) {
         file_put_contents(
             $baseDir.'/'.$className.'.php',
             $twig->render('Api.php.twig', [
-                'auth' => ('key' === $data->auth) ? 'apiKey' : 'accessToken',
                 'className' => $className,
                 'namespace' => $namespace,
                 'endpoints' => $endpoints,
-                'hasUnavailable' => $hasUnavailable,
+                'unavailable' => $data->unavailable,
             ])
         );
 
         file_put_contents(
             $baseTestDir.'/'.$className.'Test.php',
             $twig->render('ApiTest.php.twig', [
-                'auth' => ('key' === $data->auth) ? 'apiKey' : 'accessToken',
                 'className' => $className,
                 'namespace' => $namespace,
                 'endpoints' => $endpoints,
-                'hasUnavailable' => $hasUnavailable,
+                'unavailable' => $data->unavailable,
             ])
         );
     }

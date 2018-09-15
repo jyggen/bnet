@@ -14,74 +14,79 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Diablo;
 
 use Boo\BattleNet\Apis\Diablo\ProfileApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class ProfileApiTest extends TestCase
+final class ProfileApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Diablo_ProfileApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetApiAccount(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetApiAccount(RequestFactoryInterface $factory): void
-    {
-        $api = new ProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getApiAccount('');
+        $client = $this->getClient();
+        $api = new ProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getApiAccount('StingDuck-2452');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Diablo_ProfileApi.yml
      */
-    public function testGetApiHero(RequestFactoryInterface $factory): void
+    public function testGetApiHero(): void
     {
-        $api = new ProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getApiHero('', '');
+        $client = $this->getClient();
+        $api = new ProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getApiHero('StingDuck-2452', '111436732');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Diablo_ProfileApi.yml
      */
-    public function testGetApiDetailedHeroItems(RequestFactoryInterface $factory): void
+    public function testGetApiDetailedHeroItems(): void
     {
-        $api = new ProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getApiDetailedHeroItems('', '');
+        $client = $this->getClient();
+        $api = new ProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getApiDetailedHeroItems('StingDuck-2452', '111436732');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Diablo_ProfileApi.yml
      */
-    public function testGetApiDetailedFollowerItems(RequestFactoryInterface $factory): void
+    public function testGetApiDetailedFollowerItems(): void
     {
-        $api = new ProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getApiDetailedFollowerItems('', '');
+        $client = $this->getClient();
+        $api = new ProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getApiDetailedFollowerItems('StingDuck-2452', '111436732');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

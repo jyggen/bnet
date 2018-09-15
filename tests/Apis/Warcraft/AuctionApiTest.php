@@ -14,35 +14,25 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\AuctionApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class AuctionApiTest extends TestCase
+final class AuctionApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Warcraft_AuctionApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetAuctionDataStatus(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetAuctionDataStatus(RequestFactoryInterface $factory): void
-    {
-        $api = new AuctionApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getAuctionDataStatus('medivh');
+        $client = $this->getClient();
+        $api = new AuctionApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getAuctionDataStatus('draenor');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

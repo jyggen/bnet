@@ -32,7 +32,7 @@ $crawler = new Crawler($htmlBody);
 $apiIds = $crawler->filter('#apiId');
 $crawler = $crawler->filter('ul.endpointList');
 $docs = $crawler->each(static function (Crawler $endpointList) use ($apiIds) {
-    $apiId = mb_substr($endpointList->attr('id'), 3);
+    $apiId = substr($endpointList->attr('id'), 3);
     $apiName = trim($apiIds->filter('option[value="'.$apiId.'"]')->text());
     $apiAuthType = trim($endpointList->attr('data-auth-type'));
     $endpoints = $endpointList->filter('li.endpoint');
@@ -53,11 +53,11 @@ $docs = $crawler->each(static function (Crawler $endpointList) use ($apiIds) {
                 $kind = null;
 
                 foreach ($classes as $class) {
-                    if (false === mb_strpos($class, 'type-')) {
+                    if (false === strpos($class, 'type-')) {
                         continue;
                     }
 
-                    $kind = mb_substr($class, 5);
+                    $kind = substr($class, 5);
                 }
 
                 return [

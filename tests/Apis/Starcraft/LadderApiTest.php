@@ -14,35 +14,25 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Starcraft;
 
 use Boo\BattleNet\Apis\Starcraft\LadderApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class LadderApiTest extends TestCase
+final class LadderApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Starcraft_LadderApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetLadder(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetLadder(RequestFactoryInterface $factory): void
-    {
-        $api = new LadderApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getLadder('655');
+        $client = $this->getClient();
+        $api = new LadderApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getLadder('206822');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

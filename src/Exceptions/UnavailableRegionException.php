@@ -13,8 +13,13 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Exceptions;
 
+use Boo\BattleNet\Regions\RegionInterface;
 use Exception;
 
 final class UnavailableRegionException extends Exception
 {
+    public static function fromRegion(RegionInterface $region)
+    {
+        return new self($region->getName().' does not support this endpoint');
+    }
 }

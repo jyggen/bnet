@@ -14,97 +14,70 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Diablo;
 
 use Boo\BattleNet\Apis\Diablo\OAuthApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class OAuthApiTest extends TestCase
+final class OAuthApiTest extends AbstractApiTest
 {
-    /**
-     * @return array<int, array<int, RequestFactoryInterface>>
-     */
-    public function requestFactoryProvider(): array
+    public function testGetSeasonIndex(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetSeasonIndex(RequestFactoryInterface $factory): void
-    {
-        $api = new OAuthApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getSeasonIndex();
+        $client = $this->getClient();
+        $api = new OAuthApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getSeasonIndex('');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetSeason(RequestFactoryInterface $factory): void
+    public function testGetSeason(): void
     {
-        $api = new OAuthApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getSeason(1);
+        $client = $this->getClient();
+        $api = new OAuthApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getSeason(1, '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetSeasonLeaderboard(RequestFactoryInterface $factory): void
+    public function testGetSeasonLeaderboard(): void
     {
-        $api = new OAuthApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getSeasonLeaderboard(1, 'achievement-points');
+        $client = $this->getClient();
+        $api = new OAuthApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getSeasonLeaderboard(1, 'achievement-points', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetEraIndex(RequestFactoryInterface $factory): void
+    public function testGetEraIndex(): void
     {
-        $api = new OAuthApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getEraIndex();
+        $client = $this->getClient();
+        $api = new OAuthApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getEraIndex('');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetEra(RequestFactoryInterface $factory): void
+    public function testGetEra(): void
     {
-        $api = new OAuthApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getEra(1);
+        $client = $this->getClient();
+        $api = new OAuthApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getEra(1, '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetEraLeaderboard(RequestFactoryInterface $factory): void
+    public function testGetEraLeaderboard(): void
     {
-        $api = new OAuthApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getEraLeaderboard(1, 'rift-barbarian');
+        $client = $this->getClient();
+        $api = new OAuthApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getEraLeaderboard(1, 'rift-barbarian', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));

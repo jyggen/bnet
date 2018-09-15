@@ -13,59 +13,26 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\Starcraft;
 
-use Boo\BattleNet\Regions\RegionInterface;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
-final class DataResourcesApi
+final class DataResourcesApi extends AbstractApi
 {
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var array<string, int|string>
-     */
-    private $queryString;
-
-    /**
-     * @var RegionInterface
-     */
-    private $region;
-
-    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $apiKey)
-    {
-        $this->factory = $factory;
-        $this->region = $region;
-        $this->queryString = [
-            'apikey' => $apiKey,
-            'locale' => $this->region->getLocale(),
-        ];
-    }
-
     public function getAchievements(): RequestInterface
     {
-        $url = '/sc2/data/achievements';
-
-        return $this->createRequest('GET', $url);
+        return $this->createRequest('GET', '/sc2/data/achievements');
     }
 
     public function getRewards(): RequestInterface
     {
-        $url = '/sc2/data/rewards';
-
-        return $this->createRequest('GET', $url);
+        return $this->createRequest('GET', '/sc2/data/rewards');
     }
 
-    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
+    /**
+     * {@inheritdoc}
+     */
+    protected function getRestrictedRegions(): array
     {
-        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
-        $url = $this->region->getApiBaseUrl().$url;
-        $request = $this->factory->createRequest($verb, $url);
-        $request = $request->withHeader('Accept', 'application/json');
-        $request = $request->withHeader('Accept-Encoding', 'gzip');
-
-        return $request;
+        return [];
     }
 }

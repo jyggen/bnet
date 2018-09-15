@@ -32,7 +32,7 @@ function get_method_from_name_and_verb(string $name, string $verb): string
 
 function get_namespace_from_name(string $name): string
 {
-    static $lookup = [
+    static $nameOverrides = [
         'Community OAuth Profile APIs' => 'OAuth',
         'D3 Community API' => 'Diablo',
         'Game Data APIs' => 'Diablo',
@@ -41,8 +41,8 @@ function get_namespace_from_name(string $name): string
         'WoW Game Data' => 'Warcraft',
     ];
 
-    if (array_key_exists($name, $lookup)) {
-        return $lookup[$name];
+    if (array_key_exists($name, $nameOverrides)) {
+        return $nameOverrides[$name];
     }
 
     fwrite(STDERR, 'No namespace defined for "'.$name.'"');
@@ -51,13 +51,13 @@ function get_namespace_from_name(string $name): string
 
 function get_class_from_name(string $name): string
 {
-    static $lookup = [
+    static $nameOverrides = [
         'Data Resources' => 'DataResourcesApi',
         'D3' => 'OAuthApi',
     ];
 
-    if (array_key_exists($name, $lookup)) {
-        return $lookup[$name];
+    if (array_key_exists($name, $nameOverrides)) {
+        return $nameOverrides[$name];
     }
 
     if (strpos($name, 'D3 ') === 0) {
@@ -65,6 +65,75 @@ function get_class_from_name(string $name): string
     }
 
     return to_camel_case($name);
+}
+
+function normalize_parameters(array $parameters, string $authType): array
+{
+    static $unwanted = [
+        'callback',
+        'jsonp',
+        'locale',
+    ];
+
+    $parameters = array_filter($parameters, function (stdClass $parameter) use ($unwanted): bool {
+        return in_array($parameter->name, $unwanted, true) === false;
+    });
+
+    if ($authType === 'oauth2') {
+        $parameters[] = (object) [
+            'kind' => 'query',
+            'name' => 'access_token',
+            'value' => '',
+            'type' => 'string',
+            'description' => '',
+        ];
+    }
+
+    static $valueOverrides = [
+        // Values
+        '8056' => '80353',
+        'achievements,challenge' => '',
+        // Names
+        '{account}' => 'StingDuck-2452',
+        '{heroId}' => '111436732',
+        ':characterName' => 'Jyggen',
+        ':guildName' => 'Malaxnytt',
+        ':realm' => 'draenor',
+        // Descriptions
+        'The ID of the ladder to retrieve.' => '206822',
+        'The ID of the profile to retrieve.' => '5179818',
+        'The name of the profile to retrieve.' => 'soul',
+    ];
+
+    return array_reduce(
+        $parameters,
+        function (array $parameters, stdClass $parameter) use ($valueOverrides): array {
+            if (array_key_exists($parameter->value, $valueOverrides)) {
+                $parameter->value = $valueOverrides[$parameter->value];
+            }
+
+            if (array_key_exists($parameter->name, $valueOverrides)) {
+                $parameter->value = $valueOverrides[$parameter->name];
+            }
+
+            if (array_key_exists($parameter->description, $valueOverrides)) {
+                $parameter->value = $valueOverrides[$parameter->description];
+            }
+
+            $parameter->isConstant = false;
+
+            if ($parameter->name === 'fields') {
+                $parameter->kind = 'query';
+                $parameter->type = 'commaSeparatedStrings';
+                $parameter->isConstant = $parameter->value !== '';
+            }
+
+            $parameters[] = $parameter;
+
+            return $parameters;
+        },
+        []
+    );
 }
 
 set_error_handler(function ($severity, $message, $file, $line) {
@@ -106,31 +175,36 @@ foreach ($apiDocs as $category) {
 
         if (array_key_exists($className, $apis[$apiName]) === false) {
             $apis[$apiName][$className] = [
-                'auth' => $category->auth,
                 'endpoints' => [],
+                'unavailable' => [],
             ];
         }
 
         foreach ($endpoint->methods as $method) {
-            if (array_key_exists($method->uri, $apis[$apiName][$className]['endpoints']) === false) {
-                $apis[$apiName][$className]['endpoints'][$method->uri] = [
-                    'name' => get_method_from_name_and_verb($method->name, $method->method),
-                    'parameters' => $method->parameters,
+            $methodName = get_method_from_name_and_verb($method->name, $method->method);
+            $methodKey = $method->uri.$methodName;
+
+            if (array_key_exists($methodKey, $apis[$apiName][$className]['endpoints']) === false) {
+                $apis[$apiName][$className]['endpoints'][$methodKey] = [
+                    'name' => $methodName,
+                    'parameters' => normalize_parameters($method->parameters, $category->auth),
                     'regions' => [],
                     'overrides' => [],
                     'verb' => $method->method,
+                    'unavailable' => [],
+                    'url' => $method->uri,
                 ];
 
-                if (array_key_exists($method->uri, $methods)) {
-                    fwrite(STDERR, 'Unable to create lookup for duplicated endpoint "'.$method->uri.'"');
+                if (array_key_exists($methodKey, $methods)) {
+                    fwrite(STDERR, 'Unable to create lookup for duplicated endpoint "'.$methodKey.'"');
                     exit(1);
                 }
 
-                $methods[$method->uri] = &$apis[$apiName][$className]['endpoints'][$method->uri];
+                $methods[$methodKey] = &$apis[$apiName][$className]['endpoints'][$methodKey];
             }
 
-            if (in_array($region, $apis[$apiName][$className]['endpoints'][$method->uri]['regions'], true) === false) {
-                $apis[$apiName][$className]['endpoints'][$method->uri]['regions'][] = $region;
+            if (in_array($region, $apis[$apiName][$className]['endpoints'][$methodKey]['regions'], true) === false) {
+                $apis[$apiName][$className]['endpoints'][$methodKey]['regions'][] = $region;
             }
         }
     }
@@ -141,23 +215,33 @@ foreach ($china as $category) {
         foreach ($endpoint->methods as $method) {
             $override = null;
 
+            switch ($method->name) {
+                case 'Token':
+                    $method->name = 'Token Index';
+                    break;
+            }
+
             switch ($method->uri) {
                 case '/data/wow/token/':
                     $override = $method->uri;
                     $method->uri = '/token/';
+                    break;
             }
 
-            if (array_key_exists($method->uri, $methods) === false) {
-                fwrite(STDERR, 'Unable to map unique China endpoint "'.$method->uri.'"');
+            $methodName = get_method_from_name_and_verb($method->name, $method->method);
+            $methodKey = $method->uri.$methodName;
+
+            if (array_key_exists($methodKey, $methods) === false) {
+                fwrite(STDERR, 'Unable to map unique China endpoint "'.$methodKey.'"');
                 exit(1);
             }
 
-            if (in_array('CN', $methods[$method->uri]['regions'], true) === false) {
-                $methods[$method->uri]['regions'][] = 'CN';
+            if (in_array('CN', $methods[$methodKey]['regions'], true) === false) {
+                $methods[$methodKey]['regions'][] = 'CN';
             }
 
             if ($override !== null) {
-                $methods[$method->uri]['overrides'][] = [
+                $methods[$methodKey]['overrides'][] = [
                     'region' => 'CN',
                     'url' => $override,
                 ];
@@ -176,17 +260,42 @@ $allRegions = [
 
 foreach ($apis as $namespace => $stuff) {
     foreach ($stuff as $className => $data) {
-        foreach ($data['endpoints'] as $url => $metadata) {
+        $unavailable = null;
+
+        foreach ($data['endpoints'] as $key => $metadata) {
             $metadata['unavailable'] = array_values(array_diff($allRegions, $metadata['regions']));
-            $metadata['url'] = $url;
 
+            if ($unavailable === null) {
+                $unavailable = $metadata['unavailable'];
+            }
+
+            $missing = array_diff($unavailable, $metadata['unavailable']);
+
+            foreach ($missing as $region) {
+                $key = array_search($region, $unavailable, true);
+                unset($unavailable[$key]);
+                $unavailable = array_values($unavailable);
+            }
+
+            $apis[$namespace][$className]['endpoints'][$key] = $metadata;
+        }
+
+        sort($unavailable);
+
+        foreach ($data['endpoints'] as $key => $metadata) {
             unset($metadata['regions']);
+            $metadata['unavailable'] = array_filter(
+                $metadata['unavailable'],
+                function (string $region) use ($unavailable): bool {
+                    return in_array($region, $unavailable, true) === false;
+                }
+            );
 
-            $apis[$namespace][$className]['endpoints'][$url] = $metadata;
+            $apis[$namespace][$className]['endpoints'][$key] = $metadata;
         }
 
         $apis[$namespace][$className]['endpoints'] = array_values($apis[$namespace][$className]['endpoints']);
-
+        $apis[$namespace][$className]['unavailable'] = $unavailable;
     }
 }
 

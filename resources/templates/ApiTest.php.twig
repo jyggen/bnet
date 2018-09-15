@@ -14,37 +14,34 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\{{ namespace }};
 
 use Boo\BattleNet\Apis\{{ namespace }}\{{ className }};
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class {{ className }}Test extends TestCase
+final class {{ className }}Test extends AbstractApiTest
 {
-    /**
-     * @return array<int, array<int, RequestFactoryInterface>>
-     */
-    public function requestFactoryProvider(): array
-    {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
 {% for url, endpoint in endpoints %}
+{% if not loop.first %}
 
+{% endif %}
+{% if not endpoint.isOAuth %}
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr {{ namespace }}_{{ className }}.yml
      */
-    public function test{{ endpoint.method|ucwords }}(RequestFactoryInterface $factory): void
+{% endif %}
+    public function test{{ endpoint.method|ucwords }}(): void
     {
-        $api = new {{ className }}($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new {{ className }}($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->{{ endpoint.method }}({{ endpoint.argumentValues|raw }});
 
         self::assertSame({{ endpoint.verb|raw }}, $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+{% if not endpoint.isOAuth %}
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
+{% endif %}
     }
 {% endfor %}
 }

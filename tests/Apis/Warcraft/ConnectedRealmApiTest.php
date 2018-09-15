@@ -14,45 +14,26 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\ConnectedRealmApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class ConnectedRealmApiTest extends TestCase
+final class ConnectedRealmApiTest extends AbstractApiTest
 {
-    /**
-     * @return array<int, array<int, RequestFactoryInterface>>
-     */
-    public function requestFactoryProvider(): array
+    public function testGetConnectedRealmIndex(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetConnectedRealmIndex(RequestFactoryInterface $factory): void
-    {
-        $api = new ConnectedRealmApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getConnectedRealmIndex('dynamic-eu');
+        $client = $this->getClient();
+        $api = new ConnectedRealmApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getConnectedRealmIndex('dynamic-eu', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetConnectedRealm(RequestFactoryInterface $factory): void
+    public function testGetConnectedRealm(): void
     {
-        $api = new ConnectedRealmApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getConnectedRealm(509, 'dynamic-eu');
+        $client = $this->getClient();
+        $api = new ConnectedRealmApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getConnectedRealm(509, 'dynamic-eu', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));

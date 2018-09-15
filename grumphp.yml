@@ -1,8 +1,0 @@
----
-parameters:
-    bin_dir: vendor/bin
-    extensions:
-        - Boo\CodeStandard\GrumPHP
-    git_dir: .
-    tasks:
-        phpunit: ~

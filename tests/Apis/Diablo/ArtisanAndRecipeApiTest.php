@@ -14,48 +14,43 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Diablo;
 
 use Boo\BattleNet\Apis\Diablo\ArtisanAndRecipeApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class ArtisanAndRecipeApiTest extends TestCase
+final class ArtisanAndRecipeApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Diablo_ArtisanAndRecipeApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetArtisan(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetArtisan(RequestFactoryInterface $factory): void
-    {
-        $api = new ArtisanAndRecipeApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new ArtisanAndRecipeApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getArtisan('blacksmith');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Diablo_ArtisanAndRecipeApi.yml
      */
-    public function testGetRecipe(RequestFactoryInterface $factory): void
+    public function testGetRecipe(): void
     {
-        $api = new ArtisanAndRecipeApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new ArtisanAndRecipeApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getRecipe('blacksmith', 'apprentice-flamberge');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

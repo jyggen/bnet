@@ -13,68 +13,28 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\Diablo;
 
-use Boo\BattleNet\Exceptions\UnavailableRegionException;
-use Boo\BattleNet\Regions\RegionInterface;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
-final class ActApi
+final class ActApi extends AbstractApi
 {
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var array<string, int|string>
-     */
-    private $queryString;
-
-    /**
-     * @var RegionInterface
-     */
-    private $region;
-
-    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $apiKey)
-    {
-        $this->factory = $factory;
-        $this->region = $region;
-        $this->queryString = [
-            'apikey' => $apiKey,
-            'locale' => $this->region->getLocale(),
-        ];
-    }
-
     public function getActIndex(): RequestInterface
     {
-        if ('SEA' === $this->region->getName()) {
-            throw new UnavailableRegionException('SEA does not support this endpoint');
-        }
-
-        $url = '/d3/data/act';
-
-        return $this->createRequest('GET', $url);
+        return $this->createRequest('GET', '/d3/data/act');
     }
 
     public function getAct(int $actId): RequestInterface
     {
-        if ('SEA' === $this->region->getName()) {
-            throw new UnavailableRegionException('SEA does not support this endpoint');
-        }
-
-        $url = '/d3/data/act/'.$actId;
-
-        return $this->createRequest('GET', $url);
+        return $this->createRequest('GET', '/d3/data/act/'.$actId);
     }
 
-    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
+    /**
+     * {@inheritdoc}
+     */
+    protected function getRestrictedRegions(): array
     {
-        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
-        $url = $this->region->getApiBaseUrl().$url;
-        $request = $this->factory->createRequest($verb, $url);
-        $request = $request->withHeader('Accept', 'application/json');
-        $request = $request->withHeader('Accept-Encoding', 'gzip');
-
-        return $request;
+        return [
+            'SEA',
+        ];
     }
 }

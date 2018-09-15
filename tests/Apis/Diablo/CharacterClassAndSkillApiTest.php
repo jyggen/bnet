@@ -14,48 +14,43 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Diablo;
 
 use Boo\BattleNet\Apis\Diablo\CharacterClassAndSkillApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class CharacterClassAndSkillApiTest extends TestCase
+final class CharacterClassAndSkillApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Diablo_CharacterClassAndSkillApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetCharacterClass(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetCharacterClass(RequestFactoryInterface $factory): void
-    {
-        $api = new CharacterClassAndSkillApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new CharacterClassAndSkillApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getCharacterClass('barbarian');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Diablo_CharacterClassAndSkillApi.yml
      */
-    public function testGetApiSkill(RequestFactoryInterface $factory): void
+    public function testGetApiSkill(): void
     {
-        $api = new CharacterClassAndSkillApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new CharacterClassAndSkillApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getApiSkill('barbarian', 'bash');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

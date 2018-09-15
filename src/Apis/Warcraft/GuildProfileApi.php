@@ -13,63 +13,54 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\Warcraft;
 
-use Boo\BattleNet\Exceptions\UnavailableRegionException;
-use Boo\BattleNet\Regions\RegionInterface;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
-final class GuildProfileApi
+final class GuildProfileApi extends AbstractApi
 {
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var array<string, int|string>
-     */
-    private $queryString;
-
-    /**
-     * @var RegionInterface
-     */
-    private $region;
-
-    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $apiKey)
+    public function getGuildProfile(string $realm, string $guildName, array $fields = []): RequestInterface
     {
-        $this->factory = $factory;
-        $this->region = $region;
-        $this->queryString = [
-            'apikey' => $apiKey,
-            'locale' => $this->region->getLocale(),
-        ];
-    }
-
-    public function getGuildProfile(string $realm, string $guildName, string $fields): RequestInterface
-    {
-        if ('CN' === $this->region->getName()) {
-            throw new UnavailableRegionException('CN does not support this endpoint');
-        }
-
-        if ('SEA' === $this->region->getName()) {
-            throw new UnavailableRegionException('SEA does not support this endpoint');
-        }
-
-        $url = '/wow/guild/'.$realm.'/'.$guildName;
-
-        return $this->createRequest('GET', $url, [
-            'fields' => $fields,
+        return $this->createRequest('GET', '/wow/guild/'.$realm.'/'.$guildName, [
+            'fields' => implode(',', $fields),
         ]);
     }
 
-    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
+    public function getMembers(string $realm, string $guildName): RequestInterface
     {
-        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
-        $url = $this->region->getApiBaseUrl().$url;
-        $request = $this->factory->createRequest($verb, $url);
-        $request = $request->withHeader('Accept', 'application/json');
-        $request = $request->withHeader('Accept-Encoding', 'gzip');
+        return $this->createRequest('GET', '/wow/guild/'.$realm.'/'.$guildName, [
+            'fields' => 'members',
+        ]);
+    }
 
-        return $request;
+    public function getAchievements(string $realm, string $guildName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/guild/'.$realm.'/'.$guildName, [
+            'fields' => 'achievements',
+        ]);
+    }
+
+    public function getNews(string $realm, string $guildName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/guild/'.$realm.'/'.$guildName, [
+            'fields' => 'news',
+        ]);
+    }
+
+    public function getChallenge(string $realm, string $guildName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/guild/'.$realm.'/'.$guildName, [
+            'fields' => 'challenge',
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getRestrictedRegions(): array
+    {
+        return [
+            'CN',
+            'SEA',
+        ];
     }
 }

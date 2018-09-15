@@ -14,45 +14,26 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\PlayableSpecializationApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class PlayableSpecializationApiTest extends TestCase
+final class PlayableSpecializationApiTest extends AbstractApiTest
 {
-    /**
-     * @return array<int, array<int, RequestFactoryInterface>>
-     */
-    public function requestFactoryProvider(): array
+    public function testGetPlayableSpecializationIndex(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetPlayableSpecializationIndex(RequestFactoryInterface $factory): void
-    {
-        $api = new PlayableSpecializationApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getPlayableSpecializationIndex('static-eu');
+        $client = $this->getClient();
+        $api = new PlayableSpecializationApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getPlayableSpecializationIndex('static-eu', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetPlayableSpecialization(RequestFactoryInterface $factory): void
+    public function testGetPlayableSpecialization(): void
     {
-        $api = new PlayableSpecializationApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getPlayableSpecialization(262, 'static-eu');
+        $client = $this->getClient();
+        $api = new PlayableSpecializationApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getPlayableSpecialization(262, 'static-eu', '');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));

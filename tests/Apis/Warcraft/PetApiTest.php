@@ -14,74 +14,79 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\PetApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class PetApiTest extends TestCase
+final class PetApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Warcraft_PetApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetMasterList(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetMasterList(RequestFactoryInterface $factory): void
-    {
-        $api = new PetApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new PetApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getMasterList();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_PetApi.yml
      */
-    public function testGetAbilities(RequestFactoryInterface $factory): void
+    public function testGetAbilities(): void
     {
-        $api = new PetApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new PetApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getAbilities('640');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_PetApi.yml
      */
-    public function testGetSpecies(RequestFactoryInterface $factory): void
+    public function testGetSpecies(): void
     {
-        $api = new PetApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new PetApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getSpecies('258');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_PetApi.yml
      */
-    public function testGetStats(RequestFactoryInterface $factory): void
+    public function testGetStats(): void
     {
-        $api = new PetApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new PetApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getStats('258', 25, 5, 4);
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

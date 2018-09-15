@@ -13,52 +13,21 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\Starcraft;
 
-use Boo\BattleNet\Regions\RegionInterface;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
-final class LadderApi
+final class LadderApi extends AbstractApi
 {
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var array<string, int|string>
-     */
-    private $queryString;
-
-    /**
-     * @var RegionInterface
-     */
-    private $region;
-
-    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $apiKey)
-    {
-        $this->factory = $factory;
-        $this->region = $region;
-        $this->queryString = [
-            'apikey' => $apiKey,
-            'locale' => $this->region->getLocale(),
-        ];
-    }
-
     public function getLadder(string $id): RequestInterface
     {
-        $url = '/sc2/ladder/'.$id;
-
-        return $this->createRequest('GET', $url);
+        return $this->createRequest('GET', '/sc2/ladder/'.$id);
     }
 
-    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
+    /**
+     * {@inheritdoc}
+     */
+    protected function getRestrictedRegions(): array
     {
-        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
-        $url = $this->region->getApiBaseUrl().$url;
-        $request = $this->factory->createRequest($verb, $url);
-        $request = $request->withHeader('Accept', 'application/json');
-        $request = $request->withHeader('Accept-Encoding', 'gzip');
-
-        return $request;
+        return [];
     }
 }

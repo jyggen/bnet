@@ -13,64 +13,34 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\OAuth;
 
-use Boo\BattleNet\Exceptions\UnavailableRegionException;
-use Boo\BattleNet\Regions\RegionInterface;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
-final class ProfileApi
+final class ProfileApi extends AbstractApi
 {
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var array<string, int|string>
-     */
-    private $queryString;
-
-    /**
-     * @var RegionInterface
-     */
-    private $region;
-
-    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $accessToken)
+    public function getSc2OauthProfile(string $accessToken): RequestInterface
     {
-        $this->factory = $factory;
-        $this->region = $region;
-        $this->queryString = [
+        return $this->createRequest('GET', '/sc2/profile/user', [
             'access_token' => $accessToken,
-            'locale' => $this->region->getLocale(),
-        ];
+        ]);
     }
 
-    public function getSc2OauthProfile(): RequestInterface
+    public function getWowOauthProfile(string $accessToken): RequestInterface
     {
-        $url = '/sc2/profile/user';
+        $this->preventRegionUsage([
+            'CN',
+        ]);
 
-        return $this->createRequest('GET', $url);
+        return $this->createRequest('GET', '/wow/user/characters', [
+            'access_token' => $accessToken,
+        ]);
     }
 
-    public function getWowOauthProfile(): RequestInterface
+    /**
+     * {@inheritdoc}
+     */
+    protected function getRestrictedRegions(): array
     {
-        if ('CN' === $this->region->getName()) {
-            throw new UnavailableRegionException('CN does not support this endpoint');
-        }
-
-        $url = '/wow/user/characters';
-
-        return $this->createRequest('GET', $url);
-    }
-
-    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
-    {
-        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
-        $url = $this->region->getApiBaseUrl().$url;
-        $request = $this->factory->createRequest($verb, $url);
-        $request = $request->withHeader('Accept', 'application/json');
-        $request = $request->withHeader('Accept-Encoding', 'gzip');
-
-        return $request;
+        return [];
     }
 }

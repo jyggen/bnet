@@ -14,45 +14,26 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\OAuth;
 
 use Boo\BattleNet\Apis\OAuth\ProfileApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class ProfileApiTest extends TestCase
+final class ProfileApiTest extends AbstractApiTest
 {
-    /**
-     * @return array<int, array<int, RequestFactoryInterface>>
-     */
-    public function requestFactoryProvider(): array
+    public function testGetSc2OauthProfile(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetSc2OauthProfile(RequestFactoryInterface $factory): void
-    {
-        $api = new ProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getSc2OauthProfile();
+        $client = $this->getClient();
+        $api = new ProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getSc2OauthProfile('');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
     }
 
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetWowOauthProfile(RequestFactoryInterface $factory): void
+    public function testGetWowOauthProfile(): void
     {
-        $api = new ProfileApi($factory, new Regions\EU(), 'foobar');
-        $request = $api->getWowOauthProfile();
+        $client = $this->getClient();
+        $api = new ProfileApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
+        $request = $api->getWowOauthProfile('');
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));

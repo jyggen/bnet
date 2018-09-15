@@ -1,9 +1,8 @@
 {
     "name": "boo/bnet",
+    "type": "library",
     "description": "Library for working with the Battle.net Web APIs.",
     "keywords": ["Battle.net", "Blizzard", "Warcraft", "Starcraft", "Diablo", "Overwatch", "API", "bnet"],
-    "homepage": "https://github.com/jyggen/bnet",
-    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -11,28 +10,26 @@
             "email": "jonas@stendahl.me"
         }
     ],
-    "support": {
-        "docs": "https://docs.jyggen.com/boo-bnet/latest",
-        "issues": "https://github.com/jyggen/bnet/issues",
-        "source": "https://github.com/jyggen/bnet"
-   },
     "require": {
         "php": "^7.1",
-        "ext-mbstring": "*",
         "league/oauth2-client": "^2.0",
         "psr/http-factory": "^1.0",
         "psr/http-message": "^1.0"
     },
     "require-dev": {
         "ext-json": "*",
-        "boo/code-standard": "^0.1.1",
-        "guzzlehttp/guzzle": "^6.0",
+        "codedungeon/phpunit-result-printer": "^0.20.1",
+        "guzzlehttp/guzzle": "^6.3.3",
         "http-interop/http-factory-guzzle": "^1.0.0",
-        "phpunit/phpunit": "^6.2.4",
-        "symfony/css-selector": "^4.0",
-        "symfony/dom-crawler": "^4.0",
-        "symfony/var-dumper": "^4.0",
-        "twig/twig": "^2.0"
+        "jakub-onderka/php-parallel-lint": "^1.0.0",
+        "php-coveralls/php-coveralls": "^2.1.0",
+        "php-vcr/php-vcr": "^1.4.4",
+        "php-vcr/phpunit-testlistener-vcr": "^3.2.1",
+        "phpunit/phpunit": "^7.3.5",
+        "symfony/css-selector": "^4.1.4",
+        "symfony/dom-crawler": "^4.1.4",
+        "symfony/var-dumper": "^4.1.4",
+        "twig/twig": "^2.5.0"
     },
     "autoload": {
         "psr-4": {
@@ -49,10 +46,8 @@
             "dev-master": "1.x-dev"
         }
     },
-    "scripts": {
-        "test": [
-            "mkdir -p build/logs",
-            "grumphp run"
-        ]
+    "support": {
+        "issues": "https://github.com/jyggen/bnet/issues",
+        "source": "https://github.com/jyggen/bnet"
     }
 }

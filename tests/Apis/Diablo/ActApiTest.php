@@ -14,48 +14,43 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Diablo;
 
 use Boo\BattleNet\Apis\Diablo\ActApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class ActApiTest extends TestCase
+final class ActApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Diablo_ActApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetActIndex(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetActIndex(RequestFactoryInterface $factory): void
-    {
-        $api = new ActApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new ActApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getActIndex();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Diablo_ActApi.yml
      */
-    public function testGetAct(RequestFactoryInterface $factory): void
+    public function testGetAct(): void
     {
-        $api = new ActApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new ActApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getAct(1);
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

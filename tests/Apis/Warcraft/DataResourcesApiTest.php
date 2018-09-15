@@ -14,152 +14,187 @@ declare(strict_types=1);
 namespace Boo\BattleNet\Tests\Apis\Warcraft;
 
 use Boo\BattleNet\Apis\Warcraft\DataResourcesApi;
-use Boo\BattleNet\Regions;
-use Http\Factory\Guzzle\RequestFactory;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Tests\Apis\AbstractApiTest;
 
-final class DataResourcesApiTest extends TestCase
+final class DataResourcesApiTest extends AbstractApiTest
 {
     /**
-     * @return array<int, array<int, RequestFactoryInterface>>
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function requestFactoryProvider(): array
+    public function testGetBattlegroups(): void
     {
-        return [
-            [
-                new RequestFactory(),
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider requestFactoryProvider
-     */
-    public function testGetBattlegroups(RequestFactoryInterface $factory): void
-    {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getBattlegroups();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function testGetCharacterRaces(RequestFactoryInterface $factory): void
+    public function testGetCharacterRaces(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getCharacterRaces();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function testGetCharacterClasses(RequestFactoryInterface $factory): void
+    public function testGetCharacterClasses(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getCharacterClasses();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function testGetCharacterAchievements(RequestFactoryInterface $factory): void
+    public function testGetCharacterAchievements(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getCharacterAchievements();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function testGetGuildRewards(RequestFactoryInterface $factory): void
+    public function testGetGuildRewards(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getGuildRewards();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function testGetGuildPerks(RequestFactoryInterface $factory): void
+    public function testGetGuildPerks(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getGuildPerks();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function testGetGuildAchievements(RequestFactoryInterface $factory): void
+    public function testGetGuildAchievements(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getGuildAchievements();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function testGetItemClasses(RequestFactoryInterface $factory): void
+    public function testGetItemClasses(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getItemClasses();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function testGetTalents(RequestFactoryInterface $factory): void
+    public function testGetTalents(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getTalents();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 
     /**
-     * @dataProvider requestFactoryProvider
+     * @vcr Warcraft_DataResourcesApi.yml
      */
-    public function testGetPetTypes(RequestFactoryInterface $factory): void
+    public function testGetPetTypes(): void
     {
-        $api = new DataResourcesApi($factory, new Regions\EU(), 'foobar');
+        $client = $this->getClient();
+        $api = new DataResourcesApi($this->getRequestFactory(), $this->getRegion(), $this->getApiKey());
         $request = $api->getPetTypes();
 
         self::assertSame('GET', $request->getMethod());
         self::assertSame('application/json', $request->getHeaderLine('Accept'));
         self::assertSame('gzip', $request->getHeaderLine('Accept-Encoding'));
+
+        $response = $client->send($request);
+
+        self::assertSame(200, $response->getStatusCode());
     }
 }

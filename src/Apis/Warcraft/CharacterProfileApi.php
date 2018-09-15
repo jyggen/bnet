@@ -13,61 +13,159 @@ declare(strict_types=1);
 
 namespace Boo\BattleNet\Apis\Warcraft;
 
-use Boo\BattleNet\Exceptions\UnavailableRegionException;
-use Boo\BattleNet\Regions\RegionInterface;
-use Psr\Http\Message\RequestFactoryInterface;
+use Boo\BattleNet\Apis\AbstractApi;
 use Psr\Http\Message\RequestInterface;
 
-final class CharacterProfileApi
+final class CharacterProfileApi extends AbstractApi
 {
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var array<string, int|string>
-     */
-    private $queryString;
-
-    /**
-     * @var RegionInterface
-     */
-    private $region;
-
-    public function __construct(RequestFactoryInterface $factory, RegionInterface $region, string $apiKey)
+    public function getCharacterProfile(string $realm, string $characterName, array $fields = []): RequestInterface
     {
-        $this->factory = $factory;
-        $this->region = $region;
-        $this->queryString = [
-            'apikey' => $apiKey,
-            'locale' => $this->region->getLocale(),
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => implode(',', $fields),
+        ]);
+    }
+
+    public function getAchievements(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'achievements',
+        ]);
+    }
+
+    public function getAppearance(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'appearance',
+        ]);
+    }
+
+    public function getFeed(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'feed',
+        ]);
+    }
+
+    public function getGuild(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'guild',
+        ]);
+    }
+
+    public function getHunterPets(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'hunterPets',
+        ]);
+    }
+
+    public function getItems(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'items',
+        ]);
+    }
+
+    public function getMounts(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'mounts',
+        ]);
+    }
+
+    public function getPets(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'pets',
+        ]);
+    }
+
+    public function getPetSlots(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'petSlots',
+        ]);
+    }
+
+    public function getProfessions(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'professions',
+        ]);
+    }
+
+    public function getProgression(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'progression',
+        ]);
+    }
+
+    public function getPVP(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'pvp',
+        ]);
+    }
+
+    public function getQuests(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'quests',
+        ]);
+    }
+
+    public function getReputation(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'reputation',
+        ]);
+    }
+
+    public function getStatistics(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'statistics',
+        ]);
+    }
+
+    public function getStats(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'stats',
+        ]);
+    }
+
+    public function getTalents(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'talents',
+        ]);
+    }
+
+    public function getTitles(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'titles',
+        ]);
+    }
+
+    public function getAudit(string $realm, string $characterName): RequestInterface
+    {
+        return $this->createRequest('GET', '/wow/character/'.$realm.'/'.$characterName, [
+            'fields' => 'audit',
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getRestrictedRegions(): array
+    {
+        return [
+            'CN',
+            'SEA',
         ];
-    }
-
-    public function getCharacterProfile(string $realm, string $characterName, string $fields): RequestInterface
-    {
-        if ('CN' === $this->region->getName()) {
-            throw new UnavailableRegionException('CN does not support this endpoint');
-        }
-
-        if ('SEA' === $this->region->getName()) {
-            throw new UnavailableRegionException('SEA does not support this endpoint');
-        }
-
-        $url = '/wow/character/'.$realm.'/'.$characterName;
-
-        return $this->createRequest('GET', $url);
-    }
-
-    private function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
-    {
-        $url = $url.'?'.http_build_query(array_replace($this->queryString, $queryString));
-        $url = $this->region->getApiBaseUrl().$url;
-        $request = $this->factory->createRequest($verb, $url);
-        $request = $request->withHeader('Accept', 'application/json');
-        $request = $request->withHeader('Accept-Encoding', 'gzip');
-
-        return $request;
     }
 }
