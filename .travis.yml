@@ -49,7 +49,9 @@ jobs:
 
     -
         <<: *TEST_JOB
+        Stage: Test
         php: nightly
+        env: COMPOSER_FLAGS="--ignore-platform-reqs" PHP_CS_FIXER_IGNORE_ENV=1
 
     -
         <<: *TEST_JOB
