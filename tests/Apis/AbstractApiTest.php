@@ -34,17 +34,20 @@ abstract class AbstractApiTest extends TestCase
     {
         $apiKey = getenv('BNET_API_KEY');
 
+        if ($apiKey === '') {
+            $apiKey = false;
+        }
+
         return false !== $apiKey ? $apiKey : 'foobar';
     }
 
     final protected function getClient(): ClientInterface
     {
-        $apiKey = getenv('BNET_API_KEY');
         $mockClient = $this->prophesize(ClientInterface::class);
 
         $mockClient->send(Argument::type(RequestInterface::class))->willReturn(new Response());
 
-        return false !== $apiKey ? new Client([
+        return 'foobar' !== $this->getApiKey() ? new Client([
             'http_errors' => false,
         ]) : $mockClient->reveal();
     }

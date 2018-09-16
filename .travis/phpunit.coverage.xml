@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="./tests/bootstrap.php"
+         xsi:noNamespaceSchemaLocation="../vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="../tests/bootstrap.php"
          colors="true"
          verbose="true"
          backupGlobals="false"
@@ -10,14 +10,11 @@
          printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer"
 >
     <testsuite name="boo/bnet tests">
-        <directory suffix="Test.php">tests</directory>
+        <directory suffix="Test.php">../tests</directory>
     </testsuite>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">../src</directory>
         </whitelist>
     </filter>
-    <listeners>
-        <listener class="VCR\PHPUnit\TestListener\VCRTestListener" file="vendor/php-vcr/phpunit-testlistener-vcr/src/VCRTestListener.php" />
-    </listeners>
 </phpunit>

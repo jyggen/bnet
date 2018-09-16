@@ -12,12 +12,16 @@ cache:
 
 env:
     global:
-    - DEFAULT_COMPOSER_FLAGS="--optimize-autoloader --no-interaction --no-progress"
-    - COMPOSER_FLAGS=""
+        - DEFAULT_COMPOSER_FLAGS="--optimize-autoloader --no-interaction --no-progress"
+        - COMPOSER_FLAGS=""
 
 before_install:
-- phpenv config-rm xdebug.ini || return 0
-- composer global show hirak/prestissimo -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS hirak/prestissimo
+    - phpenv config-rm xdebug.ini || return 0
+    - composer global show hirak/prestissimo -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS hirak/prestissimo
+
+install:
+    - travis_retry composer update $DEFAULT_COMPOSER_FLAGS $COMPOSER_FLAGS
+    - composer info -D | sort
 
 jobs:
     include:
@@ -25,29 +29,18 @@ jobs:
         stage: Code Standard
         php: 7.2
         env: COMPOSER_FLAGS="--no-dev --prefer-stable"
-        install:
-        - composer global show friendsofphp/php-cs-fixer -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS friendsofphp/php-cs-fixer
-        - composer global show localheinz/composer-normalize -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS localheinz/composer-normalize
-        - composer global show maglnet/composer-require-checker -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS maglnet/composer-require-checker
-        - composer global show phpstan/phpstan -q || travis_retry composer global require $DEFAULT_COMPOSER_FLAGS phpstan/phpstan
-        - composer global info -D | sort
-        - travis_retry composer update $DEFAULT_COMPOSER_FLAGS $COMPOSER_FLAGS
-        - composer info -D | sort
         script:
-        - $HOME/.composer/vendor/bin/phpstan analyse -l 7 src/ || travis_terminate 1
-        - $HOME/.composer/vendor/bin/php-cs-fixer --diff --diff-format=udiff --dry-run -v fix
-        - $HOME/.composer/vendor/bin/composer-require-checker check --config-file=.composer-require-checker.json composer.json || travis_terminate 1
-        - composer normalize ./composer.json --dry-run
+            - vendor/bin/phpstan analyse -l 7 src/ || travis_terminate 1
+            - vendor/bin/php-cs-fixer --diff --diff-format=udiff --dry-run -v fix
+            - vendor/bin/composer-require-checker check --config-file=.composer-require-checker.json composer.json || travis_terminate 1
+            - composer normalize ./composer.json --dry-run
 
     - &TEST_JOB
         stage: Test
         php: 7.2
-        install:
-        - travis_retry composer update $DEFAULT_COMPOSER_FLAGS $COMPOSER_FLAGS
-        - composer info -D | sort
         script:
-        - vendor/bin/parallel-lint --exclude vendor . .php_cs bin/fetch-api-docs bin/generate-classes bin/generate-metadata || travis_terminate 1
-        - vendor/bin/phpunit
+            - vendor/bin/parallel-lint --exclude vendor . .php_cs bin/fetch-api-docs bin/generate-classes bin/generate-metadata || travis_terminate 1
+            - vendor/bin/phpunit
 
     -
         <<: *TEST_JOB
@@ -63,10 +56,11 @@ jobs:
         <<: *TEST_JOB
         stage: Code Coverage
         php: 7.2
+        env: BNET_API_KEY=""
         script:
-        - phpdbg --version 2> /dev/null || travis_terminate 0
-        - phpdbg -qrr vendor/bin/phpunit --coverage-clover build/logs/clover.xml || travis_terminate 1
-        - php vendor/bin/php-coveralls -v
+            - phpdbg --version 2> /dev/null || travis_terminate 0
+            - phpdbg -qrr vendor/bin/phpunit -c .travis/phpunit.coverage.xml --coverage-clover build/logs/clover.xml || travis_terminate 1
+            - php vendor/bin/php-coveralls -v
 
 allow_failures:
-- php: nightly
+    - php: nightly
