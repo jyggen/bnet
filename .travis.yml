@@ -28,7 +28,6 @@ jobs:
     -
         stage: Code Standard
         php: 7.2
-        env: COMPOSER_FLAGS="--no-dev --prefer-stable"
         script:
             - vendor/bin/phpstan analyse -l 7 src/ || travis_terminate 1
             - vendor/bin/php-cs-fixer --diff --diff-format=udiff --dry-run -v fix
