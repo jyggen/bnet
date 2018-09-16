@@ -34,7 +34,7 @@ abstract class AbstractApiTest extends TestCase
     {
         $apiKey = getenv('BNET_API_KEY');
 
-        if ($apiKey === '') {
+        if ('' === $apiKey) {
             $apiKey = false;
         }
 
