@@ -20,6 +20,7 @@ use Boo\BattleNet\Tests\Apis\AbstractApiTest;
  * DO NOT EDIT. This file was auto-generated based on the Battle.net API docs.
  *
  * @internal
+ * @covers \Boo\BattleNet\Apis\AbstractApi
  * @covers \Boo\BattleNet\Apis\Warcraft\PlayableSpecializationApi
  */
 final class PlayableSpecializationApiTest extends AbstractApiTest

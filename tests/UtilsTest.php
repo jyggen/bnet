@@ -20,7 +20,7 @@ use RuntimeException;
 
 /**
  * @internal
- * @coversNothing
+ * @covers \Boo\BattleNet\Utils
  */
 final class UtilsTest extends TestCase
 {
