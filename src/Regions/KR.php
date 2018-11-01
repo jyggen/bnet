@@ -44,7 +44,7 @@ final class KR implements RegionInterface
      */
     public function getApiBaseUrl(): string
     {
-        return 'https://kr.api.battle.net';
+        return 'https://kr.api.blizzard.com';
     }
 
     /**

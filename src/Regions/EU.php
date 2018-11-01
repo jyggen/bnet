@@ -51,7 +51,7 @@ final class EU implements RegionInterface
      */
     public function getApiBaseUrl(): string
     {
-        return 'https://eu.api.battle.net';
+        return 'https://eu.api.blizzard.com';
     }
 
     /**

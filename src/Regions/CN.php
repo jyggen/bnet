@@ -44,7 +44,7 @@ final class CN implements RegionInterface
      */
     public function getApiBaseUrl(): string
     {
-        return 'https://api.battlenet.com.cn';
+        return 'https://gateway.battlenet.com.cn';
     }
 
     /**

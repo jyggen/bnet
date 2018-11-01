@@ -47,7 +47,7 @@ abstract class AbstractApi
     final protected function createRequest(string $verb, string $url, array $queryString = []): RequestInterface
     {
         if (false === array_key_exists('access_token', $queryString)) {
-            $queryString['apikey'] = $this->apiKey;
+            $queryString['access_token'] = $this->apiKey;
         }
 
         $queryString['locale'] = $this->region->getLocale();

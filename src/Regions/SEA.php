@@ -44,7 +44,7 @@ final class SEA implements RegionInterface
      */
     public function getApiBaseUrl(): string
     {
-        return 'https://sea.api.battle.net';
+        return 'https://sea.api.blizzard.com';
     }
 
     /**
