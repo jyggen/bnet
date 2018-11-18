@@ -35,6 +35,7 @@
         "guzzlehttp/guzzle": "^6.3.3",
         "http-interop/http-factory-guzzle": "^1.0.0",
         "jakub-onderka/php-parallel-lint": "^1.0.0",
+        "localheinz/composer-normalize": "^1.0.0",
         "maglnet/composer-require-checker": "^1.1",
         "php-coveralls/php-coveralls": "^2.1.0",
         "php-vcr/php-vcr": "^1.4.4",
@@ -44,8 +45,10 @@
         "symfony/css-selector": "^4.1.4",
         "symfony/dom-crawler": "^4.1.4",
         "symfony/var-dumper": "^4.1.4",
-        "twig/twig": "^2.5.0",
-        "localheinz/composer-normalize": "^1.0.0"
+        "twig/twig": "^2.5.0"
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
         "branch-alias": {
@@ -65,8 +68,5 @@
     "support": {
         "issues": "https://github.com/jyggen/bnet/issues",
         "source": "https://github.com/jyggen/bnet"
-    },
-    "config": {
-        "sort-packages": true
     }
 }
