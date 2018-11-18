@@ -65,5 +65,8 @@
     "support": {
         "issues": "https://github.com/jyggen/bnet/issues",
         "source": "https://github.com/jyggen/bnet"
+    },
+    "config": {
+        "sort-packages": true
     }
 }
