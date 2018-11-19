@@ -46,7 +46,7 @@ final class US implements RegionInterface
      */
     public function getApiBaseUrl(): string
     {
-        return 'https://us.api.battle.net';
+        return 'https://us.api.blizzard.com';
     }
 
     /**
