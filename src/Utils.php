@@ -51,7 +51,7 @@ final class Utils
         $slug = \str_replace(static::$replaceTable[0], static::$replaceTable[1], $name);
         $slug = \preg_replace(static::$regexTable[0], static::$regexTable[1], $slug);
 
-        return \trim($slug, '-');
+        return \trim((string) $slug, '-');
     }
 
     /**
