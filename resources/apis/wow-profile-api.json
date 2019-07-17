@@ -1,0 +1,4265 @@
+{
+  "name": "WoW Profile Data",
+  "title": "WoW Profile Data",
+  "description": "Endpoints for World of Warcraft character profiles.\n\n**Hosts**: Note that Blizzard API request paths follow this format: `{region}.api.blizzard.com/{API path}` (or `gateway.battlenet.com.cn/{API path}` for China). For more information, see the [Getting Started guide](/documentation/guides/getting-started).\n\n**Namespaces:** World of Warcraft Game Data APIs require a namespace as part of the request. Each endpoint below lists the correct namespace to use as a parameter. Namespaces can be submitted as headers (**Battlenet-Namespace: {namespace}**) or as query parameters (**?namespace={namespace}**). See [Game Data APIs](/documentation/guides/game-data-apis) for more details.",
+  "version": "1.2.0",
+  "protocol": "rest",
+  "basePath": "https://__region__.api.blizzard.com",
+  "regionDefault": "us",
+  "auth": {
+    "oauth": {
+      "version": "2.0",
+      "base_uri": "https://us.battle.net",
+      "authorize_uri": "/oauth/authorize",
+      "access_token_uri": "/oauth/token",
+      "auth_flows": [
+        "client_cred",
+        "auth_code"
+      ],
+      "options": {
+        "authorize": {
+          "scope": []
+        }
+      }
+    }
+  },
+  "resources": {
+    "Character Achievements API": {
+      "methods": {
+        "Character Achievements Summary": {
+          "description": "Returns a summary of the achievements a character has completed.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/achievements",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Character Appearance API": {
+      "methods": {
+        "Character Appearance Summary": {
+          "description": "Returns a summary of a character's appearance settings.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/appearance",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Character Equipment API": {
+      "methods": {
+        "Character Equipment Summary": {
+          "description": "Returns a summary of the items equipped by a character.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/equipment",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Character Media API": {
+      "methods": {
+        "Character Media Summary": {
+          "description": "Returns a summary of the media assets available for a character (such as an avatar render).",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/character-media",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Character Profile API": {
+      "methods": {
+        "Character Profile Summary": {
+          "description": "Returns a profile summary for a character.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Character PvP API": {
+      "methods": {
+        "Character PvP Bracket Statistics": {
+          "description": "Returns the PvP bracket statistics for a character.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/pvp-bracket/{pvpBracket}",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "{pvpBracket}": {
+              "description": "The PvP bracket type.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "3v3",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        },
+        "Character PvP Summary": {
+          "description": "Returns a PvP summary for a character.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/pvp-summary",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Character Specializations API": {
+      "methods": {
+        "Character Specializations Summary": {
+          "description": "Returns a summary of a character's specializations.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/specializations",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Character Statistics API": {
+      "methods": {
+        "Character Statistics Summary": {
+          "description": "Returns a statistics summary for a character.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/statistics",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Character Titles API": {
+      "methods": {
+        "Character Titles Summary": {
+          "description": "Returns a summary of titles a character has obtained.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/titles",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Mythic Keystone Character Profile API": {
+      "methods": {
+        "Mythic Keystone Character Profile Index": {
+          "description": "Returns the Mythic Keystone profile index for a character.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/mythic-keystone-profile",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        },
+        "Mythic Keystone Character Season Details": {
+          "description": "Returns the Mythic Keystone season details for a character.\n\nReturns a **404 Not Found** for characters that have not yet completed a Mythic Keystone dungeon for the specified season.",
+          "httpMethod": "GET",
+          "path": "/profile/wow/character/{realmSlug}/{characterName}/mythic-keystone-profile/season/{seasonId}",
+          "parameters": {
+            "{realmSlug}": {
+              "description": "The slug of the realm.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "tichondrius",
+              "type": "string"
+            },
+            "{characterName}": {
+              "description": "The lowercase name of the character.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "charactername",
+              "type": "string"
+            },
+            "{seasonId}": {
+              "description": "The ID of the Mythic Keystone season.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "1",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "profile-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "schemas": {
+    "Achievement Category Aggregate": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "description": "A link to the achievement category for this aggregate.",
+          "$ref": "LinkAchievement Category"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of achievements."
+        },
+        "points": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of achievement points."
+        }
+      },
+      "description": "An aggregate of data for achievement categories."
+    },
+    "Achievement Criteria Progress": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The numeric ID of the criteria."
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The amount that has been completed for the criteria."
+        },
+        "childCriteria": {
+          "type": "array",
+          "description": "A list of children criteria required to complete this criteria.",
+          "items": {
+            "$ref": "Achievement Criteria Progress"
+          }
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "If true, the criteria is fully completed."
+        }
+      },
+      "description": "Progress toward a World of Warcraft achievement."
+    },
+    "Achievement Event": {
+      "type": "object",
+      "properties": {
+        "achievement": {
+          "description": "A link to the achievement.",
+          "$ref": "LinkAchievement"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of the event."
+        }
+      },
+      "description": "A World of Warcraft achievement coupled with point-in-time event information."
+    },
+    "Achievement Progress": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The numeric ID of the achievement."
+        },
+        "achievement": {
+          "description": "A link to the achievement.",
+          "$ref": "LinkAchievement"
+        },
+        "criteria": {
+          "description": "The criteria required to progress the achievement.",
+          "$ref": "Achievement Criteria Progress"
+        },
+        "completedTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time the achievement was completed, if applicable."
+        }
+      },
+      "description": "A World of Warcraft achievement coupled with the criteria for its progress."
+    },
+    "Achievement Summary": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "description": "The character that the achievements belong to.",
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "guild": {
+          "description": "The guild that the achievements belong to.",
+          "$ref": "RealmDocumentLinkGuild"
+        },
+        "totalQuantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The total number of completed achievements."
+        },
+        "totalPoints": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The total number of achievement points."
+        },
+        "achievements": {
+          "type": "array",
+          "description": "The list of achievements and their details.",
+          "items": {
+            "$ref": "Achievement Progress"
+          }
+        },
+        "categoryProgress": {
+          "type": "array",
+          "description": "The list of achievement categories and their progress.",
+          "items": {
+            "$ref": "Achievement Category Aggregate"
+          }
+        },
+        "recentEvents": {
+          "type": "array",
+          "description": "Recent achievement events that have occurred, sorted descending by timestamp.",
+          "items": {
+            "$ref": "Achievement Event"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "description": "A summary of achievements for a World of Warcraft character or guild."
+    },
+    "AzeriteItemDetails": {
+      "type": "object",
+      "properties": {
+        "power_level": {
+          "$ref": "ValueWrapperInteger"
+        },
+        "percentage_to_next_level": {
+          "type": "number",
+          "format": "float"
+        },
+        "selected_powers": {
+          "type": "array",
+          "items": {
+            "$ref": "InstancedAzeritePower"
+          }
+        },
+        "selected_essences": {
+          "type": "array",
+          "items": {
+            "$ref": "InstancedAzeriteEssencePower"
+          }
+        },
+        "selected_powers_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "BoundedValueWrapper": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        },
+        "max_value": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Character": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "LocalizedTypeGender"
+        },
+        "faction": {
+          "$ref": "LocalizedTypePlayer Faction"
+        },
+        "race": {
+          "$ref": "LocalizedLinkPlayable Race"
+        },
+        "characterClass": {
+          "$ref": "LocalizedLinkPlayableClass"
+        },
+        "realm": {
+          "$ref": "LocalizedLinkRealm"
+        },
+        "guild": {
+          "$ref": "RealmDocumentLinkGuild"
+        },
+        "level": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "experience": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "achievementPoints": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "equippedItems": {
+          "type": "array",
+          "items": {
+            "$ref": "InstancedItem"
+          }
+        },
+        "achievements": {
+          "$ref": "KeyAchievement Summary"
+        },
+        "recentAchievements": {
+          "$ref": "KeyRecentAchievements"
+        },
+        "titles": {
+          "$ref": "KeyTitleSummary"
+        },
+        "pvpSummary": {
+          "$ref": "KeyPvP Summary"
+        },
+        "raidProgression": {
+          "$ref": "KeyRaidProgression"
+        },
+        "statistics": {
+          "$ref": "KeyCharacterStatistics"
+        },
+        "stats": {
+          "$ref": "CharacterStats"
+        },
+        "collections": {
+          "$ref": "KeySharedCollections"
+        },
+        "media": {
+          "$ref": "KeyCharacterMedia"
+        },
+        "hunterPets": {
+          "$ref": "KeyHunterPets"
+        },
+        "equippedItemSets": {
+          "type": "array",
+          "items": {
+            "$ref": "InstancedItemSet"
+          }
+        },
+        "lastLoginTimestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "activeTitle": {
+          "$ref": "LocalizedString"
+        },
+        "averageItemLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "equippedItemLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "specializations": {
+          "$ref": "KeyCharacterSpecializations"
+        },
+        "specs": {
+          "type": "array",
+          "items": {
+            "$ref": "CharacterSpec"
+          }
+        },
+        "activeSpec": {
+          "$ref": "LocalizedLinkPlayableSpecialization"
+        },
+        "mythicKeystoneProfile": {
+          "$ref": "KeyMythicKeystoneProfile"
+        },
+        "equipment": {
+          "$ref": "KeyCharacterEquipment"
+        },
+        "documentType": {
+          "$ref": "DocumentType"
+        }
+      }
+    },
+    "CharacterAppearance": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "race": {
+          "$ref": "LinkRace"
+        },
+        "character_class": {
+          "$ref": "LinkCharacterClass"
+        },
+        "gender": {
+          "$ref": "IdentifiedTypeGender"
+        },
+        "faction": {
+          "$ref": "IdentifiedTypePlayer Faction"
+        },
+        "active_spec": {
+          "$ref": "LinkSpec"
+        },
+        "guild_emblem": {
+          "$ref": "GuildEmblem"
+        },
+        "appearance": {
+          "$ref": "CharacterAppearanceDetail"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "EquippedItemAppearance"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "CharacterAppearanceDetail": {
+      "type": "object",
+      "properties": {
+        "faceVariation": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "skinColor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hairVariation": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hairColor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "featureVariation": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "showHelm": {
+          "type": "boolean"
+        },
+        "showCloak": {
+          "type": "boolean"
+        },
+        "customDisplayOptions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "CharacterEquipment": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "equippedItems": {
+          "type": "array",
+          "items": {
+            "$ref": "InstancedItem"
+          }
+        },
+        "equippedItemSets": {
+          "type": "array",
+          "items": {
+            "$ref": "InstancedItemSet"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "CharacterMedia": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "bustUrl": {
+          "type": "string"
+        },
+        "renderUrl": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "CharacterSpec": {
+      "type": "object",
+      "properties": {
+        "spec": {
+          "$ref": "LocalizedLinkSpec"
+        },
+        "talents": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizedLinkTalent"
+          }
+        },
+        "glyphs": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizedLinkGlyph"
+          }
+        }
+      }
+    },
+    "CharacterSpecialization": {
+      "type": "object",
+      "properties": {
+        "specialization": {
+          "$ref": "LocalizedLinkPlayableSpecialization"
+        },
+        "talents": {
+          "type": "array",
+          "items": {
+            "$ref": "TalentTooltipTalent"
+          }
+        },
+        "pvpTalentSlots": {
+          "type": "array",
+          "items": {
+            "$ref": "CharacterSpecializationTalentSlot"
+          }
+        },
+        "glyphs": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizedLinkGlyph"
+          }
+        }
+      }
+    },
+    "CharacterSpecializationTalentSlot": {
+      "type": "object",
+      "properties": {
+        "selected": {
+          "$ref": "TalentTooltip"
+        },
+        "slotNumber": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "CharacterSpecializations": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "specializations": {
+          "type": "array",
+          "items": {
+            "$ref": "CharacterSpecialization"
+          }
+        },
+        "activeSpecialization": {
+          "$ref": "LocalizedLinkPlayableSpecialization"
+        }
+      }
+    },
+    "CharacterStatistics": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "readOnly": true,
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "health": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true
+        },
+        "power": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true
+        },
+        "speed": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "strength": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "agility": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "intellect": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "stamina": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "mastery": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "lifesteal": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "versatility": {
+          "type": "number",
+          "format": "float",
+          "readOnly": true
+        },
+        "armor": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "dodge": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "parry": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "block": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "powerType": {
+          "$ref": "LocalizedLinkPowerType"
+        },
+        "meleeCrit": {
+          "$ref": "RatedStat"
+        },
+        "meleeHaste": {
+          "$ref": "RatedStat"
+        },
+        "rangedCrit": {
+          "$ref": "RatedStat"
+        },
+        "rangedHaste": {
+          "$ref": "RatedStat"
+        },
+        "spellHaste": {
+          "$ref": "RatedStat"
+        },
+        "bonusArmor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "versatilityDamageDoneBonus": {
+          "type": "number",
+          "format": "float"
+        },
+        "versatilityHealingDoneBonus": {
+          "type": "number",
+          "format": "float"
+        },
+        "versatilityDamageTakenBonus": {
+          "type": "number",
+          "format": "float"
+        },
+        "avoidance": {
+          "$ref": "RatedStat"
+        },
+        "attackPower": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "mainHandDamageMin": {
+          "type": "number",
+          "format": "float"
+        },
+        "mainHandDamageMax": {
+          "type": "number",
+          "format": "float"
+        },
+        "mainHandSpeed": {
+          "type": "number",
+          "format": "float"
+        },
+        "mainHandDps": {
+          "type": "number",
+          "format": "float"
+        },
+        "offHandDamageMin": {
+          "type": "number",
+          "format": "float"
+        },
+        "offHandDamageMax": {
+          "type": "number",
+          "format": "float"
+        },
+        "offHandSpeed": {
+          "type": "number",
+          "format": "float"
+        },
+        "offHandDps": {
+          "type": "number",
+          "format": "float"
+        },
+        "spellPower": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "spellPenetration": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "spellCrit": {
+          "$ref": "RatedStat"
+        },
+        "manaRegen": {
+          "type": "number",
+          "format": "float"
+        },
+        "manaRegenCombat": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "CharacterStats": {
+      "type": "object",
+      "properties": {
+        "health": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true
+        },
+        "power": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true
+        },
+        "speed": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "strength": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "agility": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "intellect": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "stamina": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "crit": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "haste": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "mastery": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "spirit": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "multistrike": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "leech": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "versatility": {
+          "type": "number",
+          "format": "float",
+          "readOnly": true
+        },
+        "armor": {
+          "readOnly": true,
+          "$ref": "EnhancedStat"
+        },
+        "dodge": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "parry": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "block": {
+          "readOnly": true,
+          "$ref": "RatedStat"
+        },
+        "powerType": {
+          "type": "string"
+        },
+        "averageItemLevel": {
+          "type": "number",
+          "format": "float"
+        },
+        "equippedItemLevel": {
+          "type": "number",
+          "format": "float"
+        },
+        "bonusArmor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "versatilityDamageDoneBonus": {
+          "type": "number",
+          "format": "float"
+        },
+        "versatilityHealingDoneBonus": {
+          "type": "number",
+          "format": "float"
+        },
+        "versatilityDamageTakenBonus": {
+          "type": "number",
+          "format": "float"
+        },
+        "avoidance": {
+          "$ref": "RatedStat"
+        },
+        "attackPower": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "mainHandDamageMin": {
+          "type": "number",
+          "format": "float"
+        },
+        "mainHandDamageMax": {
+          "type": "number",
+          "format": "float"
+        },
+        "mainHandSpeed": {
+          "type": "number",
+          "format": "float"
+        },
+        "mainHandDps": {
+          "type": "number",
+          "format": "float"
+        },
+        "offHandDamageMin": {
+          "type": "number",
+          "format": "float"
+        },
+        "offHandDamageMax": {
+          "type": "number",
+          "format": "float"
+        },
+        "offHandSpeed": {
+          "type": "number",
+          "format": "float"
+        },
+        "offHandDps": {
+          "type": "number",
+          "format": "float"
+        },
+        "spellPower": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "spellPenetration": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "spellCrit": {
+          "$ref": "RatedStat"
+        },
+        "manaRegen": {
+          "type": "number",
+          "format": "float"
+        },
+        "manaRegenCombat": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "DocumentType": {
+      "type": "object",
+      "properties": {
+        "parent": {
+          "$ref": "DocumentType"
+        },
+        "root": {
+          "type": "boolean"
+        },
+        "schemaName": {
+          "type": "string"
+        },
+        "indexPath": {
+          "type": "string"
+        },
+        "searchPath": {
+          "type": "string"
+        },
+        "pathContext": {
+          "type": "string"
+        },
+        "documentName": {
+          "type": "string"
+        },
+        "documentPath": {
+          "type": "string"
+        },
+        "profile": {
+          "type": "boolean"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "STATIC",
+            "DYNAMIC",
+            "PROFILE",
+            "GUILD"
+          ]
+        },
+        "singletonDocument": {
+          "type": "boolean"
+        },
+        "trailingSlashSuppressed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "EnhancedStat": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "effective": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "EquippedItemAppearance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "slot": {
+          "$ref": "IdentifiedTypeInventorySlot"
+        },
+        "enchant": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "item_appearance_modifier": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "GdaEnum": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "localizedProperty": {
+          "type": "string"
+        }
+      }
+    },
+    "GuildEmblem": {
+      "type": "object",
+      "properties": {
+        "emblemStyle": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "emblemColor": {
+          "type": "string"
+        },
+        "emblemImageUrl": {
+          "type": "string"
+        },
+        "borderStyle": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "borderColor": {
+          "type": "string"
+        },
+        "borderImageUrl": {
+          "type": "string"
+        },
+        "backgroundStyle": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "emblemColorId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "borderColorId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "backgroundColorId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "IdentifiedType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type.",
+          "readOnly": true
+        },
+        "type": {
+          "description": "The constant value representing this type.",
+          "$ref": "GdaEnum"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction')."
+    },
+    "IdentifiedTypeGender": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type.",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "MALE",
+            "FEMALE"
+          ]
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction')."
+    },
+    "IdentifiedTypeInventorySlot": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type.",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "UNKNOWN",
+            "HEAD",
+            "NECK",
+            "SHOULDER",
+            "BACK",
+            "CHEST",
+            "SHIRT",
+            "TABARD",
+            "WRIST",
+            "HANDS",
+            "WAIST",
+            "LEGS",
+            "FEET",
+            "FINGER_1",
+            "FINGER_2",
+            "TRINKET_1",
+            "TRINKET_2",
+            "MAIN_HAND",
+            "OFF_HAND"
+          ]
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction')."
+    },
+    "IdentifiedTypePlayer Faction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type.",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "NONE",
+            "ALLIANCE",
+            "HORDE",
+            "NEUTRAL"
+          ]
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction')."
+    },
+    "IdentifiedTypePvP Bracket Type": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type.",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "ARENA_2v2",
+            "ARENA_3v3",
+            "BATTLEGROUNDS"
+          ]
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction')."
+    },
+    "InstancedAzeriteEssencePower": {
+      "type": "object",
+      "properties": {
+        "slot": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "main_spell_tooltip": {
+          "$ref": "SpellTooltip"
+        },
+        "passive_spell_tooltip": {
+          "$ref": "SpellTooltip"
+        },
+        "essence": {
+          "$ref": "LocalizedLinkAzeriteEssence"
+        },
+        "media": {
+          "$ref": "MediaLink"
+        }
+      }
+    },
+    "InstancedAzeritePower": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "tier": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "spell_tooltip": {
+          "$ref": "SpellTooltip"
+        },
+        "bonus_list": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "is_display_hidden": {
+          "type": "boolean"
+        }
+      }
+    },
+    "InstancedItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "item": {
+          "$ref": "LocalizedLinkItem"
+        },
+        "enchantment": {
+          "$ref": "LegacyItemEnchantment"
+        },
+        "enchantments": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemEnchantment"
+          }
+        },
+        "sockets": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemSocket"
+          }
+        },
+        "slot": {
+          "$ref": "LocalizedTypeInventorySlot"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "charges": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "context": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bonus_list": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "upgrade_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "timewalker_level": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "random_properties_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "quality": {
+          "$ref": "LocalizedTypeItemQuality"
+        },
+        "name": {
+          "$ref": "LocalizedString"
+        },
+        "artifact_xp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "modified_appearance_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "azerite_details": {
+          "$ref": "AzeriteItemDetails"
+        },
+        "name_description": {
+          "$ref": "LocalizedString"
+        },
+        "media": {
+          "$ref": "MediaLink"
+        },
+        "item_class": {
+          "$ref": "LocalizedLinkItemClass"
+        },
+        "item_subclass": {
+          "$ref": "LocalizedLinkItemSubclass"
+        },
+        "inventory_type": {
+          "$ref": "LocalizedTypeInventoryType"
+        },
+        "binding": {
+          "$ref": "LocalizedTypeBindType"
+        },
+        "unique_equipped": {
+          "$ref": "LocalizedString"
+        },
+        "limit_category": {
+          "$ref": "LocalizedString"
+        },
+        "weapon": {
+          "$ref": "ItemWeaponDetail"
+        },
+        "armor": {
+          "$ref": "ValueWrapperInteger"
+        },
+        "shield_block": {
+          "$ref": "ValueWrapperInteger"
+        },
+        "stats": {
+          "type": "array",
+          "items": {
+            "$ref": "ItemStat"
+          }
+        },
+        "socket_bonus": {
+          "$ref": "LocalizedString"
+        },
+        "spells": {
+          "type": "array",
+          "items": {
+            "$ref": "SpellTooltip"
+          }
+        },
+        "upgrades": {
+          "$ref": "BoundedValueWrapper"
+        },
+        "sell_price": {
+          "$ref": "ItemPrice"
+        },
+        "legacy": {
+          "$ref": "LocalizedString"
+        },
+        "requirements": {
+          "$ref": "Requirements"
+        },
+        "set": {
+          "$ref": "InstancedItemSet"
+        },
+        "description": {
+          "$ref": "LocalizedString"
+        },
+        "level": {
+          "$ref": "ValueWrapperInteger"
+        },
+        "transmog": {
+          "$ref": "ItemTransmog"
+        },
+        "durability": {
+          "$ref": "ValueWrapperInteger"
+        },
+        "artifact_override": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reforge_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "seed": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "InstancedItemSet": {
+      "type": "object",
+      "properties": {
+        "item_set": {
+          "$ref": "LocalizedLinkItemSet"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "InstancedItemSetItem"
+          }
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "InstancedItemSetEffect"
+          }
+        },
+        "legacy": {
+          "$ref": "LocalizedString"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "InstancedItemSetEffect": {
+      "type": "object",
+      "properties": {
+        "required_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "InstancedItemSetItem": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "$ref": "LocalizedLinkItem"
+        },
+        "is_equipped": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ItemEnchantment": {
+      "type": "object",
+      "properties": {
+        "display_string": {
+          "$ref": "LocalizedString"
+        },
+        "source_item": {
+          "$ref": "LocalizedLinkItem"
+        },
+        "enchantment_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "enchantment_slot": {
+          "$ref": "LocalizedTypeEnchantmentSlot"
+        },
+        "spell": {
+          "$ref": "SpellTooltip"
+        }
+      }
+    },
+    "ItemPrice": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "display_strings": {
+          "$ref": "ItemSellPriceDisplayString"
+        }
+      }
+    },
+    "ItemSellPriceDisplayString": {
+      "type": "object",
+      "properties": {
+        "header": {
+          "$ref": "LocalizedString"
+        },
+        "gold": {
+          "$ref": "LocalizedString"
+        },
+        "silver": {
+          "$ref": "LocalizedString"
+        },
+        "copper": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "ItemSocket": {
+      "type": "object",
+      "properties": {
+        "socket_type": {
+          "$ref": "LocalizedTypeGemSocketType"
+        },
+        "item": {
+          "$ref": "LocalizedLinkItem"
+        },
+        "context": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bonus_list": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        },
+        "media": {
+          "$ref": "MediaLink"
+        }
+      }
+    },
+    "ItemStat": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "LocalizedTypeStatType"
+        },
+        "value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        },
+        "is_negated": {
+          "type": "boolean"
+        },
+        "is_equip_bonus": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ItemTransmog": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "$ref": "LocalizedLinkItem"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "ItemWeaponDamage": {
+      "type": "object",
+      "properties": {
+        "min_value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "max_value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "ItemWeaponDetail": {
+      "type": "object",
+      "properties": {
+        "damage": {
+          "$ref": "ItemWeaponDamage"
+        },
+        "attack_speed": {
+          "$ref": "ValueWrapperInteger"
+        },
+        "dps": {
+          "$ref": "ValueWrapperDouble"
+        }
+      }
+    },
+    "Key": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyAchievement": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyAchievement Category": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyAchievement Summary": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyAzeriteEssence": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyBaseDocument": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyCharacter": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyCharacterClass": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyCharacterEquipment": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyCharacterMedia": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyCharacterSpecializations": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyCharacterStatistics": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyFaction": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyGlyph": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyGuild": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyHunterPets": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyItem": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyItemClass": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyItemSet": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyItemSubclass": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyKeystoneAffix": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyMedia": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyMythicKeystoneDungeon": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyMythicKeystonePeriod": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyMythicKeystoneProfile": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyMythicKeystoneProfileSeason": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyMythicKeystoneSeason": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyObject": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyPlayable Race": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyPlayableClass": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyPlayableSpecialization": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyPowerType": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyPvP Bracket": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyPvP Season": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyPvP Summary": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyPvP Tier": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyRace": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyRaidProgression": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyRealm": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyRecentAchievements": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeySharedCollections": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeySpec": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeySpell": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyTalent": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyTitle": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyTitleSummary": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "KeyWorldMap": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URL of the linked document."
+        }
+      },
+      "description": "A link to another document."
+    },
+    "LegacyItemEnchantment": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "LocalizedString"
+        },
+        "item": {
+          "$ref": "LocalizedLinkItem"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "extra_socket_enchant_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "engineer_enchant_id": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyBaseDocument"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LinkAchievement": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyAchievement"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LinkAchievement Category": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyAchievement Category"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LinkCharacterClass": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyCharacterClass"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LinkMythicKeystonePeriod": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyMythicKeystonePeriod"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LinkMythicKeystoneProfileSeason": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyMythicKeystoneProfileSeason"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LinkMythicKeystoneSeason": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyMythicKeystoneSeason"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LinkRace": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyRace"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LinkSpec": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeySpec"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LinkTitle": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyTitle"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        }
+      },
+      "description": "A reference that provides the name and link of another document."
+    },
+    "LocalizedLink": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyBaseDocument"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkAzeriteEssence": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyAzeriteEssence"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkBaseDocument": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyBaseDocument"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkFaction": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyFaction"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkGlyph": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyGlyph"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkItem": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyItem"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkItemClass": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyItemClass"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkItemSet": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyItemSet"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkItemSubclass": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyItemSubclass"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkKeystoneAffix": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyKeystoneAffix"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkMythicKeystoneDungeon": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyMythicKeystoneDungeon"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkObject": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyObject"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkPlayable Race": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyPlayable Race"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkPlayableClass": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyPlayableClass"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkPlayableSpecialization": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyPlayableSpecialization"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkPowerType": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyPowerType"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkPvP Season": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyPvP Season"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkPvP Tier": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyPvP Tier"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkRace": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyRace"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkRealm": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyRealm"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkSpec": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeySpec"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkSpell": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeySpell"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkTalent": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyTalent"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedLinkWorldMap": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyWorldMap"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        }
+      },
+      "description": "A reference that provides the localized name and link of another document."
+    },
+    "LocalizedString": {
+      "type": "object",
+      "description": "A string that has been localized in all supported game locales."
+    },
+    "LocalizedType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "description": "The constant value representing this type.",
+          "$ref": "GdaEnum"
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeBindType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "NONE",
+            "ON_ACQUIRE",
+            "ON_EQUIP",
+            "ON_USE",
+            "QUEST",
+            "TO_BNETACCOUNT",
+            "TO_ACCOUNT"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeEnchantmentSlot": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "PERMANENT",
+            "TEMPORARY",
+            "SOCKET0",
+            "SOCKET1",
+            "SOCKET2",
+            "SOCKET_LAST",
+            "SOCKETMATCH",
+            "BONUS_SOCKETS",
+            "ON_USE_SPELL",
+            "RANDOM1",
+            "RANDOM2",
+            "RANDOM3",
+            "RANDOM4",
+            "RANDOM5"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeGemSocketType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "META",
+            "RED",
+            "YELLOW",
+            "BLUE",
+            "HYDRAULIC",
+            "COGWHEEL",
+            "PRISMATIC",
+            "IRON",
+            "BLOOD",
+            "SHADOW",
+            "FEL",
+            "ARCANE",
+            "FROST",
+            "FIRE",
+            "WATER",
+            "LIFE",
+            "WIND",
+            "HOLY",
+            "PUNCHCARDRED",
+            "PUNCHCARDYELLOW",
+            "PUNCHCARDBLUE"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeGender": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "MALE",
+            "FEMALE"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeInventorySlot": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "UNKNOWN",
+            "HEAD",
+            "NECK",
+            "SHOULDER",
+            "BACK",
+            "CHEST",
+            "SHIRT",
+            "TABARD",
+            "WRIST",
+            "HANDS",
+            "WAIST",
+            "LEGS",
+            "FEET",
+            "FINGER_1",
+            "FINGER_2",
+            "TRINKET_1",
+            "TRINKET_2",
+            "MAIN_HAND",
+            "OFF_HAND"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeInventoryType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "NON_EQUIP",
+            "HEAD",
+            "NECK",
+            "SHOULDER",
+            "BODY",
+            "CHEST",
+            "WAIST",
+            "LEGS",
+            "FEET",
+            "WRIST",
+            "HAND",
+            "FINGER",
+            "TRINKET",
+            "WEAPON",
+            "SHIELD",
+            "RANGED",
+            "CLOAK",
+            "TWOHWEAPON",
+            "BAG",
+            "TABARD",
+            "ROBE",
+            "WEAPONMAINHAND",
+            "WEAPONOFFHAND",
+            "HOLDABLE",
+            "AMMO",
+            "THROWN",
+            "RANGEDRIGHT",
+            "QUIVER",
+            "RELIC"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeItemQuality": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "POOR",
+            "COMMON",
+            "UNCOMMON",
+            "RARE",
+            "EPIC",
+            "LEGENDARY",
+            "ARTIFACT",
+            "HEIRLOOM",
+            "WOWTOKEN"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypePlayer Faction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "NONE",
+            "ALLIANCE",
+            "HORDE",
+            "NEUTRAL"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeSpellProcType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "CHANCE_ON_HIT",
+            "CHANCE_ON_CRITICAL_HIT",
+            "CHANCE_ON_SPELL_HIT",
+            "CHANCE_ON_SPELL_CRITICAL_HIT",
+            "EQUIP",
+            "USE"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeStatType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "type": "string",
+          "description": "The constant value representing this type.",
+          "enum": [
+            "MANA",
+            "HEALTH",
+            "ENDURANCE",
+            "AGILITY",
+            "STRENGTH",
+            "INTELLECT",
+            "SPIRIT_UNUSED",
+            "STAMINA",
+            "ENERGY",
+            "RAGE",
+            "FOCUS",
+            "WEAPON_SKILL_RATING_OBSOLETE",
+            "DEFENSE_SKILL_RATING",
+            "DODGE_RATING",
+            "PARRY_RATING",
+            "BLOCK_RATING",
+            "HIT_MELEE_RATING",
+            "HIT_RANGED_RATING",
+            "HIT_SPELL_RATING",
+            "CRIT_MELEE_RATING",
+            "CRIT_RANGED_RATING",
+            "CRIT_SPELL_RATING",
+            "HIT_TAKEN_MELEE_RATING_OBSOLETE",
+            "HIT_TAKEN_RANGED_RATING_OBSOLETE",
+            "HIT_TAKEN_SPELL_RATING_OBSOLETE",
+            "CRIT_TAKEN_MELEE_RATING_OBSOLETE",
+            "CRIT_TAKEN_RANGED_RATING_OBSOLETE",
+            "CRIT_TAKEN_SPELL_RATING_OBSOLETE",
+            "HASTE_MELEE_RATING_OBSOLETE",
+            "HASTE_RANGED_RATING_OBSOLETE",
+            "HASTE_SPELL_RATING_OBSOLETE",
+            "HIT_RATING",
+            "CRIT_RATING",
+            "HIT_TAKEN_RATING_OBSOLETE",
+            "CRIT_TAKEN_RATING_OBSOLETE",
+            "RESILIENCE_RATING",
+            "HASTE_RATING",
+            "EXPERTISE_RATING",
+            "ATTACK_POWER",
+            "RANGED_ATTACK_POWER",
+            "VERSATILITY",
+            "SPELL_HEALING_DONE",
+            "SPELL_DAMAGE_DONE",
+            "MANA_REGENERATION_OBSOLETE",
+            "UNUSED",
+            "SPELL_POWER",
+            "HEALTH_REGEN",
+            "SPELL_PENETRATION",
+            "BLOCK_VALUE_OBSOLETE",
+            "MASTERY_RATING",
+            "EXTRA_ARMOR",
+            "FIRE_RESISTANCE",
+            "FROST_RESISTANCE",
+            "HOLY_RESISTANCE",
+            "SHADOW_RESISTANCE",
+            "NATURE_RESISTANCE",
+            "ARCANE_RESISTANCE",
+            "PVP_POWER",
+            "COMBAT_RATING_UNUSED_0",
+            "COMBAT_RATING_UNUSED_2",
+            "COMBAT_RATING_UNUSED_3",
+            "COMBAT_RATING_SPEED",
+            "COMBAT_RATING_LIFESTEAL",
+            "COMBAT_RATING_AVOIDANCE",
+            "COMBAT_RATING_STURDINESS",
+            "COMBAT_RATING_UNUSED_7",
+            "COMBAT_RATING_UNUSED_27",
+            "COMBAT_RATING_UNUSED_9",
+            "COMBAT_RATING_UNUSED_10",
+            "COMBAT_RATING_UNUSED_11",
+            "COMBAT_RATING_UNUSED_12",
+            "AGILITY_OR_STRENGTH_OR_INTELLECT",
+            "AGILITY_OR_STRENGTH",
+            "AGILITY_OR_INTELLECT",
+            "STRENGTH_OR_INTELLECT"
+          ]
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "LocalizedTypeWowEnum": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of this type."
+        },
+        "type": {
+          "description": "The constant value representing this type.",
+          "$ref": "WowEnum"
+        },
+        "name": {
+          "description": "The localized name of this type.",
+          "$ref": "LocalizedString"
+        }
+      },
+      "description": "A type representing constant game values (e.g., 'ItemQuality' or 'PlayerFaction') that includes a localized name."
+    },
+    "Media": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "description": "The list of assets pertaining to this media item.",
+          "items": {
+            "$ref": "MediaEntry"
+          }
+        }
+      },
+      "description": "A World of Warcraft media item."
+    },
+    "MediaEntry": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "MediaLink": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "A key to the linked document.",
+          "$ref": "KeyMedia"
+        },
+        "name": {
+          "description": "The localized name of the linked document.",
+          "$ref": "LocalizedString"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The ID of the linked document."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug used to identify and represent the document."
+        },
+        "content": {
+          "description": "The inline assets from a media item.",
+          "$ref": "Media"
+        }
+      },
+      "description": "A link to a media item."
+    },
+    "MultiLinkedValueWrapper": {
+      "type": "object",
+      "properties": {
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizedLinkBaseDocument"
+          }
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "MultiLinkedValueWrapperPlayable Race": {
+      "type": "object",
+      "properties": {
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizedLinkPlayable Race"
+          }
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "MultiLinkedValueWrapperPlayableClass": {
+      "type": "object",
+      "properties": {
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizedLinkPlayableClass"
+          }
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "MythicKeystoneProfile": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "currentPeriod": {
+          "$ref": "MythicKeystoneProfilePeriod"
+        },
+        "seasons": {
+          "type": "array",
+          "items": {
+            "$ref": "LinkMythicKeystoneProfileSeason"
+          }
+        }
+      }
+    },
+    "MythicKeystoneProfilePeriod": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "$ref": "LinkMythicKeystonePeriod"
+        },
+        "runs": {
+          "type": "array",
+          "items": {
+            "$ref": "MythicKeystoneProfileRun"
+          }
+        }
+      }
+    },
+    "MythicKeystoneProfileRun": {
+      "type": "object",
+      "properties": {
+        "dungeon": {
+          "$ref": "LocalizedLinkMythicKeystoneDungeon"
+        },
+        "completedTimestamp": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "duration": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "keystoneLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "keystoneAffixes": {
+          "type": "array",
+          "items": {
+            "$ref": "LocalizedLinkKeystoneAffix"
+          }
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "MythicKeystoneProfileRunMember"
+          }
+        },
+        "completedWithinTime": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MythicKeystoneProfileRunMember": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "specialization": {
+          "$ref": "LocalizedLinkPlayableSpecialization"
+        },
+        "race": {
+          "$ref": "LocalizedLinkRace"
+        },
+        "equippedItemLevel": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "MythicKeystoneProfileSeason": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "season": {
+          "$ref": "LinkMythicKeystoneSeason"
+        },
+        "runs": {
+          "type": "array",
+          "items": {
+            "$ref": "MythicKeystoneProfileRun"
+          }
+        }
+      }
+    },
+    "Number": {
+      "type": "object"
+    },
+    "PvP Bracket": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "description": "A link to the character for this PvP bracket entry.",
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "faction": {
+          "description": "The localized faction of the entry (e.g. ALLIANCE or HORDE).",
+          "$ref": "LocalizedTypePlayer Faction"
+        },
+        "bracket": {
+          "description": "The type of PvP bracket this entry pertains to.",
+          "$ref": "IdentifiedTypePvP Bracket Type"
+        },
+        "rating": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The rating for the entry."
+        },
+        "seasonMatchStatistics": {
+          "description": "The season match statistics for the entry.",
+          "$ref": "PvP Match Statistics"
+        },
+        "weeklyMatchStatistics": {
+          "description": "The weekly match statistics for the entry.",
+          "$ref": "PvP Match Statistics"
+        },
+        "updated": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The timestamp this document was last updated."
+        },
+        "rank": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The rank of the entry on the associated PvP leaderboard."
+        },
+        "tier": {
+          "description": "A link to the tier that this entry's rank has earned them.",
+          "$ref": "LocalizedLinkPvP Tier"
+        },
+        "season": {
+          "description": "A link to the season this entry participated in.",
+          "$ref": "LocalizedLinkPvP Season"
+        }
+      },
+      "description": "Information pertaining to an entry on a PvP leaderboard."
+    },
+    "PvP Map Statistics": {
+      "type": "object",
+      "properties": {
+        "worldMap": {
+          "description": "The PvP map that the statistics pertain to.",
+          "$ref": "LocalizedLinkWorldMap"
+        },
+        "playersPerTeam": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of players on a team on this map."
+        },
+        "matchStatistics": {
+          "description": "The match statistics for this map.",
+          "$ref": "PvP Match Statistics"
+        }
+      },
+      "description": "The statistics for a PvP map for a character."
+    },
+    "PvP Match Statistics": {
+      "type": "object",
+      "properties": {
+        "played": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of matches played."
+        },
+        "won": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of matches won."
+        },
+        "lost": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of matches lost."
+        }
+      },
+      "description": "The statistics for a PvP match."
+    },
+    "PvP Summary": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "description": "A link to the character for this PvP summary.",
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "honorLevel": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The honor level for the character."
+        },
+        "honorableKills": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of honorable kills for the character."
+        },
+        "brackets": {
+          "type": "array",
+          "description": "A list of links to PvP bracket entries for the character.",
+          "items": {
+            "$ref": "KeyPvP Bracket"
+          }
+        },
+        "pvpMapStatistics": {
+          "type": "array",
+          "description": "A list of links to map statistics for the character.",
+          "items": {
+            "$ref": "PvP Map Statistics"
+          }
+        }
+      },
+      "description": "A PvP summary profile for a World of Warcraft character."
+    },
+    "RatedStat": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "number",
+          "format": "float"
+        },
+        "rating": {
+          "type": "number",
+          "format": "float"
+        },
+        "ratingBonus": {
+          "type": "number",
+          "format": "float"
+        },
+        "ratingPercent": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "RealmDocumentLink": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "The key to the linked document.",
+          "$ref": "KeyBaseDocument"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The numeric ID of the linked document."
+        },
+        "realm": {
+          "description": "The realm in which the linked object resides.",
+          "$ref": "LocalizedLinkRealm"
+        }
+      },
+      "description": "A link to a document that resides on a specific realm."
+    },
+    "RealmDocumentLinkCharacter": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "The key to the linked document.",
+          "$ref": "KeyCharacter"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The numeric ID of the linked document."
+        },
+        "realm": {
+          "description": "The realm in which the linked object resides.",
+          "$ref": "LocalizedLinkRealm"
+        }
+      },
+      "description": "A link to a document that resides on a specific realm."
+    },
+    "RealmDocumentLinkGuild": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "The key to the linked document.",
+          "$ref": "KeyGuild"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the linked document."
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The numeric ID of the linked document."
+        },
+        "realm": {
+          "description": "The realm in which the linked object resides.",
+          "$ref": "LocalizedLinkRealm"
+        }
+      },
+      "description": "A link to a document that resides on a specific realm."
+    },
+    "RequiredReputation": {
+      "type": "object",
+      "properties": {
+        "faction": {
+          "$ref": "LocalizedLinkFaction"
+        },
+        "min_reputation_level": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "RequiredSkill": {
+      "type": "object",
+      "properties": {
+        "profession": {
+          "$ref": "LocalizedLinkObject"
+        },
+        "level": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "Requirements": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "$ref": "ValueWrapperInteger"
+        },
+        "playable_classes": {
+          "$ref": "MultiLinkedValueWrapperPlayableClass"
+        },
+        "playable_races": {
+          "$ref": "MultiLinkedValueWrapperPlayable Race"
+        },
+        "playable_race_class": {
+          "$ref": "ValueWrapperInteger"
+        },
+        "faction": {
+          "$ref": "TypeWrapperPlayer Faction"
+        },
+        "skill": {
+          "$ref": "RequiredSkill"
+        },
+        "reputation": {
+          "$ref": "RequiredReputation"
+        }
+      }
+    },
+    "SpellTooltip": {
+      "type": "object",
+      "properties": {
+        "spell": {
+          "$ref": "LocalizedLinkSpell"
+        },
+        "description": {
+          "$ref": "LocalizedString"
+        },
+        "castTime": {
+          "$ref": "LocalizedString"
+        },
+        "powerCost": {
+          "$ref": "LocalizedString"
+        },
+        "range": {
+          "$ref": "LocalizedString"
+        },
+        "cooldown": {
+          "$ref": "LocalizedString"
+        },
+        "procType": {
+          "$ref": "LocalizedTypeSpellProcType"
+        }
+      }
+    },
+    "TalentTooltip": {
+      "type": "object",
+      "properties": {
+        "talent": {
+          "$ref": "LocalizedLinkBaseDocument"
+        },
+        "spellTooltip": {
+          "$ref": "SpellTooltip"
+        }
+      }
+    },
+    "TalentTooltipTalent": {
+      "type": "object",
+      "properties": {
+        "talent": {
+          "$ref": "LocalizedLinkTalent"
+        },
+        "spellTooltip": {
+          "$ref": "SpellTooltip"
+        }
+      }
+    },
+    "TitleSummary": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "$ref": "RealmDocumentLinkCharacter"
+        },
+        "titles": {
+          "type": "array",
+          "items": {
+            "$ref": "LinkTitle"
+          }
+        },
+        "activeTitle": {
+          "$ref": "LinkTitle"
+        }
+      }
+    },
+    "TypeWrapper": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "$ref": "LocalizedTypeWowEnum"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "TypeWrapperPlayer Faction": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "$ref": "LocalizedTypePlayer Faction"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "ValueWrapper": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "$ref": "Number"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "ValueWrapperDouble": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "format": "double"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "ValueWrapperInteger": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "display_string": {
+          "$ref": "LocalizedString"
+        }
+      }
+    },
+    "WowEnum": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "localizedProperty": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

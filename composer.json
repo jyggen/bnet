@@ -23,29 +23,27 @@
     "require": {
         "php": "^7.1",
         "ext-mbstring": "*",
+        "fig/http-message-util": "^1.0",
         "league/oauth2-client": "^2.0",
+        "psr/http-client": "^1.0",
+        "psr/http-client-implementation": "^1.0",
         "psr/http-factory": "^1.0",
         "psr/http-factory-implementation": "^1.0",
         "psr/http-message": "^1.0"
     },
     "require-dev": {
-        "ext-json": "*",
-        "codedungeon/phpunit-result-printer": "^0.20.1",
         "friendsofphp/php-cs-fixer": "^2.13",
-        "guzzlehttp/guzzle": "^6.3.3",
-        "http-interop/http-factory-guzzle": "^1.0.0",
         "jakub-onderka/php-parallel-lint": "^1.0.0",
         "localheinz/composer-normalize": "^1.0.0",
         "maglnet/composer-require-checker": "^1.1",
         "php-coveralls/php-coveralls": "^2.1.0",
-        "php-vcr/php-vcr": "^1.4.4",
-        "php-vcr/phpunit-testlistener-vcr": "^3.2.1",
+        "php-http/guzzle6-adapter": "^2.0.1",
         "phpstan/phpstan": "^0.10.3",
-        "phpunit/phpunit": "^7.3.5",
-        "symfony/css-selector": "^4.1.4",
-        "symfony/dom-crawler": "^4.1.4",
+        "phpunit/phpunit": "^8.0.0",
+        "symfony/filesystem": "^4.1.4",
+        "symfony/finder": "^4.1.4",
         "symfony/var-dumper": "^4.1.4",
-        "twig/twig": "^2.5.0"
+        "twig/twig": "^2.0"
     },
     "config": {
         "sort-packages": true

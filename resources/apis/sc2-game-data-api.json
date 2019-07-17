@@ -1,0 +1,74 @@
+{
+  "name": "StarCraft II Game Data APIs",
+  "title": "StarCraft II Game Data APIs",
+  "description": "Endpoints for StarCraft II league data.\n\n**Hosts**: note that Blizzard API request paths follow this format: `{region}.api.blizzard.com/{API path}` (or `gateway.battlenet.com.cn/{API path}` for China). For more information, see the [Getting Started guide](/documentation/guides/getting-started). ",
+  "version": "1.2.0",
+  "protocol": "rest",
+  "basePath": "https://__region__.api.blizzard.com",
+  "regionDefault": "us",
+  "auth": {
+    "oauth": {
+      "version": "2.0",
+      "base_uri": "https://us.battle.net",
+      "authorize_uri": "/oauth/authorize",
+      "access_token_uri": "/oauth/token",
+      "auth_flows": [
+        "client_cred",
+        "auth_code"
+      ],
+      "options": {
+        "authorize": {
+          "scope": []
+        }
+      }
+    }
+  },
+  "resources": {
+    "StarCraft II League API": {
+      "methods": {
+        "getLeagueData": {
+          "description": "Returns data for the specified season, queue, team, and league.\n\n**queueId**: the standard available queueIds are: `1`=WoL 1v1, `2`=WoL 2v2, `3`=WoL 3v3, `4`=WoL 4v4, `101`=HotS 1v1, `102`=HotS 2v2, `103`=HotS 3v3, `104`=HotS 4v4, `201`=LotV 1v1, `202`=LotV 2v2, `203`=LotV 3v3, `204`=LotV 4v4, `206`=LotV Archon. Note that other available queues may not be listed here.\n\n**teamType**: there are two available teamTypes: `0`=arranged, `1`=random.\n\n**leagueId**: available leagueIds are: `0`=Bronze, `1`=Silver, `2`=Gold, `3`=Platinum, `4`=Diamond, `5`=Master, `6`=Grandmaster.",
+          "httpMethod": "GET",
+          "path": "/data/sc2/league/{seasonId}/{queueId}/{teamType}/{leagueId}",
+          "parameters": {
+            "{seasonId}": {
+              "description": "The season ID of the data to retrieve.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "37",
+              "type": "string"
+            },
+            "{queueId}": {
+              "description": "The queue ID of the data to retrieve.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "201",
+              "type": "string"
+            },
+            "{teamType}": {
+              "description": "The team type of the data to retrieve.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "0",
+              "type": "string"
+            },
+            "{leagueId}": {
+              "description": "The league ID of the data to retrieve.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "6",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

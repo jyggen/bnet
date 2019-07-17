@@ -1,2519 +1,2174 @@
 {
-    "Diablo": {
-        "ActApi": {
-            "endpoints": [
-                {
-                    "name": "getActIndex",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/act"
-                },
-                {
-                    "name": "getAct",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{actId}",
-                            "value": "1",
-                            "type": "integer",
-                            "description": "The id of the act",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/act\/{actId}"
-                }
-            ],
-            "unavailable": [
-                "SEA"
-            ]
-        },
-        "ArtisanAndRecipeApi": {
-            "endpoints": [
-                {
-                    "name": "getArtisan",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{artisanSlug}",
-                            "value": "jeweler",
-                            "type": "string",
-                            "description": "The slug of the artisan",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/artisan\/{artisanSlug}"
-                },
-                {
-                    "name": "getRecipe",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{artisanSlug}",
-                            "value": "jeweler",
-                            "type": "string",
-                            "description": "The slug of the artisan",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": "{recipeSlug}",
-                            "value": "flawless-amethyst",
-                            "type": "string",
-                            "description": "The slug of the recipe",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/artisan\/{artisanSlug}\/recipe\/{recipeSlug}"
-                }
-            ],
-            "unavailable": [
-                "SEA"
-            ]
-        },
-        "FollowerApi": {
-            "endpoints": [
-                {
-                    "name": "getFollower",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{followerSlug}",
-                            "value": "templar",
-                            "type": "string",
-                            "description": "The slug of the follower",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/follower\/{followerSlug}"
-                }
-            ],
-            "unavailable": [
-                "SEA"
-            ]
-        },
-        "CharacterClassAndSkillApi": {
-            "endpoints": [
-                {
-                    "name": "getCharacterClass",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{classSlug}",
-                            "value": "barbarian",
-                            "type": "string",
-                            "description": "The slug of the character class",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/hero\/{classSlug}"
-                },
-                {
-                    "name": "getApiSkill",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{classSlug}",
-                            "value": "barbarian",
-                            "type": "string",
-                            "description": "The slug of the character class",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": "{skillSlug}",
-                            "value": "bash",
-                            "type": "string",
-                            "description": "The slug of the skill",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/hero\/{classSlug}\/skill\/{skillSlug}"
-                }
-            ],
-            "unavailable": [
-                "SEA"
-            ]
-        },
-        "ItemTypeApi": {
-            "endpoints": [
-                {
-                    "name": "getItemTypeIndex",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/item-type"
-                },
-                {
-                    "name": "getItemType",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{itemTypeSlug}",
-                            "value": "sword2h",
-                            "type": "string",
-                            "description": "The slug of the item type",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/item-type\/{itemTypeSlug}"
-                }
-            ],
-            "unavailable": [
-                "SEA"
-            ]
-        },
-        "ItemApi": {
-            "endpoints": [
-                {
-                    "name": "getItem",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{itemSlugAndId}",
-                            "value": "corrupted-ashbringer-Unique_Sword_2H_104_x1",
-                            "type": "string",
-                            "description": "The slug and ID of the item",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/data\/item\/{itemSlugAndId}"
-                }
-            ],
-            "unavailable": [
-                "SEA"
-            ]
-        },
-        "ProfileApi": {
-            "endpoints": [
-                {
-                    "name": "getApiAccount",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{account}",
-                            "value": "StingDuck-2452",
-                            "type": "string",
-                            "description": "The Battle Tag for the account.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/profile\/{account}\/"
-                },
-                {
-                    "name": "getApiHero",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{account}",
-                            "value": "StingDuck-2452",
-                            "type": "string",
-                            "description": "The Battle Tag for the account.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": "{heroId}",
-                            "value": "111436732",
-                            "type": "string",
-                            "description": "The id of the hero.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/profile\/{account}\/hero\/{heroId}"
-                },
-                {
-                    "name": "getApiDetailedHeroItems",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{account}",
-                            "value": "StingDuck-2452",
-                            "type": "string",
-                            "description": "The Battle Tag for the account.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": "{heroId}",
-                            "value": "111436732",
-                            "type": "string",
-                            "description": "The id of the hero.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/profile\/{account}\/hero\/{heroId}\/items"
-                },
-                {
-                    "name": "getApiDetailedFollowerItems",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{account}",
-                            "value": "StingDuck-2452",
-                            "type": "string",
-                            "description": "The Battle Tag for the account.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": "{heroId}",
-                            "value": "111436732",
-                            "type": "string",
-                            "description": "The id of the hero.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/d3\/profile\/{account}\/hero\/{heroId}\/follower-items"
-                }
-            ],
-            "unavailable": [
-                "SEA"
-            ]
-        },
-        "OAuthApi": {
-            "endpoints": [
-                {
-                    "name": "getSeasonIndex",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/data\/d3\/season\/"
-                },
-                {
-                    "name": "getSeason",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":id",
-                            "value": "1",
-                            "type": "integer",
-                            "description": "The season to lookup",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/data\/d3\/season\/:id"
-                },
-                {
-                    "name": "getSeasonLeaderboard",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":id",
-                            "value": "1",
-                            "type": "integer",
-                            "description": "The season to lookup",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":leaderboard",
-                            "value": "achievement-points",
-                            "type": "string",
-                            "description": "The leaderboard to lookup, you can find these strings in the Season API call",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/data\/d3\/season\/:id\/leaderboard\/:leaderboard"
-                },
-                {
-                    "name": "getEraIndex",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/data\/d3\/era\/"
-                },
-                {
-                    "name": "getEra",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":id",
-                            "value": "1",
-                            "type": "integer",
-                            "description": "The era to lookup",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/data\/d3\/era\/:id"
-                },
-                {
-                    "name": "getEraLeaderboard",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":id",
-                            "value": "1",
-                            "type": "integer",
-                            "description": "The era to lookup",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":leaderboard",
-                            "value": "rift-barbarian",
-                            "type": "string",
-                            "description": "The leaderboard to lookup, you can find these strings in the Era API call",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/data\/d3\/era\/:id\/leaderboard\/:leaderboard"
-                }
-            ],
-            "unavailable": [
-                "SEA"
-            ]
-        }
+    "WowProfileData\\CharacterAchievements\\GetCharacterAchievementsSummary": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/achievements",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
     },
-    "OAuth": {
-        "AccountApi": {
-            "endpoints": [
-                {
-                    "name": "getUser",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/account\/user"
-                }
-            ],
-            "unavailable": []
-        },
-        "ProfileApi": {
-            "endpoints": [
-                {
-                    "name": "getSc2OauthProfile",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/sc2\/profile\/user"
-                },
-                {
-                    "name": "getWowOauthProfile",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [
-                        "CN"
-                    ],
-                    "url": "\/wow\/user\/characters"
-                }
-            ],
-            "unavailable": []
-        }
+    "WowProfileData\\CharacterAppearance\\GetCharacterAppearanceSummary": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/appearance",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
     },
-    "Starcraft": {
-        "ProfileApi": {
-            "endpoints": [
-                {
-                    "name": "getProfile",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":id",
-                            "value": "5179818",
-                            "type": "string",
-                            "description": "The ID of the profile to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":region",
-                            "value": "1",
-                            "type": "string",
-                            "description": "The region of the profile to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":name",
-                            "value": "soul",
-                            "type": "string",
-                            "description": "The name of the profile to retrieve.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/sc2\/profile\/:id\/:region\/:name\/"
-                },
-                {
-                    "name": "getLadders",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":id",
-                            "value": "5179818",
-                            "type": "string",
-                            "description": "The ID of the profile to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":region",
-                            "value": "1",
-                            "type": "string",
-                            "description": "The region of the profile to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":name",
-                            "value": "soul",
-                            "type": "string",
-                            "description": "The name of the profile to retrieve.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/sc2\/profile\/:id\/:region\/:name\/ladders"
-                },
-                {
-                    "name": "getMatchHistory",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":id",
-                            "value": "5179818",
-                            "type": "string",
-                            "description": "The ID of the profile to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":region",
-                            "value": "1",
-                            "type": "string",
-                            "description": "The region of the profile to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":name",
-                            "value": "soul",
-                            "type": "string",
-                            "description": "The name of the profile to retrieve.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/sc2\/profile\/:id\/:region\/:name\/matches"
-                }
-            ],
-            "unavailable": []
-        },
-        "LadderApi": {
-            "endpoints": [
-                {
-                    "name": "getLadder",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":id",
-                            "value": "206822",
-                            "type": "string",
-                            "description": "The ID of the ladder to retrieve.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/sc2\/ladder\/:id"
-                }
-            ],
-            "unavailable": []
-        },
-        "DataResourcesApi": {
-            "endpoints": [
-                {
-                    "name": "getAchievements",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/sc2\/data\/achievements"
-                },
-                {
-                    "name": "getRewards",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/sc2\/data\/rewards"
-                }
-            ],
-            "unavailable": []
-        }
+    "WowProfileData\\CharacterEquipment\\GetCharacterEquipmentSummary": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/equipment",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
     },
-    "Warcraft": {
-        "AchievementApi": {
-            "endpoints": [
-                {
-                    "name": "getAchievement",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":id",
-                            "value": "2144",
-                            "type": "string",
-                            "description": "The ID of the achievement to retrieve.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/achievement\/:id"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "AuctionApi": {
-            "endpoints": [
-                {
-                    "name": "getAuctionDataStatus",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The realm being requested.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/auction\/data\/:realm"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "BossApi": {
-            "endpoints": [
-                {
-                    "name": "getMasterList",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/boss\/"
-                },
-                {
-                    "name": "getBoss",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":bossid",
-                            "value": "24723",
-                            "type": "string",
-                            "description": "The ID of the boss you want to retrieve.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/boss\/:bossid"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "ChallengeModeApi": {
-            "endpoints": [
-                {
-                    "name": "getRealmLeaderboard",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The realm being requested.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/challenge\/:realm"
-                },
-                {
-                    "name": "getRegionLeaderboard",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/challenge\/region"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "CharacterProfileApi": {
-            "endpoints": [
-                {
-                    "name": "getCharacterProfile",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "",
-                            "type": "commaSeparatedStrings",
-                            "description": "The dataset you wish to retrieve for the character. Each field value is explained in more detail in the following methods. If no fields are specified the API will only return basic data about the character.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getAchievements",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "achievements",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getAppearance",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "appearance",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getFeed",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "feed",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getGuild",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "guild",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getHunterPets",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "hunterPets",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getItems",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "items",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getMounts",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "mounts",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getPets",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "pets",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getPetSlots",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "petSlots",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getProfessions",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "professions",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getProgression",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "progression",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getPVP",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "pvp",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getQuests",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "quests",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getReputation",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "reputation",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getStatistics",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "statistics",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getStats",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "stats",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getTalents",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "talents",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getTitles",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "titles",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                },
-                {
-                    "name": "getAudit",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":characterName",
-                            "value": "Jyggen",
-                            "type": "string",
-                            "description": "The name of the character you want to retrieve.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "audit",
-                            "type": "commaSeparatedStrings",
-                            "description": "Specifies what data you want to retrieve.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/character\/:realm\/:characterName"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "GuildProfileApi": {
-            "endpoints": [
-                {
-                    "name": "getGuildProfile",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The realm the guild lives on.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":guildName",
-                            "value": "Malaxnytt",
-                            "type": "string",
-                            "description": "Name of the guild being queried",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "",
-                            "type": "commaSeparatedStrings",
-                            "description": "The optional data you want to retrieve about the guild. Each field value is explained in more detail in the following methods. If no fields are specified the API will only return basic data about the guild.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/guild\/:realm\/:guildName"
-                },
-                {
-                    "name": "getMembers",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The realm the guild lives on.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":guildName",
-                            "value": "Malaxnytt",
-                            "type": "string",
-                            "description": "Name of the guild being queried",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "members",
-                            "type": "commaSeparatedStrings",
-                            "description": "A value of members tells the API to include guild's member list in the response.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/guild\/:realm\/:guildName"
-                },
-                {
-                    "name": "getAchievements",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The realm the guild lives on.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":guildName",
-                            "value": "Malaxnytt",
-                            "type": "string",
-                            "description": "Name of the guild being queried",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "achievements",
-                            "type": "commaSeparatedStrings",
-                            "description": "A value of achievements tells the API to include the guild's achievement data in the response.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/guild\/:realm\/:guildName"
-                },
-                {
-                    "name": "getNews",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The realm the guild lives on.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":guildName",
-                            "value": "Malaxnytt",
-                            "type": "string",
-                            "description": "Name of the guild being queried",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "news",
-                            "type": "commaSeparatedStrings",
-                            "description": "A value of news tells the API to include the guild's news feed in the response.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/guild\/:realm\/:guildName"
-                },
-                {
-                    "name": "getChallenge",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":realm",
-                            "value": "draenor",
-                            "type": "string",
-                            "description": "The realm the guild lives on.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": ":guildName",
-                            "value": "Malaxnytt",
-                            "type": "string",
-                            "description": "Name of the guild being queried",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "fields",
-                            "value": "challenge",
-                            "type": "commaSeparatedStrings",
-                            "description": "A value of challenge tells the API to include the guild's Challenge Mode data in the response.",
-                            "isConstant": true
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/guild\/:realm\/:guildName"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "ItemApi": {
-            "endpoints": [
-                {
-                    "name": "getItem",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":itemId",
-                            "value": "18803",
-                            "type": "number",
-                            "description": "Unique ID of the item being requested.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/item\/:itemId"
-                },
-                {
-                    "name": "getItemSet",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":setId",
-                            "value": "1060",
-                            "type": "string",
-                            "description": "Unique ID of the set being requested.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/item\/set\/:setId"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "MountApi": {
-            "endpoints": [
-                {
-                    "name": "getMasterList",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/mount\/"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "PetApi": {
-            "endpoints": [
-                {
-                    "name": "getMasterList",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/pet\/"
-                },
-                {
-                    "name": "getAbilities",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":abilityID",
-                            "value": "640",
-                            "type": "string",
-                            "description": "The ID of the ability you want to retrieve.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/pet\/ability\/:abilityID"
-                },
-                {
-                    "name": "getSpecies",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":speciesID",
-                            "value": "258",
-                            "type": "string",
-                            "description": "The species you want to retrieve data on.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/pet\/species\/:speciesID"
-                },
-                {
-                    "name": "getStats",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":speciesID",
-                            "value": "258",
-                            "type": "string",
-                            "description": "The pet's species ID. This can be found by querying a users' list of pets via the Character Profile API.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "level",
-                            "value": "25",
-                            "type": "number",
-                            "description": "The pet's level. Pet levels max out at 25. If omitted the API assumes a default value of 1.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "breedId",
-                            "value": "5",
-                            "type": "number",
-                            "description": "The pet's breed. Retrievable via the Character Profile API. If omitted the API assumes a default value of 3.",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "qualityId",
-                            "value": "4",
-                            "type": "number",
-                            "description": "The pet's quality. Retrievable via the Character Profile API. Pet quality can range from 0 to 5 (0 is poor quality and 5 is legendary). If omitted the API will assume a default value of 1.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/pet\/stats\/:speciesID"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "PvpApi": {
-            "endpoints": [
-                {
-                    "name": "getLeaderboards",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":bracket",
-                            "value": "2v2",
-                            "type": "string",
-                            "description": "The type of leaderboard you want to retrieve. Valid entries are 2v2, 3v3, 5v5, and rbg.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/leaderboard\/:bracket"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "QuestApi": {
-            "endpoints": [
-                {
-                    "name": "getQuest",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":questId",
-                            "value": "13146",
-                            "type": "string",
-                            "description": "The ID of the desired quest.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/quest\/:questId"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "RealmStatusApi": {
-            "endpoints": [
-                {
-                    "name": "getRealmStatus",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/realm\/status"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "RecipeApi": {
-            "endpoints": [
-                {
-                    "name": "getRecipe",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":recipeId",
-                            "value": "33994",
-                            "type": "string",
-                            "description": "Unique ID for the desired recipe.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/recipe\/:recipeId"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "SpellApi": {
-            "endpoints": [
-                {
-                    "name": "getSpell",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":spellId",
-                            "value": "80353",
-                            "type": "string",
-                            "description": "The ID of the spell you want to retrieve.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/spell\/:spellId"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "ZoneApi": {
-            "endpoints": [
-                {
-                    "name": "getMasterList",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/zone\/"
-                },
-                {
-                    "name": "getZone",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": ":zoneid",
-                            "value": "4131",
-                            "type": "string",
-                            "description": "The ID of the zone you want to retrieve.",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/zone\/:zoneid"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "DataResourcesApi": {
-            "endpoints": [
-                {
-                    "name": "getBattlegroups",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/battlegroups\/"
-                },
-                {
-                    "name": "getCharacterRaces",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/character\/races"
-                },
-                {
-                    "name": "getCharacterClasses",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/character\/classes"
-                },
-                {
-                    "name": "getCharacterAchievements",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/character\/achievements"
-                },
-                {
-                    "name": "getGuildRewards",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/guild\/rewards"
-                },
-                {
-                    "name": "getGuildPerks",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/guild\/perks"
-                },
-                {
-                    "name": "getGuildAchievements",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/guild\/achievements"
-                },
-                {
-                    "name": "getItemClasses",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/item\/classes"
-                },
-                {
-                    "name": "getTalents",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/talents"
-                },
-                {
-                    "name": "getPetTypes",
-                    "parameters": [],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/wow\/data\/pet\/types"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "ConnectedRealmApi": {
-            "endpoints": [
-                {
-                    "name": "getConnectedRealmIndex",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/connected-realm\/"
-                },
-                {
-                    "name": "getConnectedRealm",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{connectedRealmId}",
-                            "value": "509",
-                            "type": "integer",
-                            "description": "The id of the connected realm",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/connected-realm\/{connectedRealmId}"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "MythicKeystoneLeaderboardApi": {
-            "endpoints": [
-                {
-                    "name": "getMythicLeaderboardIndex",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{connectedRealmId}",
-                            "value": "509",
-                            "type": "integer",
-                            "description": "The id of the connected realm",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/connected-realm\/{connectedRealmId}\/mythic-leaderboard\/"
-                },
-                {
-                    "name": "getMythicLeaderboard",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{connectedRealmId}",
-                            "value": "509",
-                            "type": "integer",
-                            "description": "The id of the connected realm",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": "{dungeonId}",
-                            "value": "197",
-                            "type": "integer",
-                            "description": "The id of the dungeon",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "pathReplace",
-                            "name": "{period}",
-                            "value": "641",
-                            "type": "integer",
-                            "description": "The unique identifier for the leaderboard period",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/connected-realm\/{connectedRealmId}\/mythic-leaderboard\/{dungeonId}\/period\/{period}"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "MythicChallengeModeApi": {
-            "endpoints": [
-                {
-                    "name": "getMythicChallengeModeIndex",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/mythic-challenge-mode\/"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "PlayableClassApi": {
-            "endpoints": [
-                {
-                    "name": "getPlayableClassesIndex",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "static-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/playable-class\/"
-                },
-                {
-                    "name": "getPlayableClass",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{classId}",
-                            "value": "7",
-                            "type": "integer",
-                            "description": "The id of a playable class",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "static-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/playable-class\/{classId}"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "PlayableSpecializationApi": {
-            "endpoints": [
-                {
-                    "name": "getPlayableSpecializationIndex",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "static-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/playable-specialization\/"
-                },
-                {
-                    "name": "getPlayableSpecialization",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{specId}",
-                            "value": "262",
-                            "type": "integer",
-                            "description": "The id of a playable specialization",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "static-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/playable-specialization\/{specId}"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "RealmApi": {
-            "endpoints": [
-                {
-                    "name": "getRealmIndex",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/realm\/"
-                },
-                {
-                    "name": "getRealm",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{realmSlug}",
-                            "value": "tichondrius",
-                            "type": "string",
-                            "description": "The slug of the realm",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/realm\/{realmSlug}"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "RegionApi": {
-            "endpoints": [
-                {
-                    "name": "getRegionIndex",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/region\/"
-                },
-                {
-                    "name": "getRegion",
-                    "parameters": [
-                        {
-                            "kind": "pathReplace",
-                            "name": "{regionId}",
-                            "value": "3",
-                            "type": "integer",
-                            "description": "The id of the region",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/region\/{regionId}"
-                }
-            ],
-            "unavailable": [
-                "CN",
-                "SEA"
-            ]
-        },
-        "WowTokenApi": {
-            "endpoints": [
-                {
-                    "name": "getTokenIndex",
-                    "parameters": [
-                        {
-                            "kind": "query",
-                            "name": "namespace",
-                            "value": "dynamic-eu",
-                            "type": "string",
-                            "description": "The namespace that should be used to locate this document",
-                            "isConstant": false
-                        },
-                        {
-                            "kind": "query",
-                            "name": "access_token",
-                            "value": "",
-                            "type": "string",
-                            "description": "",
-                            "isConstant": false
-                        }
-                    ],
-                    "overrides": [
-                        {
-                            "region": "CN",
-                            "url": "\/data\/wow\/token\/"
-                        }
-                    ],
-                    "verb": "GET",
-                    "unavailable": [],
-                    "url": "\/token\/"
-                }
-            ],
-            "unavailable": [
-                "SEA"
-            ]
-        }
+    "WowProfileData\\CharacterMedia\\GetCharacterMediaSummary": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/character-media",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
+    },
+    "WowProfileData\\CharacterProfile\\GetCharacterProfileSummary": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
+    },
+    "WowProfileData\\CharacterPvp\\GetCharacterPvPBracketStatistics": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/pvp-bracket\/{pvpBracket}",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            },
+            {
+                "name": "{pvpBracket}"
+            }
+        ]
+    },
+    "WowProfileData\\CharacterPvp\\GetCharacterPvPSummary": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/pvp-summary",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
+    },
+    "WowProfileData\\CharacterSpecializations\\GetCharacterSpecializationsSummary": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/specializations",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
+    },
+    "WowProfileData\\CharacterStatistics\\GetCharacterStatisticsSummary": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/statistics",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
+    },
+    "WowProfileData\\CharacterTitles\\GetCharacterTitlesSummary": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/titles",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
+    },
+    "WowProfileData\\MythicKeystoneCharacterProfile\\GetMythicKeystoneCharacterProfileIndex": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/mythic-keystone-profile",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            }
+        ]
+    },
+    "WowProfileData\\MythicKeystoneCharacterProfile\\GetMythicKeystoneCharacterSeasonDetails": {
+        "method": "GET",
+        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/mythic-keystone-profile\/season\/{seasonId}",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{characterName}"
+            },
+            {
+                "name": "{seasonId}"
+            }
+        ]
+    },
+    "WowGameData\\Achievements\\GetAchievementCategoriesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/achievement-category\/index",
+        "parameters": []
+    },
+    "WowGameData\\Achievements\\GetAchievementCategory": {
+        "method": "GET",
+        "path": "\/data\/wow\/achievement-category\/{achievementCategoryId}",
+        "parameters": [
+            {
+                "name": "{achievementCategoryId}"
+            }
+        ]
+    },
+    "WowGameData\\Achievements\\GetAchievementsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/achievement\/index",
+        "parameters": []
+    },
+    "WowGameData\\Achievements\\GetAchievement": {
+        "method": "GET",
+        "path": "\/data\/wow\/achievement\/{achievementId}",
+        "parameters": [
+            {
+                "name": "{achievementId}"
+            }
+        ]
+    },
+    "WowGameData\\Achievements\\GetAchievementMedia": {
+        "method": "GET",
+        "path": "\/data\/wow\/media\/achievement\/{achievementId}",
+        "parameters": [
+            {
+                "name": "{achievementId}"
+            }
+        ]
+    },
+    "WowGameData\\ConnectedRealm\\GetConnectedRealmsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/connected-realm\/index",
+        "parameters": []
+    },
+    "WowGameData\\ConnectedRealm\\GetConnectedRealm": {
+        "method": "GET",
+        "path": "\/data\/wow\/connected-realm\/{connectedRealmId}",
+        "parameters": [
+            {
+                "name": "{connectedRealmId}"
+            }
+        ]
+    },
+    "WowGameData\\Creatures\\GetCreatureFamiliesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/creature-family\/index",
+        "parameters": []
+    },
+    "WowGameData\\Creatures\\GetCreatureFamily": {
+        "method": "GET",
+        "path": "\/data\/wow\/creature-family\/{creatureFamilyId}",
+        "parameters": [
+            {
+                "name": "{creatureFamilyId}"
+            }
+        ]
+    },
+    "WowGameData\\Creatures\\GetCreatureTypesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/creature-type\/index",
+        "parameters": []
+    },
+    "WowGameData\\Creatures\\GetCreatureType": {
+        "method": "GET",
+        "path": "\/data\/wow\/creature-type\/{creatureTypeId}",
+        "parameters": [
+            {
+                "name": "{creatureTypeId}"
+            }
+        ]
+    },
+    "WowGameData\\Creatures\\GetCreature": {
+        "method": "GET",
+        "path": "\/data\/wow\/creature\/{creatureId}",
+        "parameters": [
+            {
+                "name": "{creatureId}"
+            }
+        ]
+    },
+    "WowGameData\\Creatures\\GetCreatureDisplayMedia": {
+        "method": "GET",
+        "path": "\/data\/wow\/media\/creature-display\/{creatureDisplayId}",
+        "parameters": [
+            {
+                "name": "{creatureDisplayId}"
+            }
+        ]
+    },
+    "WowGameData\\Creatures\\GetCreatureFamilyMedia": {
+        "method": "GET",
+        "path": "\/data\/wow\/media\/creature-family\/{creatureFamilyId}",
+        "parameters": [
+            {
+                "name": "{creatureFamilyId}"
+            }
+        ]
+    },
+    "WowGameData\\Guild\\GetGuild": {
+        "method": "GET",
+        "path": "\/data\/wow\/guild\/{realmSlug}\/{nameSlug}",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{nameSlug}"
+            }
+        ]
+    },
+    "WowGameData\\Guild\\GetGuildAchievements": {
+        "method": "GET",
+        "path": "\/data\/wow\/guild\/{realmSlug}\/{nameSlug}\/achievements",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{nameSlug}"
+            }
+        ]
+    },
+    "WowGameData\\Guild\\GetGuildRoster": {
+        "method": "GET",
+        "path": "\/data\/wow\/guild\/{realmSlug}\/{nameSlug}\/roster",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            },
+            {
+                "name": "{nameSlug}"
+            }
+        ]
+    },
+    "WowGameData\\GuildCrest\\GetGuildCrestComponentsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/guild-crest\/index",
+        "parameters": []
+    },
+    "WowGameData\\GuildCrest\\GetGuildCrestBorderMedia": {
+        "method": "GET",
+        "path": "\/data\/wow\/media\/guild-crest\/border\/{borderId}",
+        "parameters": [
+            {
+                "name": "{borderId}"
+            }
+        ]
+    },
+    "WowGameData\\GuildCrest\\GetGuildCrestEmblemMedia": {
+        "method": "GET",
+        "path": "\/data\/wow\/media\/guild-crest\/emblem\/{emblemId}",
+        "parameters": [
+            {
+                "name": "{emblemId}"
+            }
+        ]
+    },
+    "WowGameData\\Items\\GetAzeriteEssencesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/azerite-essence\/index",
+        "parameters": []
+    },
+    "WowGameData\\Items\\GetAzeriteEssence": {
+        "method": "GET",
+        "path": "\/data\/wow\/azerite-essence\/{azeriteEssenceId}",
+        "parameters": [
+            {
+                "name": "{azeriteEssenceId}"
+            }
+        ]
+    },
+    "WowGameData\\Items\\GetItemClassesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/item-class\/index",
+        "parameters": []
+    },
+    "WowGameData\\Items\\GetItemClass": {
+        "method": "GET",
+        "path": "\/data\/wow\/item-class\/{itemClassId}",
+        "parameters": [
+            {
+                "name": "{itemClassId}"
+            }
+        ]
+    },
+    "WowGameData\\Items\\GetItemSubclass": {
+        "method": "GET",
+        "path": "\/data\/wow\/item-class\/{itemClassId}\/item-subclass\/{itemSubclassId}",
+        "parameters": [
+            {
+                "name": "{itemClassId}"
+            },
+            {
+                "name": "{itemSubclassId}"
+            }
+        ]
+    },
+    "WowGameData\\Items\\GetItem": {
+        "method": "GET",
+        "path": "\/data\/wow\/item\/{itemId}",
+        "parameters": [
+            {
+                "name": "{itemId}"
+            }
+        ]
+    },
+    "WowGameData\\Items\\GetItemMedia": {
+        "method": "GET",
+        "path": "\/data\/wow\/media\/item\/{itemId}",
+        "parameters": [
+            {
+                "name": "{itemId}"
+            }
+        ]
+    },
+    "WowGameData\\MythicKeystoneAffix\\GetMythicKeystoneAffixesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/keystone-affix\/index",
+        "parameters": []
+    },
+    "WowGameData\\MythicKeystoneAffix\\GetMythicKeystoneAffix": {
+        "method": "GET",
+        "path": "\/data\/wow\/keystone-affix\/{keystoneAffixId}",
+        "parameters": [
+            {
+                "name": "{keystoneAffixId}"
+            }
+        ]
+    },
+    "WowGameData\\MythicRaidLeaderboard\\GetMythicRaidLeaderboard": {
+        "method": "GET",
+        "path": "\/data\/wow\/leaderboard\/hall-of-fame\/{raid}\/{faction}",
+        "parameters": [
+            {
+                "name": "{raid}"
+            },
+            {
+                "name": "{faction}"
+            }
+        ]
+    },
+    "WowGameData\\Mounts\\GetMountsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/mount\/index",
+        "parameters": []
+    },
+    "WowGameData\\Mounts\\GetMount": {
+        "method": "GET",
+        "path": "\/data\/wow\/mount\/{mountId}",
+        "parameters": [
+            {
+                "name": "{mountId}"
+            }
+        ]
+    },
+    "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneDungeonsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/mythic-keystone\/dungeon\/index",
+        "parameters": []
+    },
+    "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneDungeon": {
+        "method": "GET",
+        "path": "\/data\/wow\/mythic-keystone\/dungeon\/{dungeonId}",
+        "parameters": [
+            {
+                "name": "{dungeonId}"
+            }
+        ]
+    },
+    "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/mythic-keystone\/index",
+        "parameters": []
+    },
+    "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystonePeriodsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/mythic-keystone\/period\/index",
+        "parameters": []
+    },
+    "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystonePeriod": {
+        "method": "GET",
+        "path": "\/data\/wow\/mythic-keystone\/period\/{periodId}",
+        "parameters": [
+            {
+                "name": "{periodId}"
+            }
+        ]
+    },
+    "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneSeasonsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/mythic-keystone\/season\/index",
+        "parameters": []
+    },
+    "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneSeason": {
+        "method": "GET",
+        "path": "\/data\/wow\/mythic-keystone\/season\/{seasonId}",
+        "parameters": [
+            {
+                "name": "{seasonId}"
+            }
+        ]
+    },
+    "WowGameData\\MythicKeystoneLeaderboard\\GetMythicKeystoneLeaderboardsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/connected-realm\/{connectedRealmId}\/mythic-leaderboard\/index",
+        "parameters": [
+            {
+                "name": "{connectedRealmId}"
+            }
+        ]
+    },
+    "WowGameData\\MythicKeystoneLeaderboard\\GetMythicKeystoneLeaderboard": {
+        "method": "GET",
+        "path": "\/data\/wow\/connected-realm\/{connectedRealmId}\/mythic-leaderboard\/{dungeonId}\/period\/{period}",
+        "parameters": [
+            {
+                "name": "{connectedRealmId}"
+            },
+            {
+                "name": "{dungeonId}"
+            },
+            {
+                "name": "{period}"
+            }
+        ]
+    },
+    "WowGameData\\Pets\\GetPetsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/pet\/index",
+        "parameters": []
+    },
+    "WowGameData\\Pets\\GetPet": {
+        "method": "GET",
+        "path": "\/data\/wow\/pet\/{petId}",
+        "parameters": [
+            {
+                "name": "{petId}"
+            }
+        ]
+    },
+    "WowGameData\\PlayableClass\\GetPlayableClassesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/playable-class\/index",
+        "parameters": []
+    },
+    "WowGameData\\PlayableClass\\GetPlayableClass": {
+        "method": "GET",
+        "path": "\/data\/wow\/playable-class\/{classId}",
+        "parameters": [
+            {
+                "name": "{classId}"
+            }
+        ]
+    },
+    "WowGameData\\PlayableClass\\GetPvPTalentSlots": {
+        "method": "GET",
+        "path": "\/data\/wow\/playable-class\/{classId}\/pvp-talent-slots",
+        "parameters": [
+            {
+                "name": "{classId}"
+            }
+        ]
+    },
+    "WowGameData\\PlayableRaces\\GetPlayableRacesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/playable-race\/index",
+        "parameters": []
+    },
+    "WowGameData\\PlayableRaces\\GetPlayableRace": {
+        "method": "GET",
+        "path": "\/data\/wow\/playable-race\/{playableRaceId}",
+        "parameters": [
+            {
+                "name": "{playableRaceId}"
+            }
+        ]
+    },
+    "WowGameData\\PlayableSpecialization\\GetPlayableSpecializationsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/playable-specialization\/index",
+        "parameters": []
+    },
+    "WowGameData\\PlayableSpecialization\\GetPlayableSpecialization": {
+        "method": "GET",
+        "path": "\/data\/wow\/playable-specialization\/{specId}",
+        "parameters": [
+            {
+                "name": "{specId}"
+            }
+        ]
+    },
+    "WowGameData\\PowerType\\GetPowerTypesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/power-type\/index",
+        "parameters": []
+    },
+    "WowGameData\\PowerType\\GetPowerType": {
+        "method": "GET",
+        "path": "\/data\/wow\/power-type\/{powerTypeId}",
+        "parameters": [
+            {
+                "name": "{powerTypeId}"
+            }
+        ]
+    },
+    "WowGameData\\PvpSeason\\GetPvPSeasonsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/pvp-season\/index",
+        "parameters": []
+    },
+    "WowGameData\\PvpSeason\\GetPvPSeason": {
+        "method": "GET",
+        "path": "\/data\/wow\/pvp-season\/{pvpSeasonId}",
+        "parameters": [
+            {
+                "name": "{pvpSeasonId}"
+            }
+        ]
+    },
+    "WowGameData\\PvpSeason\\GetPvPLeaderboardsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/pvp-season\/{pvpSeasonId}\/pvp-leaderboard\/index",
+        "parameters": [
+            {
+                "name": "{pvpSeasonId}"
+            }
+        ]
+    },
+    "WowGameData\\PvpSeason\\GetPvPLeaderboard": {
+        "method": "GET",
+        "path": "\/data\/wow\/pvp-season\/{pvpSeasonId}\/pvp-leaderboard\/{pvpBracket}",
+        "parameters": [
+            {
+                "name": "{pvpSeasonId}"
+            },
+            {
+                "name": "{pvpBracket}"
+            }
+        ]
+    },
+    "WowGameData\\PvpSeason\\GetPvPRewardsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/pvp-season\/{pvpSeasonId}\/pvp-reward\/index",
+        "parameters": [
+            {
+                "name": "{pvpSeasonId}"
+            }
+        ]
+    },
+    "WowGameData\\PvpTier\\GetPvPTierMedia": {
+        "method": "GET",
+        "path": "\/data\/wow\/media\/pvp-tier\/{pvpTierId}",
+        "parameters": [
+            {
+                "name": "{pvpTierId}"
+            }
+        ]
+    },
+    "WowGameData\\PvpTier\\GetPvPTiersIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/pvp-tier\/index",
+        "parameters": []
+    },
+    "WowGameData\\PvpTier\\GetPvPTier": {
+        "method": "GET",
+        "path": "\/data\/wow\/pvp-tier\/{pvpTierId}",
+        "parameters": [
+            {
+                "name": "{pvpTierId}"
+            }
+        ]
+    },
+    "WowGameData\\Realm\\GetRealmsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/realm\/index",
+        "parameters": []
+    },
+    "WowGameData\\Realm\\GetRealm": {
+        "method": "GET",
+        "path": "\/data\/wow\/realm\/{realmSlug}",
+        "parameters": [
+            {
+                "name": "{realmSlug}"
+            }
+        ]
+    },
+    "WowGameData\\Region\\GetRegionsIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/region\/index",
+        "parameters": []
+    },
+    "WowGameData\\Region\\GetRegion": {
+        "method": "GET",
+        "path": "\/data\/wow\/region\/{regionId}",
+        "parameters": [
+            {
+                "name": "{regionId}"
+            }
+        ]
+    },
+    "WowGameData\\Titles\\GetTitlesIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/title\/index",
+        "parameters": []
+    },
+    "WowGameData\\Titles\\GetTitle": {
+        "method": "GET",
+        "path": "\/data\/wow\/title\/{titleId}",
+        "parameters": [
+            {
+                "name": "{titleId}"
+            }
+        ]
+    },
+    "WowGameData\\WowToken\\GetWoWTokenIndex": {
+        "method": "GET",
+        "path": "\/data\/wow\/token\/index",
+        "parameters": []
+    },
+    "WowCommunityApis\\WorldOfWarcraftProfile\\GetWorldOfWarcraftOauthProfile": {
+        "method": "GET",
+        "path": "\/wow\/user\/characters",
+        "parameters": []
+    },
+    "WowCommunityApis\\Achievement\\GetAchievement": {
+        "method": "GET",
+        "path": "\/wow\/achievement\/:id",
+        "parameters": [
+            {
+                "name": ":id"
+            }
+        ]
+    },
+    "WowCommunityApis\\Auction\\GetAuctionDataStatus": {
+        "method": "GET",
+        "path": "\/wow\/auction\/data\/:realm",
+        "parameters": [
+            {
+                "name": ":realm"
+            }
+        ]
+    },
+    "WowCommunityApis\\Boss\\GetMasterList": {
+        "method": "GET",
+        "path": "\/wow\/boss\/",
+        "parameters": []
+    },
+    "WowCommunityApis\\Boss\\GetBoss": {
+        "method": "GET",
+        "path": "\/wow\/boss\/:bossid",
+        "parameters": [
+            {
+                "name": ":bossid"
+            }
+        ]
+    },
+    "WowCommunityApis\\ChallengeMode\\GetRealmLeaderboard": {
+        "method": "GET",
+        "path": "\/wow\/challenge\/:realm",
+        "parameters": [
+            {
+                "name": ":realm"
+            }
+        ]
+    },
+    "WowCommunityApis\\ChallengeMode\\GetRegionLeaderboard": {
+        "method": "GET",
+        "path": "\/wow\/challenge\/region",
+        "parameters": []
+    },
+    "WowCommunityApis\\CharacterProfile\\GetCharacterProfile": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetAchievements": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetAppearance": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetFeed": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetGuild": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetHunterPets": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetItems": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetMounts": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetPets": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetPetSlots": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetProfessions": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetProgression": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetPvp": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetQuests": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetReputation": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetStatistics": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetStats": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetTalents": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetTitles": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\CharacterProfile\\GetAudit": {
+        "method": "GET",
+        "path": "\/wow\/character\/:realm\/:characterName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":characterName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\GuildProfile\\GetGuildProfile": {
+        "method": "GET",
+        "path": "\/wow\/guild\/:realm\/:guildName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":guildName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\GuildProfile\\GetMembers": {
+        "method": "GET",
+        "path": "\/wow\/guild\/:realm\/:guildName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":guildName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\GuildProfile\\GetAchievements": {
+        "method": "GET",
+        "path": "\/wow\/guild\/:realm\/:guildName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":guildName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\GuildProfile\\GetNews": {
+        "method": "GET",
+        "path": "\/wow\/guild\/:realm\/:guildName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":guildName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\GuildProfile\\GetChallenge": {
+        "method": "GET",
+        "path": "\/wow\/guild\/:realm\/:guildName",
+        "parameters": [
+            {
+                "name": ":realm"
+            },
+            {
+                "name": ":guildName"
+            },
+            {
+                "name": "fields"
+            }
+        ]
+    },
+    "WowCommunityApis\\Item\\GetItem": {
+        "method": "GET",
+        "path": "\/wow\/item\/:itemId",
+        "parameters": [
+            {
+                "name": ":itemId"
+            }
+        ]
+    },
+    "WowCommunityApis\\Item\\GetItemSet": {
+        "method": "GET",
+        "path": "\/wow\/item\/set\/:setId",
+        "parameters": [
+            {
+                "name": ":setId"
+            }
+        ]
+    },
+    "WowCommunityApis\\Mount\\GetMasterList": {
+        "method": "GET",
+        "path": "\/wow\/mount\/",
+        "parameters": []
+    },
+    "WowCommunityApis\\Pet\\GetMasterList": {
+        "method": "GET",
+        "path": "\/wow\/pet\/",
+        "parameters": []
+    },
+    "WowCommunityApis\\Pet\\GetAbilities": {
+        "method": "GET",
+        "path": "\/wow\/pet\/ability\/:abilityID",
+        "parameters": [
+            {
+                "name": ":abilityID"
+            }
+        ]
+    },
+    "WowCommunityApis\\Pet\\GetSpecies": {
+        "method": "GET",
+        "path": "\/wow\/pet\/species\/:speciesID",
+        "parameters": [
+            {
+                "name": ":speciesID"
+            }
+        ]
+    },
+    "WowCommunityApis\\Pet\\GetStats": {
+        "method": "GET",
+        "path": "\/wow\/pet\/stats\/:speciesID",
+        "parameters": [
+            {
+                "name": ":speciesID"
+            },
+            {
+                "name": "level"
+            },
+            {
+                "name": "breedId"
+            },
+            {
+                "name": "qualityId"
+            }
+        ]
+    },
+    "WowCommunityApis\\Pvp\\GetLeaderboards": {
+        "method": "GET",
+        "path": "\/wow\/leaderboard\/:bracket",
+        "parameters": [
+            {
+                "name": ":bracket"
+            }
+        ]
+    },
+    "WowCommunityApis\\Quest\\GetQuest": {
+        "method": "GET",
+        "path": "\/wow\/quest\/:questId",
+        "parameters": [
+            {
+                "name": ":questId"
+            }
+        ]
+    },
+    "WowCommunityApis\\RealmStatus\\GetRealmStatus": {
+        "method": "GET",
+        "path": "\/wow\/realm\/status",
+        "parameters": []
+    },
+    "WowCommunityApis\\Recipe\\GetRecipe": {
+        "method": "GET",
+        "path": "\/wow\/recipe\/:recipeId",
+        "parameters": [
+            {
+                "name": ":recipeId"
+            }
+        ]
+    },
+    "WowCommunityApis\\Spell\\GetSpell": {
+        "method": "GET",
+        "path": "\/wow\/spell\/:spellId",
+        "parameters": [
+            {
+                "name": ":spellId"
+            }
+        ]
+    },
+    "WowCommunityApis\\User\\GetCharacters": {
+        "method": "GET",
+        "path": "\/wow\/user\/characters",
+        "parameters": []
+    },
+    "WowCommunityApis\\Zone\\GetMasterList": {
+        "method": "GET",
+        "path": "\/wow\/zone\/",
+        "parameters": []
+    },
+    "WowCommunityApis\\Zone\\GetZone": {
+        "method": "GET",
+        "path": "\/wow\/zone\/:zoneid",
+        "parameters": [
+            {
+                "name": ":zoneid"
+            }
+        ]
+    },
+    "WowCommunityApis\\DataResources\\GetBattlegroups": {
+        "method": "GET",
+        "path": "\/wow\/data\/battlegroups\/",
+        "parameters": []
+    },
+    "WowCommunityApis\\DataResources\\GetCharacterRaces": {
+        "method": "GET",
+        "path": "\/wow\/data\/character\/races",
+        "parameters": []
+    },
+    "WowCommunityApis\\DataResources\\GetCharacterClasses": {
+        "method": "GET",
+        "path": "\/wow\/data\/character\/classes",
+        "parameters": []
+    },
+    "WowCommunityApis\\DataResources\\GetCharacterAchievements": {
+        "method": "GET",
+        "path": "\/wow\/data\/character\/achievements",
+        "parameters": []
+    },
+    "WowCommunityApis\\DataResources\\GetGuildRewards": {
+        "method": "GET",
+        "path": "\/wow\/data\/guild\/rewards",
+        "parameters": []
+    },
+    "WowCommunityApis\\DataResources\\GetGuildPerks": {
+        "method": "GET",
+        "path": "\/wow\/data\/guild\/perks",
+        "parameters": []
+    },
+    "WowCommunityApis\\DataResources\\GetGuildAchievements": {
+        "method": "GET",
+        "path": "\/wow\/data\/guild\/achievements",
+        "parameters": []
+    },
+    "WowCommunityApis\\DataResources\\GetItemClasses": {
+        "method": "GET",
+        "path": "\/wow\/data\/item\/classes",
+        "parameters": []
+    },
+    "WowCommunityApis\\DataResources\\GetTalents": {
+        "method": "GET",
+        "path": "\/wow\/data\/talents",
+        "parameters": []
+    },
+    "WowCommunityApis\\DataResources\\GetPetTypes": {
+        "method": "GET",
+        "path": "\/wow\/data\/pet\/types",
+        "parameters": []
+    },
+    "StarcraftIiGameDataApis\\StarcraftIiLeague\\GetLeagueData": {
+        "method": "GET",
+        "path": "\/data\/sc2\/league\/{seasonId}\/{queueId}\/{teamType}\/{leagueId}",
+        "parameters": [
+            {
+                "name": "{seasonId}"
+            },
+            {
+                "name": "{queueId}"
+            },
+            {
+                "name": "{teamType}"
+            },
+            {
+                "name": "{leagueId}"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Profile\\GetStatic": {
+        "method": "GET",
+        "path": "\/sc2\/static\/profile\/:regionId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            },
+            {
+                "name": "locale"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Profile\\GetMetadata": {
+        "method": "GET",
+        "path": "\/sc2\/metadata\/profile\/:regionId\/:realmId\/:profileId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            },
+            {
+                "name": ":realmId"
+            },
+            {
+                "name": ":profileId"
+            },
+            {
+                "name": "locale"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Profile\\GetProfile": {
+        "method": "GET",
+        "path": "\/sc2\/profile\/:regionID\/:realmID\/:profileId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            },
+            {
+                "name": ":realmId"
+            },
+            {
+                "name": ":profileId"
+            },
+            {
+                "name": "locale"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Profile\\GetLadderSummary": {
+        "method": "GET",
+        "path": "\/sc2\/profile\/:regionId\/:realmId\/:profileId\/ladder\/summary",
+        "parameters": [
+            {
+                "name": ":regionId"
+            },
+            {
+                "name": ":realmId"
+            },
+            {
+                "name": ":profileId"
+            },
+            {
+                "name": "locale"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Profile\\GetLadder": {
+        "method": "GET",
+        "path": "\/sc2\/profile\/:regionId\/:realmId\/:profileId\/ladder\/:ladderId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            },
+            {
+                "name": ":realmId"
+            },
+            {
+                "name": ":profileId"
+            },
+            {
+                "name": ":ladderId"
+            },
+            {
+                "name": "locale"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Ladder\\GetGrandmasterLeaderboard": {
+        "method": "GET",
+        "path": "\/sc2\/ladder\/grandmaster\/:regionId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Ladder\\GetSeason": {
+        "method": "GET",
+        "path": "\/sc2\/ladder\/season\/:regionId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Account\\GetPlayer": {
+        "method": "GET",
+        "path": "\/sc2\/player\/:accountId",
+        "parameters": [
+            {
+                "name": ":accountId"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Legacy\\GetProfile": {
+        "method": "GET",
+        "path": "\/sc2\/legacy\/profile\/:regionId\/:realmId\/:profileId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            },
+            {
+                "name": ":realmId"
+            },
+            {
+                "name": ":profileId"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Legacy\\GetLadders": {
+        "method": "GET",
+        "path": "\/sc2\/legacy\/profile\/:regionId\/:realmId\/:profileId\/ladders",
+        "parameters": [
+            {
+                "name": ":regionId"
+            },
+            {
+                "name": ":realmId"
+            },
+            {
+                "name": ":profileId"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Legacy\\GetMatchHistory": {
+        "method": "GET",
+        "path": "\/sc2\/legacy\/profile\/:regionId\/:realmId\/:profileId\/matches",
+        "parameters": [
+            {
+                "name": ":regionId"
+            },
+            {
+                "name": ":realmId"
+            },
+            {
+                "name": ":profileId"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Legacy\\GetLadder": {
+        "method": "GET",
+        "path": "\/sc2\/legacy\/ladder\/:regionId\/:ladderId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            },
+            {
+                "name": ":ladderId"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Legacy\\GetAchievements": {
+        "method": "GET",
+        "path": "\/sc2\/legacy\/data\/achievements\/:regionId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            }
+        ]
+    },
+    "Sc2CommunityApisUs\\Legacy\\GetRewards": {
+        "method": "GET",
+        "path": "\/sc2\/legacy\/data\/rewards\/:regionId",
+        "parameters": [
+            {
+                "name": ":regionId"
+            }
+        ]
+    },
+    "OauthApis\\UserAuthentication\\GetAuthorizationRequest": {
+        "method": "GET",
+        "path": "\/oauth\/authorize",
+        "parameters": [
+            {
+                "name": "response_type"
+            },
+            {
+                "name": "client_id"
+            },
+            {
+                "name": "redirect_uri"
+            },
+            {
+                "name": "scope"
+            },
+            {
+                "name": "state"
+            }
+        ]
+    },
+    "OauthApis\\UserAuthentication\\PostAccessTokenRequest": {
+        "method": "POST",
+        "path": "\/oauth\/token",
+        "parameters": [
+            {
+                "name": "grant_type"
+            }
+        ]
+    },
+    "OauthApis\\UserAuthentication\\GetUserInfoHeader": {
+        "method": "GET",
+        "path": "\/oauth\/userinfo",
+        "parameters": [
+            {
+                "name": "Authorization"
+            }
+        ]
+    },
+    "OauthApis\\UserAuthentication\\GetUserInfoParam": {
+        "method": "GET",
+        "path": "\/oauth\/userinfo",
+        "parameters": [
+            {
+                "name": "access_token"
+            }
+        ]
+    },
+    "OauthApis\\ApplicationAuthentication\\PostAccessTokenRequest": {
+        "method": "POST",
+        "path": "\/oauth\/token",
+        "parameters": [
+            {
+                "name": "grant_type"
+            },
+            {
+                "name": "scope"
+            }
+        ]
+    },
+    "OauthApis\\TokenValidation\\PostTokenValidation": {
+        "method": "POST",
+        "path": "\/oauth\/check_token",
+        "parameters": [
+            {
+                "name": "token"
+            }
+        ]
+    },
+    "OauthApis\\TokenValidation\\GetTokenValidation": {
+        "method": "GET",
+        "path": "\/oauth\/check_token",
+        "parameters": [
+            {
+                "name": "token"
+            }
+        ]
+    },
+    "GameDataApis\\Cards\\GetCardSearch": {
+        "method": "GET",
+        "path": "\/hearthstone\/cards",
+        "parameters": [
+            {
+                "name": "locale"
+            },
+            {
+                "name": "set"
+            },
+            {
+                "name": "class"
+            },
+            {
+                "name": "manaCost"
+            },
+            {
+                "name": "attack"
+            },
+            {
+                "name": "health"
+            },
+            {
+                "name": "collectible"
+            },
+            {
+                "name": "rarity"
+            },
+            {
+                "name": "type"
+            },
+            {
+                "name": "minionType"
+            },
+            {
+                "name": "keyword"
+            },
+            {
+                "name": "textFilter"
+            },
+            {
+                "name": "page"
+            },
+            {
+                "name": "pageSize"
+            },
+            {
+                "name": "sort"
+            },
+            {
+                "name": "order"
+            }
+        ]
+    },
+    "GameDataApis\\Cards\\GetDetailedCardSearchExample": {
+        "method": "GET",
+        "path": "\/hearthstone\/cards",
+        "parameters": [
+            {
+                "name": "locale"
+            },
+            {
+                "name": "set"
+            },
+            {
+                "name": "class"
+            },
+            {
+                "name": "manaCost"
+            },
+            {
+                "name": "attack"
+            },
+            {
+                "name": "health"
+            },
+            {
+                "name": "collectible"
+            },
+            {
+                "name": "rarity"
+            },
+            {
+                "name": "type"
+            },
+            {
+                "name": "minionType"
+            },
+            {
+                "name": "keyword"
+            },
+            {
+                "name": "textFilter"
+            },
+            {
+                "name": "page"
+            },
+            {
+                "name": "pageSize"
+            },
+            {
+                "name": "sort"
+            },
+            {
+                "name": "order"
+            }
+        ]
+    },
+    "GameDataApis\\Cards\\GetFetchOneCard": {
+        "method": "GET",
+        "path": "\/hearthstone\/cards\/:idorslug",
+        "parameters": [
+            {
+                "name": ":idorslug"
+            },
+            {
+                "name": "locale"
+            }
+        ]
+    },
+    "GameDataApis\\Decks\\GetFetchDeck": {
+        "method": "GET",
+        "path": "\/hearthstone\/deck\/:deckcode",
+        "parameters": [
+            {
+                "name": ":deckcode"
+            },
+            {
+                "name": "locale"
+            }
+        ]
+    },
+    "GameDataApis\\Metadata\\GetAllMetadata": {
+        "method": "GET",
+        "path": "\/hearthstone\/metadata",
+        "parameters": [
+            {
+                "name": "locale"
+            }
+        ]
+    },
+    "GameDataApis\\Metadata\\GetSpecificMetadata": {
+        "method": "GET",
+        "path": "\/hearthstone\/metadata\/:type",
+        "parameters": [
+            {
+                "name": "locale"
+            },
+            {
+                "name": ":type"
+            }
+        ]
+    },
+    "GameDataApis\\D3\\GetSeasonIndex": {
+        "method": "GET",
+        "path": "\/data\/d3\/season\/",
+        "parameters": []
+    },
+    "GameDataApis\\D3\\GetSeason": {
+        "method": "GET",
+        "path": "\/data\/d3\/season\/:id",
+        "parameters": [
+            {
+                "name": ":id"
+            }
+        ]
+    },
+    "GameDataApis\\D3\\GetSeasonLeaderboard": {
+        "method": "GET",
+        "path": "\/data\/d3\/season\/:id\/leaderboard\/:leaderboard",
+        "parameters": [
+            {
+                "name": ":id"
+            },
+            {
+                "name": ":leaderboard"
+            }
+        ]
+    },
+    "GameDataApis\\D3\\GetEraIndex": {
+        "method": "GET",
+        "path": "\/data\/d3\/era\/",
+        "parameters": []
+    },
+    "GameDataApis\\D3\\GetEra": {
+        "method": "GET",
+        "path": "\/data\/d3\/era\/:id",
+        "parameters": [
+            {
+                "name": ":id"
+            }
+        ]
+    },
+    "GameDataApis\\D3\\GetEraLeaderboard": {
+        "method": "GET",
+        "path": "\/data\/d3\/era\/:id\/leaderboard\/:leaderboard",
+        "parameters": [
+            {
+                "name": ":id"
+            },
+            {
+                "name": ":leaderboard"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3Act\\GetActIndex": {
+        "method": "GET",
+        "path": "\/d3\/data\/act",
+        "parameters": []
+    },
+    "D3CommunityApiUs\\D3Act\\GetAct": {
+        "method": "GET",
+        "path": "\/d3\/data\/act\/{actId}",
+        "parameters": [
+            {
+                "name": "{actId}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3ArtisanAndRecipe\\GetArtisan": {
+        "method": "GET",
+        "path": "\/d3\/data\/artisan\/{artisanSlug}",
+        "parameters": [
+            {
+                "name": "{artisanSlug}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3ArtisanAndRecipe\\GetRecipe": {
+        "method": "GET",
+        "path": "\/d3\/data\/artisan\/{artisanSlug}\/recipe\/{recipeSlug}",
+        "parameters": [
+            {
+                "name": "{artisanSlug}"
+            },
+            {
+                "name": "{recipeSlug}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3Follower\\GetFollower": {
+        "method": "GET",
+        "path": "\/d3\/data\/follower\/{followerSlug}",
+        "parameters": [
+            {
+                "name": "{followerSlug}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3CharacterClassAndSkill\\GetCharacterClass": {
+        "method": "GET",
+        "path": "\/d3\/data\/hero\/{classSlug}",
+        "parameters": [
+            {
+                "name": "{classSlug}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3CharacterClassAndSkill\\GetApiSkill": {
+        "method": "GET",
+        "path": "\/d3\/data\/hero\/{classSlug}\/skill\/{skillSlug}",
+        "parameters": [
+            {
+                "name": "{classSlug}"
+            },
+            {
+                "name": "{skillSlug}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3ItemType\\GetItemTypeIndex": {
+        "method": "GET",
+        "path": "\/d3\/data\/item-type",
+        "parameters": []
+    },
+    "D3CommunityApiUs\\D3ItemType\\GetItemType": {
+        "method": "GET",
+        "path": "\/d3\/data\/item-type\/{itemTypeSlug}",
+        "parameters": [
+            {
+                "name": "{itemTypeSlug}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3Item\\GetItem": {
+        "method": "GET",
+        "path": "\/d3\/data\/item\/{itemSlugAndId}",
+        "parameters": [
+            {
+                "name": "{itemSlugAndId}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3Profile\\GetApiAccount": {
+        "method": "GET",
+        "path": "\/d3\/profile\/{account}\/",
+        "parameters": [
+            {
+                "name": "{account}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3Profile\\GetApiHero": {
+        "method": "GET",
+        "path": "\/d3\/profile\/{account}\/hero\/{heroId}",
+        "parameters": [
+            {
+                "name": "{account}"
+            },
+            {
+                "name": "{heroId}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3Profile\\GetApiDetailedHeroItems": {
+        "method": "GET",
+        "path": "\/d3\/profile\/{account}\/hero\/{heroId}\/items",
+        "parameters": [
+            {
+                "name": "{account}"
+            },
+            {
+                "name": "{heroId}"
+            }
+        ]
+    },
+    "D3CommunityApiUs\\D3Profile\\GetApiDetailedFollowerItems": {
+        "method": "GET",
+        "path": "\/d3\/profile\/{account}\/hero\/{heroId}\/follower-items",
+        "parameters": [
+            {
+                "name": "{account}"
+            },
+            {
+                "name": "{heroId}"
+            }
+        ]
+    },
+    "CommunityOauthApisCn\\Account\\GetUserInfoHeader": {
+        "method": "GET",
+        "path": "\/oauth\/userinfo",
+        "parameters": [
+            {
+                "name": "Authorization"
+            }
+        ]
+    },
+    "CommunityOauthApisCn\\Account\\GetUserInfoParam": {
+        "method": "GET",
+        "path": "\/oauth\/userinfo",
+        "parameters": [
+            {
+                "name": "access_token"
+            }
+        ]
+    },
+    "CommunityOauthApisCn\\D3\\GetSeasonIndex": {
+        "method": "GET",
+        "path": "\/data\/d3\/season\/",
+        "parameters": []
+    },
+    "CommunityOauthApisCn\\D3\\GetSeason": {
+        "method": "GET",
+        "path": "\/data\/d3\/season\/:id",
+        "parameters": [
+            {
+                "name": ":id"
+            }
+        ]
+    },
+    "CommunityOauthApisCn\\D3\\GetSeasonLeaderboard": {
+        "method": "GET",
+        "path": "\/data\/d3\/season\/:id\/leaderboard\/:leaderboard",
+        "parameters": [
+            {
+                "name": ":id"
+            },
+            {
+                "name": ":leaderboard"
+            }
+        ]
+    },
+    "CommunityOauthApisCn\\D3\\GetEraIndex": {
+        "method": "GET",
+        "path": "\/data\/d3\/era\/",
+        "parameters": []
+    },
+    "CommunityOauthApisCn\\D3\\GetEra": {
+        "method": "GET",
+        "path": "\/data\/d3\/era\/:id",
+        "parameters": [
+            {
+                "name": ":id"
+            }
+        ]
+    },
+    "CommunityOauthApisCn\\D3\\GetEraLeaderboard": {
+        "method": "GET",
+        "path": "\/data\/d3\/era\/:id\/leaderboard\/:leaderboard",
+        "parameters": [
+            {
+                "name": ":id"
+            },
+            {
+                "name": ":leaderboard"
+            }
+        ]
+    },
+    "CommunityOauthApisCn\\Wow\\GetToken": {
+        "method": "GET",
+        "path": "\/data\/wow\/token\/",
+        "parameters": []
+    },
+    "CommunityApisCn\\Sc2Profile\\GetProfile": {
+        "method": "GET",
+        "path": "\/sc2\/profile\/:id\/:region\/:name\/",
+        "parameters": [
+            {
+                "name": ":id"
+            },
+            {
+                "name": ":region"
+            },
+            {
+                "name": ":name"
+            }
+        ]
+    },
+    "CommunityApisCn\\Sc2Profile\\GetLadders": {
+        "method": "GET",
+        "path": "\/sc2\/profile\/:id\/:region\/:name\/ladders",
+        "parameters": [
+            {
+                "name": ":id"
+            },
+            {
+                "name": ":region"
+            },
+            {
+                "name": ":name"
+            }
+        ]
+    },
+    "CommunityApisCn\\Sc2Profile\\GetMatchHistory": {
+        "method": "GET",
+        "path": "\/sc2\/profile\/:id\/:region\/:name\/matches",
+        "parameters": [
+            {
+                "name": ":id"
+            },
+            {
+                "name": ":region"
+            },
+            {
+                "name": ":name"
+            }
+        ]
+    },
+    "CommunityApisCn\\Sc2Ladder\\GetLadder": {
+        "method": "GET",
+        "path": "\/sc2\/ladder\/:id",
+        "parameters": [
+            {
+                "name": ":id"
+            }
+        ]
+    },
+    "CommunityApisCn\\Sc2DataResources\\GetAchievements": {
+        "method": "GET",
+        "path": "\/sc2\/data\/achievements",
+        "parameters": []
+    },
+    "CommunityApisCn\\Sc2DataResources\\GetRewards": {
+        "method": "GET",
+        "path": "\/sc2\/data\/rewards",
+        "parameters": []
+    },
+    "CommunityApisCn\\D3Act\\GetActIndex": {
+        "method": "GET",
+        "path": "\/d3\/data\/act",
+        "parameters": []
+    },
+    "CommunityApisCn\\D3Act\\GetAct": {
+        "method": "GET",
+        "path": "\/d3\/data\/act\/{actId}",
+        "parameters": [
+            {
+                "name": "{actId}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3ArtisanAndRecipe\\GetArtisan": {
+        "method": "GET",
+        "path": "\/d3\/data\/artisan\/{artisanSlug}",
+        "parameters": [
+            {
+                "name": "{artisanSlug}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3ArtisanAndRecipe\\GetRecipe": {
+        "method": "GET",
+        "path": "\/d3\/data\/artisan\/{artisanSlug}\/recipe\/{recipeSlug}",
+        "parameters": [
+            {
+                "name": "{artisanSlug}"
+            },
+            {
+                "name": "{recipeSlug}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3Follower\\GetFollower": {
+        "method": "GET",
+        "path": "\/d3\/data\/follower\/{followerSlug}",
+        "parameters": [
+            {
+                "name": "{followerSlug}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3CharacterClassAndSkill\\GetCharacterClass": {
+        "method": "GET",
+        "path": "\/d3\/data\/hero\/{classSlug}",
+        "parameters": [
+            {
+                "name": "{classSlug}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3CharacterClassAndSkill\\GetApiSkill": {
+        "method": "GET",
+        "path": "\/d3\/data\/hero\/{classSlug}\/skill\/{skillSlug}",
+        "parameters": [
+            {
+                "name": "{classSlug}"
+            },
+            {
+                "name": "{skillSlug}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3ItemType\\GetItemTypeIndex": {
+        "method": "GET",
+        "path": "\/d3\/data\/item-type",
+        "parameters": []
+    },
+    "CommunityApisCn\\D3ItemType\\GetItemType": {
+        "method": "GET",
+        "path": "\/d3\/data\/item-type\/{itemTypeSlug}",
+        "parameters": [
+            {
+                "name": "{itemTypeSlug}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3Item\\GetItem": {
+        "method": "GET",
+        "path": "\/d3\/data\/item\/{itemSlugAndId}",
+        "parameters": [
+            {
+                "name": "{itemSlugAndId}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3Profile\\GetApiAccount": {
+        "method": "GET",
+        "path": "\/d3\/profile\/{account}\/",
+        "parameters": [
+            {
+                "name": "{account}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3Profile\\GetApiHero": {
+        "method": "GET",
+        "path": "\/d3\/profile\/{account}\/hero\/{heroId}",
+        "parameters": [
+            {
+                "name": "{account}"
+            },
+            {
+                "name": "{heroId}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3Profile\\GetApiDetailedHeroItems": {
+        "method": "GET",
+        "path": "\/d3\/profile\/{account}\/hero\/{heroId}\/items",
+        "parameters": [
+            {
+                "name": "{account}"
+            },
+            {
+                "name": "{heroId}"
+            }
+        ]
+    },
+    "CommunityApisCn\\D3Profile\\GetApiDetailedFollowerItems": {
+        "method": "GET",
+        "path": "\/d3\/profile\/{account}\/hero\/{heroId}\/follower-items",
+        "parameters": [
+            {
+                "name": "{account}"
+            },
+            {
+                "name": "{heroId}"
+            }
+        ]
     }
 }

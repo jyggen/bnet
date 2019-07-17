@@ -13,6 +13,10 @@ declare(strict_types=1);
  */
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Pool;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
 set_error_handler(static function ($severity, $message, $file, $line): void {
@@ -26,69 +30,35 @@ chdir(dirname(__DIR__));
 require_once 'vendor/autoload.php';
 
 $client = new Client();
-$response = $client->get('https://dev.battle.net/io-docs');
-$htmlBody = (string) $response->getBody();
-$crawler = new Crawler($htmlBody);
-$apiIds = $crawler->filter('#apiId');
-$crawler = $crawler->filter('ul.endpointList');
-$docs = $crawler->each(static function (Crawler $endpointList) use ($apiIds) {
-    $apiId = substr($endpointList->attr('id'), 3);
-    $apiName = trim($apiIds->filter('option[value="'.$apiId.'"]')->text());
-    $apiAuthType = trim($endpointList->attr('data-auth-type'));
-    $endpoints = $endpointList->filter('li.endpoint');
-    $endpoints = $endpoints->each(static function (Crawler $endpoint) {
-        $endpointName = trim($endpoint->filter('h3.title > span.name')->text());
-        $methods = $endpoint->filter('ul.methods > li.method');
-        $methods = $methods->each(static function (Crawler $method) {
-            $methodName = trim($method->filter('input[name="methodName"]')->attr('value'));
-            $httpMethod = trim($method->filter('input[name="httpMethod"]')->attr('value'));
-            $methodUri = trim($method->filter('input[name="methodUri"]')->attr('value'));
-            $parameters = $method->filter('table.parameters > tbody > tr');
-            $parameters = $parameters->each(static function (Crawler $parameter) {
-                $classes = explode(' ', trim($parameter->attr('class')));
-                $name = trim($parameter->filter('td.name')->text());
-                $value = $parameter->filter('td.parameter input, option[selected="selected"]')->attr('value');
-                $type = trim($parameter->filter('td.type')->text());
-                $description = trim($parameter->filter('td.description')->text());
-                $kind = null;
+/** @var RequestInterface[] $requests */
+$requests = [];
 
-                foreach ($classes as $class) {
-                    if (false === strpos($class, 'type-')) {
-                        continue;
-                    }
+foreach ([
+    'https://develop.battle.net/assets/api/oauth-api.json',
+    'https://develop.battle.net/assets/api/community-oauth-api-cn.json',
+    'https://develop.battle.net/assets/api/community-api-cn.json',
+    'https://develop.battle.net/assets/api/d3-community-api.json',
+    'https://develop.battle.net/assets/api/d3-game-data-api.json',
+    'https://develop.battle.net/assets/api/hearthstone-game-data-api.json',
+    'https://develop.battle.net/assets/api/sc2-community-api.json',
+    'https://develop.battle.net/assets/api/sc2-game-data-api.json',
+    'https://develop.battle.net/assets/api/wow-community-api.json',
+    'https://develop.battle.net/assets/api/wow-game-data-api.json',
+    'https://develop.battle.net/assets/api/wow-profile-api.json',
+] as $url) {
+    $requests[] = new Request('GET', $url);
+}
 
-                    $kind = substr($class, 5);
-                }
+$pool = new Pool($client, $requests, [
+    'fulfilled' => function (ResponseInterface $response, int $index) use ($requests) {
+        file_put_contents(sprintf(
+            'resources/apis/%s',
+            basename((string) $requests[$index]->getUri())
+        ), (string) $response->getBody());
+    },
+    'rejected' => function ($reason) {
+        throw new RuntimeException($reason);
+    },
+]);
 
-                return [
-                    'kind' => $kind,
-                    'name' => $name,
-                    'value' => $value,
-                    'type' => $type,
-                    'description' => $description,
-                ];
-            });
-
-            return [
-                'name' => $methodName,
-                'method' => $httpMethod,
-                'uri' => $methodUri,
-                'parameters' => $parameters,
-            ];
-        });
-
-        return [
-            'name' => $endpointName,
-            'methods' => $methods,
-        ];
-    });
-
-    return [
-        'id' => $apiId,
-        'name' => $apiName,
-        'auth' => $apiAuthType,
-        'endpoints' => $endpoints,
-    ];
-});
-
-file_put_contents('resources/api.json', json_encode($docs, JSON_PRETTY_PRINT));
+$pool->promise()->wait();

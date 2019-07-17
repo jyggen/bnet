@@ -1646,9 +1646,6 @@ final class UtilsTest extends TestCase
      * Tests that all known realm names are properly turned into slugs.
      *
      * @dataProvider realmProvider
-     *
-     * @param string $expected
-     * @param string $name
      */
     public function testRealmNameToSlug(string $expected, string $name): void
     {

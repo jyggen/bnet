@@ -1,0 +1,180 @@
+{
+  "name": "OAuth APIs",
+  "title": "OAuth APIs",
+  "description": "This page describes the APIs used for Blizzard's OAuth 2.0 authentication flows. **User Authentication** describes the authentication code flow, which allows applications to authenticate a user and perform API requests on their behalf. **Server Authentication** describes the client credentials flow, which allows applications to authenticate with Blizzard's servers and perform requests as a client application.\n\nSee the [Using OAuth](/documentation/guides/using-oauth) page for detailed information about making requests, including host names.\n\n**Hosts**: note that Blizzard API request paths follow this format: `{region}.battle.net/{API path}` for OAuth requests (or `www.battlenet.com.cn/{API path}` for OAuth requests in China). For more information, see the [Getting Started guide](/documentation/guides/getting-started).",
+  "version": "1.0.0",
+  "protocol": "rest",
+  "basePath": "https://us.battle.net",
+  "resources": {
+    "User Authentication": {
+      "methods": {
+        "Authorization Request": {
+          "disableTryIt": true,
+          "description": "The authorization request is the first part of the authorization code flow, OAuth's authentication flow for performing API requests on behalf of a user. Applications can also ask for special access to user-specific data by specifying one or more \"scopes.\"",
+          "httpMethod": "GET",
+          "path": "/oauth/authorize",
+          "parameters": {
+            "response_type": {
+              "description": "Specifies the type of authorization request being made. For an authorization code grant this value must be `code`.",
+              "required": true,
+              "type": "string",
+              "default": "code",
+              "location": "query"
+            },
+            "client_id": {
+              "description": "A string identifying the client application making this request. Labeled in [API Access](/access) for an individual application as \"Client ID\".",
+              "required": true,
+              "type": "string",
+              "default": "",
+              "location": "query"
+            },
+            "redirect_uri": {
+              "description": "The callback URL registered for an application. This value must match one of the URLs specified for the application in [API Access](/access) or the request will return an error.",
+              "required": true,
+              "type": "string",
+              "default": "http://example.com/oauth",
+              "location": "query"
+            },
+            "scope": {
+              "description": "A space-delimited, case-sensitive list of scopes to which to request access. The user may not grant access to any or all requested scopes. See [Using OAuth](/documentation/guides/using-oauth) for a list of valid scopes.",
+              "required": false,
+              "type": "string",
+              "default": "wow.profile sc2.profile",
+              "location": "query"
+            },
+            "state": {
+              "description": "An opaque value supplied by the client to maintain state between the request and callback. The authorization server includes this value when redirecting the user-agent back to the client. The parameter **should** be used for preventing cross-site request forgery.",
+              "required": false,
+              "type": "string",
+              "default": "",
+              "location": "query"
+            }
+          }
+        },
+        "Access Token Request": {
+          "disableTryIt": true,
+          "description": "The access token request is the second part of the authorization code flow. When the first part completes, the user's browser is redirected to an application's `redirect_uri`. This redirect URI also includes an access code and (optionally) a state parameter. This request allows the application to exchange the access code for an access token to can use in subsequent API requests.",
+          "httpMethod": "POST",
+          "path": "/oauth/token",
+          "parameters": {
+            "grant_type": {
+              "description": "Identifies the type of authorization request being made. For a client credentials grant this value *must* be `authorization_code`.",
+              "required": true,
+              "type": "string",
+              "default": "authorization_code",
+              "location": "query"
+            },
+            "code": {
+              "description": "The authorization code received from the authorization server.",
+              "required": true,
+              "type": "string",
+              "default": "{code}"
+            },
+            "redirect_uri": {
+              "description": "Must be identical to the `redirect_uri` value used in the authorization request.",
+              "required": true,
+              "type": "string",
+              "default": "https://example.com/oauth"
+            },
+            "client_id": {
+              "description": "A string identifying the client application making this request. Labeled in [API Access](/access) for an individual application as \"Client ID\".",
+              "required": true,
+              "type": "string",
+              "default": "{client_id}"
+            }
+          }
+        },
+        "User Info (header)": {
+          "disableTryIt": true,
+          "description": "Returns basic information about the user associated with the current bearer token. ",
+          "httpMethod": "GET",
+          "path": "/oauth/userinfo",
+          "parameters": {
+            "Authorization": {
+              "description": "The user's bearer token. The OAuth 2.0 spec requires the Authorization header be formatted as \"Bearer {token}\", where {token} is the alpha-numeric authorization token returned by a previous OAuth grant flow.",
+              "required": true,
+              "type": "string",
+              "location": "header",
+              "default": "Bearer {token}"
+            }
+          }
+        },
+        "User Info (param)": {
+          "disableTryIt": true,
+          "description": "This request is the same as **User Info (header)** but uses a search parameter in the URL rather than an HTTP header. While HTTPS encrypts traffic between the requester and Blizzard's servers at the TCP/IP layer, search parameters are inherently less secure than HTTP headers because they can be logged, copy-pasted, and otherwise easily accessed. As such, we strongly encourage users to put bearer tokens in headers. ",
+          "httpMethod": "GET",
+          "path": "/oauth/userinfo",
+          "parameters": {
+            "access_token": {
+              "description": "The user's bearer token.",
+              "required": true,
+              "type": "string",
+              "location": "query",
+              "default": "{token}"
+            }
+          }
+        }
+      }
+    },
+    "Application Authentication": {
+      "methods": {
+        "Access Token Request": {
+          "disableTryIt": true,
+          "description": "This is the only request necessary for the [client credential flow](/documentation/guides/using-oauth/client-credentials-flow), OAuth's authentication flow intended for application servers.",
+          "httpMethod": "POST",
+          "path": "/oauth/token",
+          "parameters": {
+            "grant_type": {
+              "description": "Identifies the type of authorization request being made. For a client credentials grant this value *must* be `client_credentials`.",
+              "required": true,
+              "type": "string",
+              "default": "client_credentials",
+              "location": "query"
+            },
+            "scope": {
+              "description": "A space-delimited, case-sensitive list of scopes that to which to request access. The user may not grant access to any or all requested scopes. See [Using OAuth](/documentation/guides/using-oauth) for a list of valid scopes.",
+              "required": false,
+              "type": "string",
+              "default": "",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "Token Validation": {
+      "methods": {
+        "Token Validation (POST)": {
+          "disableTryIt": true,
+          "description": "Verifies that a given bearer token is valid and retrieves metadata about the token, including the **client_id** used to create the token, expiration timestamp, and scopes granted to the token. We strongly recommend that developers use the more secure **POST /oauth/check_token** method.",
+          "httpMethod": "POST",
+          "path": "/oauth/check_token",
+          "parameters": {
+            "token": {
+              "description": "The user's bearer token.",
+              "required": true,
+              "type": "string",
+              "location": "query",
+              "default": "{token}"
+            }
+          }
+        },
+        "Token Validation (GET)": {
+          "disableTryIt": true,
+          "description": "Verifies that a given bearer token is valid and retrieves metadata about the token, including the **client_id** used to create the token, expiration timestamp, and scopes granted to the token. We strongly recommend that developers use the more secure **POST /oauth/check_token** method.",
+          "httpMethod": "GET",
+          "path": "/oauth/check_token",
+          "parameters": {
+            "token": {
+              "description": "The user's bearer token.",
+              "required": true,
+              "type": "string",
+              "location": "query",
+              "default": "{token}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

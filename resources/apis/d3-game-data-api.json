@@ -1,0 +1,122 @@
+{
+  "name": "Game Data APIs",
+  "title": "Game Data APIs - US",
+  "description": "Endpoints for Diablo III seasons and eras.\n\n**Hosts**: note that Blizzard API request paths follow this format: `{region}.api.blizzard.com/{API path}` (or `gateway.battlenet.com.cn/{API path}` for China). For more information, see the [Getting Started guide](/documentation/guides/getting-started).",
+  "version": "78",
+  "basePath": "https://__region__.api.blizzard.com",
+  "protocol": "rest",
+  "headers": {
+    "Accept": "application/json"
+  },
+  "regionDefault": "us",
+  "auth": {
+    "oauth": {
+      "version": "2.0",
+      "base_uri": "https://us.battle.net",
+      "authorize_uri": "/oauth/authorize",
+      "access_token_uri": "/oauth/token",
+      "auth_flows": [
+        "auth_code",
+        "client_cred"
+      ],
+      "options": {
+        "authorize": {
+          "scope": [
+            "wow.profile",
+            "sc2.profile"
+          ]
+        }
+      }
+    }
+  },
+  "jsonp": false,
+  "locale": false,
+  "resources": {
+    "D3": {
+      "methods": {
+        "Season Index": {
+          "description": "Returns an index of available seasons.",
+          "path": "/data/d3/season/",
+          "httpMethod": "GET",
+          "parameters": {}
+        },
+        "Season": {
+          "description": "Returns a leaderboard list for the specified season.",
+          "path": "/data/d3/season/:id",
+          "parameters": {
+            ":id": {
+              "type": "integer",
+              "required": true,
+              "default": "1",
+              "description": "The season for the leaderboard list; get a list of seasons with `GET /data/d3/season/`.",
+              "location": "pathReplace"
+            }
+          },
+          "httpMethod": "GET"
+        },
+        "Season Leaderboard": {
+          "description": "Returns a the specified leaderboard for the specified season.",
+          "path": "/data/d3/season/:id/leaderboard/:leaderboard",
+          "parameters": {
+            ":id": {
+              "type": "integer",
+              "required": true,
+              "default": "1",
+              "description": "The season for the leaderboard; get a list of seasons with `GET /data/d3/season/`.",
+              "location": "pathReplace"
+            },
+            ":leaderboard": {
+              "type": "string",
+              "required": true,
+              "default": "achievement-points",
+              "description": "The leaderboard to retrieve; get a list of  leaderboards with `GET /data/d3/season/:id`.",
+              "location": "pathReplace"
+            }
+          },
+          "httpMethod": "GET"
+        },
+        "Era Index": {
+          "description": "Returns an index of available eras.",
+          "path": "/data/d3/era/",
+          "httpMethod": "GET",
+          "parameters": {}
+        },
+        "Era": {
+          "description": "Returns a leaderboard list for a particular era.",
+          "path": "/data/d3/era/:id",
+          "parameters": {
+            ":id": {
+              "type": "integer",
+              "required": true,
+              "default": "1",
+              "description": "The era to retrieve; get a list of eras with `GET data/d3/era/`.",
+              "location": "pathReplace"
+            }
+          },
+          "httpMethod": "GET"
+        },
+        "Era Leaderboard": {
+          "description": "Returns the specified leaderboard for the specified era.",
+          "path": "/data/d3/era/:id/leaderboard/:leaderboard",
+          "parameters": {
+            ":id": {
+              "type": "integer",
+              "required": true,
+              "default": "1",
+              "description": "The era for the leaderboard; get a list of eras with `GET /data/d3/era/`.",
+              "location": "pathReplace"
+            },
+            ":leaderboard": {
+              "type": "string",
+              "required": true,
+              "default": "rift-barbarian",
+              "description": "The leaderboard to retrieve; get a list of leaderboards with `GET /data/d3/era/:id`.",
+              "location": "pathReplace"
+            }
+          },
+          "httpMethod": "GET"
+        }
+      }
+    }
+  }
+}

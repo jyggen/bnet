@@ -1,0 +1,366 @@
+{
+  "name": "D3 Community API - US",
+  "title": "D3 Community API - US",
+  "description": "Endpoints for Diablo III player profiles.\n\n**Diablo III Icons:** Developers can fetch the images referenced by the D3 APIs with this URL template: `http://media.blizzard.com/d3/icons/<type>/<size>/<icon>.png`.\n\n- `<type>` depends on the type of resource referenced; it can either be `items` or `skills`.\n- `<size>` for *items* must either be `small` or `large`.\n- `<size>` for *skills* must be `21`, `42`, or `64`. These values refer to the image size in pixels.\n\n**Hosts**: note that Blizzard API request paths follow this format: `{region}.api.blizzard.com/{API path}` (or `gateway.battlenet.com.cn/{API path}` for China). For more information, see the [Getting Started guide](/documentation/guides/getting-started).",
+  "version": "78",
+  "basePath": "https://__region__.api.blizzard.com",
+  "protocol": "rest",
+  "headers": {
+    "Accept": "application/json"
+  },
+  "auth": {
+    "oauth": {
+      "version": "2.0",
+      "base_uri": "https://us.battle.net",
+      "authorize_uri": "/oauth/authorize",
+      "access_token_uri": "/oauth/token",
+      "auth_flows": [
+        "client_cred"
+      ],
+      "options": {
+        "authorize": {
+          "scope": []
+        }
+      }
+    }
+  },
+  "regionDefault": "us",
+  "resources": {
+    "D3 Act API": {
+      "methods": {
+        "getActIndex": {
+          "description": "Returns an index of acts.",
+          "httpMethod": "GET",
+          "path": "/d3/data/act",
+          "parameters": {
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        },
+        "getAct": {
+          "description": "Returns a single act by ID.",
+          "httpMethod": "GET",
+          "path": "/d3/data/act/{actId}",
+          "parameters": {
+            "{actId}": {
+              "description": "The ID of the act to retrieve.",
+              "required": true,
+              "type": "integer",
+              "default": 1,
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Artisan and Recipe API": {
+      "methods": {
+        "getArtisan": {
+          "description": "Returns a single artisan by slug.",
+          "httpMethod": "GET",
+          "path": "/d3/data/artisan/{artisanSlug}",
+          "parameters": {
+            "{artisanSlug}": {
+              "description": "The slug of the artisan to retrieve.",
+              "required": true,
+              "type": "string",
+              "default": "blacksmith",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        },
+        "getRecipe": {
+          "description": "Returns a single recipe by slug for the specified artisan.",
+          "httpMethod": "GET",
+          "path": "/d3/data/artisan/{artisanSlug}/recipe/{recipeSlug}",
+          "parameters": {
+            "{artisanSlug}": {
+              "description": "The slug of the artisan to retrieve.",
+              "required": true,
+              "type": "string",
+              "default": "blacksmith",
+              "location": "pathReplace"
+            },
+            "{recipeSlug}": {
+              "description": "The slug of the recipe to retrieve.",
+              "required": true,
+              "type": "string",
+              "default": "apprentice-flamberge",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Follower API": {
+      "methods": {
+        "getFollower": {
+          "description": "Returns a single follower by slug.",
+          "httpMethod": "GET",
+          "path": "/d3/data/follower/{followerSlug}",
+          "parameters": {
+            "{followerSlug}": {
+              "description": "The slug of the follower to retrieve.",
+              "required": true,
+              "type": "string",
+              "default": "templar",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Character Class and Skill API": {
+      "methods": {
+        "getCharacterClass": {
+          "description": "Returns a single character class by slug.",
+          "httpMethod": "GET",
+          "path": "/d3/data/hero/{classSlug}",
+          "parameters": {
+            "{classSlug}": {
+              "description": "The slug of the character class to retrieve.",
+              "required": true,
+              "type": "string",
+              "default": "barbarian",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        },
+        "getApiSkill": {
+          "description": "Returns a single skill by slug for a specific character class.",
+          "httpMethod": "GET",
+          "path": "/d3/data/hero/{classSlug}/skill/{skillSlug}",
+          "parameters": {
+            "{classSlug}": {
+              "description": "The slug of the character class to retrieve.",
+              "required": true,
+              "type": "string",
+              "default": "barbarian",
+              "location": "pathReplace"
+            },
+            "{skillSlug}": {
+              "description": "The slug of the skill to retrieve.",
+              "required": true,
+              "type": "string",
+              "default": "bash",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Item Type API": {
+      "methods": {
+        "getItemTypeIndex": {
+          "description": "Returns an index of item types.",
+          "httpMethod": "GET",
+          "path": "/d3/data/item-type",
+          "parameters": {
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        },
+        "getItemType": {
+          "description": "Returns a single item type by slug.",
+          "httpMethod": "GET",
+          "path": "/d3/data/item-type/{itemTypeSlug}",
+          "parameters": {
+            "{itemTypeSlug}": {
+              "description": "The slug of the item type to retrieve.",
+              "required": true,
+              "type": "string",
+              "default": "sword2h",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Item API": {
+      "methods": {
+        "getItem": {
+          "description": "Returns a single item by item slug and ID.",
+          "httpMethod": "GET",
+          "path": "/d3/data/item/{itemSlugAndId}",
+          "parameters": {
+            "{itemSlugAndId}": {
+              "description": "The slug and ID of the item to retrieve.",
+              "required": true,
+              "type": "string",
+              "default": "corrupted-ashbringer-Unique_Sword_2H_104_x1",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Profile API": {
+      "methods": {
+        "getApiAccount": {
+          "description": "Returns the specified account profile.",
+          "httpMethod": "GET",
+          "path": "/d3/profile/{account}/",
+          "parameters": {
+            "{account}": {
+              "description": "The BattleTag for the account to retrieve.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        },
+        "getApiHero": {
+          "description": "Returns a single hero.",
+          "httpMethod": "GET",
+          "path": "/d3/profile/{account}/hero/{heroId}",
+          "parameters": {
+            "{account}": {
+              "description": "The BattleTag for the account to retrieve.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "{heroId}": {
+              "description": "The ID of the hero to retrieve.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        },
+        "getApiDetailedHeroItems": {
+          "description": "Returns a list of items for the specified hero.",
+          "httpMethod": "GET",
+          "path": "/d3/profile/{account}/hero/{heroId}/items",
+          "parameters": {
+            "{account}": {
+              "description": "The BattleTag for the account to retrieve.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "{heroId}": {
+              "description": "The ID of the hero to retrieve.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        },
+        "getApiDetailedFollowerItems": {
+          "description": "Returns a list of items for the specified hero's followers.",
+          "httpMethod": "GET",
+          "path": "/d3/profile/{account}/hero/{heroId}/follower-items",
+          "parameters": {
+            "{account}": {
+              "description": "The BattleTag for the account to retrieve.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "{heroId}": {
+              "description": "The ID of the hero to retrieve.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "en_US",
+              "location": "query"
+            }
+          }
+        }
+      }
+    }
+  }
+}

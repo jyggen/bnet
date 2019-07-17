@@ -1,0 +1,225 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the Battle.net API Client package.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
+
+function to_camel_case(string $string): string
+{
+    if (false === strpos($string, '_')) {
+        return $string;
+    }
+
+    return lcfirst(str_replace(['_'], '', ucwords(strtolower($string), '_')));
+}
+
+set_error_handler(static function ($severity, $message, $file, $line): void {
+    if ($severity & error_reporting()) {
+        throw new ErrorException($message, 0, $severity, $file, $line);
+    }
+});
+
+chdir(dirname(__DIR__));
+
+require_once 'vendor/autoload.php';
+
+if (false === file_exists('resources/metadata.json')) {
+    fwrite(STDERR, 'Unable to load API metadata');
+    exit(1);
+}
+
+$metadata = json_decode(file_get_contents('resources/metadata.json'));
+$loader = new Twig_Loader_Filesystem('resources/templates');
+$twig = new Twig_Environment($loader, [
+    'strict_variables' => true,
+]);
+
+$twig->addExtension(new class() extends Twig_Extension {
+    public function getFilters(): array
+    {
+        return [
+            new Twig_Filter('ucwords', 'ucwords'),
+        ];
+    }
+});
+
+$base = dirname(__DIR__);
+$filesystem = new Filesystem();
+$finder = new Finder();
+
+$finder->in($base.'/src/Endpoints');
+$finder->directories();
+$finder->depth(1);
+
+$iterator = $finder->getIterator();
+
+foreach ($iterator as $folder) {
+    $filesystem->remove($folder->getPath());
+}
+
+$filesystem->remove($base.'/tests/Endpoints');
+
+foreach ($metadata as $namespace => $properties) {
+    $classNamePosition = strrpos($namespace, '\\');
+    $path = str_replace('\\', '/', $namespace);
+    $basePath = $base.'/src/Endpoints/'.$path.'.php';
+    $testBasePath = $base.'/tests/Endpoints/'.$path.'Test.php';
+
+    $filesystem->mkdir(dirname($basePath));
+    $filesystem->mkdir(dirname($testBasePath));
+
+    $className = substr($namespace, $classNamePosition + 1);
+    $testName = $className.'Test';
+    $namespace = substr($namespace, 0, $classNamePosition);
+    $testNamespace = 'Boo\\BattleNet\\Tests\\Endpoints\\'.$namespace;
+    $namespace = 'Boo\\BattleNet\\Endpoints\\'.$namespace;
+
+    file_put_contents($basePath, $twig->render('endpoint.php.twig', [
+        'namespace' => $namespace,
+        'class_name' => $className,
+        'method' => $properties->method,
+        'path' => $properties->path,
+    ]));
+
+    continue;
+
+    #$filesystem->mkdir($baseDir)
+
+    dd($classes, $namespace, $className, $testNamespace, $testName, $basePath, $testBasePath);
+
+    if (false === file_exists($baseDir) && false === @mkdir($baseDir) && false === is_dir($baseDir)) {
+        fwrite(STDERR, '"'.$baseDir.'" is not a valid directory');
+        exit(1);
+    }
+
+    if (false === file_exists($baseTestDir) && false === @mkdir($baseTestDir) && false === is_dir($baseTestDir)) {
+        fwrite(STDERR, '"'.$baseTestDir.'" is not a valid directory');
+        exit(1);
+    }
+
+    foreach ($apis as $className => $data) {
+        $endpoints = [];
+
+        foreach ($data->endpoints as $endpoint) {
+            $arguments = [];
+            $argumentValues = [];
+            $pathArgs = [];
+            $queryArgs = [];
+            $constants = [];
+
+            foreach ($endpoint->parameters as $parameter) {
+                $name = str_replace(['{', '}', ':'], '', $parameter->name);
+                $parameterData = [
+                    'name' => $name,
+                    'default' => 'commaSeparatedStrings' === $parameter->type ? '[]' : null,
+                    'docType' => 'commaSeparatedStrings' === $parameter->type ? 'string[]' : null,
+                    'type' => str_replace([
+                        'integer',
+                        'number',
+                        'commaSeparatedStrings',
+                    ], [
+                        'int',
+                        'int',
+                        'array',
+                    ], $parameter->type),
+                    'value' => $parameter->value,
+                    'variable' => to_camel_case($name),
+                ];
+
+                if ($parameter->isConstant) {
+                    $constants[] = $parameterData;
+                } elseif ('pathReplace' === $parameter->kind) {
+                    $endpoint->url = str_replace(
+                        $parameter->name,
+                        '\'.$'.$name.'.\'',
+                        $endpoint->url
+                    );
+
+                    if (null !== $endpoint->overrides) {
+                        foreach ($endpoint->overrides as $key => $value) {
+                            $endpoint->overrides[$key]['url'] = str_replace(
+                                $parameter->name,
+                                '\'.$'.$name.'.\'',
+                                $endpoint->overrides[$key]['url']
+                            );
+                        }
+                    }
+
+                    $pathArgs[] = $parameterData;
+                } elseif ('query' === $parameter->kind) {
+                    $queryArgs[] = $parameterData;
+                }
+            }
+
+            $arguments = array_merge($pathArgs, $queryArgs);
+            $endpoints[] = [
+                'method' => $endpoint->name,
+                'url' => str_replace('.\'\'', '', '\''.$endpoint->url.'\''),
+                'arguments' => implode(', ', array_map(static function (array $argument): string {
+                    $argumentString = $argument['type'].' $'.$argument['variable'];
+
+                    if (null !== $argument['default']) {
+                        $argumentString .= ' = '.$argument['default'];
+                    }
+
+                    return $argumentString;
+                }, $arguments)),
+                'argumentDocTypes' => array_filter(array_column($arguments, 'docType')),
+                'argumentValues' => implode(', ', array_filter(array_map(static function (array $argument): string {
+                    if ('string' === $argument['type']) {
+                        return '\''.$argument['value'].'\'';
+                    }
+
+                    return $argument['value'];
+                }, $arguments))),
+                'queryArgs' => $queryArgs,
+                'constants' => $constants,
+                'isOAuth' => array_reduce($queryArgs, function (bool $isOAuth, array $parameter): bool {
+                    if ($isOAuth) {
+                        return $isOAuth;
+                    }
+
+                    return 'access_token' === $parameter['name'];
+                }, false),
+                'verb' => '\''.$endpoint->verb.'\'',
+                'overrides' => array_map(static function (stdClass $override): stdClass {
+                    $override->url = str_replace('.\'\'', '', '\''.$override->url.'\'');
+
+                    return $override;
+                }, $endpoint->overrides),
+                'unavailable' => $endpoint->unavailable,
+            ];
+        }
+
+        file_put_contents(
+            $baseDir.'/'.$className.'.php',
+            $twig->render('Api.php.twig', [
+                'className' => $className,
+                'namespace' => $namespace,
+                'endpoints' => $endpoints,
+                'unavailable' => $data->unavailable,
+            ])
+        );
+
+        file_put_contents(
+            $baseTestDir.'/'.$className.'Test.php',
+            $twig->render('ApiTest.php.twig', [
+                'className' => $className,
+                'namespace' => $namespace,
+                'endpoints' => $endpoints,
+                'unavailable' => $data->unavailable,
+            ])
+        );
+    }
+}

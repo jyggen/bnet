@@ -1,0 +1,31 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of boo/bnet.
+ *
+ * (c) Jonas Stendahl <jonas@stendahl.me>
+*
+* This source file is subject to the MIT license that is bundled
+* with this source code in the file LICENSE.
+*/
+
+namespace Boo\BattleNet\Endpoints\D3CommunityApiUs\D3CharacterClassAndSkill;
+
+use Boo\BattleNet\Endpoints\EndpointInterface;
+
+final class GetApiSkill implements EndpointInterface
+{
+    private const PATH = '/d3/data/hero/{classSlug}/skill/{skillSlug}';
+
+    public function getMethod(): string
+    {
+        return self::METHOD_GET;
+    }
+
+    public function getPath(): string
+    {
+        return self::PATH;
+    }
+}

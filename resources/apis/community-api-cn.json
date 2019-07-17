@@ -1,0 +1,585 @@
+{
+  "name": "Community APIs - CN",
+  "title": "Community APIs - CN",
+  "description": "China-specific endpoints for StarCraft II and Diablo III profiles.\n\n**Diablo III Icons:** Developers can fetch the images referenced by the D3 APIs with this URL template: `http://media.blizzard.com/d3/icons/<type>/<size>/<icon>.png`.\n\n- `<type>` is on the type of resource referenced; it can either be `items` or `skills`.\n- `<size>` for *items* must either be `small` or `large`.\n- `<size>` for *skills* must be `21`, `42`, or `64`. These values refer to the image size in pixels.\n\n**Hosts**: note that Blizzard API request paths in China follow this format: `https://gateway.battlenet.com.cn` and that OAuth requests in China use `www.battlenet.com.cn/{API path}`. For more information, see the [Getting Started guide](/documentation/guides/getting-started).",
+  "version": "78",
+  "basePath": "https://gateway.battlenet.com.cn",
+  "protocol": "rest",
+  "headers": {
+    "Accept": "application/json"
+  },
+  "auth": {
+    "oauth": {
+      "version": "2.0",
+      "base_uri": "https://www.battlenet.com.cn",
+      "authorize_uri": "/oauth/authorize",
+      "access_token_uri": "/oauth/token",
+      "auth_flows": [
+        "client_cred"
+      ],
+      "options": {
+        "authorize": {
+          "scope": []
+        }
+      }
+    }
+  },
+  "resources": {
+    "Sc2 Profile API": {
+      "methods": {
+        "Profile": {
+          "description": "Returns data about an individual SC2 profile.",
+          "path": "/sc2/profile/:id/:region/:name/",
+          "parameters": {
+            ":id": {
+              "type": "string",
+              "required": "true",
+              "description": "The ID of the profile to retrieve.",
+              "location": "pathReplace"
+            },
+            ":region": {
+              "type": "string",
+              "required": "true",
+              "default": "1",
+              "description": "The region of the profile to retrieve.",
+              "location": "pathReplace"
+            },
+            ":name": {
+              "type": "string",
+              "required": "true",
+              "description": "The name of the profile to retrieve.",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "type": "string",
+              "required": false,
+              "default": "zh_CN",
+              "enum": [
+                "zh_CN"
+              ],
+              "description": "The locale to use in the response.",
+              "location": "query"
+            },
+            "callback": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "description": "Request for the data to be returned as a JSONP callback.",
+              "location": "query"
+            }
+          },
+          "httpMethod": "GET"
+        },
+        "Ladders": {
+          "description": "Returns data about an individual SC2 profile's ladders.",
+          "path": "/sc2/profile/:id/:region/:name/ladders",
+          "parameters": {
+            ":id": {
+              "type": "string",
+              "required": "true",
+              "description": "The ID of the profile to retrieve.",
+              "location": "pathReplace"
+            },
+            ":region": {
+              "type": "string",
+              "required": "true",
+              "default": "1",
+              "description": "The region of the profile to retrieve.",
+              "location": "pathReplace"
+            },
+            ":name": {
+              "type": "string",
+              "required": "true",
+              "description": "The name of the profile to retrieve.",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "type": "string",
+              "required": false,
+              "default": "zh_CN",
+              "enum": [
+                "zh_CN"
+              ],
+              "description": "The locale to use in the response.",
+              "location": "query"
+            },
+            "callback": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "description": "Request for the data to be returned as a JSONP callback.",
+              "location": "query"
+            }
+          },
+          "httpMethod": "GET"
+        },
+        "Match History": {
+          "description": "Returns data about an individual SC2 profile's match history.",
+          "path": "/sc2/profile/:id/:region/:name/matches",
+          "parameters": {
+            ":id": {
+              "type": "string",
+              "required": "true",
+              "description": "The ID of the profile to retrieve.",
+              "location": "pathReplace"
+            },
+            ":region": {
+              "type": "string",
+              "required": "true",
+              "default": "1",
+              "description": "The region of the profile to retrieve.",
+              "location": "pathReplace"
+            },
+            ":name": {
+              "type": "string",
+              "required": "true",
+              "description": "The name of the profile to retrieve.",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "type": "string",
+              "required": false,
+              "default": "zh_CN",
+              "enum": [
+                "zh_CN"
+              ],
+              "description": "The locale to use in the response.",
+              "location": "query"
+            },
+            "callback": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "description": "Request for the data to be returned as a JSONP callback.",
+              "location": "query"
+            }
+          },
+          "httpMethod": "GET"
+        }
+      }
+    },
+    "Sc2 Ladder API": {
+      "methods": {
+        "Ladder": {
+          "description": "Returns data about an SC2 ladder.",
+          "path": "/sc2/ladder/:id",
+          "parameters": {
+            ":id": {
+              "type": "string",
+              "required": "true",
+              "default": "655",
+              "description": "The ID of the ladder to retrieve.",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "type": "string",
+              "required": false,
+              "default": "zh_CN",
+              "enum": [
+                "zh_CN"
+              ],
+              "description": "The locale to use in the response.",
+              "location": "query"
+            },
+            "callback": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "description": "Request for the data to be returned as a JSONP callback.",
+              "location": "query"
+            }
+          },
+          "httpMethod": "GET"
+        }
+      }
+    },
+    "Sc2 Data Resources": {
+      "methods": {
+        "Achievements": {
+          "description": "Returns data about the achievements available in SC2.",
+          "path": "/sc2/data/achievements",
+          "httpMethod": "GET",
+          "parameters": {
+            "locale": {
+              "type": "string",
+              "required": false,
+              "default": "zh_CN",
+              "enum": [
+                "zh_CN"
+              ],
+              "description": "The locale to use in the response.",
+              "location": "query"
+            },
+            "callback": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "description": "Request for the data to be returned as a JSONP callback.",
+              "location": "query"
+            }
+          }
+        },
+        "Rewards": {
+          "description": "Returns data about the rewards available in SC2.",
+          "path": "/sc2/data/rewards",
+          "httpMethod": "GET",
+          "parameters": {
+            "locale": {
+              "type": "string",
+              "required": false,
+              "default": "zh_CN",
+              "enum": [
+                "zh_CN"
+              ],
+              "description": "The locale to use in the response.",
+              "location": "query"
+            },
+            "callback": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "description": "Request for the data to be returned as a JSONP callback.",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Act API": {
+      "methods": {
+        "getActIndex": {
+          "description": "Returns an index of acts.",
+          "httpMethod": "GET",
+          "path": "/d3/data/act",
+          "parameters": {
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        },
+        "getAct": {
+          "description": "Returns a single act by ID.",
+          "httpMethod": "GET",
+          "path": "/d3/data/act/{actId}",
+          "parameters": {
+            "{actId}": {
+              "description": "The ID of the act",
+              "required": true,
+              "type": "integer",
+              "default": 1,
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Artisan and Recipe API": {
+      "methods": {
+        "getArtisan": {
+          "description": "Returns a single artisan by slug.",
+          "httpMethod": "GET",
+          "path": "/d3/data/artisan/{artisanSlug}",
+          "parameters": {
+            "{artisanSlug}": {
+              "description": "The artisan slug.",
+              "required": true,
+              "type": "string",
+              "default": "blacksmith",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        },
+        "getRecipe": {
+          "description": "Returns a single recipe by slug for the specified artisan.",
+          "httpMethod": "GET",
+          "path": "/d3/data/artisan/{artisanSlug}/recipe/{recipeSlug}",
+          "parameters": {
+            "{artisanSlug}": {
+              "description": "The asrtisan slug.",
+              "required": true,
+              "type": "string",
+              "default": "blacksmith",
+              "location": "pathReplace"
+            },
+            "{recipeSlug}": {
+              "description": "The recipe slug.",
+              "required": true,
+              "type": "string",
+              "default": "apprentice-flamberge",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Follower API": {
+      "methods": {
+        "getFollower": {
+          "description": "Returns a single follower by slug.",
+          "httpMethod": "GET",
+          "path": "/d3/data/follower/{followerSlug}",
+          "parameters": {
+            "{followerSlug}": {
+              "description": "The follower slug.",
+              "required": true,
+              "type": "string",
+              "default": "templar",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Character Class and Skill API": {
+      "methods": {
+        "getCharacterClass": {
+          "description": "Returns a single character class by slug.",
+          "httpMethod": "GET",
+          "path": "/d3/data/hero/{classSlug}",
+          "parameters": {
+            "{classSlug}": {
+              "description": "The character class slug.",
+              "required": true,
+              "type": "string",
+              "default": "barbarian",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        },
+        "getApiSkill": {
+          "description": "Returns a single skill by slug for a specific character class.",
+          "httpMethod": "GET",
+          "path": "/d3/data/hero/{classSlug}/skill/{skillSlug}",
+          "parameters": {
+            "{classSlug}": {
+              "description": "The character class slug.",
+              "required": true,
+              "type": "string",
+              "default": "barbarian",
+              "location": "pathReplace"
+            },
+            "{skillSlug}": {
+              "description": "The skill slug.",
+              "required": true,
+              "type": "string",
+              "default": "bash",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Item Type API": {
+      "methods": {
+        "getItemTypeIndex": {
+          "description": "Returns an item type index.",
+          "httpMethod": "GET",
+          "path": "/d3/data/item-type",
+          "parameters": {
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        },
+        "getItemType": {
+          "description": "Returns a single item type by slug.",
+          "httpMethod": "GET",
+          "path": "/d3/data/item-type/{itemTypeSlug}",
+          "parameters": {
+            "{itemTypeSlug}": {
+              "description": "The item type slug.",
+              "required": true,
+              "type": "string",
+              "default": "sword2h",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Item API": {
+      "methods": {
+        "getItem": {
+          "description": "Returns a single item by item slug and ID.",
+          "httpMethod": "GET",
+          "path": "/d3/data/item/{itemSlugAndId}",
+          "parameters": {
+            "{itemSlugAndId}": {
+              "description": "The item slug and ID.",
+              "required": true,
+              "type": "string",
+              "default": "corrupted-ashbringer-Unique_Sword_2H_104_x1",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        }
+      }
+    },
+    "D3 Profile API": {
+      "methods": {
+        "getApiAccount": {
+          "description": "Returns a single profile.",
+          "httpMethod": "GET",
+          "path": "/d3/profile/{account}/",
+          "parameters": {
+            "{account}": {
+              "description": "The account BattleTag.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        },
+        "getApiHero": {
+          "description": "Returns a single hero.",
+          "httpMethod": "GET",
+          "path": "/d3/profile/{account}/hero/{heroId}",
+          "parameters": {
+            "{account}": {
+              "description": "The account BattleTag.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "{heroId}": {
+              "description": "The hero ID.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        },
+        "getApiDetailedHeroItems": {
+          "description": "Returns a list of items for the specified hero.",
+          "httpMethod": "GET",
+          "path": "/d3/profile/{account}/hero/{heroId}/items",
+          "parameters": {
+            "{account}": {
+              "description": "The account BattleTag.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "{heroId}": {
+              "description": "The hero ID.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        },
+        "getApiDetailedFollowerItems": {
+          "description": "Returns a list of items for the specified hero's followers",
+          "httpMethod": "GET",
+          "path": "/d3/profile/{account}/hero/{heroId}/follower-items",
+          "parameters": {
+            "{account}": {
+              "description": "The account BattleTag.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "{heroId}": {
+              "description": "The hero ID.",
+              "required": true,
+              "type": "string",
+              "location": "pathReplace"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        }
+      }
+    }
+  }
+}

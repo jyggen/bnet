@@ -1,0 +1,178 @@
+{
+  "name": "Community OAuth APIs - CN",
+  "title": "Community OAuth APIs - CN",
+  "description": "China-specific endpoints for accounts and other community data.\n\n**Hosts**: note that Blizzard API request paths in China follow this format: `https://gateway.battlenet.com.cn` and that OAuth requests in China use `www.battlenet.com.cn/{API path}`. For more information, see the [Getting Started guide](/documentation/guides/getting-started).",
+  "version": "79",
+  "basePath": "https://gateway.battlenet.com.cn",
+  "protocol": "rest",
+  "headers": {
+    "Accept": "application/json"
+  },
+  "auth": {
+    "oauth": {
+      "version": "2.0",
+      "base_uri": "https://www.blizzard.com.cn",
+      "authorize_uri": "/oauth/authorize",
+      "access_token_uri": "/oauth/token",
+      "auth_flows": [
+        "auth_code"
+      ],
+      "options": {
+        "authorize": {
+          "scope": [
+            "sc2.profile"
+          ]
+        }
+      }
+    }
+  },
+  "jsonp": false,
+  "locale": false,
+  "resources": {
+    "Account API": {
+      "methods": {
+        "User Info (header)": {
+          "disableTryIt": true,
+          "description": "Returns basic information about the user associated with the current bearer token. ",
+          "httpMethod": "GET",
+          "path": "/oauth/userinfo",
+          "parameters": {
+            "Authorization": {
+              "description": "The user's bearer token. The OAuth 2.0 spec requires the Authorization header be formatted as \"Bearer {token}\", where {token} is the alpha-numeric authorization token returned by a previous OAuth grant flow.",
+              "required": true,
+              "type": "string",
+              "location": "header",
+              "default": "Bearer {token}"
+            }
+          }
+        },
+        "User Info (param)": {
+          "disableTryIt": true,
+          "description": "This request is the same as *User Info (header)* but uses a search parameter in the URL rather than an HTTP header. While HTTPS encrypts traffic between the requester and Blizzard's servers at the TCP/IP layer, search parameters are inherently less secure than HTTP headers because they can be logged, copy-pasted, and otherwise easily accessed. As such, we strongly encourage users to put bearer tokens in headers.",
+          "httpMethod": "GET",
+          "path": "/oauth/userinfo",
+          "parameters": {
+            "access_token": {
+              "description": "The user's bearer token.",
+              "required": true,
+              "type": "string",
+              "location": "query",
+              "default": "{token}"
+            }
+          }
+        }
+      }
+    },
+    "D3": {
+      "methods": {
+        "Season Index": {
+          "description": "Returns an index of available seasons.",
+          "path": "/data/d3/season/",
+          "httpMethod": "GET",
+          "parameters": {}
+        },
+        "Season": {
+          "description": "Returns a leaderboard list for the specified season.",
+          "path": "/data/d3/season/:id",
+          "parameters": {
+            ":id": {
+              "type": "integer",
+              "required": true,
+              "default": "1",
+              "description": "The season for the leaderboard list; get a list of seasons with `GET /data/d3/season/`.",
+              "location": "pathReplace"
+            }
+          },
+          "httpMethod": "GET"
+        },
+        "Season Leaderboard": {
+          "description": "Returns a leaderboard.",
+          "path": "/data/d3/season/:id/leaderboard/:leaderboard",
+          "parameters": {
+            ":id": {
+              "type": "integer",
+              "required": true,
+              "default": "1",
+              "description": "The season for the leaderboard list; get a list of seasons with `GET /data/d3/season/`.",
+              "location": "pathReplace"
+            },
+            ":leaderboard": {
+              "type": "string",
+              "required": true,
+              "default": "achievement-points",
+              "description": "The leaderboard to retrieve; get a list of  leaderboards with `GET /data/d3/season/:id`.",
+              "location": "pathReplace"
+            }
+          },
+          "httpMethod": "GET"
+        },
+        "Era Index": {
+          "description": "Returns an index of available eras.",
+          "path": "/data/d3/era/",
+          "httpMethod": "GET",
+          "parameters": {}
+        },
+        "Era": {
+          "description": "Returns a leaderboard list for a particular era.",
+          "path": "/data/d3/era/:id",
+          "parameters": {
+            ":id": {
+              "type": "integer",
+              "required": true,
+              "default": "1",
+              "description": "The era to retrieve; get a list of eras with `/GET data/d3/era/`.",
+              "location": "pathReplace"
+            }
+          },
+          "httpMethod": "GET"
+        },
+        "Era Leaderboard": {
+          "description": "Returns the specified leaderboard for the specified era.",
+          "path": "/data/d3/era/:id/leaderboard/:leaderboard",
+          "parameters": {
+            ":id": {
+              "type": "integer",
+              "required": true,
+              "default": "1",
+              "description": "The era for the leaderboard; get a list of eras with `GET /data/d3/era/`.",
+              "location": "pathReplace"
+            },
+            ":leaderboard": {
+              "type": "string",
+              "required": true,
+              "default": "rift-barbarian",
+              "description": "The leaderboard to retrieve; get a list of leaderboards with `GET /data/d3/era/:id`.",
+              "location": "pathReplace"
+            }
+          },
+          "httpMethod": "GET"
+        }
+      }
+    },
+    "WoW": {
+      "methods": {
+        "Token": {
+          "description": "Returns the WoW Token index",
+          "path": "/data/wow/token/",
+          "httpMethod": "GET",
+          "parameters": {
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "type": "string",
+              "default": "dynamic-cn",
+              "location": "query"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "type": "string",
+              "default": "zh_CN",
+              "location": "query"
+            }
+          }
+        }
+      }
+    }
+  }
+}
