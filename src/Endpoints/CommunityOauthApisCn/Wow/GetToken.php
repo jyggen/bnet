@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\CommunityOauthApisCn\Wow;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetToken implements EndpointInterface
 {
     private const PATH = '/data/wow/token/';

@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\MythicKeystoneDungeon;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMythicKeystoneDungeon implements EndpointInterface
 {
-    private const PATH = '/data/wow/mythic-keystone/dungeon/{dungeonId}';
+    private const PATH = '/data/wow/mythic-keystone/dungeon/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $dungeonId)
+    {
+        $this->path = vsprintf($this->path, [
+            $dungeonId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetMythicKeystoneDungeon implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

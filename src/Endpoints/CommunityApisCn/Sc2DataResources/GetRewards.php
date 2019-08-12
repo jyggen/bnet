@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\CommunityApisCn\Sc2DataResources;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetRewards implements EndpointInterface
 {
     private const PATH = '/sc2/data/rewards';

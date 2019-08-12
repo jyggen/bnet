@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\D3CommunityApiUs\D3ItemType;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetItemTypeIndex implements EndpointInterface
 {
     private const PATH = '/d3/data/item-type';

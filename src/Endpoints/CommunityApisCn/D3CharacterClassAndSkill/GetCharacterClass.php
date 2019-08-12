@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\CommunityApisCn\D3CharacterClassAndSkill;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetCharacterClass implements EndpointInterface
 {
-    private const PATH = '/d3/data/hero/{classSlug}';
+    private const PATH = '/d3/data/hero/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $classSlug)
+    {
+        $this->path = vsprintf($this->path, [
+            $classSlug,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetCharacterClass implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

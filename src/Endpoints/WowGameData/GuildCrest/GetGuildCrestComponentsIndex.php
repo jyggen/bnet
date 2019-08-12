@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\GuildCrest;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetGuildCrestComponentsIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/guild-crest/index';

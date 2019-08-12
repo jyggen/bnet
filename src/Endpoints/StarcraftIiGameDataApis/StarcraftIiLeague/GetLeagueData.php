@@ -15,9 +15,27 @@ namespace Boo\BattleNet\Endpoints\StarcraftIiGameDataApis\StarcraftIiLeague;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetLeagueData implements EndpointInterface
 {
-    private const PATH = '/data/sc2/league/{seasonId}/{queueId}/{teamType}/{leagueId}';
+    private const PATH = '/data/sc2/league/%1$s/%2$s/%3$s/%4$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $seasonId, string $queueId, string $teamType, string $leagueId)
+    {
+        $this->path = vsprintf($this->path, [
+            $seasonId,
+            $queueId,
+            $teamType,
+            $leagueId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +44,6 @@ final class GetLeagueData implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

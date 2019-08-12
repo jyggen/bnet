@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PvpTier;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPvPTier implements EndpointInterface
 {
-    private const PATH = '/data/wow/pvp-tier/{pvpTierId}';
+    private const PATH = '/data/wow/pvp-tier/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $pvpTierId)
+    {
+        $this->path = vsprintf($this->path, [
+            $pvpTierId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetPvPTier implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

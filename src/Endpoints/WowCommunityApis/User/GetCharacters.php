@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\User;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetCharacters implements EndpointInterface
 {
     private const PATH = '/wow/user/characters';

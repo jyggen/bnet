@@ -15,9 +15,16 @@ namespace Boo\BattleNet\Endpoints\OauthApis\UserAuthentication;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetUserInfoHeader implements EndpointInterface
 {
     private const PATH = '/oauth/userinfo';
+
+    public function __construct(string $authorization)
+    {
+    }
 
     public function getMethod(): string
     {

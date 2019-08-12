@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\CommunityOauthApisCn\D3;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetEraIndex implements EndpointInterface
 {
     private const PATH = '/data/d3/era/';

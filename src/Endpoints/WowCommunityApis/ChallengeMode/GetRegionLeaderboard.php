@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\ChallengeMode;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetRegionLeaderboard implements EndpointInterface
 {
     private const PATH = '/wow/challenge/region';

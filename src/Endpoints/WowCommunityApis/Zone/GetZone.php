@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\Zone;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetZone implements EndpointInterface
 {
-    private const PATH = '/wow/zone/:zoneid';
+    private const PATH = '/wow/zone/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $zoneid)
+    {
+        $this->path = vsprintf($this->path, [
+            $zoneid,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetZone implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

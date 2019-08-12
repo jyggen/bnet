@@ -15,9 +15,26 @@ namespace Boo\BattleNet\Endpoints\WowProfileData\MythicKeystoneCharacterProfile;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMythicKeystoneCharacterSeasonDetails implements EndpointInterface
 {
-    private const PATH = '/profile/wow/character/{realmSlug}/{characterName}/mythic-keystone-profile/season/{seasonId}';
+    private const PATH = '/profile/wow/character/%1$s/%2$s/mythic-keystone-profile/season/%3$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $realmSlug, string $characterName, string $seasonId)
+    {
+        $this->path = vsprintf($this->path, [
+            $realmSlug,
+            $characterName,
+            $seasonId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +43,6 @@ final class GetMythicKeystoneCharacterSeasonDetails implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\Sc2CommunityApisUs\Ladder;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetGrandmasterLeaderboard implements EndpointInterface
 {
-    private const PATH = '/sc2/ladder/grandmaster/:regionId';
+    private const PATH = '/sc2/ladder/grandmaster/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $regionId)
+    {
+        $this->path = vsprintf($this->path, [
+            $regionId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetGrandmasterLeaderboard implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

@@ -15,9 +15,25 @@ namespace Boo\BattleNet\Endpoints\CommunityApisCn\D3ArtisanAndRecipe;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetRecipe implements EndpointInterface
 {
-    private const PATH = '/d3/data/artisan/{artisanSlug}/recipe/{recipeSlug}';
+    private const PATH = '/d3/data/artisan/%1$s/recipe/%2$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $artisanSlug, string $recipeSlug)
+    {
+        $this->path = vsprintf($this->path, [
+            $artisanSlug,
+            $recipeSlug,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +42,6 @@ final class GetRecipe implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

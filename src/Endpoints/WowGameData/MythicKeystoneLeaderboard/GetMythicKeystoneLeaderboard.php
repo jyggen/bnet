@@ -15,9 +15,26 @@ namespace Boo\BattleNet\Endpoints\WowGameData\MythicKeystoneLeaderboard;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMythicKeystoneLeaderboard implements EndpointInterface
 {
-    private const PATH = '/data/wow/connected-realm/{connectedRealmId}/mythic-leaderboard/{dungeonId}/period/{period}';
+    private const PATH = '/data/wow/connected-realm/%1$s/mythic-leaderboard/%2$s/period/%3$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $connectedRealmId, integer $dungeonId, integer $period)
+    {
+        $this->path = vsprintf($this->path, [
+            $connectedRealmId,
+            $dungeonId,
+            $period,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +43,6 @@ final class GetMythicKeystoneLeaderboard implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

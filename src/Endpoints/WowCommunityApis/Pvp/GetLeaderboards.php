@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\Pvp;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetLeaderboards implements EndpointInterface
 {
-    private const PATH = '/wow/leaderboard/:bracket';
+    private const PATH = '/wow/leaderboard/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $bracket)
+    {
+        $this->path = vsprintf($this->path, [
+            $bracket,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetLeaderboards implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

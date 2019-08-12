@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\WorldOfWarcraftProfile;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetWorldOfWarcraftOauthProfile implements EndpointInterface
 {
     private const PATH = '/wow/user/characters';

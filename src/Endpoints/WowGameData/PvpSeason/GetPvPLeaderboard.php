@@ -15,9 +15,25 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PvpSeason;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPvPLeaderboard implements EndpointInterface
 {
-    private const PATH = '/data/wow/pvp-season/{pvpSeasonId}/pvp-leaderboard/{pvpBracket}';
+    private const PATH = '/data/wow/pvp-season/%1$s/pvp-leaderboard/%2$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $pvpSeasonId, string $pvpBracket)
+    {
+        $this->path = vsprintf($this->path, [
+            $pvpSeasonId,
+            $pvpBracket,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +42,6 @@ final class GetPvPLeaderboard implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

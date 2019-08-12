@@ -15,9 +15,25 @@ namespace Boo\BattleNet\Endpoints\WowGameData\MythicRaidLeaderboard;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMythicRaidLeaderboard implements EndpointInterface
 {
-    private const PATH = '/data/wow/leaderboard/hall-of-fame/{raid}/{faction}';
+    private const PATH = '/data/wow/leaderboard/hall-of-fame/%1$s/%2$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $raid, string $faction)
+    {
+        $this->path = vsprintf($this->path, [
+            $raid,
+            $faction,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +42,6 @@ final class GetMythicRaidLeaderboard implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

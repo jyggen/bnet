@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\CommunityApisCn\D3Act;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetActIndex implements EndpointInterface
 {
     private const PATH = '/d3/data/act';

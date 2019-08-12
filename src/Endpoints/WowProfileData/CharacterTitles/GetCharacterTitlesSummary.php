@@ -15,9 +15,25 @@ namespace Boo\BattleNet\Endpoints\WowProfileData\CharacterTitles;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetCharacterTitlesSummary implements EndpointInterface
 {
-    private const PATH = '/profile/wow/character/{realmSlug}/{characterName}/titles';
+    private const PATH = '/profile/wow/character/%1$s/%2$s/titles';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $realmSlug, string $characterName)
+    {
+        $this->path = vsprintf($this->path, [
+            $realmSlug,
+            $characterName,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +42,6 @@ final class GetCharacterTitlesSummary implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\DataResources;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetGuildRewards implements EndpointInterface
 {
     private const PATH = '/wow/data/guild/rewards';

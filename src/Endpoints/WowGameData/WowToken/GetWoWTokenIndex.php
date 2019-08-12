@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\WowToken;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetWoWTokenIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/token/index';

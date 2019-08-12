@@ -1,2173 +1,3847 @@
 {
     "WowProfileData\\CharacterAchievements\\GetCharacterAchievementsSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/achievements",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/achievements",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\CharacterAppearance\\GetCharacterAppearanceSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/appearance",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/appearance",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\CharacterEquipment\\GetCharacterEquipmentSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/equipment",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/equipment",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\CharacterMedia\\GetCharacterMediaSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/character-media",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/character-media",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\CharacterProfile\\GetCharacterProfileSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\CharacterPvp\\GetCharacterPvPBracketStatistics": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/pvp-bracket\/{pvpBracket}",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/pvp-bracket\/%3$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{pvpBracket}"
+                "default": "3v3",
+                "description": "The PvP bracket type.",
+                "name": "pvpBracket",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\CharacterPvp\\GetCharacterPvPSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/pvp-summary",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/pvp-summary",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\CharacterSpecializations\\GetCharacterSpecializationsSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/specializations",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/specializations",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\CharacterStatistics\\GetCharacterStatisticsSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/statistics",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/statistics",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\CharacterTitles\\GetCharacterTitlesSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/titles",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/titles",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\MythicKeystoneCharacterProfile\\GetMythicKeystoneCharacterProfileIndex": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/mythic-keystone-profile",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/mythic-keystone-profile",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowProfileData\\MythicKeystoneCharacterProfile\\GetMythicKeystoneCharacterSeasonDetails": {
+        "header": [],
         "method": "GET",
-        "path": "\/profile\/wow\/character\/{realmSlug}\/{characterName}\/mythic-keystone-profile\/season\/{seasonId}",
-        "parameters": [
+        "path": "\/profile\/wow\/character\/%1$s\/%2$s\/mythic-keystone-profile\/season\/%3$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{characterName}"
+                "default": "charactername",
+                "description": "The lowercase name of the character.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{seasonId}"
+                "default": "1",
+                "description": "The ID of the Mythic Keystone season.",
+                "name": "seasonId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
-    "WowGameData\\Achievements\\GetAchievementCategoriesIndex": {
+    "WowGameData\\Achievement\\GetAchievementCategoriesIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/achievement-category\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
-    "WowGameData\\Achievements\\GetAchievementCategory": {
+    "WowGameData\\Achievement\\GetAchievementCategory": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/achievement-category\/{achievementCategoryId}",
-        "parameters": [
+        "path": "\/data\/wow\/achievement-category\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{achievementCategoryId}"
+                "default": 81,
+                "description": "The ID of the achievement category.",
+                "name": "achievementCategoryId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Achievements\\GetAchievementsIndex": {
+    "WowGameData\\Achievement\\GetAchievementsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/achievement\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
-    "WowGameData\\Achievements\\GetAchievement": {
+    "WowGameData\\Achievement\\GetAchievement": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/achievement\/{achievementId}",
-        "parameters": [
+        "path": "\/data\/wow\/achievement\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{achievementId}"
+                "default": 6,
+                "description": "The ID of the achievement.",
+                "name": "achievementId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Achievements\\GetAchievementMedia": {
+    "WowGameData\\Achievement\\GetAchievementMedia": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/media\/achievement\/{achievementId}",
-        "parameters": [
+        "path": "\/data\/wow\/media\/achievement\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{achievementId}"
+                "default": 6,
+                "description": "The ID of the achievement.",
+                "name": "achievementId",
+                "required": true,
+                "type": "integer"
+            }
+        ]
+    },
+    "WowGameData\\AzeriteEssence\\GetAzeriteEssencesIndex": {
+        "header": [],
+        "method": "GET",
+        "path": "\/data\/wow\/azerite-essence\/index",
+        "query": [],
+        "replace": []
+    },
+    "WowGameData\\AzeriteEssence\\GetAzeriteEssence": {
+        "header": [],
+        "method": "GET",
+        "path": "\/data\/wow\/azerite-essence\/%1$s",
+        "query": [],
+        "replace": [
+            {
+                "default": "2",
+                "description": "The ID of the azerite essence.",
+                "name": "azeriteEssenceId",
+                "required": true,
+                "type": "string"
+            }
+        ]
+    },
+    "WowGameData\\AzeriteEssence\\GetAzeriteEssenceMedia": {
+        "header": [],
+        "method": "GET",
+        "path": "\/data\/wow\/media\/azerite-essence\/%1$s",
+        "query": [],
+        "replace": [
+            {
+                "default": 2,
+                "description": "The ID of the azerite essence.",
+                "name": "azeriteEssenceId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\ConnectedRealm\\GetConnectedRealmsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/connected-realm\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\ConnectedRealm\\GetConnectedRealm": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/connected-realm\/{connectedRealmId}",
-        "parameters": [
+        "path": "\/data\/wow\/connected-realm\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{connectedRealmId}"
+                "default": 11,
+                "description": "The ID of the connected realm.",
+                "name": "connectedRealmId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Creatures\\GetCreatureFamiliesIndex": {
+    "WowGameData\\Creature\\GetCreatureFamiliesIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/creature-family\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
-    "WowGameData\\Creatures\\GetCreatureFamily": {
+    "WowGameData\\Creature\\GetCreatureFamily": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/creature-family\/{creatureFamilyId}",
-        "parameters": [
+        "path": "\/data\/wow\/creature-family\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{creatureFamilyId}"
+                "default": 1,
+                "description": "The ID of the creature family.",
+                "name": "creatureFamilyId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Creatures\\GetCreatureTypesIndex": {
+    "WowGameData\\Creature\\GetCreatureTypesIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/creature-type\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
-    "WowGameData\\Creatures\\GetCreatureType": {
+    "WowGameData\\Creature\\GetCreatureType": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/creature-type\/{creatureTypeId}",
-        "parameters": [
+        "path": "\/data\/wow\/creature-type\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{creatureTypeId}"
+                "default": 1,
+                "description": "The ID of the creature type.",
+                "name": "creatureTypeId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Creatures\\GetCreature": {
+    "WowGameData\\Creature\\GetCreature": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/creature\/{creatureId}",
-        "parameters": [
+        "path": "\/data\/wow\/creature\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{creatureId}"
+                "default": 42722,
+                "description": "The ID of the creature.",
+                "name": "creatureId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Creatures\\GetCreatureDisplayMedia": {
+    "WowGameData\\Creature\\GetCreatureDisplayMedia": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/media\/creature-display\/{creatureDisplayId}",
-        "parameters": [
+        "path": "\/data\/wow\/media\/creature-display\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{creatureDisplayId}"
+                "default": 30221,
+                "description": "The ID of the creature display.",
+                "name": "creatureDisplayId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Creatures\\GetCreatureFamilyMedia": {
+    "WowGameData\\Creature\\GetCreatureFamilyMedia": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/media\/creature-family\/{creatureFamilyId}",
-        "parameters": [
+        "path": "\/data\/wow\/media\/creature-family\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{creatureFamilyId}"
+                "default": 1,
+                "description": "The ID of the creature family.",
+                "name": "creatureFamilyId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\Guild\\GetGuild": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/guild\/{realmSlug}\/{nameSlug}",
-        "parameters": [
+        "path": "\/data\/wow\/guild\/%1$s\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{nameSlug}"
+                "default": "guild-slug",
+                "description": "The slug of the guild.",
+                "name": "nameSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowGameData\\Guild\\GetGuildAchievements": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/guild\/{realmSlug}\/{nameSlug}\/achievements",
-        "parameters": [
+        "path": "\/data\/wow\/guild\/%1$s\/%2$s\/achievements",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{nameSlug}"
+                "default": "guild-slug",
+                "description": "The slug of the guild.",
+                "name": "nameSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowGameData\\Guild\\GetGuildRoster": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/guild\/{realmSlug}\/{nameSlug}\/roster",
-        "parameters": [
+        "path": "\/data\/wow\/guild\/%1$s\/%2$s\/roster",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{nameSlug}"
+                "default": "guild-slug",
+                "description": "The slug of the guild.",
+                "name": "nameSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowGameData\\GuildCrest\\GetGuildCrestComponentsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/guild-crest\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\GuildCrest\\GetGuildCrestBorderMedia": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/media\/guild-crest\/border\/{borderId}",
-        "parameters": [
+        "path": "\/data\/wow\/media\/guild-crest\/border\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{borderId}"
+                "default": 0,
+                "description": "The ID of the guild crest border.",
+                "name": "borderId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\GuildCrest\\GetGuildCrestEmblemMedia": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/media\/guild-crest\/emblem\/{emblemId}",
-        "parameters": [
+        "path": "\/data\/wow\/media\/guild-crest\/emblem\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{emblemId}"
+                "default": 0,
+                "description": "The ID of the guild crest emblem.",
+                "name": "emblemId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Items\\GetAzeriteEssencesIndex": {
-        "method": "GET",
-        "path": "\/data\/wow\/azerite-essence\/index",
-        "parameters": []
-    },
-    "WowGameData\\Items\\GetAzeriteEssence": {
-        "method": "GET",
-        "path": "\/data\/wow\/azerite-essence\/{azeriteEssenceId}",
-        "parameters": [
-            {
-                "name": "{azeriteEssenceId}"
-            }
-        ]
-    },
-    "WowGameData\\Items\\GetItemClassesIndex": {
+    "WowGameData\\Item\\GetItemClassesIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/item-class\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
-    "WowGameData\\Items\\GetItemClass": {
+    "WowGameData\\Item\\GetItemClass": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/item-class\/{itemClassId}",
-        "parameters": [
+        "path": "\/data\/wow\/item-class\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{itemClassId}"
+                "default": "0",
+                "description": "The ID of the item class.",
+                "name": "itemClassId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
-    "WowGameData\\Items\\GetItemSubclass": {
+    "WowGameData\\Item\\GetItemSubclass": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/item-class\/{itemClassId}\/item-subclass\/{itemSubclassId}",
-        "parameters": [
+        "path": "\/data\/wow\/item-class\/%1$s\/item-subclass\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{itemClassId}"
+                "default": "0",
+                "description": "The ID of the item class.",
+                "name": "itemClassId",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{itemSubclassId}"
+                "default": "0",
+                "description": "The ID of the item subclass.",
+                "name": "itemSubclassId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
-    "WowGameData\\Items\\GetItem": {
+    "WowGameData\\Item\\GetItem": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/item\/{itemId}",
-        "parameters": [
+        "path": "\/data\/wow\/item\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{itemId}"
+                "default": "19019",
+                "description": "The ID of the item.",
+                "name": "itemId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
-    "WowGameData\\Items\\GetItemMedia": {
+    "WowGameData\\Item\\GetItemMedia": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/media\/item\/{itemId}",
-        "parameters": [
+        "path": "\/data\/wow\/media\/item\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{itemId}"
+                "default": 19019,
+                "description": "The ID of the item.",
+                "name": "itemId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\MythicKeystoneAffix\\GetMythicKeystoneAffixesIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/keystone-affix\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\MythicKeystoneAffix\\GetMythicKeystoneAffix": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/keystone-affix\/{keystoneAffixId}",
-        "parameters": [
+        "path": "\/data\/wow\/keystone-affix\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{keystoneAffixId}"
+                "default": 1,
+                "description": "The ID of the Keystone affix.",
+                "name": "keystoneAffixId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\MythicRaidLeaderboard\\GetMythicRaidLeaderboard": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/leaderboard\/hall-of-fame\/{raid}\/{faction}",
-        "parameters": [
+        "path": "\/data\/wow\/leaderboard\/hall-of-fame\/%1$s\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{raid}"
+                "default": "uldir",
+                "description": "The raid for a leaderboard.",
+                "name": "raid",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{faction}"
+                "default": "alliance",
+                "description": "Player faction (`alliance` or `horde`).",
+                "name": "faction",
+                "required": true,
+                "type": "string"
             }
         ]
     },
-    "WowGameData\\Mounts\\GetMountsIndex": {
+    "WowGameData\\Mount\\GetMountsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/mount\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
-    "WowGameData\\Mounts\\GetMount": {
+    "WowGameData\\Mount\\GetMount": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/mount\/{mountId}",
-        "parameters": [
+        "path": "\/data\/wow\/mount\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{mountId}"
+                "default": 6,
+                "description": "The ID of the mount.",
+                "name": "mountId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneDungeonsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/mythic-keystone\/dungeon\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneDungeon": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/mythic-keystone\/dungeon\/{dungeonId}",
-        "parameters": [
+        "path": "\/data\/wow\/mythic-keystone\/dungeon\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{dungeonId}"
+                "default": 353,
+                "description": "The ID of the dungeon.",
+                "name": "dungeonId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/mythic-keystone\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystonePeriodsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/mythic-keystone\/period\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystonePeriod": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/mythic-keystone\/period\/{periodId}",
-        "parameters": [
+        "path": "\/data\/wow\/mythic-keystone\/period\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{periodId}"
+                "default": 641,
+                "description": "The ID of the Mythic Keystone season period.",
+                "name": "periodId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneSeasonsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/mythic-keystone\/season\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\MythicKeystoneDungeon\\GetMythicKeystoneSeason": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/mythic-keystone\/season\/{seasonId}",
-        "parameters": [
+        "path": "\/data\/wow\/mythic-keystone\/season\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{seasonId}"
+                "default": 1,
+                "description": "The ID of the Mythic Keystone season.",
+                "name": "seasonId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\MythicKeystoneLeaderboard\\GetMythicKeystoneLeaderboardsIndex": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/connected-realm\/{connectedRealmId}\/mythic-leaderboard\/index",
-        "parameters": [
+        "path": "\/data\/wow\/connected-realm\/%1$s\/mythic-leaderboard\/index",
+        "query": [],
+        "replace": [
             {
-                "name": "{connectedRealmId}"
+                "default": 11,
+                "description": "The ID of the connected realm.",
+                "name": "connectedRealmId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\MythicKeystoneLeaderboard\\GetMythicKeystoneLeaderboard": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/connected-realm\/{connectedRealmId}\/mythic-leaderboard\/{dungeonId}\/period\/{period}",
-        "parameters": [
+        "path": "\/data\/wow\/connected-realm\/%1$s\/mythic-leaderboard\/%2$s\/period\/%3$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{connectedRealmId}"
+                "default": 11,
+                "description": "The ID of the connected realm.",
+                "name": "connectedRealmId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": "{dungeonId}"
+                "default": 197,
+                "description": "The ID of the dungeon.",
+                "name": "dungeonId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": "{period}"
+                "default": 641,
+                "description": "The unique identifier for the leaderboard period.",
+                "name": "period",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Pets\\GetPetsIndex": {
+    "WowGameData\\Pet\\GetPetsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/pet\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
-    "WowGameData\\Pets\\GetPet": {
+    "WowGameData\\Pet\\GetPet": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/pet\/{petId}",
-        "parameters": [
+        "path": "\/data\/wow\/pet\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{petId}"
+                "default": 39,
+                "description": "The ID of the pet.",
+                "name": "petId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\PlayableClass\\GetPlayableClassesIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/playable-class\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\PlayableClass\\GetPlayableClass": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/playable-class\/{classId}",
-        "parameters": [
+        "path": "\/data\/wow\/playable-class\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{classId}"
+                "default": 7,
+                "description": "The ID of the playable class.",
+                "name": "classId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\PlayableClass\\GetPvPTalentSlots": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/playable-class\/{classId}\/pvp-talent-slots",
-        "parameters": [
+        "path": "\/data\/wow\/playable-class\/%1$s\/pvp-talent-slots",
+        "query": [],
+        "replace": [
             {
-                "name": "{classId}"
+                "default": 7,
+                "description": "The ID of the playable class.",
+                "name": "classId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\PlayableRaces\\GetPlayableRacesIndex": {
+    "WowGameData\\PlayableRace\\GetPlayableRacesIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/playable-race\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
-    "WowGameData\\PlayableRaces\\GetPlayableRace": {
+    "WowGameData\\PlayableRace\\GetPlayableRace": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/playable-race\/{playableRaceId}",
-        "parameters": [
+        "path": "\/data\/wow\/playable-race\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{playableRaceId}"
+                "default": 2,
+                "description": "The ID of the playable race.",
+                "name": "playableRaceId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\PlayableSpecialization\\GetPlayableSpecializationsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/playable-specialization\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\PlayableSpecialization\\GetPlayableSpecialization": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/playable-specialization\/{specId}",
-        "parameters": [
+        "path": "\/data\/wow\/playable-specialization\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{specId}"
+                "default": 262,
+                "description": "The ID of the playable specialization.",
+                "name": "specId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\PowerType\\GetPowerTypesIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/power-type\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\PowerType\\GetPowerType": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/power-type\/{powerTypeId}",
-        "parameters": [
+        "path": "\/data\/wow\/power-type\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{powerTypeId}"
+                "default": 0,
+                "description": "The ID of the power type.",
+                "name": "powerTypeId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\PvpSeason\\GetPvPSeasonsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/pvp-season\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\PvpSeason\\GetPvPSeason": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/pvp-season\/{pvpSeasonId}",
-        "parameters": [
+        "path": "\/data\/wow\/pvp-season\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{pvpSeasonId}"
+                "default": 27,
+                "description": "The ID of the PvP season.",
+                "name": "pvpSeasonId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\PvpSeason\\GetPvPLeaderboardsIndex": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/pvp-season\/{pvpSeasonId}\/pvp-leaderboard\/index",
-        "parameters": [
+        "path": "\/data\/wow\/pvp-season\/%1$s\/pvp-leaderboard\/index",
+        "query": [],
+        "replace": [
             {
-                "name": "{pvpSeasonId}"
+                "default": 27,
+                "description": "The ID of the PvP season.",
+                "name": "pvpSeasonId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\PvpSeason\\GetPvPLeaderboard": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/pvp-season\/{pvpSeasonId}\/pvp-leaderboard\/{pvpBracket}",
-        "parameters": [
+        "path": "\/data\/wow\/pvp-season\/%1$s\/pvp-leaderboard\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{pvpSeasonId}"
+                "default": 27,
+                "description": "The ID of the PvP season.",
+                "name": "pvpSeasonId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": "{pvpBracket}"
+                "default": "3v3",
+                "description": "The PvP bracket type.",
+                "name": "pvpBracket",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowGameData\\PvpSeason\\GetPvPRewardsIndex": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/pvp-season\/{pvpSeasonId}\/pvp-reward\/index",
-        "parameters": [
+        "path": "\/data\/wow\/pvp-season\/%1$s\/pvp-reward\/index",
+        "query": [],
+        "replace": [
             {
-                "name": "{pvpSeasonId}"
+                "default": 27,
+                "description": "The ID of the PvP season.",
+                "name": "pvpSeasonId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\PvpTier\\GetPvPTierMedia": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/media\/pvp-tier\/{pvpTierId}",
-        "parameters": [
+        "path": "\/data\/wow\/media\/pvp-tier\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{pvpTierId}"
+                "default": 1,
+                "description": "The ID of the PvP tier.",
+                "name": "pvpTierId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\PvpTier\\GetPvPTiersIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/pvp-tier\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\PvpTier\\GetPvPTier": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/pvp-tier\/{pvpTierId}",
-        "parameters": [
+        "path": "\/data\/wow\/pvp-tier\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{pvpTierId}"
+                "default": 1,
+                "description": "The ID of the PvP tier.",
+                "name": "pvpTierId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\Realm\\GetRealmsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/realm\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\Realm\\GetRealm": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/realm\/{realmSlug}",
-        "parameters": [
+        "path": "\/data\/wow\/realm\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{realmSlug}"
+                "default": "tichondrius",
+                "description": "The slug of the realm.",
+                "name": "realmSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowGameData\\Region\\GetRegionsIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/region\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowGameData\\Region\\GetRegion": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/region\/{regionId}",
-        "parameters": [
+        "path": "\/data\/wow\/region\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{regionId}"
+                "default": 1,
+                "description": "The ID of the region.",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
-    "WowGameData\\Titles\\GetTitlesIndex": {
+    "WowGameData\\Title\\GetTitlesIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/title\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
-    "WowGameData\\Titles\\GetTitle": {
+    "WowGameData\\Title\\GetTitle": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/wow\/title\/{titleId}",
-        "parameters": [
+        "path": "\/data\/wow\/title\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{titleId}"
+                "default": 1,
+                "description": "The ID of the title.",
+                "name": "titleId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "WowGameData\\WowToken\\GetWoWTokenIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/token\/index",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\WorldOfWarcraftProfile\\GetWorldOfWarcraftOauthProfile": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/user\/characters",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\Achievement\\GetAchievement": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/achievement\/:id",
-        "parameters": [
+        "path": "\/wow\/achievement\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "2144",
+                "description": "The ID of the achievement to retrieve.",
+                "name": "id",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\Auction\\GetAuctionDataStatus": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/auction\/data\/:realm",
-        "parameters": [
+        "path": "\/wow\/auction\/data\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":realm"
+                "default": "medivh",
+                "description": "The realm to request.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\Boss\\GetMasterList": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/boss\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\Boss\\GetBoss": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/boss\/:bossid",
-        "parameters": [
+        "path": "\/wow\/boss\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":bossid"
+                "default": "24723",
+                "description": "The ID of the boss to retrieve.",
+                "name": "bossid",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\ChallengeMode\\GetRealmLeaderboard": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/challenge\/:realm",
-        "parameters": [
+        "path": "\/wow\/challenge\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":realm"
+                "default": "medivh",
+                "description": "The realm to request.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\ChallengeMode\\GetRegionLeaderboard": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/challenge\/region",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\CharacterProfile\\GetCharacterProfile": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "",
+                "description": "The dataset to retrieve for the character. Each field value is explained in more detail in the following requests. If no fields are specified the API will only return basic data about the character.",
+                "name": "fields",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetAchievements": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "achievements",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetAppearance": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "appearance",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetFeed": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "feed",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetGuild": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "guild",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetHunterPets": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "hunterPets",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetItems": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "items",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetMounts": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "mounts",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetPets": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "pets",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetPetSlots": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "petSlots",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetProfessions": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "professions",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetProgression": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "progression",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetPvp": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "pvp",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetQuests": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "quests",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetReputation": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "reputation",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetStatistics": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "statistics",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetStats": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "stats",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetTalents": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "talents",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetTitles": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "titles",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "blackrock",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\CharacterProfile\\GetAudit": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/character\/:realm\/:characterName",
-        "parameters": [
+        "path": "\/wow\/character\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "audit",
+                "description": "Specifies the data to retrieve.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "burning-legion",
+                "description": "The character's realm. Can be provided as the proper realm name or the normalized realm name.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":characterName"
-            },
-            {
-                "name": "fields"
+                "default": "Thrall",
+                "description": "The name of the character to retrieve.",
+                "name": "characterName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\GuildProfile\\GetGuildProfile": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/guild\/:realm\/:guildName",
-        "parameters": [
+        "path": "\/wow\/guild\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "achievements,challenge",
+                "description": "The optional data to retrieve about the guild. Each field value is explained in more detail in the following methods. If no fields are specified the API will only return basic guild data.",
+                "name": "fields",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "Medivh",
+                "description": "The guild's realm.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":guildName"
-            },
-            {
-                "name": "fields"
+                "default": "Temp Guild Name",
+                "description": "The name of the guild to query.",
+                "name": "guildName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\GuildProfile\\GetMembers": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/guild\/:realm\/:guildName",
-        "parameters": [
+        "path": "\/wow\/guild\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "members",
+                "description": "A value of `members` tells the API to include guild's member list in the response.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "Medivh",
+                "description": "The guild's realm.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":guildName"
-            },
-            {
-                "name": "fields"
+                "default": "Temp Guild Name",
+                "description": "The name of the guild to query.",
+                "name": "guildName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\GuildProfile\\GetAchievements": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/guild\/:realm\/:guildName",
-        "parameters": [
+        "path": "\/wow\/guild\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "achievements",
+                "description": "A value of `achievements` tells the API to include the guild's achievement data in the response.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "Medivh",
+                "description": "The guild's realm.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":guildName"
-            },
-            {
-                "name": "fields"
+                "default": "Temp Guild Name",
+                "description": "The name of the guild to query.",
+                "name": "guildName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\GuildProfile\\GetNews": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/guild\/:realm\/:guildName",
-        "parameters": [
+        "path": "\/wow\/guild\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "news",
+                "description": "A value of `news` tells the API to include the guild's news feed in the response.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "Medivh",
+                "description": "The guild's realm.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":guildName"
-            },
-            {
-                "name": "fields"
+                "default": "Temp Guild Name",
+                "description": "The name of the guild to query.",
+                "name": "guildName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\GuildProfile\\GetChallenge": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/guild\/:realm\/:guildName",
-        "parameters": [
+        "path": "\/wow\/guild\/%1$s\/%2$s",
+        "query": [
             {
-                "name": ":realm"
+                "default": "challenge",
+                "description": "A value of `challenge` tells the API to include the guild's Challenge Mode data in the response.",
+                "name": "fields",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "replace": [
+            {
+                "default": "Medivh",
+                "description": "The guild's realm.",
+                "name": "realm",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": ":guildName"
-            },
-            {
-                "name": "fields"
+                "default": "",
+                "description": "The name of the guild to query.",
+                "name": "guildName",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\Item\\GetItem": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/item\/:itemId",
-        "parameters": [
+        "path": "\/wow\/item\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":itemId"
+                "default": "18803",
+                "description": "The requested item's unique ID.",
+                "name": "itemId",
+                "required": true,
+                "type": "number"
             }
         ]
     },
     "WowCommunityApis\\Item\\GetItemSet": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/item\/set\/:setId",
-        "parameters": [
+        "path": "\/wow\/item\/set\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":setId"
+                "default": "1060",
+                "description": "The requested set's unique ID.",
+                "name": "setId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\Mount\\GetMasterList": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/mount\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\Pet\\GetMasterList": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/pet\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\Pet\\GetAbilities": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/pet\/ability\/:abilityID",
-        "parameters": [
+        "path": "\/wow\/pet\/ability\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":abilityID"
+                "default": "640",
+                "description": "The ID of the ability to retrieve.",
+                "name": "abilityId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\Pet\\GetSpecies": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/pet\/species\/:speciesID",
-        "parameters": [
+        "path": "\/wow\/pet\/species\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":speciesID"
+                "default": "258",
+                "description": "The species for which to retrieve data.",
+                "name": "speciesId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\Pet\\GetStats": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/pet\/stats\/:speciesID",
-        "parameters": [
+        "path": "\/wow\/pet\/stats\/%1$s",
+        "query": [
             {
-                "name": ":speciesID"
+                "default": "25",
+                "description": "The pet's level. Pet levels max out at 25. If omitted, the API assumes a default value of 1. ",
+                "name": "level",
+                "required": false,
+                "type": "number"
             },
             {
-                "name": "level"
+                "default": "5",
+                "description": "The pet's breed. Retrievable via the Character Profile API. If omitted the API assumes a default value of 3.",
+                "name": "breedId",
+                "required": false,
+                "type": "number"
             },
             {
-                "name": "breedId"
-            },
+                "default": "4",
+                "description": "The pet's quality. Retrievable via the Character Profile API. Pet quality can range from 0 to 5 (0 is poor quality and 5 is legendary). If omitted, the API will assume a default value of 1.",
+                "name": "qualityId",
+                "required": false,
+                "type": "number"
+            }
+        ],
+        "replace": [
             {
-                "name": "qualityId"
+                "default": "258",
+                "description": "The pet's species ID. This can be found by querying a user's list of pets via the Character Profile API.",
+                "name": "speciesId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\Pvp\\GetLeaderboards": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/leaderboard\/:bracket",
-        "parameters": [
+        "path": "\/wow\/leaderboard\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":bracket"
+                "default": "2v2",
+                "description": "The type of leaderboard to retrieve. Valid entries are `2v2`, `3v3`, `5v5`, and `rbg`.",
+                "name": "bracket",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\Quest\\GetQuest": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/quest\/:questId",
-        "parameters": [
+        "path": "\/wow\/quest\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":questId"
+                "default": "13146",
+                "description": "The ID of the quest to retrieve.",
+                "name": "questId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\RealmStatus\\GetRealmStatus": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/realm\/status",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\Recipe\\GetRecipe": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/recipe\/:recipeId",
-        "parameters": [
+        "path": "\/wow\/recipe\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":recipeId"
+                "default": "33994",
+                "description": "Unique ID for the desired recipe.",
+                "name": "recipeId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\Spell\\GetSpell": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/spell\/:spellId",
-        "parameters": [
+        "path": "\/wow\/spell\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":spellId"
+                "default": "17086",
+                "description": "The ID of the spell to retrieve.",
+                "name": "spellId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\User\\GetCharacters": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/user\/characters",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\Zone\\GetMasterList": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/zone\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\Zone\\GetZone": {
+        "header": [],
         "method": "GET",
-        "path": "\/wow\/zone\/:zoneid",
-        "parameters": [
+        "path": "\/wow\/zone\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":zoneid"
+                "default": "4131",
+                "description": "The ID of the zone to retrieve.",
+                "name": "zoneid",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "WowCommunityApis\\DataResources\\GetBattlegroups": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/battlegroups\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\DataResources\\GetCharacterRaces": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/character\/races",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\DataResources\\GetCharacterClasses": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/character\/classes",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\DataResources\\GetCharacterAchievements": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/character\/achievements",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\DataResources\\GetGuildRewards": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/guild\/rewards",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\DataResources\\GetGuildPerks": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/guild\/perks",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\DataResources\\GetGuildAchievements": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/guild\/achievements",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\DataResources\\GetItemClasses": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/item\/classes",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\DataResources\\GetTalents": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/talents",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "WowCommunityApis\\DataResources\\GetPetTypes": {
+        "header": [],
         "method": "GET",
         "path": "\/wow\/data\/pet\/types",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "StarcraftIiGameDataApis\\StarcraftIiLeague\\GetLeagueData": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/sc2\/league\/{seasonId}\/{queueId}\/{teamType}\/{leagueId}",
-        "parameters": [
+        "path": "\/data\/sc2\/league\/%1$s\/%2$s\/%3$s\/%4$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{seasonId}"
+                "default": "37",
+                "description": "The season ID of the data to retrieve.",
+                "name": "seasonId",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{queueId}"
+                "default": "201",
+                "description": "The queue ID of the data to retrieve.",
+                "name": "queueId",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{teamType}"
+                "default": "0",
+                "description": "The team type of the data to retrieve.",
+                "name": "teamType",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{leagueId}"
+                "default": "6",
+                "description": "The league ID of the data to retrieve.",
+                "name": "leagueId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "Sc2CommunityApisUs\\Profile\\GetStatic": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/static\/profile\/:regionId",
-        "parameters": [
+        "path": "\/sc2\/static\/profile\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
-            },
-            {
-                "name": "locale"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Profile\\GetMetadata": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/metadata\/profile\/:regionId\/:realmId\/:profileId",
-        "parameters": [
+        "path": "\/sc2\/metadata\/profile\/%1$s\/%2$s\/%3$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":realmId"
+                "default": null,
+                "description": "The region of the profile (`1` or `2`).",
+                "name": "realmId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":profileId"
-            },
-            {
-                "name": "locale"
+                "default": null,
+                "description": "The profile ID.",
+                "name": "profileId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Profile\\GetProfile": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/profile\/:regionID\/:realmID\/:profileId",
-        "parameters": [
+        "path": "\/sc2\/profile\/%1$s\/%2$s\/%3$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":realmId"
+                "default": null,
+                "description": "The region of the profile (`1` or `2`).",
+                "name": "realmId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":profileId"
-            },
-            {
-                "name": "locale"
+                "default": null,
+                "description": "The profile ID.",
+                "name": "profileId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Profile\\GetLadderSummary": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/profile\/:regionId\/:realmId\/:profileId\/ladder\/summary",
-        "parameters": [
+        "path": "\/sc2\/profile\/%1$s\/%2$s\/%3$s\/ladder\/summary",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":realmId"
+                "default": null,
+                "description": "The region of the profile (`1` or `2`).",
+                "name": "realmId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":profileId"
-            },
-            {
-                "name": "locale"
+                "default": null,
+                "description": "The profile ID.",
+                "name": "profileId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Profile\\GetLadder": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/profile\/:regionId\/:realmId\/:profileId\/ladder\/:ladderId",
-        "parameters": [
+        "path": "\/sc2\/profile\/%1$s\/%2$s\/%3$s\/ladder\/%4$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":realmId"
+                "default": null,
+                "description": "The region of the profile (`1` or `2`).",
+                "name": "realmId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":profileId"
+                "default": null,
+                "description": "The profile ID.",
+                "name": "profileId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":ladderId"
-            },
-            {
-                "name": "locale"
+                "default": null,
+                "description": "The ID of the ladder for which to retrieve data.",
+                "name": "ladderId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Ladder\\GetGrandmasterLeaderboard": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/ladder\/grandmaster\/:regionId",
-        "parameters": [
+        "path": "\/sc2\/ladder\/grandmaster\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Ladder\\GetSeason": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/ladder\/season\/:regionId",
-        "parameters": [
+        "path": "\/sc2\/ladder\/season\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Account\\GetPlayer": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/player\/:accountId",
-        "parameters": [
+        "path": "\/sc2\/player\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":accountId"
+                "default": null,
+                "description": "The ID of the account for which to retrieve data.",
+                "name": "accountId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "Sc2CommunityApisUs\\Legacy\\GetProfile": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/legacy\/profile\/:regionId\/:realmId\/:profileId",
-        "parameters": [
+        "path": "\/sc2\/legacy\/profile\/%1$s\/%2$s\/%3$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":realmId"
+                "default": null,
+                "description": "The region of the profile (`1` or `2`).",
+                "name": "realmId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":profileId"
+                "default": null,
+                "description": "The profile ID.",
+                "name": "profileId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Legacy\\GetLadders": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/legacy\/profile\/:regionId\/:realmId\/:profileId\/ladders",
-        "parameters": [
+        "path": "\/sc2\/legacy\/profile\/%1$s\/%2$s\/%3$s\/ladders",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":realmId"
+                "default": null,
+                "description": "The region of the profile (`1` or `2`).",
+                "name": "realmId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":profileId"
+                "default": null,
+                "description": "The profile ID.",
+                "name": "profileId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Legacy\\GetMatchHistory": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/legacy\/profile\/:regionId\/:realmId\/:profileId\/matches",
-        "parameters": [
+        "path": "\/sc2\/legacy\/profile\/%1$s\/%2$s\/%3$s\/matches",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":realmId"
+                "default": null,
+                "description": "The region of the profile (`1` or `2`).",
+                "name": "realmId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":profileId"
+                "default": null,
+                "description": "The profile ID.",
+                "name": "profileId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Legacy\\GetLadder": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/legacy\/ladder\/:regionId\/:ladderId",
-        "parameters": [
+        "path": "\/sc2\/legacy\/ladder\/%1$s\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":ladderId"
+                "default": null,
+                "description": "The ID of the ladder for which to retrieve data.",
+                "name": "ladderId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Legacy\\GetAchievements": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/legacy\/data\/achievements\/:regionId",
-        "parameters": [
+        "path": "\/sc2\/legacy\/data\/achievements\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "Sc2CommunityApisUs\\Legacy\\GetRewards": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/legacy\/data\/rewards\/:regionId",
-        "parameters": [
+        "path": "\/sc2\/legacy\/data\/rewards\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":regionId"
+                "default": null,
+                "description": "The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN). ",
+                "name": "regionId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "OauthApis\\UserAuthentication\\GetAuthorizationRequest": {
+        "header": [],
         "method": "GET",
         "path": "\/oauth\/authorize",
-        "parameters": [
+        "query": [
             {
-                "name": "response_type"
+                "default": "code",
+                "description": "Specifies the type of authorization request being made. For an authorization code grant this value must be `code`.",
+                "name": "responseType",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "client_id"
+                "default": "",
+                "description": "A string identifying the client application making this request. Labeled in [API Access](\/access) for an individual application as \"Client ID\".",
+                "name": "clientId",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "redirect_uri"
+                "default": "http:\/\/example.com\/oauth",
+                "description": "The callback URL registered for an application. This value must match one of the URLs specified for the application in [API Access](\/access) or the request will return an error.",
+                "name": "redirectUri",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "scope"
+                "default": "wow.profile sc2.profile",
+                "description": "A space-delimited, case-sensitive list of scopes to which to request access. The user may not grant access to any or all requested scopes. See [Using OAuth](\/documentation\/guides\/using-oauth) for a list of valid scopes.",
+                "name": "scope",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "state"
+                "default": "",
+                "description": "An opaque value supplied by the client to maintain state between the request and callback. The authorization server includes this value when redirecting the user-agent back to the client. The parameter **should** be used for preventing cross-site request forgery.",
+                "name": "state",
+                "required": false,
+                "type": "string"
             }
-        ]
+        ],
+        "replace": []
     },
     "OauthApis\\UserAuthentication\\PostAccessTokenRequest": {
+        "header": [],
         "method": "POST",
         "path": "\/oauth\/token",
-        "parameters": [
+        "query": [
             {
-                "name": "grant_type"
+                "default": "authorization_code",
+                "description": "Identifies the type of authorization request being made. For a client credentials grant this value *must* be `authorization_code`.",
+                "name": "grantType",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "default": "{code}",
+                "description": "The authorization code received from the authorization server.",
+                "name": "code",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "default": "https:\/\/example.com\/oauth",
+                "description": "Must be identical to the `redirect_uri` value used in the authorization request.",
+                "name": "redirectUri",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "default": "{client_id}",
+                "description": "A string identifying the client application making this request. Labeled in [API Access](\/access) for an individual application as \"Client ID\".",
+                "name": "clientId",
+                "required": true,
+                "type": "string"
             }
-        ]
+        ],
+        "replace": []
     },
     "OauthApis\\UserAuthentication\\GetUserInfoHeader": {
+        "header": [
+            {
+                "default": "Bearer {token}",
+                "description": "The user's bearer token. The OAuth 2.0 spec requires the Authorization header be formatted as \"Bearer {token}\", where {token} is the alpha-numeric authorization token returned by a previous OAuth grant flow.",
+                "name": "authorization",
+                "required": true,
+                "type": "string"
+            }
+        ],
         "method": "GET",
         "path": "\/oauth\/userinfo",
-        "parameters": [
-            {
-                "name": "Authorization"
-            }
-        ]
+        "query": [],
+        "replace": []
     },
     "OauthApis\\UserAuthentication\\GetUserInfoParam": {
+        "header": [],
         "method": "GET",
         "path": "\/oauth\/userinfo",
-        "parameters": [
+        "query": [
             {
-                "name": "access_token"
+                "default": "{token}",
+                "description": "The user's bearer token.",
+                "name": "accessToken",
+                "required": true,
+                "type": "string"
             }
-        ]
+        ],
+        "replace": []
     },
     "OauthApis\\ApplicationAuthentication\\PostAccessTokenRequest": {
+        "header": [],
         "method": "POST",
         "path": "\/oauth\/token",
-        "parameters": [
+        "query": [
             {
-                "name": "grant_type"
+                "default": "client_credentials",
+                "description": "Identifies the type of authorization request being made. For a client credentials grant this value *must* be `client_credentials`.",
+                "name": "grantType",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "scope"
+                "default": "",
+                "description": "A space-delimited, case-sensitive list of scopes that to which to request access. The user may not grant access to any or all requested scopes. See [Using OAuth](\/documentation\/guides\/using-oauth) for a list of valid scopes.",
+                "name": "scope",
+                "required": false,
+                "type": "string"
             }
-        ]
+        ],
+        "replace": []
     },
     "OauthApis\\TokenValidation\\PostTokenValidation": {
+        "header": [],
         "method": "POST",
         "path": "\/oauth\/check_token",
-        "parameters": [
+        "query": [
             {
-                "name": "token"
+                "default": "{token}",
+                "description": "The user's bearer token.",
+                "name": "token",
+                "required": true,
+                "type": "string"
             }
-        ]
+        ],
+        "replace": []
     },
     "OauthApis\\TokenValidation\\GetTokenValidation": {
+        "header": [],
         "method": "GET",
         "path": "\/oauth\/check_token",
-        "parameters": [
+        "query": [
             {
-                "name": "token"
+                "default": "{token}",
+                "description": "The user's bearer token.",
+                "name": "token",
+                "required": true,
+                "type": "string"
             }
-        ]
+        ],
+        "replace": []
     },
     "GameDataApis\\Cards\\GetCardSearch": {
+        "header": [],
         "method": "GET",
         "path": "\/hearthstone\/cards",
-        "parameters": [
+        "query": [
             {
-                "name": "locale"
+                "default": null,
+                "description": "The slug of the set the card belongs to. If you do not supply a value, cards from all sets will be returned.",
+                "name": "set",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "set"
+                "default": null,
+                "description": "The slug of the card's class.",
+                "name": "class",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "class"
+                "default": null,
+                "description": "The mana cost required to play the card. You can include multiple values in a comma-separated list of numeric values.",
+                "name": "manaCost",
+                "required": false,
+                "type": "numbers"
             },
             {
-                "name": "manaCost"
+                "default": null,
+                "description": "The attack power of the minion or weapon. You can include multiple values in a comma-separated list of numeric values.",
+                "name": "attack",
+                "required": false,
+                "type": "numbers"
             },
             {
-                "name": "attack"
+                "default": null,
+                "description": "The health of a minion. You can include multiple values in a comma-separated list of numeric values.",
+                "name": "health",
+                "required": false,
+                "type": "numbers"
             },
             {
-                "name": "health"
+                "default": null,
+                "description": "Whether a card is collectible. A value of 1 indicates that collectible cards should be returned; 0 indicates uncollectible cards. To return all cards, use a value of '0,1'.",
+                "name": "collectible",
+                "required": false,
+                "type": "numbers"
             },
             {
-                "name": "collectible"
+                "default": null,
+                "description": "The rarity of a card. This value must match the rarity slugs found in metadata.",
+                "name": "rarity",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "rarity"
+                "default": null,
+                "description": "The type of card (for example, minion, spell, and so on). This value must match the type slugs found in metadata.",
+                "name": "type",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "type"
+                "default": null,
+                "description": "The type of minion card (for example, beast, murloc, dragon, and so on). This value must match the minion type slugs found in metadata.",
+                "name": "minionType",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "minionType"
+                "default": null,
+                "description": "A required keyword on the card (for example, battlecry, deathrattle, and so on). This value must match the keyword slugs found in metadata.",
+                "name": "keyword",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "keyword"
+                "default": null,
+                "description": "A text string used to filter cards. You must include a locale along with the textFilter parameter.",
+                "name": "textFilter",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "textFilter"
+                "default": null,
+                "description": "A page number.",
+                "name": "page",
+                "required": false,
+                "type": "number"
             },
             {
-                "name": "page"
+                "default": null,
+                "description": "The number of results to choose per page. A value will be selected automatically if you do not supply a pageSize or if the pageSize is higher than the maximum allowed.",
+                "name": "pageSize",
+                "required": false,
+                "type": "number"
             },
             {
-                "name": "pageSize"
+                "default": null,
+                "description": "The field used to sort the results. Valid values include manaCost, attack, health, and name. Results are sorted by manaCost by default. Cards will also be sorted by class automatically in most cases.",
+                "name": "sort",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "sort"
-            },
-            {
-                "name": "order"
+                "default": null,
+                "description": "The order in which to sort the results. Valid values are asc or desc. The default value is asc.",
+                "name": "order",
+                "required": false,
+                "type": "string"
             }
-        ]
+        ],
+        "replace": []
     },
     "GameDataApis\\Cards\\GetDetailedCardSearchExample": {
+        "header": [],
         "method": "GET",
         "path": "\/hearthstone\/cards",
-        "parameters": [
+        "query": [
             {
-                "name": "locale"
+                "default": "rise-of-shadows",
+                "description": "The slug of the set the card belongs to. If you do not supply a value, cards from all sets will be returned.",
+                "name": "set",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "set"
+                "default": "mage",
+                "description": "The slug of the card's class.",
+                "name": "class",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "class"
+                "default": "10",
+                "description": "The mana cost required to play the card. You can include multiple values in a comma-separated list of numeric values.",
+                "name": "manaCost",
+                "required": false,
+                "type": "numbers"
             },
             {
-                "name": "manaCost"
+                "default": "4",
+                "description": "The attack power of the minion or weapon. You can include multiple values in a comma-separated list of numeric values.",
+                "name": "attack",
+                "required": false,
+                "type": "numbers"
             },
             {
-                "name": "attack"
+                "default": "10",
+                "description": "The health of a minion. You can include multiple values in a comma-separated list of numeric values.",
+                "name": "health",
+                "required": false,
+                "type": "numbers"
             },
             {
-                "name": "health"
+                "default": "1",
+                "description": "Whether a card is collectible. A value of 1 indicates that collectible cards should be returned; 0 indicates uncollectible cards. To return all cards, use a value of '0,1'.",
+                "name": "collectible",
+                "required": false,
+                "type": "numbers"
             },
             {
-                "name": "collectible"
+                "default": "legendary",
+                "description": "The rarity of a card. This value must match the rarity slugs found in metadata.",
+                "name": "rarity",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "rarity"
+                "default": "minion",
+                "description": "The type of card (for example, minion, spell, and so on). This value must match the type slugs found in metadata.",
+                "name": "type",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "type"
+                "default": "dragon",
+                "description": "The type of minion card (for example, beast, murloc, dragon, and so on). This value must match the minion type slugs found in metadata.",
+                "name": "minionType",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "minionType"
+                "default": "battlecry",
+                "description": "A required keyword on the card (for example, battlecry, deathrattle, and so on). This value must match the keyword slugs found in metadata.",
+                "name": "keyword",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "keyword"
+                "default": "kalecgos",
+                "description": "A text string used to filter cards. You must include a locale along with the textFilter parameter.",
+                "name": "textFilter",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "textFilter"
+                "default": "1",
+                "description": "A page number.",
+                "name": "page",
+                "required": false,
+                "type": "number"
             },
             {
-                "name": "page"
+                "default": "5",
+                "description": "The number of results to choose per page. A value will be selected automatically if you do not supply a pageSize or if the pageSize is higher than the maximum allowed.",
+                "name": "pageSize",
+                "required": false,
+                "type": "number"
             },
             {
-                "name": "pageSize"
+                "default": "name",
+                "description": "The field used to sort the results. Valid values include manaCost, attack, health, and name. Results are sorted by manaCost by default. Cards will also be sorted by class automatically in most cases.",
+                "name": "sort",
+                "required": false,
+                "type": "string"
             },
             {
-                "name": "sort"
-            },
-            {
-                "name": "order"
+                "default": "desc",
+                "description": "The order in which to sort the results. Valid values are asc or desc. The default value is asc.",
+                "name": "order",
+                "required": false,
+                "type": "string"
             }
-        ]
+        ],
+        "replace": []
     },
     "GameDataApis\\Cards\\GetFetchOneCard": {
+        "header": [],
         "method": "GET",
-        "path": "\/hearthstone\/cards\/:idorslug",
-        "parameters": [
+        "path": "\/hearthstone\/cards\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":idorslug"
-            },
-            {
-                "name": "locale"
+                "default": "52119-arch-villain-rafaam",
+                "description": "An ID or slug that uniquedly identifies a card. You can discover these values by using the `GET \/hearthstone\/cards` endpoint.",
+                "name": "idorslug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "GameDataApis\\Decks\\GetFetchDeck": {
+        "header": [],
         "method": "GET",
-        "path": "\/hearthstone\/deck\/:deckcode",
-        "parameters": [
+        "path": "\/hearthstone\/deck\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":deckcode"
-            },
-            {
-                "name": "locale"
+                "default": "AAECAQcG+wyd8AKS+AKggAOblAPanQMMS6IE\/web8wLR9QKD+wKe+wKz\/AL1gAOXlAOalAOSnwMA",
+                "description": "A code that identifies a deck. You can copy one from the game or various Hearthstone websites.",
+                "name": "deckcode",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "GameDataApis\\Metadata\\GetAllMetadata": {
+        "header": [],
         "method": "GET",
         "path": "\/hearthstone\/metadata",
-        "parameters": [
-            {
-                "name": "locale"
-            }
-        ]
+        "query": [],
+        "replace": []
     },
     "GameDataApis\\Metadata\\GetSpecificMetadata": {
+        "header": [],
         "method": "GET",
-        "path": "\/hearthstone\/metadata\/:type",
-        "parameters": [
+        "path": "\/hearthstone\/metadata\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "locale"
-            },
-            {
-                "name": ":type"
+                "default": "sets",
+                "description": "The type of the metadata to retrieve. Valid values include sets, setGroups, types, rarities, classes, minionTypes, and keywords.",
+                "name": "type",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "GameDataApis\\D3\\GetSeasonIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/d3\/season\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "GameDataApis\\D3\\GetSeason": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/d3\/season\/:id",
-        "parameters": [
+        "path": "\/data\/d3\/season\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "1",
+                "description": "The season for the leaderboard list; get a list of seasons with `GET \/data\/d3\/season\/`.",
+                "name": "id",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "GameDataApis\\D3\\GetSeasonLeaderboard": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/d3\/season\/:id\/leaderboard\/:leaderboard",
-        "parameters": [
+        "path": "\/data\/d3\/season\/%1$s\/leaderboard\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "1",
+                "description": "The season for the leaderboard; get a list of seasons with `GET \/data\/d3\/season\/`.",
+                "name": "id",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":leaderboard"
+                "default": "achievement-points",
+                "description": "The leaderboard to retrieve; get a list of  leaderboards with `GET \/data\/d3\/season\/:id`.",
+                "name": "leaderboard",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "GameDataApis\\D3\\GetEraIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/d3\/era\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "GameDataApis\\D3\\GetEra": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/d3\/era\/:id",
-        "parameters": [
+        "path": "\/data\/d3\/era\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "1",
+                "description": "The era to retrieve; get a list of eras with `GET data\/d3\/era\/`.",
+                "name": "id",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "GameDataApis\\D3\\GetEraLeaderboard": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/d3\/era\/:id\/leaderboard\/:leaderboard",
-        "parameters": [
+        "path": "\/data\/d3\/era\/%1$s\/leaderboard\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "1",
+                "description": "The era for the leaderboard; get a list of eras with `GET \/data\/d3\/era\/`.",
+                "name": "id",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":leaderboard"
+                "default": "rift-barbarian",
+                "description": "The leaderboard to retrieve; get a list of leaderboards with `GET \/data\/d3\/era\/:id`.",
+                "name": "leaderboard",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3Act\\GetActIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/d3\/data\/act",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "D3CommunityApiUs\\D3Act\\GetAct": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/act\/{actId}",
-        "parameters": [
+        "path": "\/d3\/data\/act\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{actId}"
+                "default": 1,
+                "description": "The ID of the act to retrieve.",
+                "name": "actId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "D3CommunityApiUs\\D3ArtisanAndRecipe\\GetArtisan": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/artisan\/{artisanSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/artisan\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{artisanSlug}"
+                "default": "blacksmith",
+                "description": "The slug of the artisan to retrieve.",
+                "name": "artisanSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3ArtisanAndRecipe\\GetRecipe": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/artisan\/{artisanSlug}\/recipe\/{recipeSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/artisan\/%1$s\/recipe\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{artisanSlug}"
+                "default": "blacksmith",
+                "description": "The slug of the artisan to retrieve.",
+                "name": "artisanSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{recipeSlug}"
+                "default": "apprentice-flamberge",
+                "description": "The slug of the recipe to retrieve.",
+                "name": "recipeSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3Follower\\GetFollower": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/follower\/{followerSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/follower\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{followerSlug}"
+                "default": "templar",
+                "description": "The slug of the follower to retrieve.",
+                "name": "followerSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3CharacterClassAndSkill\\GetCharacterClass": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/hero\/{classSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/hero\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{classSlug}"
+                "default": "barbarian",
+                "description": "The slug of the character class to retrieve.",
+                "name": "classSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3CharacterClassAndSkill\\GetApiSkill": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/hero\/{classSlug}\/skill\/{skillSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/hero\/%1$s\/skill\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{classSlug}"
+                "default": "barbarian",
+                "description": "The slug of the character class to retrieve.",
+                "name": "classSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{skillSlug}"
+                "default": "bash",
+                "description": "The slug of the skill to retrieve.",
+                "name": "skillSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3ItemType\\GetItemTypeIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/d3\/data\/item-type",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "D3CommunityApiUs\\D3ItemType\\GetItemType": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/item-type\/{itemTypeSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/item-type\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{itemTypeSlug}"
+                "default": "sword2h",
+                "description": "The slug of the item type to retrieve.",
+                "name": "itemTypeSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3Item\\GetItem": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/item\/{itemSlugAndId}",
-        "parameters": [
+        "path": "\/d3\/data\/item\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{itemSlugAndId}"
+                "default": "corrupted-ashbringer-Unique_Sword_2H_104_x1",
+                "description": "The slug and ID of the item to retrieve.",
+                "name": "itemSlugAndId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3Profile\\GetApiAccount": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/profile\/{account}\/",
-        "parameters": [
+        "path": "\/d3\/profile\/%1$s\/",
+        "query": [],
+        "replace": [
             {
-                "name": "{account}"
+                "default": null,
+                "description": "The BattleTag for the account to retrieve.",
+                "name": "account",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3Profile\\GetApiHero": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/profile\/{account}\/hero\/{heroId}",
-        "parameters": [
+        "path": "\/d3\/profile\/%1$s\/hero\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{account}"
+                "default": null,
+                "description": "The BattleTag for the account to retrieve.",
+                "name": "account",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{heroId}"
+                "default": null,
+                "description": "The ID of the hero to retrieve.",
+                "name": "heroId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3Profile\\GetApiDetailedHeroItems": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/profile\/{account}\/hero\/{heroId}\/items",
-        "parameters": [
+        "path": "\/d3\/profile\/%1$s\/hero\/%2$s\/items",
+        "query": [],
+        "replace": [
             {
-                "name": "{account}"
+                "default": null,
+                "description": "The BattleTag for the account to retrieve.",
+                "name": "account",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{heroId}"
+                "default": null,
+                "description": "The ID of the hero to retrieve.",
+                "name": "heroId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "D3CommunityApiUs\\D3Profile\\GetApiDetailedFollowerItems": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/profile\/{account}\/hero\/{heroId}\/follower-items",
-        "parameters": [
+        "path": "\/d3\/profile\/%1$s\/hero\/%2$s\/follower-items",
+        "query": [],
+        "replace": [
             {
-                "name": "{account}"
+                "default": null,
+                "description": "The BattleTag for the account to retrieve.",
+                "name": "account",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{heroId}"
+                "default": null,
+                "description": "The ID of the hero to retrieve.",
+                "name": "heroId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityOauthApisCn\\Account\\GetUserInfoHeader": {
+        "header": [
+            {
+                "default": "Bearer {token}",
+                "description": "The user's bearer token. The OAuth 2.0 spec requires the Authorization header be formatted as \"Bearer {token}\", where {token} is the alpha-numeric authorization token returned by a previous OAuth grant flow.",
+                "name": "authorization",
+                "required": true,
+                "type": "string"
+            }
+        ],
         "method": "GET",
         "path": "\/oauth\/userinfo",
-        "parameters": [
-            {
-                "name": "Authorization"
-            }
-        ]
+        "query": [],
+        "replace": []
     },
     "CommunityOauthApisCn\\Account\\GetUserInfoParam": {
+        "header": [],
         "method": "GET",
         "path": "\/oauth\/userinfo",
-        "parameters": [
+        "query": [
             {
-                "name": "access_token"
+                "default": "{token}",
+                "description": "The user's bearer token.",
+                "name": "accessToken",
+                "required": true,
+                "type": "string"
             }
-        ]
+        ],
+        "replace": []
     },
     "CommunityOauthApisCn\\D3\\GetSeasonIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/d3\/season\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "CommunityOauthApisCn\\D3\\GetSeason": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/d3\/season\/:id",
-        "parameters": [
+        "path": "\/data\/d3\/season\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "1",
+                "description": "The season for the leaderboard list; get a list of seasons with `GET \/data\/d3\/season\/`.",
+                "name": "id",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "CommunityOauthApisCn\\D3\\GetSeasonLeaderboard": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/d3\/season\/:id\/leaderboard\/:leaderboard",
-        "parameters": [
+        "path": "\/data\/d3\/season\/%1$s\/leaderboard\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "1",
+                "description": "The season for the leaderboard list; get a list of seasons with `GET \/data\/d3\/season\/`.",
+                "name": "id",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":leaderboard"
+                "default": "achievement-points",
+                "description": "The leaderboard to retrieve; get a list of  leaderboards with `GET \/data\/d3\/season\/:id`.",
+                "name": "leaderboard",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityOauthApisCn\\D3\\GetEraIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/d3\/era\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "CommunityOauthApisCn\\D3\\GetEra": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/d3\/era\/:id",
-        "parameters": [
+        "path": "\/data\/d3\/era\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "1",
+                "description": "The era to retrieve; get a list of eras with `\/GET data\/d3\/era\/`.",
+                "name": "id",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "CommunityOauthApisCn\\D3\\GetEraLeaderboard": {
+        "header": [],
         "method": "GET",
-        "path": "\/data\/d3\/era\/:id\/leaderboard\/:leaderboard",
-        "parameters": [
+        "path": "\/data\/d3\/era\/%1$s\/leaderboard\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "1",
+                "description": "The era for the leaderboard; get a list of eras with `GET \/data\/d3\/era\/`.",
+                "name": "id",
+                "required": true,
+                "type": "integer"
             },
             {
-                "name": ":leaderboard"
+                "default": "rift-barbarian",
+                "description": "The leaderboard to retrieve; get a list of leaderboards with `GET \/data\/d3\/era\/:id`.",
+                "name": "leaderboard",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityOauthApisCn\\Wow\\GetToken": {
+        "header": [],
         "method": "GET",
         "path": "\/data\/wow\/token\/",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "CommunityApisCn\\Sc2Profile\\GetProfile": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/profile\/:id\/:region\/:name\/",
-        "parameters": [
+        "path": "\/sc2\/profile\/%1$s\/%2$s\/%3$s\/",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": null,
+                "description": "The ID of the profile to retrieve.",
+                "name": "id",
+                "required": "true",
+                "type": "string"
             },
             {
-                "name": ":region"
+                "default": "1",
+                "description": "The region of the profile to retrieve.",
+                "name": "region",
+                "required": "true",
+                "type": "string"
             },
             {
-                "name": ":name"
+                "default": null,
+                "description": "The name of the profile to retrieve.",
+                "name": "name",
+                "required": "true",
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\Sc2Profile\\GetLadders": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/profile\/:id\/:region\/:name\/ladders",
-        "parameters": [
+        "path": "\/sc2\/profile\/%1$s\/%2$s\/%3$s\/ladders",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": null,
+                "description": "The ID of the profile to retrieve.",
+                "name": "id",
+                "required": "true",
+                "type": "string"
             },
             {
-                "name": ":region"
+                "default": "1",
+                "description": "The region of the profile to retrieve.",
+                "name": "region",
+                "required": "true",
+                "type": "string"
             },
             {
-                "name": ":name"
+                "default": null,
+                "description": "The name of the profile to retrieve.",
+                "name": "name",
+                "required": "true",
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\Sc2Profile\\GetMatchHistory": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/profile\/:id\/:region\/:name\/matches",
-        "parameters": [
+        "path": "\/sc2\/profile\/%1$s\/%2$s\/%3$s\/matches",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": null,
+                "description": "The ID of the profile to retrieve.",
+                "name": "id",
+                "required": "true",
+                "type": "string"
             },
             {
-                "name": ":region"
+                "default": "1",
+                "description": "The region of the profile to retrieve.",
+                "name": "region",
+                "required": "true",
+                "type": "string"
             },
             {
-                "name": ":name"
+                "default": null,
+                "description": "The name of the profile to retrieve.",
+                "name": "name",
+                "required": "true",
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\Sc2Ladder\\GetLadder": {
+        "header": [],
         "method": "GET",
-        "path": "\/sc2\/ladder\/:id",
-        "parameters": [
+        "path": "\/sc2\/ladder\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": ":id"
+                "default": "655",
+                "description": "The ID of the ladder to retrieve.",
+                "name": "id",
+                "required": "true",
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\Sc2DataResources\\GetAchievements": {
+        "header": [],
         "method": "GET",
         "path": "\/sc2\/data\/achievements",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "CommunityApisCn\\Sc2DataResources\\GetRewards": {
+        "header": [],
         "method": "GET",
         "path": "\/sc2\/data\/rewards",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "CommunityApisCn\\D3Act\\GetActIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/d3\/data\/act",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "CommunityApisCn\\D3Act\\GetAct": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/act\/{actId}",
-        "parameters": [
+        "path": "\/d3\/data\/act\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{actId}"
+                "default": 1,
+                "description": "The ID of the act",
+                "name": "actId",
+                "required": true,
+                "type": "integer"
             }
         ]
     },
     "CommunityApisCn\\D3ArtisanAndRecipe\\GetArtisan": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/artisan\/{artisanSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/artisan\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{artisanSlug}"
+                "default": "blacksmith",
+                "description": "The artisan slug.",
+                "name": "artisanSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3ArtisanAndRecipe\\GetRecipe": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/artisan\/{artisanSlug}\/recipe\/{recipeSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/artisan\/%1$s\/recipe\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{artisanSlug}"
+                "default": "blacksmith",
+                "description": "The asrtisan slug.",
+                "name": "artisanSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{recipeSlug}"
+                "default": "apprentice-flamberge",
+                "description": "The recipe slug.",
+                "name": "recipeSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3Follower\\GetFollower": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/follower\/{followerSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/follower\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{followerSlug}"
+                "default": "templar",
+                "description": "The follower slug.",
+                "name": "followerSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3CharacterClassAndSkill\\GetCharacterClass": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/hero\/{classSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/hero\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{classSlug}"
+                "default": "barbarian",
+                "description": "The character class slug.",
+                "name": "classSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3CharacterClassAndSkill\\GetApiSkill": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/hero\/{classSlug}\/skill\/{skillSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/hero\/%1$s\/skill\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{classSlug}"
+                "default": "barbarian",
+                "description": "The character class slug.",
+                "name": "classSlug",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{skillSlug}"
+                "default": "bash",
+                "description": "The skill slug.",
+                "name": "skillSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3ItemType\\GetItemTypeIndex": {
+        "header": [],
         "method": "GET",
         "path": "\/d3\/data\/item-type",
-        "parameters": []
+        "query": [],
+        "replace": []
     },
     "CommunityApisCn\\D3ItemType\\GetItemType": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/item-type\/{itemTypeSlug}",
-        "parameters": [
+        "path": "\/d3\/data\/item-type\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{itemTypeSlug}"
+                "default": "sword2h",
+                "description": "The item type slug.",
+                "name": "itemTypeSlug",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3Item\\GetItem": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/data\/item\/{itemSlugAndId}",
-        "parameters": [
+        "path": "\/d3\/data\/item\/%1$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{itemSlugAndId}"
+                "default": "corrupted-ashbringer-Unique_Sword_2H_104_x1",
+                "description": "The item slug and ID.",
+                "name": "itemSlugAndId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3Profile\\GetApiAccount": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/profile\/{account}\/",
-        "parameters": [
+        "path": "\/d3\/profile\/%1$s\/",
+        "query": [],
+        "replace": [
             {
-                "name": "{account}"
+                "default": null,
+                "description": "The account BattleTag.",
+                "name": "account",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3Profile\\GetApiHero": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/profile\/{account}\/hero\/{heroId}",
-        "parameters": [
+        "path": "\/d3\/profile\/%1$s\/hero\/%2$s",
+        "query": [],
+        "replace": [
             {
-                "name": "{account}"
+                "default": null,
+                "description": "The account BattleTag.",
+                "name": "account",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{heroId}"
+                "default": null,
+                "description": "The hero ID.",
+                "name": "heroId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3Profile\\GetApiDetailedHeroItems": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/profile\/{account}\/hero\/{heroId}\/items",
-        "parameters": [
+        "path": "\/d3\/profile\/%1$s\/hero\/%2$s\/items",
+        "query": [],
+        "replace": [
             {
-                "name": "{account}"
+                "default": null,
+                "description": "The account BattleTag.",
+                "name": "account",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{heroId}"
+                "default": null,
+                "description": "The hero ID.",
+                "name": "heroId",
+                "required": true,
+                "type": "string"
             }
         ]
     },
     "CommunityApisCn\\D3Profile\\GetApiDetailedFollowerItems": {
+        "header": [],
         "method": "GET",
-        "path": "\/d3\/profile\/{account}\/hero\/{heroId}\/follower-items",
-        "parameters": [
+        "path": "\/d3\/profile\/%1$s\/hero\/%2$s\/follower-items",
+        "query": [],
+        "replace": [
             {
-                "name": "{account}"
+                "default": null,
+                "description": "The account BattleTag.",
+                "name": "account",
+                "required": true,
+                "type": "string"
             },
             {
-                "name": "{heroId}"
+                "default": null,
+                "description": "The hero ID.",
+                "name": "heroId",
+                "required": true,
+                "type": "string"
             }
         ]
     }

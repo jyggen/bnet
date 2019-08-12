@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\Sc2CommunityApisUs\Account;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPlayer implements EndpointInterface
 {
-    private const PATH = '/sc2/player/:accountId';
+    private const PATH = '/sc2/player/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $accountId)
+    {
+        $this->path = vsprintf($this->path, [
+            $accountId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetPlayer implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

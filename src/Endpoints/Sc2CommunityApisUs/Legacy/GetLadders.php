@@ -15,9 +15,26 @@ namespace Boo\BattleNet\Endpoints\Sc2CommunityApisUs\Legacy;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetLadders implements EndpointInterface
 {
-    private const PATH = '/sc2/legacy/profile/:regionId/:realmId/:profileId/ladders';
+    private const PATH = '/sc2/legacy/profile/%1$s/%2$s/%3$s/ladders';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $regionId, integer $realmId, integer $profileId)
+    {
+        $this->path = vsprintf($this->path, [
+            $regionId,
+            $realmId,
+            $profileId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +43,6 @@ final class GetLadders implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

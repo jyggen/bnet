@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\Item;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetItemSet implements EndpointInterface
 {
-    private const PATH = '/wow/item/set/:setId';
+    private const PATH = '/wow/item/set/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $setId)
+    {
+        $this->path = vsprintf($this->path, [
+            $setId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetItemSet implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\MythicKeystoneAffix;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMythicKeystoneAffix implements EndpointInterface
 {
-    private const PATH = '/data/wow/keystone-affix/{keystoneAffixId}';
+    private const PATH = '/data/wow/keystone-affix/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $keystoneAffixId)
+    {
+        $this->path = vsprintf($this->path, [
+            $keystoneAffixId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetMythicKeystoneAffix implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

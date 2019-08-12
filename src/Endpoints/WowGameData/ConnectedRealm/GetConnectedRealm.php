@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\ConnectedRealm;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetConnectedRealm implements EndpointInterface
 {
-    private const PATH = '/data/wow/connected-realm/{connectedRealmId}';
+    private const PATH = '/data/wow/connected-realm/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $connectedRealmId)
+    {
+        $this->path = vsprintf($this->path, [
+            $connectedRealmId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetConnectedRealm implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

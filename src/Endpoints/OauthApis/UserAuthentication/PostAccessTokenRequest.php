@@ -15,9 +15,16 @@ namespace Boo\BattleNet\Endpoints\OauthApis\UserAuthentication;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class PostAccessTokenRequest implements EndpointInterface
 {
     private const PATH = '/oauth/token';
+
+    public function __construct(string $grantType, string $code, string $redirectUri, string $clientId)
+    {
+    }
 
     public function getMethod(): string
     {

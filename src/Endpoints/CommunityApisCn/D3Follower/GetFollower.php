@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\CommunityApisCn\D3Follower;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetFollower implements EndpointInterface
 {
-    private const PATH = '/d3/data/follower/{followerSlug}';
+    private const PATH = '/d3/data/follower/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $followerSlug)
+    {
+        $this->path = vsprintf($this->path, [
+            $followerSlug,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetFollower implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

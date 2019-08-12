@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\MythicKeystoneDungeon;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMythicKeystoneSeason implements EndpointInterface
 {
-    private const PATH = '/data/wow/mythic-keystone/season/{seasonId}';
+    private const PATH = '/data/wow/mythic-keystone/season/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $seasonId)
+    {
+        $this->path = vsprintf($this->path, [
+            $seasonId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetMythicKeystoneSeason implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\Recipe;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetRecipe implements EndpointInterface
 {
-    private const PATH = '/wow/recipe/:recipeId';
+    private const PATH = '/wow/recipe/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $recipeId)
+    {
+        $this->path = vsprintf($this->path, [
+            $recipeId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetRecipe implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\Quest;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetQuest implements EndpointInterface
 {
-    private const PATH = '/wow/quest/:questId';
+    private const PATH = '/wow/quest/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $questId)
+    {
+        $this->path = vsprintf($this->path, [
+            $questId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetQuest implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

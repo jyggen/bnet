@@ -15,9 +15,26 @@ namespace Boo\BattleNet\Endpoints\WowProfileData\CharacterPvp;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetCharacterPvPBracketStatistics implements EndpointInterface
 {
-    private const PATH = '/profile/wow/character/{realmSlug}/{characterName}/pvp-bracket/{pvpBracket}';
+    private const PATH = '/profile/wow/character/%1$s/%2$s/pvp-bracket/%3$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $realmSlug, string $characterName, string $pvpBracket)
+    {
+        $this->path = vsprintf($this->path, [
+            $realmSlug,
+            $characterName,
+            $pvpBracket,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +43,6 @@ final class GetCharacterPvPBracketStatistics implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

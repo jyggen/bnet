@@ -15,9 +15,16 @@ namespace Boo\BattleNet\Endpoints\OauthApis\UserAuthentication;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetAuthorizationRequest implements EndpointInterface
 {
     private const PATH = '/oauth/authorize';
+
+    public function __construct(string $responseType, string $clientId, string $redirectUri, string $scope = wow.profile sc2.profile, string $state = )
+    {
+    }
 
     public function getMethod(): string
     {

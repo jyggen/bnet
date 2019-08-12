@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PlayableClass;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPlayableClassesIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/playable-class/index';

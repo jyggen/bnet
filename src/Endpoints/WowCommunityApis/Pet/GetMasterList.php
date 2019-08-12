@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\Pet;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMasterList implements EndpointInterface
 {
     private const PATH = '/wow/pet/';

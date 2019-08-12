@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\GameDataApis\Metadata;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetSpecificMetadata implements EndpointInterface
 {
-    private const PATH = '/hearthstone/metadata/:type';
+    private const PATH = '/hearthstone/metadata/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $type)
+    {
+        $this->path = vsprintf($this->path, [
+            $type,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetSpecificMetadata implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

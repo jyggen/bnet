@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\D3CommunityApiUs\D3Act;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetAct implements EndpointInterface
 {
-    private const PATH = '/d3/data/act/{actId}';
+    private const PATH = '/d3/data/act/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $actId)
+    {
+        $this->path = vsprintf($this->path, [
+            $actId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetAct implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PlayableClass;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPlayableClass implements EndpointInterface
 {
-    private const PATH = '/data/wow/playable-class/{classId}';
+    private const PATH = '/data/wow/playable-class/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $classId)
+    {
+        $this->path = vsprintf($this->path, [
+            $classId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetPlayableClass implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

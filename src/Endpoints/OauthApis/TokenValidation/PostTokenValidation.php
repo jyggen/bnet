@@ -15,9 +15,16 @@ namespace Boo\BattleNet\Endpoints\OauthApis\TokenValidation;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class PostTokenValidation implements EndpointInterface
 {
     private const PATH = '/oauth/check_token';
+
+    public function __construct(string $token)
+    {
+    }
 
     public function getMethod(): string
     {

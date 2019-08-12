@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\MythicKeystoneDungeon;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMythicKeystoneSeasonsIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/mythic-keystone/season/index';

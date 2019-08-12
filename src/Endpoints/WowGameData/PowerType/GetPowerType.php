@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PowerType;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPowerType implements EndpointInterface
 {
-    private const PATH = '/data/wow/power-type/{powerTypeId}';
+    private const PATH = '/data/wow/power-type/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $powerTypeId)
+    {
+        $this->path = vsprintf($this->path, [
+            $powerTypeId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetPowerType implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

@@ -15,9 +15,16 @@ namespace Boo\BattleNet\Endpoints\GameDataApis\Cards;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetCardSearch implements EndpointInterface
 {
     private const PATH = '/hearthstone/cards';
+
+    public function __construct(string $set = , string $class = , numbers $manaCost = , numbers $attack = , numbers $health = , numbers $collectible = , string $rarity = , string $type = , string $minionType = , string $keyword = , string $textFilter = , number $page = , number $pageSize = , string $sort = , string $order = )
+    {
+    }
 
     public function getMethod(): string
     {

@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PvpSeason;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPvPSeasonsIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/pvp-season/index';

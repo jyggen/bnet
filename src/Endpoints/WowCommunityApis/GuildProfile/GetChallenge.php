@@ -15,9 +15,25 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\GuildProfile;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetChallenge implements EndpointInterface
 {
-    private const PATH = '/wow/guild/:realm/:guildName';
+    private const PATH = '/wow/guild/%1$s/%2$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $realm, string $guildName, string $fields)
+    {
+        $this->path = vsprintf($this->path, [
+            $realm,
+            $guildName,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +42,6 @@ final class GetChallenge implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

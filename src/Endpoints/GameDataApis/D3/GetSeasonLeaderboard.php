@@ -15,9 +15,25 @@ namespace Boo\BattleNet\Endpoints\GameDataApis\D3;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetSeasonLeaderboard implements EndpointInterface
 {
-    private const PATH = '/data/d3/season/:id/leaderboard/:leaderboard';
+    private const PATH = '/data/d3/season/%1$s/leaderboard/%2$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $id, string $leaderboard)
+    {
+        $this->path = vsprintf($this->path, [
+            $id,
+            $leaderboard,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +42,6 @@ final class GetSeasonLeaderboard implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

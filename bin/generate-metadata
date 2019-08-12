@@ -17,19 +17,6 @@ function to_camel_case(string $string): string
     return str_replace(' ', '', ucwords(strtolower($string)));
 }
 
-function get_method_from_name_and_verb(string $name, string $verb): string
-{
-    if (0 === strpos($name, 'get')) {
-        $name = substr($name, 3);
-    }
-
-    if (false === strpos($name, ' ')) {
-        $name = preg_replace('/(.)(?=[A-Z])/u', '$1 ', $name);
-    }
-
-    return strtolower($verb).to_camel_case($name);
-}
-
 function get_fqcn(string $api, string $category, string $name, string $method): string
 {
     $api = preg_replace('/[^a-z0-9]/i', ' ', $api);
@@ -42,82 +29,6 @@ function get_fqcn(string $api, string $category, string $name, string $method): 
     $name = to_camel_case($method.' '.$name);
 
     return $api.'\\'.$category.'\\'.$name;
-}
-
-function get_class_from_name(string $name): string
-{
-    return to_camel_case($name).'Endpoint';
-}
-
-function normalize_parameters(array $parameters, string $authType): array
-{
-    static $unwanted = [
-        'callback',
-        'jsonp',
-        'locale',
-    ];
-
-    $parameters = array_filter($parameters, function (stdClass $parameter) use ($unwanted): bool {
-        return false === in_array($parameter->name, $unwanted, true);
-    });
-
-    if ('oauth2' === $authType) {
-        $parameters[] = (object) [
-            'kind' => 'query',
-            'name' => 'access_token',
-            'value' => '',
-            'type' => 'string',
-            'description' => '',
-        ];
-    }
-
-    static $valueOverrides = [
-        // Values
-        '8056' => '80353',
-        'achievements,challenge' => '',
-        'apprentice-flamberge' => 'flawless-amethyst',
-        'blacksmith' => 'jeweler',
-        // Names
-        '{account}' => 'StingDuck-2452',
-        '{heroId}' => '111436732',
-        ':characterName' => 'Jyggen',
-        ':guildName' => 'Malaxnytt',
-        ':realm' => 'draenor',
-        // Descriptions
-        'The ID of the ladder to retrieve.' => '206822',
-        'The ID of the profile to retrieve.' => '5179818',
-        'The name of the profile to retrieve.' => 'soul',
-    ];
-
-    return array_reduce(
-        $parameters,
-        function (array $parameters, stdClass $parameter) use ($valueOverrides): array {
-            if (array_key_exists($parameter->value, $valueOverrides)) {
-                $parameter->value = $valueOverrides[$parameter->value];
-            }
-
-            if (array_key_exists($parameter->name, $valueOverrides)) {
-                $parameter->value = $valueOverrides[$parameter->name];
-            }
-
-            if (array_key_exists($parameter->description, $valueOverrides)) {
-                $parameter->value = $valueOverrides[$parameter->description];
-            }
-
-            $parameter->isConstant = false;
-
-            if ('fields' === $parameter->name) {
-                $parameter->kind = 'query';
-                $parameter->type = 'commaSeparatedStrings';
-                $parameter->isConstant = '' !== $parameter->value;
-            }
-
-            $parameters[] = $parameter;
-
-            return $parameters;
-        },
-        []
-    );
 }
 
 set_error_handler(function ($severity, $message, $file, $line) {
@@ -151,63 +62,52 @@ foreach ($docFiles as $docFile) {
             }
 
             $path = $endpointData->path;
-            $parameters = [];
+            $header = [];
+            $query = [];
+            $replace = [];
             foreach ((array) $endpointData->parameters as $parameter => $parameterData) {
-                #dd($parameterData, $parameter);
-
-                if (!isset($parameterData->location)) {
-                    continue;
+                // Fix common errors in Blizzard's API docs.
+                if (!isset($parameterData->location) || ($parameterData->location === 'pathReplace' && !stripos($path, $parameter))) {
+                    $parameterData->location = 'query';
                 }
 
-                if ($parameterData->location === 'query' && in_array($parameter, [
-                    'callback',
-                    'jsonp',
-                    'locale',
-                    'namespace',
-                ])) {
-                    continue;
-                }
-
-                if ($parameterData->location === 'pathReplace') {
-
-                }
-
-                $parameters[] = [
-                    'name' => $parameter,
-                ];
-            }
-
-            #dd($parameters);
-
-            $endpoints[$fqcn] = [
-                'method' => $endpointData->httpMethod,
-                'path' => $path,
-                'parameters' => $parameters,
-            ];
-
-            continue;
-
-            foreach ($methodData->parameters as $parameter => $parameterData) {
-                if (in_array($parameter, ['locale', 'namespace'])) {
-                    continue;
-                }
-
-                $parameters[] = [
+                $definition = [
                     'default' => $parameterData->default ?? null,
                     'description' => $parameterData->description,
-                    'name' => $parameter,
-                    'location' => $parameterData->location ?? null,
+                    'name' => lcfirst(to_camel_case(preg_replace(['/([a-z])([A-Z])/', '/[^a-z0-9]/i'], ['$1 $2', ' '], $parameter))),
                     'required' => $parameterData->required,
                     'type' => $parameterData->type,
                 ];
+
+                if ($parameterData->location === 'query') {
+                    // These parameters are irrelevant to us.
+                    if (in_array($parameter, [
+                        'callback',
+                        'jsonp',
+                        'locale',
+                        'namespace',
+                    ])) {
+                        continue;
+                    }
+
+                    $query[] = $definition;
+                } elseif ($parameterData->location === 'pathReplace') {
+                    $path = str_ireplace($parameter, '%'.(count($replace) + 1).'$s', $path);
+                    $replace[] = $definition;
+                } elseif ($parameterData->location === 'header') {
+                    $header[] = $definition;
+                } else {
+                    fwrite(STDERR, 'Unknown parameter location "'.$parameterData->location.'" encountered');
+                    exit(1);
+                }
             }
 
-            $apis[$namespace][$className][] = [
-                'description' => $methodData->description,
-                'name' => $method,
-                'parameters' => $parameters,
-                'path' => $methodData->path,
-                'verb' => $methodData->httpMethod,
+            $endpoints[$fqcn] = [
+                'header' => $header,
+                'method' => $endpointData->httpMethod,
+                'path' => $path,
+                'query' => $query,
+                'replace' => $replace,
             ];
         }
     }

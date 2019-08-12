@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PowerType;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPowerTypesIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/power-type/index';

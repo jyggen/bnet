@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\GuildCrest;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetGuildCrestEmblemMedia implements EndpointInterface
 {
-    private const PATH = '/data/wow/media/guild-crest/emblem/{emblemId}';
+    private const PATH = '/data/wow/media/guild-crest/emblem/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $emblemId)
+    {
+        $this->path = vsprintf($this->path, [
+            $emblemId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetGuildCrestEmblemMedia implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

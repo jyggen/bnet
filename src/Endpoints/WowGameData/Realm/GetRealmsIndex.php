@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\Realm;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetRealmsIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/realm/index';

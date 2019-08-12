@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\Pet;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetStats implements EndpointInterface
 {
-    private const PATH = '/wow/pet/stats/:speciesID';
+    private const PATH = '/wow/pet/stats/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $speciesId, number $level = 25, number $breedId = 5, number $qualityId = 4)
+    {
+        $this->path = vsprintf($this->path, [
+            $speciesId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetStats implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

@@ -24,7 +24,7 @@
     }
   },
   "resources": {
-    "Achievements API": {
+    "Achievement API": {
       "methods": {
         "Achievement Categories Index": {
           "description": "Returns an index of achievement categories.",
@@ -154,6 +154,87 @@
         }
       }
     },
+    "Azerite Essence API": {
+      "methods": {
+        "Azerite Essences Index": {
+          "description": "Returns an index of azerite essences.",
+          "httpMethod": "GET",
+          "path": "/data/wow/azerite-essence/index",
+          "parameters": {
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "static-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        },
+        "Azerite Essence": {
+          "description": "Returns an azerite essence by ID.",
+          "httpMethod": "GET",
+          "path": "/data/wow/azerite-essence/{azeriteEssenceId}",
+          "parameters": {
+            "{azeriteEssenceId}": {
+              "description": "The ID of the azerite essence.",
+              "required": true,
+              "location": "pathReplace",
+              "default": "2",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "static-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        },
+        "Azerite Essence Media": {
+          "description": "Returns media for an azerite essence by ID.",
+          "httpMethod": "GET",
+          "path": "/data/wow/media/azerite-essence/{azeriteEssenceId}",
+          "parameters": {
+            "{azeriteEssenceId}": {
+              "description": "The ID of the azerite essence.",
+              "required": true,
+              "location": "pathReplace",
+              "default": 2,
+              "type": "integer"
+            },
+            "namespace": {
+              "description": "The namespace to use to locate this document.",
+              "required": false,
+              "location": "query",
+              "default": "static-us",
+              "type": "string"
+            },
+            "locale": {
+              "description": "The locale to reflect in localized data.",
+              "required": false,
+              "location": "query",
+              "default": "en_US",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "Connected Realm API": {
       "methods": {
         "Connected Realms Index": {
@@ -207,7 +288,7 @@
         }
       }
     },
-    "Creatures API": {
+    "Creature API": {
       "methods": {
         "Creature Families Index": {
           "description": "Returns an index of creature families.",
@@ -583,57 +664,8 @@
         }
       }
     },
-    "Items API": {
+    "Item API": {
       "methods": {
-        "Azerite Essences Index": {
-          "description": "Returns an index of azerite essences.",
-          "httpMethod": "GET",
-          "path": "/data/wow/azerite-essence/index",
-          "parameters": {
-            "namespace": {
-              "description": "The namespace to use to locate this document.",
-              "required": false,
-              "location": "query",
-              "default": "static-us",
-              "type": "string"
-            },
-            "locale": {
-              "description": "The locale to reflect in localized data.",
-              "required": false,
-              "location": "query",
-              "default": "en_US",
-              "type": "string"
-            }
-          }
-        },
-        "Azerite Essence": {
-          "description": "Returns an azerite essence by ID.",
-          "httpMethod": "GET",
-          "path": "/data/wow/azerite-essence/{azeriteEssenceId}",
-          "parameters": {
-            "{azeriteEssenceId}": {
-              "description": "The ID of the azerite essence.",
-              "required": true,
-              "location": "pathReplace",
-              "default": "2",
-              "type": "string"
-            },
-            "namespace": {
-              "description": "The namespace to use to locate this document.",
-              "required": false,
-              "location": "query",
-              "default": "static-us",
-              "type": "string"
-            },
-            "locale": {
-              "description": "The locale to reflect in localized data.",
-              "required": false,
-              "location": "query",
-              "default": "en_US",
-              "type": "string"
-            }
-          }
-        },
         "Item Classes Index": {
           "description": "Returns an index of item classes.",
           "httpMethod": "GET",
@@ -868,7 +900,7 @@
         }
       }
     },
-    "Mounts API": {
+    "Mount API": {
       "methods": {
         "Mounts Index": {
           "description": "Returns an index of mounts.",
@@ -1167,7 +1199,7 @@
         }
       }
     },
-    "Pets API": {
+    "Pet API": {
       "methods": {
         "Pets Index": {
           "description": "Returns an index of pets.",
@@ -1301,7 +1333,7 @@
         }
       }
     },
-    "Playable Races API": {
+    "Playable Race API": {
       "methods": {
         "Playable Races Index": {
           "description": "Returns an index of playable races.",
@@ -1791,7 +1823,7 @@
         }
       }
     },
-    "Titles API": {
+    "Title API": {
       "methods": {
         "Titles Index": {
           "description": "Returns an index of titles.",
@@ -1931,13 +1963,13 @@
           "description": "A link to associated media for the achievement.",
           "$ref": "MediaLink"
         },
-        "hiddenUntilEarned": {
-          "type": "boolean",
-          "description": "If true, the achievement is hidden until it is earned."
-        },
         "accountWide": {
           "type": "boolean",
           "description": "If true, the achievement is account-wide."
+        },
+        "hiddenUntilEarned": {
+          "type": "boolean",
+          "description": "If true, the achievement is hidden until it is earned."
         }
       },
       "description": "A World of Warcraft achievement."
@@ -2892,10 +2924,10 @@
         "is_azerite_item": {
           "type": "boolean"
         },
-        "azerite_empowered": {
+        "azerite_item": {
           "type": "boolean"
         },
-        "azerite_item": {
+        "azerite_empowered": {
           "type": "boolean"
         }
       }
@@ -5118,6 +5150,14 @@
           "type": "string",
           "description": "The icon of the pet."
         },
+        "capturable": {
+          "type": "boolean",
+          "description": "If true, the pet is capturable."
+        },
+        "hordeOnly": {
+          "type": "boolean",
+          "description": "If true, the pet is Horde only."
+        },
         "battlepet": {
           "type": "boolean",
           "description": "If true, the pet is a battle pet."
@@ -5126,17 +5166,9 @@
           "type": "boolean",
           "description": "If true, the pet is Alliance only."
         },
-        "hordeOnly": {
-          "type": "boolean",
-          "description": "If true, the pet is Horde only."
-        },
         "tradable": {
           "type": "boolean",
           "description": "If true, the pet is tradable."
-        },
-        "capturable": {
-          "type": "boolean",
-          "description": "If true, the pet is capturable."
         }
       },
       "description": "A World of Warcraft pet."
@@ -5507,15 +5539,15 @@
           "format": "int32",
           "description": "The green component of the RGBA color."
         },
-        "a": {
-          "type": "number",
-          "format": "float",
-          "description": "The alpha component of the RGBA color."
-        },
         "r": {
           "type": "integer",
           "format": "int32",
           "description": "The red component of the RGBA color."
+        },
+        "a": {
+          "type": "number",
+          "format": "float",
+          "description": "The alpha component of the RGBA color."
         },
         "b": {
           "type": "integer",

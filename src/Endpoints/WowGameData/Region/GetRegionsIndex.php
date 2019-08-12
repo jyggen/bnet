@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\Region;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetRegionsIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/region/index';

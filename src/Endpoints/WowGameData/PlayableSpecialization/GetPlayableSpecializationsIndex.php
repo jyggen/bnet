@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PlayableSpecialization;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPlayableSpecializationsIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/playable-specialization/index';

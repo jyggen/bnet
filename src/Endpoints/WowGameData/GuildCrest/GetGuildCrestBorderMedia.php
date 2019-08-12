@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\GuildCrest;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetGuildCrestBorderMedia implements EndpointInterface
 {
-    private const PATH = '/data/wow/media/guild-crest/border/{borderId}';
+    private const PATH = '/data/wow/media/guild-crest/border/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $borderId)
+    {
+        $this->path = vsprintf($this->path, [
+            $borderId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetGuildCrestBorderMedia implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

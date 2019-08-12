@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PvpTier;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPvPTiersIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/pvp-tier/index';

@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\GameDataApis\D3;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetSeason implements EndpointInterface
 {
-    private const PATH = '/data/d3/season/:id';
+    private const PATH = '/data/d3/season/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $id)
+    {
+        $this->path = vsprintf($this->path, [
+            $id,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetSeason implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

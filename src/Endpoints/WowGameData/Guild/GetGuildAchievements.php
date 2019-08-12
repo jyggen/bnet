@@ -15,9 +15,25 @@ namespace Boo\BattleNet\Endpoints\WowGameData\Guild;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetGuildAchievements implements EndpointInterface
 {
-    private const PATH = '/data/wow/guild/{realmSlug}/{nameSlug}/achievements';
+    private const PATH = '/data/wow/guild/%1$s/%2$s/achievements';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $realmSlug, string $nameSlug)
+    {
+        $this->path = vsprintf($this->path, [
+            $realmSlug,
+            $nameSlug,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +42,6 @@ final class GetGuildAchievements implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

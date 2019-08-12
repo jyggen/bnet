@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\DataResources;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetItemClasses implements EndpointInterface
 {
     private const PATH = '/wow/data/item/classes';

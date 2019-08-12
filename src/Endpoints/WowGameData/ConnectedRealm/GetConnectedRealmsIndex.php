@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\WowGameData\ConnectedRealm;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetConnectedRealmsIndex implements EndpointInterface
 {
     private const PATH = '/data/wow/connected-realm/index';

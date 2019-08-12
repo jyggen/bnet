@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\Region;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetRegion implements EndpointInterface
 {
-    private const PATH = '/data/wow/region/{regionId}';
+    private const PATH = '/data/wow/region/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $regionId)
+    {
+        $this->path = vsprintf($this->path, [
+            $regionId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetRegion implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

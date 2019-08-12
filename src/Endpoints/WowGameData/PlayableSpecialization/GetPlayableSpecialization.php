@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PlayableSpecialization;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPlayableSpecialization implements EndpointInterface
 {
-    private const PATH = '/data/wow/playable-specialization/{specId}';
+    private const PATH = '/data/wow/playable-specialization/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $specId)
+    {
+        $this->path = vsprintf($this->path, [
+            $specId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetPlayableSpecialization implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

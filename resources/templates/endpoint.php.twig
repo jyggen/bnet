@@ -15,9 +15,32 @@ namespace {{ namespace }};
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class {{ class_name }} implements EndpointInterface
 {
     private const PATH = '{{ path }}';
+{% if has_replace %}
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+{% endif %}
+{% if needs_constructor %}
+
+    public function __construct({{ constructor_signature }})
+    {
+{% if has_replace %}
+        $this->path = vsprintf($this->path, [
+{% for parameter in replace %}
+            ${{ parameter.name }},
+{% endfor %}
+        ]);
+{% endif %}
+    }
+{% endif %}
 
     public function getMethod(): string
     {
@@ -26,6 +49,10 @@ final class {{ class_name }} implements EndpointInterface
 
     public function getPath(): string
     {
+{% if has_replace %}
+        return $this->path;
+{% else %}
         return self::PATH;
+{% endif %}
     }
 }

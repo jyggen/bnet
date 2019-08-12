@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\Realm;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetRealm implements EndpointInterface
 {
-    private const PATH = '/data/wow/realm/{realmSlug}';
+    private const PATH = '/data/wow/realm/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $realmSlug)
+    {
+        $this->path = vsprintf($this->path, [
+            $realmSlug,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetRealm implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

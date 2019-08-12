@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\CommunityApisCn\D3Item;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetItem implements EndpointInterface
 {
-    private const PATH = '/d3/data/item/{itemSlugAndId}';
+    private const PATH = '/d3/data/item/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $itemSlugAndId)
+    {
+        $this->path = vsprintf($this->path, [
+            $itemSlugAndId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetItem implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

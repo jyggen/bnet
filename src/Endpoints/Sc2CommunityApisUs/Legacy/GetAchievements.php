@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\Sc2CommunityApisUs\Legacy;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetAchievements implements EndpointInterface
 {
-    private const PATH = '/sc2/legacy/data/achievements/:regionId';
+    private const PATH = '/sc2/legacy/data/achievements/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $regionId)
+    {
+        $this->path = vsprintf($this->path, [
+            $regionId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetAchievements implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

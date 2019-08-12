@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\D3CommunityApiUs\D3Profile;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetApiAccount implements EndpointInterface
 {
-    private const PATH = '/d3/profile/{account}/';
+    private const PATH = '/d3/profile/%1$s/';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $account)
+    {
+        $this->path = vsprintf($this->path, [
+            $account,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetApiAccount implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

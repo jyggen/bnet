@@ -15,9 +15,26 @@ namespace Boo\BattleNet\Endpoints\CommunityApisCn\Sc2Profile;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMatchHistory implements EndpointInterface
 {
-    private const PATH = '/sc2/profile/:id/:region/:name/matches';
+    private const PATH = '/sc2/profile/%1$s/%2$s/%3$s/matches';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $id, string $region, string $name)
+    {
+        $this->path = vsprintf($this->path, [
+            $id,
+            $region,
+            $name,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +43,6 @@ final class GetMatchHistory implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

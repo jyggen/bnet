@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\PvpSeason;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPvPRewardsIndex implements EndpointInterface
 {
-    private const PATH = '/data/wow/pvp-season/{pvpSeasonId}/pvp-reward/index';
+    private const PATH = '/data/wow/pvp-season/%1$s/pvp-reward/index';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $pvpSeasonId)
+    {
+        $this->path = vsprintf($this->path, [
+            $pvpSeasonId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetPvPRewardsIndex implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

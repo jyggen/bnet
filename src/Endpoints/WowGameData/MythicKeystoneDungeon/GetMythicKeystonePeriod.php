@@ -15,9 +15,24 @@ namespace Boo\BattleNet\Endpoints\WowGameData\MythicKeystoneDungeon;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetMythicKeystonePeriod implements EndpointInterface
 {
-    private const PATH = '/data/wow/mythic-keystone/period/{periodId}';
+    private const PATH = '/data/wow/mythic-keystone/period/%1$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(integer $periodId)
+    {
+        $this->path = vsprintf($this->path, [
+            $periodId,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +41,6 @@ final class GetMythicKeystonePeriod implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }

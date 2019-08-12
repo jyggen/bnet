@@ -15,6 +15,9 @@ namespace Boo\BattleNet\Endpoints\GameDataApis\Metadata;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetAllMetadata implements EndpointInterface
 {
     private const PATH = '/hearthstone/metadata';

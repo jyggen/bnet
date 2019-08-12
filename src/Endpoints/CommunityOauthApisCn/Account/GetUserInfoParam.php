@@ -15,9 +15,16 @@ namespace Boo\BattleNet\Endpoints\CommunityOauthApisCn\Account;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetUserInfoParam implements EndpointInterface
 {
     private const PATH = '/oauth/userinfo';
+
+    public function __construct(string $accessToken)
+    {
+    }
 
     public function getMethod(): string
     {

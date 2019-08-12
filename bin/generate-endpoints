@@ -84,12 +84,31 @@ foreach ($metadata as $namespace => $properties) {
     $namespace = substr($namespace, 0, $classNamePosition);
     $testNamespace = 'Boo\\BattleNet\\Tests\\Endpoints\\'.$namespace;
     $namespace = 'Boo\\BattleNet\\Endpoints\\'.$namespace;
+    $parameters = array_merge($properties->replace, $properties->header, $properties->query);
+
+    usort($parameters, static function (stdClass $a, stdClass $b): int {
+        return $b->required <=> $a->required;
+    });
 
     file_put_contents($basePath, $twig->render('endpoint.php.twig', [
-        'namespace' => $namespace,
         'class_name' => $className,
+        'constructor_signature' => implode(', ', array_map(static function (stdClass $parameter): string {
+            $signature = $parameter->type.' $'.$parameter->name;
+
+            if (!$parameter->required) {
+                $signature .= ' = '.$parameter->default;
+            }
+
+            return $signature;
+        }, $parameters)),
+        'has_replace' => count($properties->replace) !== 0,
+        'header' => $properties->header,
         'method' => $properties->method,
+        'namespace' => $namespace,
+        'needs_constructor' => count($properties->header) + count($properties->query) + count($properties->replace) !== 0,
         'path' => $properties->path,
+        'query' => $properties->query,
+        'replace' => $properties->replace,
     ]));
 
     continue;

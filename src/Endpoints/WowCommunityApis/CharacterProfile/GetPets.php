@@ -15,9 +15,25 @@ namespace Boo\BattleNet\Endpoints\WowCommunityApis\CharacterProfile;
 
 use Boo\BattleNet\Endpoints\EndpointInterface;
 
+/**
+ * @internal
+ */
 final class GetPets implements EndpointInterface
 {
-    private const PATH = '/wow/character/:realm/:characterName';
+    private const PATH = '/wow/character/%1$s/%2$s';
+
+    /**
+     * @var string
+     */
+    private $path = self::PATH;
+
+    public function __construct(string $realm, string $characterName, string $fields)
+    {
+        $this->path = vsprintf($this->path, [
+            $realm,
+            $characterName,
+        ]);
+    }
 
     public function getMethod(): string
     {
@@ -26,6 +42,6 @@ final class GetPets implements EndpointInterface
 
     public function getPath(): string
     {
-        return self::PATH;
+        return $this->path;
     }
 }
