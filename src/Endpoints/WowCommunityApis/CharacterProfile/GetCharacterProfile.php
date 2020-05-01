@@ -27,7 +27,7 @@ final class GetCharacterProfile implements EndpointInterface
      */
     private $path = self::PATH;
 
-    public function __construct(string $realm, string $characterName, string $fields = )
+    public function __construct(string $realm, string $characterName, string $fields = null)
     {
         $this->path = vsprintf($this->path, [
             $realm,

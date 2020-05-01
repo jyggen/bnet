@@ -27,7 +27,7 @@ final class GetStats implements EndpointInterface
      */
     private $path = self::PATH;
 
-    public function __construct(string $speciesId, number $level = 25, number $breedId = 5, number $qualityId = 4)
+    public function __construct(string $speciesId, number $level = null, number $breedId = null, number $qualityId = null)
     {
         $this->path = vsprintf($this->path, [
             $speciesId,

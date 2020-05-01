@@ -22,7 +22,7 @@ final class GetAuthorizationRequest implements EndpointInterface
 {
     private const PATH = '/oauth/authorize';
 
-    public function __construct(string $responseType, string $clientId, string $redirectUri, string $scope = wow.profile sc2.profile, string $state = )
+    public function __construct(string $responseType, string $clientId, string $redirectUri, string $scope = null, string $state = null)
     {
     }
 

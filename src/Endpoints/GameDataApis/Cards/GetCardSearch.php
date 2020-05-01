@@ -22,7 +22,7 @@ final class GetCardSearch implements EndpointInterface
 {
     private const PATH = '/hearthstone/cards';
 
-    public function __construct(string $set = , string $class = , numbers $manaCost = , numbers $attack = , numbers $health = , numbers $collectible = , string $rarity = , string $type = , string $minionType = , string $keyword = , string $textFilter = , number $page = , number $pageSize = , string $sort = , string $order = )
+    public function __construct(string $set = null, string $class = null, numbers $manaCost = null, numbers $attack = null, numbers $health = null, numbers $collectible = null, string $rarity = null, string $type = null, string $minionType = null, string $keyword = null, string $textFilter = null, number $page = null, number $pageSize = null, string $sort = null, string $order = null)
     {
     }
 

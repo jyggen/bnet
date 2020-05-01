@@ -96,7 +96,7 @@ foreach ($metadata as $namespace => $properties) {
             $signature = $parameter->type.' $'.$parameter->name;
 
             if (!$parameter->required) {
-                $signature .= ' = '.$parameter->default;
+                $signature .= ' = null';
             }
 
             return $signature;

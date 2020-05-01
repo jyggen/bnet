@@ -27,7 +27,7 @@ final class GetGuildProfile implements EndpointInterface
      */
     private $path = self::PATH;
 
-    public function __construct(string $realm, string $guildName, string $fields = achievements,challenge)
+    public function __construct(string $realm, string $guildName, string $fields = null)
     {
         $this->path = vsprintf($this->path, [
             $realm,

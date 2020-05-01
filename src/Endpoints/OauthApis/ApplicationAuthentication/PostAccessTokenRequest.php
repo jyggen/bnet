@@ -22,7 +22,7 @@ final class PostAccessTokenRequest implements EndpointInterface
 {
     private const PATH = '/oauth/token';
 
-    public function __construct(string $grantType, string $scope = )
+    public function __construct(string $grantType, string $scope = null)
     {
     }
 
